@@ -1,0 +1,28 @@
+#map {
+  z-index: 10;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+
+  touch-action: none;
+}
+
+#app {
+  z-index: 20;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  display: grid;
+  grid-gap: 0.5em;
+  grid-template-rows: 6em auto 4em;
+  grid-template-columns: 48px 20em auto 26em 24px;
+  grid-template-areas:
+    ". . . . ."
+    "A L . R ."
+    ". . . . .";
+}

@@ -1,0 +1,26 @@
+{
+  "name": "spotlight-sussman",
+  "version": "0.0.0",
+  "description": "Spotlight - Cards",
+  "author": "Horst Dehmer <horst.dehmer@syncpoint.io> (http://syncpoint.io/)",
+  "dependencies": {
+    "map": "^1.0.1",
+    "milsymbol": "^2.0.0",
+    "mousetrap": "^1.6.5",
+    "ol": "6.4.3",
+    "ramda": "^0.27.1",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.10",
+    "@babel/preset-env": "^7.12.10",
+    "@babel/preset-react": "^7.12.10",
+    "parcel": "^1.12.4",
+    "parcel-bundler": "^1.12.4"
+  },
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build --experimental-scope-hoisting --public-url . index.html"
+  }
+}
