@@ -1,6 +1,7 @@
 import React from 'react'
 import * as R from 'ramda'
 import lunr from 'lunr'
+import ms from 'milsymbol'
 import './spotlight.css'
 import descriptors from '../model/feature-descriptors.json'
 
@@ -58,10 +59,22 @@ const TagContainer = props => {
   </div>
 }
 
+const placeholderSymbol = new ms.Symbol('')
+
 const Card = props => {
+
+  const symbol = new ms.Symbol(props.sidc)
+  const extended = false
+  const url = symbol.isValid(extended)
+    ? symbol.asCanvas().toDataURL()
+    : placeholderSymbol.asCanvas().toDataURL()
+
   return <div className='card'>
     {/* TODO: card-content */}
-    <div>
+    <div className='card-avatar'>
+      <img className='avatar-image' src={url}></img>
+    </div>
+    <div className='card-body'>
       <div className='card-title'>{props.title}</div>
       <p className='card-description'>{props.description}</p>
       <TagContainer tags={props.tags}/>
@@ -69,10 +82,15 @@ const Card = props => {
   </div>
 }
 
+const replace = (s, i, r) => s.substring(0, i) + r + s.substring(i + r.length)
+
 const entries = items => items.map(descriptor => {
   const title = R.last(descriptor.hierarchy)
   const description = R.dropLast(1, descriptor.hierarchy).join(' • ')
   const dimension = descriptor.dimension ? descriptor.dimension.split(', ') : []
+  const sidc = () => {
+    return replace(replace(descriptor.sidc, 1, 'F'), 3, 'P')
+  }
 
   const tags = [
     ...dimension,
@@ -81,6 +99,7 @@ const entries = items => items.map(descriptor => {
 
   return <Card
     key={descriptor.sidc}
+    sidc={sidc()}
     title={title}
     description={description}
     tags={tags}
@@ -88,13 +107,17 @@ const entries = items => items.map(descriptor => {
 })
 
 const List = ({items}) => {
-  return (
+  console.time('[List]')
+  const component = (
     <div className='list-container'>
       <ul className='list'>
         { entries(items) }
       </ul>
     </div>
   )
+
+  console.timeEnd('[List]')
+  return component
 }
 
 
@@ -102,19 +125,33 @@ export const Spotlight = () => {
   const [filter, setFilter] = React.useState('')
   const [items, setItems] = React.useState([])
 
-  const handleSearchChange = value => {
+  const handleChange = value => {
+    console.time('[handleChange]')
     setFilter(value)
-    if (!value.trim()) return setItems([])
+    if (!value.trim()) {
+      console.timeEnd('[handleChange]')
+      return setItems([])
+    }
 
     // TODO: filter possible '*' from value
-    const term = value.split(' ').map(value => `${value}*`).join(' ')
+    const term = value.split(' ')
+      .filter(value => value.length > 1)
+      .map(value => `+${value}*`).join(' ')
+
+    if (!term) {
+      console.timeEnd('[handleChange]')
+      return
+    }
+
     const items = index.search(term).map(entry => descriptorIndex[entry.ref])
+    console.log('items', items.length)
     setItems(items)
+    console.timeEnd('[handleChange]')
   }
 
   return (
     <div className="spotlight">
-      <Search initialValue={filter} onChange={handleSearchChange}></Search>
+      <Search initialValue={filter} onChange={handleChange}></Search>
       <List items={items}></List>
     </div>
   )

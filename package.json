@@ -4,6 +4,8 @@
   "description": "Spotlight - Cards",
   "author": "Horst Dehmer <horst.dehmer@syncpoint.io> (http://syncpoint.io/)",
   "dependencies": {
+    "lodash.debounce": "^4.0.8",
+    "lodash.throttle": "^4.1.1",
     "lunr": "^2.3.9",
     "map": "^1.0.1",
     "milsymbol": "^2.0.0",
