@@ -29,18 +29,24 @@ const TagContainer = props => {
 
 const placeholderSymbol = new ms.Symbol('')
 
+const cache = {
+  _: placeholderSymbol.asCanvas().toDataURL()
+}
+
+const url = sidc => {
+  if (!cache[sidc]) {
+    const symbol = new ms.Symbol(sidc)
+    if (!symbol.isValid()) return cache._
+    cache[sidc] = symbol.asCanvas().toDataURL()
+  }
+
+  return cache[sidc]
+}
 const Card = props => {
-
-  const symbol = new ms.Symbol(props.sidc)
-  const extended = false
-  const url = symbol.isValid(extended)
-    ? symbol.asCanvas().toDataURL()
-    : placeholderSymbol.asCanvas().toDataURL()
-
   return <div className='card'>
     {/* TODO: card-content */}
     <div className='card-avatar'>
-      <img className='avatar-image' src={url}></img>
+      <img className='avatar-image' src={url(props.sidc)}></img>
     </div>
     <div className='card-body'>
       <div className='card-title'>{props.title}</div>
@@ -106,7 +112,7 @@ export const Spotlight = () => {
     if (!terms) return
 
     const search = terms => index.search(terms).map(entry => descriptorIndex[entry.ref])
-    const limit = R.take(180)
+    const limit = R.identity /* no limits */
     const load = R.compose(limit, search)
     setItems(load(terms))
   }
