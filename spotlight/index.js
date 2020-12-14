@@ -1,41 +1,9 @@
 import React from 'react'
 import * as R from 'ramda'
-import lunr from 'lunr'
 import ms from 'milsymbol'
 import './spotlight.css'
-import descriptors from '../model/feature-descriptors.json'
-
-const descriptorIndex = {}
-descriptors.forEach(descriptor => descriptorIndex[descriptor.sidc] = descriptor)
-
-const document = descriptor => {
-  const tags = [
-    ...descriptor.dimension ? descriptor.dimension.split(', ') : [],
-    ...descriptor.scope ? descriptor.scope.split(', ') : []
-  ].flat().join(' ')
-
-  if (!descriptor.hierarchy) console.error(descriptor)
-
-  return {
-    sidc: descriptor.sidc,
-    text: descriptor.hierarchy.join(' '),
-    tags
-  }
-}
-
-const index = lunr(function () {
-  this.pipeline.remove(lunr.stemmer)
-  this.searchPipeline.remove(lunr.stemmer)
-  this.metadataWhitelist = ['position']
-
-  this.ref('sidc')
-  this.field('text')
-  this.field('tags')
-
-  descriptors
-    .map(document)
-    .forEach(document => this.add(document))
-})
+import { index } from '../model/search-index'
+import { descriptorIndex } from '../model/feature-descriptor'
 
 const Search = ({ initialValue = '', onChange }) => {
   const handleChange = ({ target }) => onChange(target.value)
@@ -107,17 +75,13 @@ const entries = items => items.map(descriptor => {
 })
 
 const List = ({items}) => {
-  console.time('[List]')
-  const component = (
+  return (
     <div className='list-container'>
       <ul className='list'>
         { entries(items) }
       </ul>
     </div>
   )
-
-  console.timeEnd('[List]')
-  return component
 }
 
 
@@ -126,27 +90,25 @@ export const Spotlight = () => {
   const [items, setItems] = React.useState([])
 
   const handleChange = value => {
-    console.time('[handleChange]')
     setFilter(value)
-    if (!value.trim()) {
-      console.timeEnd('[handleChange]')
-      return setItems([])
-    }
+    if (!value.trim()) return setItems([])
 
     // TODO: filter possible '*' from value
-    const term = value.split(' ')
+    const term = value => value.startsWith('#')
+      ? `+tag:${value.substring(1)}`
+      : `+text:${value}*`
+
+    const terms = value.split(' ')
       .filter(value => value.length > 1)
-      .map(value => `+${value}*`).join(' ')
+      .map(term)
+      .join(' ')
 
-    if (!term) {
-      console.timeEnd('[handleChange]')
-      return
-    }
+    if (!terms) return
 
-    const items = index.search(term).map(entry => descriptorIndex[entry.ref])
-    console.log('items', items.length)
-    setItems(items)
-    console.timeEnd('[handleChange]')
+    const search = terms => index.search(terms).map(entry => descriptorIndex[entry.ref])
+    const limit = R.take(180)
+    const load = R.compose(limit, search)
+    setItems(load(terms))
   }
 
   return (
