@@ -1,21 +1,19 @@
 import React from 'react'
-import * as R from 'ramda'
 import './spotlight.css'
-import { index, entry } from '../model/search-index'
 
 const Search = ({ initialValue = '', onChange }) => {
   const handleChange = ({ target }) => onChange(target.value)
 
-  return <div className='search-conainer'>
-    <input
-      className='search-input'
-      placeholder='Spotlight Search'
-      value={initialValue}
-      onChange={handleChange}
-    >
-
-    </input>
-  </div>
+  return (
+    <div className='search-conainer'>
+      <input
+        className='search-input'
+        placeholder='Spotlight Search'
+        value={initialValue}
+        onChange={handleChange}
+      />
+    </div>
+  )
 }
 
 const Tag = props => {
@@ -68,7 +66,6 @@ const Card = props => {
   )
 }
 
-
 const List = ({ entries }) => (
   <div className='list-container'>
     <ul className='list'>
@@ -77,31 +74,15 @@ const List = ({ entries }) => (
   </div>
 )
 
-export const Spotlight = () => {
+export const Spotlight = props => {
+  const { provider: search } = props
   const [filter, setFilter] = React.useState('')
   const [entries, setEntries] = React.useState([])
 
+  // TODO: delegate to search provider
   const handleChange = value => {
     setFilter(value)
-    if (!value.trim()) return setEntries([])
-
-    const term = R.cond([
-      [R.startsWith('#'), s => `+tags:${s.substring(1)}*`],
-      [R.startsWith('@'), s => `+scope:${s.substring(1)}`],
-      [R.T, s => `+text:${s}*`]
-    ])
-
-    const terms = value.split(' ')
-      .filter(R.identity)
-      .map(term)
-      .join(' ')
-
-    if (!terms.trim()) return
-
-    const search = terms => index.search(terms).map(({ ref }) => entry(ref))
-    const limit = R.identity /* no limits */
-    const load = R.compose(limit, search)
-    setEntries(load(terms))
+    setEntries((value || '').trim() ? search(value) : [])
   }
 
   return (
