@@ -7,6 +7,7 @@ export var index
 const reindex = () => {
   index = lunr(function () {
     this.pipeline.remove(lunr.stemmer)
+    this.pipeline.remove(lunr.stopWordFilter) // allow word like 'so', 'own', etc.
     this.searchPipeline.remove(lunr.stemmer)
     this.field('text')
     this.field('scope')

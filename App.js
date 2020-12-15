@@ -5,7 +5,7 @@ import OSM from 'ol/source/OSM'
 import { Tile as TileLayer } from 'ol/layer'
 import { Spotlight } from './spotlight'
 import { Toolbar } from './toolbar'
-import providerIndexed from './spotlight/provider-indexed'
+import lunrProvider from './spotlight/provider-lunr'
 
 /**
  * <Map/> and <App/> are siblings with <body/> as parent.
@@ -23,7 +23,7 @@ export const App = () => {
   }, [])
 
   // NOTE: React.useState() supports lazy initialization.
-  const [provider, setProvider] = React.useState(() => providerIndexed)
+  const [provider, setProvider] = React.useState(() => lunrProvider)
 
   return (
     <>

@@ -1,13 +1,17 @@
 import * as R from 'ramda'
-import descriptors from '../model/feature-descriptors.json'
+import json from '../model/feature-descriptors.json'
 import { url } from './symbol'
 
 const id = descriptor => `symbol:${descriptor.sidc}`
 
-const descriptorIndex = {}
-descriptors.forEach(descriptor => descriptorIndex[id(descriptor)] = descriptor)
+const descriptors = json.reduce((acc, descriptor) => {
+  descriptor.id = id(descriptor)
+  acc[descriptor.id] = descriptor
+  return acc
+}, {})
 
 const document = descriptor => {
+  console.log('[document]', descriptor)
   const tags = [
     ...descriptor.dimension ? descriptor.dimension.split(', ') : [],
     ...descriptor.scope ? descriptor.scope.split(', ') : []
@@ -16,19 +20,20 @@ const document = descriptor => {
   if (!descriptor.hierarchy) console.error(descriptor)
 
   return {
-    id: id(descriptor),
+    id: descriptor.id,
     scope: 'symbol',
     text: descriptor.hierarchy.join(' '),
     tags
   }
 }
 
-export const documents = () => descriptors.map(document)
+console.log(descriptors)
 
+export const documents = () => Object.values(descriptors).map(document)
 
 export const entry = ref => {
   const replace = (s, i, r) => s.substring(0, i) + r + s.substring(i + r.length)
-  const descriptor = descriptorIndex[ref]
+  const descriptor = descriptors[ref]
   const title = R.last(descriptor.hierarchy)
   const description = R.dropLast(1, descriptor.hierarchy).join(' • ')
   const dimension = descriptor.dimension ? descriptor.dimension.split(', ') : []

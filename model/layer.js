@@ -1,37 +1,51 @@
+import uuid from 'uuid-random'
 import { url } from './symbol'
 
 export const layers = {}
 
-const readFile = file => new Promise((resolve, reject) => {
+const importFile = file => new Promise((resolve, reject) => {
   const reader = new FileReader()
   const filename = file => file.name.substring(0, file.name.indexOf('.'))
   reader.onload = (({ target }) => {
     if (target.error) reject(target.error)
-    else resolve({ name: filename(file), json: JSON.parse(target.result) })
+    else {
+      const json = JSON.parse(target.result)
+      const layerUUID = uuid()
+      json.name = filename(file)
+      json.id = `layer:${layerUUID}`
+
+      // re-write feature array as associative array:
+      json.features = json.features.reduce((acc, feature) => {
+        feature.id = `feature:${layerUUID}/${uuid()}`
+        acc[feature.id] = feature
+        return acc
+      }, {})
+      resolve(json)
+    }
   })
   reader.readAsText(file)
 })
 
-export const load = files => {
-  Promise.all(files.map(readFile))
-    .then(files => files.forEach(file => layers[file.name] = file.json))
-    .then(() => window.dispatchEvent(new CustomEvent('model.changed')))
+export const load = async files => {
+  const json = await Promise.all(files.map(importFile))
+  json.reduce((acc, layer) => {
+    acc[layer.id] = layer
+    return acc
+  }, layers)
+
+  window.dispatchEvent(new CustomEvent('model.changed'))
 }
 
-const identity = sidc => sidc[1] === 'F' ? ['FRIENDLY'] : sidc[1] === 'H' ? ['HOSTILE'] : []
+const identity = sidc => sidc[1] === 'F' ? ['OWN'] : sidc[1] === 'H' ? ['ENEMY'] : []
 
 export const documents = () => {
-  return Object.entries(layers).reduce((acc, [name, layer]) => {
-    acc.push({
-      id: `layer:${name}`,
-      scope: 'layer',
-      text:  name
-    })
-    return layer.features.reduce((acc, feature, index) => {
+  return Object.entries(layers).reduce((acc, [id, layer]) => {
+    acc.push({ id, scope: 'layer', text:  layer.name })
+    return Object.entries(layer.features).reduce((acc, [id, feature]) => {
       acc.push({
-        id: `feature:${name}:${index}`,
+        id,
         scope: 'feature',
-        tags: [name, ...identity(feature.properties.sidc)],
+        tags: [layer.name, ...identity(feature.properties.sidc)],
         text: feature.properties.t
       })
       return acc
@@ -39,21 +53,26 @@ export const documents = () => {
   }, [])
 }
 
-export const entry = ref => {
-  const [scope, name, index] = ref.split(':')
-  switch (scope) {
-    case 'layer': return {
+const scopes = {
+  layer: ref => {
+    const layer = layers[ref]
+    return {
       key: ref,
-      title: ref.split(':')[1],
+      title: layer.name,
       scope: 'LAYER',
       tags: []
     }
-    case 'feature': return {
+  },
+  feature: ref => {
+    const layer = layers[`layer:${ref.split(':')[1].split('/')[0]}`]
+    const { properties } = layer.features[ref]
+    return {
       key: ref,
-      title: layers[name].features[index].properties.t || 'N/A',
+      title: properties.t || 'N/A',
       scope: 'FEATURE',
-      tags: [name.toUpperCase(), ...identity(layers[name].features[index].properties.sidc)],
-      url: () => url(layers[name].features[index].properties.sidc)
+      tags: [layer.name.toUpperCase(),  ...identity(properties.sidc)],
+      url: () => url(properties.sidc)
     }
   }
 }
+export const entry = ref => scopes[ref.split(':')[0]](ref)

@@ -18,7 +18,7 @@ const Search = ({ initialValue = '', onChange }) => {
 
 const Tag = props => {
   const { value, variant = 'default'} = props
-  const mustTrim = s => s.length > 16
+  const mustTrim = s => s.length > 32
   const trim = s => mustTrim(s) ? s.substring(0, 16) + '...' : s
   const className = `tag tag-${variant}`
   const title = mustTrim(value) ? value : null
