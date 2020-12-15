@@ -34,7 +34,6 @@ export const entry = ref => {
   const dimension = descriptor.dimension ? descriptor.dimension.split(', ') : []
 
   const tags = [
-    'SYMBOL',
     ...dimension,
     descriptor.scope
   ].filter(R.identity)
@@ -43,6 +42,7 @@ export const entry = ref => {
     key: ref,
     title,
     description,
+    scope: 'SYMBOL',
     tags,
     url: () => url(replace(replace(descriptor.sidc, 1, 'F'), 3, 'P'))
   }

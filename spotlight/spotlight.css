@@ -50,7 +50,7 @@
 }
 
 .card-avatar {
-  margin-right: 16px;
+  margin-left: 16px;
 }
 
 .avatar-image {
@@ -77,12 +77,19 @@
 
 .tag {
   font-size: 0.7em;
-  /* font-weight: bold; */
-  padding: 4px;
+  padding: 3px;
   margin-right: 6px;
-  border-radius: 3px;
+  border-radius: 2px;
+  white-space:nowrap;
+}
 
+.tag-default {
   border-width: 1px;
   border-style: solid;
-  color: red;
+  border-color:#e03c31;
+}
+
+.tag-scope {
+  color: white;
+  background-color: #e03c31; /* CG red */
 }

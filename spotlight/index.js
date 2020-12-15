@@ -18,10 +18,17 @@ const Search = ({ initialValue = '', onChange }) => {
   </div>
 }
 
-const TagContainer = ({ tags }) => {
-  const tag = tag => <span key={tag} className='tag'>{tag}</span>
+const TagContainer = ({ scope, tags }) => {
+  const trim = s => s.length > 16 ? s.substring(0, 16) + '...' : s
+  const tagDefault = tag => <span key={tag} className='tag tag-default'>{trim(tag)}</span>
+  const tagScope = tag => <span key={tag} className='tag tag-scope'>{trim(tag)}</span>
+  const components = [
+    tagScope(scope),
+    ...tags.map(tagDefault)
+  ]
+
   if (!tags) return null
-  else return <div className='tag-container'> {tags.map(tag)} </div>
+  else return <div className='tag-container'> {components} </div>
 }
 
 const Card = props => {
@@ -32,19 +39,22 @@ const Card = props => {
       </div>
     : null
 
-  return <div className='card'>
-    { avatar }
+  const body = (
     <div className='card-body'>
       <div className='card-title'>{props.title}</div>
-
       {
         props.description
           ? <span className='card-description'>{props.description}</span>
           : null
       }
 
-      <TagContainer tags={props.tags}/>
+      <TagContainer {...props}/>
     </div>
+  )
+
+  return <div className='card'>
+    { body }
+    { avatar }
   </div>
 }
 
@@ -65,21 +75,18 @@ export const Spotlight = () => {
     setFilter(value)
     if (!value.trim()) return setEntries([])
 
-    // TODO: filter possible '*' from value
-    const term = value => value.startsWith('#')
-      ? `+tags:${value.substring(1)}*`
-      : value.indexOf(':') === -1
-        ? `+text:${value}*`
-        : value.length > value.indexOf(':') + 1
-          ? `+${value}`
-          : ''
+    const term = R.cond([
+      [R.startsWith('#'), s => `+tags:${s.substring(1)}*`],
+      [R.startsWith('@'), s => `+scope:${s.substring(1)}`],
+      [R.T, s => `+text:${s}*`]
+    ])
 
     const terms = value.split(' ')
-      .filter(value => value.length > 1)
+      .filter(R.identity)
       .map(term)
       .join(' ')
 
-    if (!terms) return
+    if (!terms.trim()) return
 
     const search = terms => index.search(terms).map(({ ref }) => entry(ref))
     const limit = R.identity /* no limits */

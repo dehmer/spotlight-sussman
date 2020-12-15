@@ -6,21 +6,15 @@ export var index
 
 const reindex = () => {
   index = lunr(function () {
-    console.time('[lunr]')
     this.pipeline.remove(lunr.stemmer)
     this.searchPipeline.remove(lunr.stemmer)
-    this.metadataWhitelist = ['position']
-
-    // this.ref('id')
     this.field('text')
     this.field('scope')
     this.field('tags')
 
-    symbolDocuments().forEach(document => this.add(document))
-    layerDocuments().forEach(document => this.add(document))
-
-    console.log(Object.entries(layerDocuments))
-    console.timeEnd('[lunr]')
+    const add = this.add.bind(this)
+    symbolDocuments().forEach(add)
+    layerDocuments().forEach(add)
   })
 }
 
