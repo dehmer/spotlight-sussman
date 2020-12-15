@@ -2,6 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import Mousetrap from 'mousetrap'
 import { App } from './App'
+import * as Layer from './model/layer'
 
 Mousetrap.bind('command+f', event => {
   console.log('[Mousetrap]', event)
@@ -14,3 +15,16 @@ Mousetrap.bind('command+f', event => {
 
 const app = document.getElementById('app')
 ReactDOM.render(<App></App>, app)
+
+// Prevent browser from intercepting file:
+app.addEventListener('dragover', event => {
+  event.preventDefault()
+  event.stopPropagation()
+}, false)
+
+app.addEventListener('drop', event => {
+  event.preventDefault()
+  event.stopPropagation()
+  Layer.load([...event.dataTransfer.files])
+}, false)
+

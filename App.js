@@ -11,7 +11,7 @@ import { Spotlight } from './spotlight'
 export const App = () => {
 
   React.useEffect(() => {
-    const target = map
+    const target = 'map'
     const controls = []
     const center = [1740294.4412834928, 6145380.806904582]
     const zoom = 14

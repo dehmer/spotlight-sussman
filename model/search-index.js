@@ -1,20 +1,39 @@
 import lunr from 'lunr'
-import descriptors from './feature-descriptors.json'
-import { document } from './feature-descriptor'
+import { documents as symbolDocuments, entry as symbolEntry } from './feature-descriptor'
+import { documents as layerDocuments, entry as layerEntry } from './layer'
 
-const descriptorIndex = {}
-descriptors.forEach(descriptor => descriptorIndex[descriptor.sidc] = descriptor)
+export var index
 
-export const index = lunr(function () {
-  this.pipeline.remove(lunr.stemmer)
-  this.searchPipeline.remove(lunr.stemmer)
-  this.metadataWhitelist = ['position']
+const reindex = () => {
+  index = lunr(function () {
+    console.time('[lunr]')
+    this.pipeline.remove(lunr.stemmer)
+    this.searchPipeline.remove(lunr.stemmer)
+    this.metadataWhitelist = ['position']
 
-  this.ref('sidc')
-  this.field('text')
-  this.field('tag')
+    // this.ref('id')
+    this.field('text')
+    this.field('scope')
+    this.field('tag')
 
-  descriptors
-    .map(document)
-    .forEach(document => this.add(document))
-})
+    symbolDocuments().forEach(document => this.add(document))
+    layerDocuments().forEach(document => this.add(document))
+
+    console.log(Object.entries(layerDocuments))
+    console.timeEnd('[lunr]')
+  })
+}
+
+reindex()
+
+const entryMapper = {
+  symbol: symbolEntry,
+  layer: layerEntry
+}
+
+export const entry = ref => {
+  const [scope] = ref.split(':')
+  return entryMapper[scope](ref)
+}
+
+window.addEventListener('model.changed', reindex)
