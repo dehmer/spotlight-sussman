@@ -6,5 +6,6 @@ TODO:
 - list: multi-select
 - map: show layers
 - spotlight: view model
+- avatar cache: use js-cache (https://www.npmjs.com/package/js-cache)
 
 DONE:

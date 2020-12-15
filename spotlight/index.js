@@ -18,19 +18,27 @@ const Search = ({ initialValue = '', onChange }) => {
   </div>
 }
 
-const TagContainer = ({ scope, tags }) => {
-  const trim = s => s.length > 16 ? s.substring(0, 16) + '...' : s
-  const tagDefault = tag => <span key={tag} className='tag tag-default'>{trim(tag)}</span>
-  const tagScope = tag => <span key={tag} className='tag tag-scope'>{trim(tag)}</span>
-  const components = [
-    tagScope(scope),
-    ...tags.map(tagDefault)
-  ]
-
-  if (!tags) return null
-  else return <div className='tag-container'> {components} </div>
+const Tag = props => {
+  const { value, variant = 'default'} = props
+  const mustTrim = s => s.length > 16
+  const trim = s => mustTrim(s) ? s.substring(0, 16) + '...' : s
+  const className = `tag tag-${variant}`
+  const title = mustTrim(value) ? value : null
+  return <span key={value} title={title} className={className}>{trim(value)}</span>
 }
 
+const TagList = ({ scope, tags }) => {
+  const components = [
+    <Tag key={scope} value={scope} variant='scope'/>,
+    ...tags.map(value => <Tag key={value} value={value}/>)
+  ]
+
+  return <div className='tag-container'> {components} </div>
+}
+
+/**
+ *
+ */
 const Card = props => {
 
   const avatar = props.url
@@ -48,14 +56,16 @@ const Card = props => {
           : null
       }
 
-      <TagContainer {...props}/>
+      <TagList {...props}/>
     </div>
   )
 
-  return <div className='card'>
-    { body }
-    { avatar }
-  </div>
+  return (
+    <div className='card'>
+      { body }
+      { avatar }
+    </div>
+  )
 }
 
 
