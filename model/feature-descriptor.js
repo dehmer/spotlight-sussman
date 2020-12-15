@@ -1,6 +1,6 @@
 import * as R from 'ramda'
-import ms from 'milsymbol'
 import descriptors from '../model/feature-descriptors.json'
+import { url } from './symbol'
 
 const id = descriptor => `symbol:${descriptor.sidc}`
 
@@ -8,7 +8,7 @@ const descriptorIndex = {}
 descriptors.forEach(descriptor => descriptorIndex[id(descriptor)] = descriptor)
 
 const document = descriptor => {
-  const tag = [
+  const tags = [
     ...descriptor.dimension ? descriptor.dimension.split(', ') : [],
     ...descriptor.scope ? descriptor.scope.split(', ') : []
   ].flat().join(' ')
@@ -19,27 +19,12 @@ const document = descriptor => {
     id: id(descriptor),
     scope: 'symbol',
     text: descriptor.hierarchy.join(' '),
-    tag
+    tags
   }
 }
 
 export const documents = () => descriptors.map(document)
 
-const placeholderSymbol = new ms.Symbol('')
-
-const cache = {
-  _: placeholderSymbol.asCanvas().toDataURL()
-}
-
-const url = sidc => {
-  if (!cache[sidc]) {
-    const symbol = new ms.Symbol(sidc)
-    if (!symbol.isValid()) return cache._
-    cache[sidc] = symbol.asCanvas().toDataURL()
-  }
-
-  return cache[sidc]
-}
 
 export const entry = ref => {
   const replace = (s, i, r) => s.substring(0, i) + r + s.substring(i + r.length)

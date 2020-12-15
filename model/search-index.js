@@ -14,7 +14,7 @@ const reindex = () => {
     // this.ref('id')
     this.field('text')
     this.field('scope')
-    this.field('tag')
+    this.field('tags')
 
     symbolDocuments().forEach(document => this.add(document))
     layerDocuments().forEach(document => this.add(document))
@@ -28,7 +28,8 @@ reindex()
 
 const entryMapper = {
   symbol: symbolEntry,
-  layer: layerEntry
+  layer: layerEntry,
+  feature: layerEntry
 }
 
 export const entry = ref => {

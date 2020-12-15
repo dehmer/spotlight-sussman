@@ -1,3 +1,5 @@
+import { url } from './symbol'
+
 export const layers = {}
 
 const readFile = file => new Promise((resolve, reject) => {
@@ -23,19 +25,31 @@ export const documents = () => {
       scope: 'layer',
       text:  name
     })
-    return acc
+    return layer.features.reduce((acc, feature, index) => {
+      acc.push({
+        id: `feature:${name}:${index}`,
+        scope: 'feature',
+        tags: [name],
+        text: feature.properties.t
+      })
+      return acc
+    }, acc)
   }, [])
 }
 
 export const entry = ref => {
-  // console.log('[Layer]', ref)
-  // const layer = layers[ref]
-
-  return {
-    key: ref,
-    title: ref.split(':')[1],
-    tags: ['LAYER']
-
+  const [scope, name, index] = ref.split(':')
+  switch (scope) {
+    case 'layer': return {
+      key: ref,
+      title: ref.split(':')[1],
+      tags: ['LAYER']
+    }
+    case 'feature': return {
+      key: ref,
+      title: layers[name].features[index].properties.t,
+      tags: ['FEATURE', name.toUpperCase()],
+      url: () => url(layers[name].features[index].properties.sidc)
+    }
   }
-
 }

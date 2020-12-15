@@ -67,7 +67,7 @@ export const Spotlight = () => {
 
     // TODO: filter possible '*' from value
     const term = value => value.startsWith('#')
-      ? `+tag:${value.substring(1)}`
+      ? `+tags:${value.substring(1)}*`
       : value.indexOf(':') === -1
         ? `+text:${value}*`
         : value.length > value.indexOf(':') + 1
