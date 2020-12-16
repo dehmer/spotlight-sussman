@@ -7,5 +7,6 @@ TODO:
 - map: show layers
 - spotlight: view model
 - avatar cache: use js-cache (https://www.npmjs.com/package/js-cache)
+- edit option title
 
 DONE:
