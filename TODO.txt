@@ -1,12 +1,13 @@
 TODO:
 - toolbar / scopebar
 - tag: show full name on mouse hover
-- ist: key navigation
+- list: key navigation
 - list: highlight selected
 - list: multi-select
 - map: show layers
 - spotlight: view model
 - avatar cache: use js-cache (https://www.npmjs.com/package/js-cache)
 - edit option title
+- search: escape key clear filter
 
 DONE:

@@ -4,7 +4,14 @@ import { symbols } from '../model/feature-descriptor'
 import { layers, identity } from '../model/layer'
 import { url } from '../model/symbol'
 
-var index
+const providerEvent = detail => new CustomEvent('spotlight.provider', { detail })
+const dispatchProvider = fn => () => window.dispatchEvent(providerEvent(fn))
+
+const featureList = id => filter => Object
+  .keys(layers[id].features)
+  .map(domains.feature.model)
+  .filter(feature => feature.title.toLowerCase().includes(filter.toLowerCase()))
+  .sort((a, b) => a.title.localeCompare(b.title, {numeric: true, sensitivity: 'base'}))
 
 const domains = {}
 
@@ -33,10 +40,9 @@ domains.symbol = {
     const description = R.dropLast(1, descriptor.hierarchy).join(' • ')
     const dimension = descriptor.dimension ? descriptor.dimension.split(', ') : []
 
-    const tags = [
-      ...dimension,
-      descriptor.scope
-    ].filter(R.identity)
+    const tags = [...dimension, descriptor.scope]
+      .filter(R.identity)
+      .map(text => ({ text }))
 
     return {
       key: ref,
@@ -79,15 +85,25 @@ domains.feature = {
   model: ref => {
     const layer = layers[`layer:${ref.split(':')[1].split('/')[0]}`]
     const { properties } = layer.features[ref]
+    const tags = [
+      {
+        text: layer.name.toUpperCase(),
+        command: dispatchProvider(featureList(layer.id))
+      },
+      ...identity(properties.sidc).map(text => ({ text }))
+    ]
+
     return {
       key: ref,
       title: properties.t || 'N/A',
       scope: 'FEATURE',
-      tags: [layer.name.toUpperCase(),  ...identity(properties.sidc)],
+      tags,
       url: () => url(properties.sidc)
     }
   }
 }
+
+var index
 
 const reindex = () => {
   index = lunr(function () {
@@ -107,10 +123,8 @@ const reindex = () => {
 }
 
 reindex()
-
-const model = ref => domains[ref.split(':')[0]].model(ref)
-
 window.addEventListener('model.changed', reindex)
+
 
 const tag = s => {
   if (s.length < 2) return ''
@@ -141,6 +155,7 @@ const search = R.tryCatch(terms => {
   else return index.search(terms.trim())
 }, R.always([]))
 
+const model = ref => domains[ref.split(':')[0]].model(ref)
 const limit = R.identity /* no limits */
 const refs = R.map(({ ref }) => model(ref))
 export default R.compose(refs, limit, search, terms)

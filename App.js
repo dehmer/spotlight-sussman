@@ -25,9 +25,24 @@ export const App = () => {
   // NOTE: React.useState() supports lazy initialization.
   const [provider, setProvider] = React.useState(() => lunr)
 
+  const [filter, setFilter] = React.useState('')
+  const handleChange = value => setFilter(value)
+
+  React.useEffect(() => {
+    window.addEventListener('spotlight.provider', event => {
+      setProvider(() => event.detail)
+      setFilter('')
+    }, false)
+  }, [])
+
+
   return (
     <>
-      <Spotlight provider={provider}></Spotlight>
+      <Spotlight
+        provider={provider}
+        filter={filter}
+        handleChange={handleChange}
+      />
       <Toolbar className='toolbar'></Toolbar>
     </>
   )

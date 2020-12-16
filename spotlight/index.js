@@ -17,18 +17,25 @@ const Search = ({ initialValue = '', onChange }) => {
 }
 
 const Tag = props => {
-  const { value, variant = 'default'} = props
+  const { text, onClick, variant = 'default'} = props
   const mustTrim = s => s.length > 32
   const trim = s => mustTrim(s) ? s.substring(0, 16) + '...' : s
   const className = `tag tag-${variant}`
-  const title = mustTrim(value) ? value : null
-  return <span key={value} title={title} className={className}>{trim(value)}</span>
+  const title = mustTrim(text) ? text : null
+  return <span
+    key={text}
+    title={title}
+    className={className}
+    onClick={onClick}
+  >
+    {trim(text)}
+  </span>
 }
 
 const TagList = ({ scope, tags }) => {
   const components = [
-    <Tag key={scope} value={scope} variant='scope'/>,
-    ...tags.map(value => <Tag key={value} value={value}/>)
+    <Tag key={scope} text={scope} variant='scope'/>,
+    ...tags.map(tag => <Tag key={tag.text} text={tag.text} onClick={tag.command}/>)
   ]
 
   return <div className='tag-container'> {components} </div>
@@ -75,15 +82,8 @@ const List = ({ entries }) => (
 )
 
 export const Spotlight = props => {
-  const { provider: search } = props
-  const [filter, setFilter] = React.useState('')
-  const [entries, setEntries] = React.useState([])
-
-  // TODO: delegate to search provider
-  const handleChange = value => {
-    setFilter(value)
-    setEntries((value || '').trim() ? search(value) : [])
-  }
+  const { provider: search, filter, handleChange } = props
+  const entries = search(filter) || []
 
   return (
     <div className="spotlight">
