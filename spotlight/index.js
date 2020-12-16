@@ -65,8 +65,12 @@ const Card = props => {
     </div>
   )
 
+  const handleDoubeClick = props.primaryAction
+      ? props.primaryAction
+      : null
+
   return (
-    <div className='card'>
+    <div className='card' onDoubleClick={handleDoubeClick}>
       { body }
       { avatar }
     </div>

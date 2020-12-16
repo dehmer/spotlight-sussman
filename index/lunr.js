@@ -76,7 +76,8 @@ domains.layer = {
       key: ref,
       title: layer.name,
       scope: 'LAYER',
-      tags: []
+      tags: [],
+      primaryAction: dispatchProvider(featureList(layer.id))
     }
   }
 }
@@ -156,6 +157,7 @@ const search = R.tryCatch(terms => {
 }, R.always([]))
 
 const model = ref => domains[ref.split(':')[0]].model(ref)
-const limit = R.identity /* no limits */
+// const limit = R.identity /* no limits */
+const limit = R.take(150)
 const refs = R.map(({ ref }) => model(ref))
 export default R.compose(refs, limit, search, terms)
