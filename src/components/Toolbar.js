@@ -9,42 +9,71 @@ const dispatchProvider = fn => () => window.dispatchEvent(providerEvent(fn))
 const scope = scope => filter => lunr(`@${scope} ${filter}`)
 
 const IconButton = props => {
-  const { path, onClick } = props
+  const { path, onClick, enabled, selected } = props
+  const color = enabled ? null : 'lightgrey'
+
+  const className = selected ? 'iconbutton-selected' : 'iconbutton'
+
   return (
-    <div className='iconbutton' onClick={onClick}>
-      <Icon path={path} size={1}/>
+    <div className={className} onClick={onClick}>
+      <Icon path={path} size={1} color={color}/>
     </div>
   )
 }
 
+const descriptors = [
+  {
+    key: 'search',
+    enabled: true,
+    path: mdi.mdiMagnify,
+    action: dispatchProvider(lunr),
+    selected: true
+  },
+  {
+    key: 'layers',
+    enabled: true,
+    path: mdi.mdiLayersTriple,
+    action: dispatchProvider(scope('layer'))
+  },
+  {
+    key: 'features',
+    enabled: true,
+    path: mdi.mdiShapeOutline,
+    action: dispatchProvider(scope('feature'))
+  },
+  {
+    key: 'palette',
+    enabled: true,
+    path: mdi.mdiPaletteOutline,
+    action: dispatchProvider(scope('symbol'))
+  },
+  { key: 'basemaps', enabled: false, path: mdi.mdiMap },
+  { key: 'meassure', enabled: false, path: mdi.mdiAngleAcute },
+  { key: 'bookmarks', enabled: false, path: mdi.mdiBookmarkMultiple },
+  { key: 'places', enabled: false, path: mdi.mdiMapSearch }
+]
+
 export const Toolbar = props => {
-  return (
-    <ul className='toolbar'>
-      <IconButton
-        path={mdi.mdiMagnify}
-        onClick={dispatchProvider(lunr)}
-      />
 
-      <IconButton
-        path={mdi.mdiLayersTriple}
-        onClick={dispatchProvider(scope('layer'))}
-      />
+  const [tools, setTools] = React.useState(descriptors)
 
-      <IconButton
-        path={mdi.mdiShapeOutline}
-        onClick={dispatchProvider(scope('feature'))}
-      />
+  const handleClick = index => () => {
+    const [...descriptors] = tools
+    if (!descriptors[index].enabled) return
+    descriptors.forEach(descriptor => descriptor.selected = false)
+    descriptors[index].selected = true
+    setTools(descriptors)
+    descriptors[index].action()
+  }
 
-      <IconButton
-        path={mdi.mdiPaletteOutline}
-        onClick={dispatchProvider(scope('symbol'))}
-      />
+  const button = (descriptor, index) => <IconButton
+    key={descriptor.key}
+    path={descriptor.path}
+    onClick={handleClick(index)}
+    enabled={descriptor.enabled}
+    selected={descriptor.selected}
+  />
 
-      <IconButton path={mdi.mdiMap}/>
-      <IconButton path={mdi.mdiCamera}/>
-      <IconButton path={mdi.mdiAngleAcute}/>
-      <IconButton path={mdi.mdiBookmarkMultiple}/>
-      <IconButton path={mdi.mdiMapSearch}/>
-    </ul>
-  )
+  const entries = tools.map(button)
+  return <ul className='toolbar panel'>{entries}</ul>
 }

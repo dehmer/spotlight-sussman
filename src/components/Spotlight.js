@@ -89,7 +89,7 @@ export const Spotlight = props => {
   const entries = search(filter) || []
 
   return (
-    <div className="spotlight">
+    <div className="spotlight panel">
       <Search initialValue={filter} onChange={handleChange}></Search>
       <List entries={entries}></List>
     </div>

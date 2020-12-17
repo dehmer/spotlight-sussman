@@ -1,18 +1,27 @@
-#map {
-  z-index: 10;
+.fullscreen {
   position: fixed;
   top: 0;
   left: 0;
   bottom: 0;
   right: 0;
+}
 
+.panel {
+  background-color: white;
+  user-select: none;
+  box-shadow:
+    0px 2px 4px -1px rgba(0,0,0,0.2),
+    0px 4px 5px 0px rgba(0,0,0,0.14),
+    0px 1px 10px 0px rgba(0,0,0,0.12);
+}
+
+.map {
+  z-index: 10;
   touch-action: none;
 }
 
-#app {
+.panels {
   z-index: 20;
-  position: fixed;
-  top: 0; bottom: 0; left: 0; right: 0;
 
   padding-top: 6em;
   padding-bottom: 4em;
@@ -31,9 +40,6 @@
   flex-direction: column;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 100%;
-  background-color: white;
-  user-select: none;
-  box-shadow: 0px 2px 4px -1px rgba(0,0,0,0.2), 0px 4px 5px 0px rgba(0,0,0,0.14), 0px 1px 10px 0px rgba(0,0,0,0.12);
 }
 
 .search-conainer {
@@ -122,28 +128,38 @@
 
 .toolbar {
   grid-area: T;
-  background-color: white;
   margin: 0;
   padding: 0;
   padding-top: 8px;
   padding-bottom: 8px;
   position: relative;
   list-style: none;
-
-  box-shadow:
-    0px 2px 4px -1px rgba(0,0,0,0.2),
-    0px 4px 5px 0px rgba(0,0,0,0.14),
-    0px 1px 10px 0px rgba(0,0,0,0.12);
 }
 
 .iconbutton {
-  padding-left: 13px;
-  padding-right: 8px;
+  display: inline-flex;
+  padding-left: 12px;
+  padding-right: 12px;
   padding-top: 8px;
   padding-bottom: 8px;
+  margin-left: 0px;
   color: rgba(0, 0, 0, 0.54);
+}
+
+.iconbutton-selected {
   display: inline-flex;
-  min-width: 56px;
-  flex-shrink: 0;
-  transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  padding-left: 7px;
+  padding-right: 10px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  margin-left: 0px;
+  color: rgba(0, 0, 0, 0.54);
+
+  border-left-style: solid;
+  border-width: 5px;
+  border-color: #e03c31;
+}
+
+.iconbutton:hover {
+  background-color: #dddddd;
 }
