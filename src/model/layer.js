@@ -1,7 +1,25 @@
+import VectorSource from 'ol/source/Vector'
+import Collection from 'ol/Collection'
+import GeoJSON from 'ol/format/GeoJSON'
 import uuid from 'uuid-random'
 import scenario from './mip-scenario.json'
 
-export const layers = scenario
+const features = new Collection()
+export const source = new VectorSource({ features })
+
+const format = new GeoJSON({
+  dataProjection: 'EPSG:4326', // WGS84
+  featureProjection: 'EPSG:3857' // Web-Mercator
+})
+
+export const layers = (() => {
+  Object.values(scenario).forEach(layer => {
+    Object.values(layer.features).forEach(feature => {
+      features.push(format.readFeature(feature))
+    })
+  })
+  return scenario
+})()
 
 const K = v => fn => { fn(v); return v }
 
