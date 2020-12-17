@@ -1,13 +1,13 @@
 import React from 'react'
+// TODO: get rid of this dependency:
 import lunr from '../index/lunr'
 import { Spotlight } from './Spotlight'
 import { Toolbar } from './Toolbar'
 
-export const PanelLayer = () => {
+export const PanelRoot = () => {
 
   // NOTE: React.useState() supports lazy initialization.
   const [provider, setProvider] = React.useState(() => lunr)
-
   const [filter, setFilter] = React.useState('')
   const handleChange = value => setFilter(value)
 
@@ -19,7 +19,7 @@ export const PanelLayer = () => {
   }, [])
 
   return (
-    <div className='panels fullscreen'>
+    <div className='panel-root fullscreen'>
       <Spotlight
         provider={provider}
         filter={filter}

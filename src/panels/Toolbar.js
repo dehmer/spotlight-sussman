@@ -1,25 +1,12 @@
 import React from 'react'
-import Icon from '@mdi/react'
 import * as mdi from '@mdi/js'
 import lunr from '../index/lunr'
+import { IconButton } from '../components/IconButton'
 
 const providerEvent = detail => new CustomEvent('spotlight.provider', { detail })
 const dispatchProvider = fn => () => window.dispatchEvent(providerEvent(fn))
 
 const scope = scope => filter => lunr(`@${scope} ${filter}`)
-
-const IconButton = props => {
-  const { path, onClick, enabled, selected } = props
-  const color = enabled ? null : 'lightgrey'
-
-  const className = selected ? 'iconbutton-selected' : 'iconbutton'
-
-  return (
-    <div className={className} onClick={onClick}>
-      <Icon path={path} size={1} color={color}/>
-    </div>
-  )
-}
 
 const descriptors = [
   {

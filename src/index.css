@@ -21,7 +21,7 @@
   touch-action: none;
 }
 
-.panels {
+.panel-root {
   z-index: 20;
 
   padding-top: 6em;

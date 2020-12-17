@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import Mousetrap from 'mousetrap'
-import { App } from './components/App'
+import { App } from './App'
 import * as Layer from './model/layer'
 
 Mousetrap.bind('command+f', event => {
