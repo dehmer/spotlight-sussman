@@ -5,6 +5,7 @@
   "author": "Horst Dehmer <horst.dehmer@syncpoint.io> (http://syncpoint.io/)",
   "dependencies": {
     "@babel/runtime": "^7.12.5",
+    "@mdi/js": "^5.8.55",
     "@mdi/react": "^1.4.0",
     "lodash.debounce": "^4.0.8",
     "lodash.throttle": "^4.1.1",
@@ -29,7 +30,7 @@
     "parcel-bundler": "^1.12.4"
   },
   "scripts": {
-    "start": "parcel index.html",
-    "build": "parcel build --public-url . index.html"
+    "start": "parcel src/index.html",
+    "build": "parcel build --public-url . src/index.html"
   }
 }

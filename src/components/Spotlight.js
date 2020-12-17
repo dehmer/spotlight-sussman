@@ -1,5 +1,4 @@
 import React from 'react'
-import './spotlight.css'
 
 const Search = ({ initialValue = '', onChange }) => {
   const handleChange = ({ target }) => onChange(target.value)

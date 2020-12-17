@@ -1,7 +1,6 @@
 import React from 'react'
 import Icon from '@mdi/react'
 import * as mdi from '@mdi/js'
-import './toolbar.css'
 import lunr from '../index/lunr'
 
 const providerEvent = detail => new CustomEvent('spotlight.provider', { detail })

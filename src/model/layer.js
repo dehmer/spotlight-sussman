@@ -1,10 +1,6 @@
 import uuid from 'uuid-random'
-import { url } from './symbol'
 import scenario from './mip-scenario.json'
 
-/**
- * Load prepared MIP senario.
- */
 export const layers = scenario
 
 const K = v => fn => { fn(v); return v }

@@ -1,3 +1,30 @@
+#map {
+  z-index: 10;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+
+  touch-action: none;
+}
+
+#app {
+  z-index: 20;
+  position: fixed;
+  top: 0; bottom: 0; left: 0; right: 0;
+
+  padding-top: 6em;
+  padding-bottom: 4em;
+  padding-left: 1em;
+  padding-right: 1em;
+
+  display: grid;
+  grid-gap: 1em;
+  grid-template-columns: 20em auto 26em 48px;
+  grid-template-areas: "L . R T";
+}
+
 .spotlight {
   grid-area: R;
   display: flex;
@@ -91,4 +118,32 @@
 .tag-scope {
   color: white;
   background-color: #e03c31; /* CG red */
+}
+
+.toolbar {
+  grid-area: T;
+  background-color: white;
+  margin: 0;
+  padding: 0;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  position: relative;
+  list-style: none;
+
+  box-shadow:
+    0px 2px 4px -1px rgba(0,0,0,0.2),
+    0px 4px 5px 0px rgba(0,0,0,0.14),
+    0px 1px 10px 0px rgba(0,0,0,0.12);
+}
+
+.iconbutton {
+  padding-left: 13px;
+  padding-right: 8px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  color: rgba(0, 0, 0, 0.54);
+  display: inline-flex;
+  min-width: 56px;
+  flex-shrink: 0;
+  transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
