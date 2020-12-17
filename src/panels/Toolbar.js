@@ -1,38 +1,36 @@
 import React from 'react'
 import * as mdi from '@mdi/js'
-import lunr from '../index/lunr'
 import { IconButton } from '../components/IconButton'
+import evented from '../evented'
 
-const providerEvent = detail => new CustomEvent('spotlight.provider', { detail })
-const dispatchProvider = fn => () => window.dispatchEvent(providerEvent(fn))
-
-const scope = scope => filter => lunr(`@${scope} ${filter}`)
+const providerSelected = scope =>
+  evented.emit({ type: 'search-scope.changed', scope })
 
 const descriptors = [
   {
     key: 'search',
     enabled: true,
     path: mdi.mdiMagnify,
-    action: dispatchProvider(lunr),
+    action: () => providerSelected(),
     selected: true
   },
   {
     key: 'layers',
     enabled: true,
     path: mdi.mdiLayersTriple,
-    action: dispatchProvider(scope('layer'))
+    action: () => providerSelected('layer')
   },
   {
     key: 'features',
     enabled: true,
     path: mdi.mdiShapeOutline,
-    action: dispatchProvider(scope('feature'))
+    action: () => providerSelected('feature')
   },
   {
     key: 'palette',
     enabled: true,
     path: mdi.mdiPaletteOutline,
-    action: dispatchProvider(scope('symbol'))
+    action: () => providerSelected('symbol')
   },
   { key: 'basemaps', enabled: false, path: mdi.mdiMap },
   { key: 'meassure', enabled: false, path: mdi.mdiAngleAcute },

@@ -3,9 +3,11 @@ import lunr from 'lunr'
 import { symbols } from '../model/feature-descriptor'
 import { layers, identity } from '../model/layer'
 import { url } from '../model/symbol'
+import evented from '../evented'
 
-const providerEvent = detail => new CustomEvent('spotlight.provider', { detail })
-const dispatchProvider = fn => () => window.dispatchEvent(providerEvent(fn))
+const dispatchProvider = provider => () => {
+  evented.emit({ type: 'search-provider.changed', provider })
+}
 
 const featureList = id => filter => Object
   .keys(layers[id].features)
@@ -124,8 +126,10 @@ const reindex = () => {
 }
 
 reindex()
-window.addEventListener('model.changed', reindex)
-
+evented.on(event => {
+  if (event.type !== 'model.changed') return
+  reindex()
+})
 
 const tag = s => {
   if (s.length < 2) return ''
@@ -156,8 +160,20 @@ const search = R.tryCatch(terms => {
   else return index.search(terms.trim())
 }, R.always([]))
 
+// TODO: return </Card>
 const model = ref => domains[ref.split(':')[0]].model(ref)
 // const limit = R.identity /* no limits */
 const limit = R.take(150)
 const refs = R.map(({ ref }) => model(ref))
-export default R.compose(refs, limit, search, terms)
+export const searchIndex = R.compose(refs, limit, search, terms)
+
+const handlers = {
+  'search-scope.changed': ({ scope }) => evented.emit({
+    type: 'search-provider.changed',
+    provider: scope
+      ? filter => searchIndex(`@${scope} ${filter}`)
+      : searchIndex
+  })
+}
+
+evented.on(event => (handlers[event.type] || R.always({}))(event))

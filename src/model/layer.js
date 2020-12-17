@@ -3,6 +3,7 @@ import Collection from 'ol/Collection'
 import GeoJSON from 'ol/format/GeoJSON'
 import uuid from 'uuid-random'
 import scenario from './mip-scenario.json'
+import evented from '../evented'
 
 const features = new Collection()
 export const source = new VectorSource({ features })
@@ -56,7 +57,7 @@ const importFile = file => new Promise((resolve, reject) => {
 export const load = async files => {
   const json = await Promise.all(files.map(importFile))
   json.reduce((acc, layer) => K(acc)(acc => acc[layer.id] = layer), layers)
-  window.dispatchEvent(new CustomEvent('model.changed'))
+  evented.emit({ type: 'model.changed' })
 }
 
 export const identity = sidc => sidc[1] === 'F' ? ['OWN'] : sidc[1] === 'H' ? ['ENEMY'] : []
