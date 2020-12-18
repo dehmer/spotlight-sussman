@@ -2,10 +2,9 @@ import React from 'react'
 import { TagList } from './TagList'
 
 export const Card = props => {
-
   const avatar = props.url
     ? <div className='card-avatar'>
-        <img className='avatar-image' src={props.url()}></img>
+        <img className='avatar-image' src={props.url}></img>
       </div>
     : null
 

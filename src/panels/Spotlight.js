@@ -3,7 +3,6 @@ import { CardList } from '../components/CardList'
 import evented from '../evented'
 
 const Search = () => {
-
   const [value, setValue] = React.useState('')
 
   React.useEffect(() => {
@@ -34,16 +33,16 @@ export const Spotlight = () => {
   const [result, setResult] = React.useState([])
 
   React.useEffect(() => {
-    evented.on(event => {
-      if (event.type !== 'search-result.changed') return
-      setResult(event.result)
+    evented.on(({ type, result }) => {
+      if (type !== 'search-result.changed') return
+      setResult(result)
     })
   }, [])
 
   return (
     <div className="spotlight panel">
       <Search/>
-      <CardList entries={result}></CardList>
+      <CardList>{result}</CardList>
     </div>
   )
 }
