@@ -116,8 +116,8 @@ export const Spotlight = () => {
   const handleKeyDown = event =>
     (keyHandlers[event.code] || R.always({}))(event)
 
-  const handleClick = index => ({ shiftKey: shift, metaKey: meta }) => {
-    updateIndexes(R.always(index), { shift, meta })
+  const handleClick = index => ({ shiftKey, metaKey }) => {
+    updateIndexes(R.always(index), { shiftKey, metaKey })
   }
 
   return (
