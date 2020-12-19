@@ -4,10 +4,6 @@ import evented from '../evented'
 import symbol from './scope-symbol'
 import { layer, feature } from './scope-layer'
 
-console.log(layer)
-console.log(feature)
-
-
 /**
  * Adapt domain models to indexable documents and
  * document refs to spotlight (view) model objects.
@@ -46,7 +42,7 @@ var index
   })
 })()
 
-const tag = s => s.length < 2 ? '' : `+tags:${s.substring(1)}`
+const tag = s => s.length < 2 ? '' : `+tags:${s.substring(1)}*`
 const scope = s => (s.length < 2) ? '' : `+scope:${s.substring(1)}`
 
 const term = R.cond([

@@ -27,9 +27,7 @@ const option = key => {
     description: R.dropLast(1, descriptor.hierarchy).join(' • '),
     url: url(replace(replace(descriptor.sidc, 1, 'F'), 3, 'P')),
     scope: 'SYMBOL',
-    tags: [...dimension, descriptor.scope]
-      .filter(R.identity)
-      .map(text => ({ text }))
+    tags: [...dimension, descriptor.scope].filter(R.identity)
   }
 }
 

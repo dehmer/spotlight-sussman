@@ -48,12 +48,10 @@ const feature = {
     return {
       key,
       title: properties.t || 'N/A',
+      description: layer.name.toUpperCase(),
       scope: 'FEATURE',
       url: url(properties.sidc),
-      tags: [
-        layer.name.toUpperCase(),
-        ...identity(properties.sidc)
-      ],
+      tags: identity(properties.sidc),
       actions
     }
   }

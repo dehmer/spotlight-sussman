@@ -1,13 +1,20 @@
 TODO:
-- list: key navigation
-- list: highlight selected
-- list: multi-select
-- map: show layers
 - avatar cache: use js-cache (https://www.npmjs.com/package/js-cache)
-- edit option title
+- option: edit title
 - search: escape key clear filter
+- map: layer styling
+- option: layer actions hide/show, lock
+- option: add/remove user tags
+- fix WebKit height issue
+- integrate selection 'service'
+- CMD/CTRL-F should focus search input
 
 DONE:
 - toolbar / scopebar
 - tag: show full name on mouse hover
 - spotlight: view model
+- list: key navigation
+- list: highlight selected
+- list: multi-select
+- map: show layers
+- featue option: show layer name as description not as tag

@@ -113,10 +113,8 @@ export const Spotlight = () => {
     Escape: event => console.log('</Spotlight> Escape'),
   }
 
-  const handleKeyDown = event => {
-    // console.log(event)
-    ;(keyHandlers[event.code] || R.always({}))(event)
-  }
+  const handleKeyDown = event =>
+    (keyHandlers[event.code] || R.always({}))(event)
 
   const handleClick = index => ({ shiftKey: shift, metaKey: meta }) => {
     updateIndexes(R.always(index), { shift, meta })
