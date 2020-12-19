@@ -56,9 +56,9 @@ export const Spotlight = () => {
   }, {})
 
 
-  const updateIndexes = (index, { shift, meta }) => {
+  const updateIndexes = (index, { shiftKey, metaKey }) => {
     const focus = index(indexes.focus)
-    if (!meta && focus === indexes.focus) return
+    if (!metaKey && focus === indexes.focus) return
 
     refs[key(focus)].current.scrollIntoView({
       behavior: "auto",
@@ -71,8 +71,8 @@ export const Spotlight = () => {
       : [...indexes.selection, index]
 
     // Meta has precedence over Shift.
-    if (meta) return setIndexes({ focus, selection: toggleSelection(focus) })
-    if (shift) {
+    if (metaKey) return setIndexes({ focus, selection: toggleSelection(focus) })
+    if (shiftKey) {
       if (selected(focus)) setIndexes({ focus, selection: toggleSelection(indexes.focus) })
       else setIndexes({ focus, selection: toggleSelection(focus) })
     } else setIndexes({ focus, selection: [focus] })
@@ -87,13 +87,29 @@ export const Spotlight = () => {
   const inc = index => index >= 0 ? Math.min(length - 1, index + 1) : 0
   const dec = index => index ? index - 1 : index
 
+  const open = () => result[indexes.focus] &&
+    result[indexes.focus].actions &&
+    result[indexes.focus].actions.open &&
+    result[indexes.focus].actions.open()
+
+  const back = () => result[indexes.focus] &&
+    result[indexes.focus].actions &&
+    result[indexes.focus].actions.back &&
+    result[indexes.focus].actions.back()
+
   // TODO: decent/ascent to/from details on metaKey
   const keyHandlers = {
-    ArrowDown: ({ shiftKey: shift }) => updateIndexes(inc, { shift }),
-    ArrowUp: ({ shiftKey: shift }) => updateIndexes(dec, { shift }),
+    ArrowDown: ({ shiftKey, metaKey }) => {
+      if (metaKey) open()
+      else updateIndexes(inc, { shiftKey })
+    },
+    ArrowUp: ({ shiftKey, metaKey }) => {
+      if (metaKey) back()
+      else updateIndexes(dec, { shiftKey })
+    },
     PageDown: () => {},
     PageUp: () => {},
-    KeyA: ({ metaKey: meta }) => selectAll({ meta }),
+    KeyA: ({ metaKey }) => selectAll({ meta: metaKey }),
     Escape: event => console.log('</Spotlight> Escape'),
   }
 

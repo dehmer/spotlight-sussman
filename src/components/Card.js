@@ -24,17 +24,12 @@ const Body = props => {
 }
 
 export const Card = React.forwardRef((props, ref) => {
-  const onDoubeClick = props.primaryAction
-      ? props.primaryAction
-      : null
-
   return (
     <div
       className='card'
       ref={ref}
       role='option'
       aria-selected={props.selected}
-      onDoubleClick={onDoubeClick}
       onClick={props.onClick}
      >
       <Body {...props}/>

@@ -1,31 +1,78 @@
+import { url } from '../model/symbol'
 import { layers, identity } from '../model/layer'
 import { dispatchProvider } from './scope-common'
-import feature from './scope-feature'
+import evented from '../evented'
 
-const documents = () => {
-  return Object.entries(layers).reduce((acc, [id, layer]) => {
-    acc.push({ id, scope: 'layer', text:  layer.name })
-    return Object.entries(layer.features).reduce((acc, [id, feature]) => {
-      acc.push({
-        id,
-        scope: 'feature',
-        tags: [layer.name, ...identity(feature.properties.sidc)],
-        text: feature.properties.t
-      })
-      return acc
-    }, acc)
-  }, [])
-}
+const layer = {
+  documents: () => {
+    return Object.entries(layers).reduce((acc, [id, layer]) => {
+      acc.push({ id, scope: 'layer', text:  layer.name })
+      return Object.entries(layer.features).reduce((acc, [id, feature]) => {
+        acc.push({
+          id,
+          scope: 'feature',
+          tags: [layer.name, ...identity(feature.properties.sidc)],
+          text: feature.properties.t
+        })
+        return acc
+      }, acc)
+    }, [])
+  },
 
-const option = key => {
-  const layer = layers[key]
-  return {
-    key: key,
-    title: layer.name,
-    scope: 'LAYER',
-    tags: [],
-    primaryAction: dispatchProvider(feature.featureList(layer.id))
+  option: key => {
+    const layer = layers[key]
+
+    const actions = {
+      open: dispatchProvider(featureList(layer.id))
+    }
+
+    return {
+      key: key,
+      title: layer.name,
+      scope: 'LAYER',
+      tags: [],
+      actions
+    }
   }
 }
 
-export default { documents, option }
+const feature = {
+  option: key => {
+    const layer = layers[`layer:${key.split(':')[1].split('/')[0]}`]
+    const { properties } = layer.features[key]
+
+    const actions = {
+      back: () => evented.emit({ type: 'search-scope.changed', scope: 'layer' })
+    }
+
+    return {
+      key,
+      title: properties.t || 'N/A',
+      scope: 'FEATURE',
+      url: url(properties.sidc),
+      tags: [
+        layer.name.toUpperCase(),
+        ...identity(properties.sidc)
+      ],
+      actions
+    }
+  }
+}
+
+export {
+  layer,
+  feature
+}
+
+
+export const featureList = id => filter => {
+  const title = feature => feature.title
+  const match = feature => title(feature).toLowerCase().includes(filter.toLowerCase())
+  const compare = (a, b) => title(a).localeCompare(title(b), {numeric: true, sensitivity: 'base'})
+
+  return Object
+    .keys(layers[id].features)
+    .map(feature.option)
+    .filter(match)
+    .sort(compare)
+}

@@ -2,8 +2,10 @@ import * as R from 'ramda'
 import lunr from 'lunr'
 import evented from '../evented'
 import symbol from './scope-symbol'
-import layer from './scope-layer'
-import feature from './scope-feature'
+import { layer, feature } from './scope-layer'
+
+console.log(layer)
+console.log(feature)
 
 
 /**
