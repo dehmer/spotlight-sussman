@@ -5,19 +5,21 @@ import uuid from 'uuid-random'
 import scenario from './mip-scenario.json'
 import evented from '../evented'
 
-const features = new Collection()
-export const source = new VectorSource({ features })
+const featureCollection = new Collection()
+export const source = new VectorSource({ features: featureCollection })
 
 const format = new GeoJSON({
   dataProjection: 'EPSG:4326', // WGS84
   featureProjection: 'EPSG:3857' // Web-Mercator
 })
 
+const readFeatures = features => features.forEach(feature => {
+  featureCollection.push(format.readFeature(feature))
+})
+
 export const layers = (() => {
   Object.values(scenario).forEach(layer => {
-    Object.values(layer.features).forEach(feature => {
-      features.push(format.readFeature(feature))
-    })
+    readFeatures(Object.values(layer.features))
   })
   return scenario
 })()
@@ -56,7 +58,10 @@ const importFile = file => new Promise((resolve, reject) => {
 
 export const load = async files => {
   const json = await Promise.all(files.map(importFile))
-  json.reduce((acc, layer) => K(acc)(acc => acc[layer.id] = layer), layers)
+  json.reduce((acc, layer) => K(acc)(acc => {
+    acc[layer.id] = layer
+    readFeatures(Object.values(layer.features))
+  }), layers)
   evented.emit({ type: 'model.changed' })
 }
 

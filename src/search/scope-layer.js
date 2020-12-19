@@ -1,6 +1,7 @@
+import * as R from 'ramda'
 import { url } from '../model/symbol'
 import { layers, identity } from '../model/layer'
-import { dispatchProvider } from './scope-common'
+import { dispatchProvider, compare } from './scope-common'
 import evented from '../evented'
 
 const layer = {
@@ -62,15 +63,13 @@ export {
   feature
 }
 
-
 export const featureList = id => filter => {
   const title = feature => feature.title
   const match = feature => title(feature).toLowerCase().includes(filter.toLowerCase())
-  const compare = (a, b) => title(a).localeCompare(title(b), {numeric: true, sensitivity: 'base'})
 
   return Object
     .keys(layers[id].features)
     .map(feature.option)
     .filter(match)
-    .sort(compare)
+    .sort(compare(R.prop('title')))
 }

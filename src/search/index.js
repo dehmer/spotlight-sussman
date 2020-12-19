@@ -3,10 +3,15 @@ import { searchIndex } from './lunr'
 import evented from '../evented'
 
 const emit = result => evented.emit({ type: 'search-result.changed', result })
+var filter = '' /* search string */
 var provider = searchIndex
 
 const handlers = {
-  'search-filter.changed': ({ value }) => emit(provider(value)),
+  'search-index.refreshed': () => emit(provider(filter)),
+  'search-filter.changed': ({ value }) => {
+    filter = value
+    emit(provider(filter))
+  },
   'search-provider.changed': ({ provider: theProvider }) => {
     provider = theProvider
     emit(provider(''))

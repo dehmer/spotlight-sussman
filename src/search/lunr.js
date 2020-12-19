@@ -1,6 +1,7 @@
 import * as R from 'ramda'
 import lunr from 'lunr'
 import evented from '../evented'
+import { compare } from './scope-common'
 import symbol from './scope-symbol'
 import { layer, feature } from './scope-layer'
 
@@ -19,6 +20,7 @@ var index
 
 ;(() => {
   const reindex = () => {
+    console.time('[lunr] re-index')
     index = lunr(function () {
       const add = this.add.bind(this)
       this.pipeline.remove(lunr.stemmer)
@@ -33,6 +35,9 @@ var index
         .flatMap(({ documents }) => documents())
         .forEach(add)
     })
+
+    console.timeEnd('[lunr] re-index')
+    evented.emit({ type: 'search-index.refreshed' })
   }
 
   reindex()
@@ -68,8 +73,10 @@ const search = R.tryCatch(
 const option = ref => scopes[ref.split(':')[0]].option(ref)
 // const limit = R.identity /* no limits */
 const limit = R.take(150)
+const sort = entries => entries.sort(compare(R.prop('title')))
+
 const refs = R.map(({ ref }) => option(ref))
-export const searchIndex = R.compose(refs, limit, search, terms)
+export const searchIndex = R.compose(sort, refs, limit, search, terms)
 
 const handlers = {
   'search-scope.changed': ({ scope }) => evented.emit({
