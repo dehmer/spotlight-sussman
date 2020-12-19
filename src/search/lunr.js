@@ -67,11 +67,10 @@ const search = R.tryCatch(
 )
 
 // TODO: return </Card>
-const model = ref => scopes[ref.split(':')[0]].model(ref)
-const card = ref => scopes[ref.split(':')[0]].card(ref)
+const option = ref => scopes[ref.split(':')[0]].option(ref)
 // const limit = R.identity /* no limits */
 const limit = R.take(150)
-const refs = R.map(({ ref }) => card(ref))
+const refs = R.map(({ ref }) => option(ref))
 export const searchIndex = R.compose(refs, limit, search, terms)
 
 const handlers = {

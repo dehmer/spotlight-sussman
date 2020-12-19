@@ -1,34 +1,44 @@
 import React from 'react'
 import { TagList } from './TagList'
 
-export const Card = props => {
-  const avatar = props.url
-    ? <div className='card-avatar'>
-        <img className='avatar-image' src={props.url}></img>
-      </div>
+const Avatar = ({ url }) => {
+  return (
+    <div className='card-avatar'>
+      <img className='avatar-image' src={url}></img>
+    </div>
+  )
+}
+
+const Body = props => {
+  const description = props.description
+    ? <span className='card-description'>{props.description}</span>
     : null
 
-  const body = (
+  return (
     <div className='card-body'>
       <div className='card-title'>{props.title}</div>
-      {
-        props.description
-          ? <span className='card-description'>{props.description}</span>
-          : null
-      }
-
+      {description}
       <TagList {...props}/>
     </div>
   )
+}
 
-  const handleDoubeClick = props.primaryAction
+export const Card = React.forwardRef((props, ref) => {
+  const onDoubeClick = props.primaryAction
       ? props.primaryAction
       : null
 
   return (
-    <div className='card' onDoubleClick={handleDoubeClick}>
-      { body }
-      { avatar }
+    <div
+      className='card'
+      ref={ref}
+      role='option'
+      aria-selected={props.selected}
+      onDoubleClick={onDoubeClick}
+      onClick={props.onClick}
+     >
+      <Body {...props}/>
+      { props.url ? <Avatar url={props.url}/> : null }
     </div>
   )
-}
+})

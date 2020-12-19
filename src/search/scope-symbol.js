@@ -1,8 +1,6 @@
 import * as R from 'ramda'
-import React from 'react'
 import { url } from '../model/symbol'
 import { symbols } from '../model/feature-descriptor'
-import { Card } from '../components/Card'
 
 const documents = () => {
   const document = symbol => ({
@@ -18,12 +16,12 @@ const documents = () => {
   return Object.values(symbols).map(document)
 }
 
-const card = key => {
+const option = key => {
   const replace = (s, i, r) => s.substring(0, i) + r + s.substring(i + r.length)
   const descriptor = symbols[key]
   const dimension = descriptor.dimension ? descriptor.dimension.split(', ') : []
 
-  const props = {
+  return {
     key,
     title: R.last(descriptor.hierarchy),
     description: R.dropLast(1, descriptor.hierarchy).join(' • '),
@@ -33,8 +31,6 @@ const card = key => {
       .filter(R.identity)
       .map(text => ({ text }))
   }
-
-  return <Card {...props} />
 }
 
-export default { documents, card }
+export default { documents, option }
