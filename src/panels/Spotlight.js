@@ -97,7 +97,6 @@ export const Spotlight = () => {
     result[indexes.focus].actions.back &&
     result[indexes.focus].actions.back()
 
-  // TODO: decent/ascent to/from details on metaKey
   const keyHandlers = {
     ArrowDown: ({ shiftKey, metaKey }) => {
       if (metaKey) open()
