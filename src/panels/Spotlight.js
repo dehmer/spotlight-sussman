@@ -46,7 +46,10 @@ export const Spotlight = () => {
     evented.on(({ type, result }) => {
       if (type !== 'search-result.changed') return
       setResult(result)
-      setIndexes({ focus: undefined, selection: [] })
+      setIndexes({
+        focus: result.length ? 0 : undefined,
+        selection: result.length ? [0] : []
+      })
     })
   }, [])
 

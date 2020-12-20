@@ -3,6 +3,7 @@ import { url } from '../model/symbol'
 import { layers, identity } from '../model/layer'
 import { dispatchProvider, compare } from './scope-common'
 import evented from '../evented'
+import { hierarchy } from '../model/feature-descriptor'
 
 const layer = {
   documents: () => {
@@ -40,20 +41,18 @@ const layer = {
 const feature = {
   option: key => {
     const layer = layers[`layer:${key.split(':')[1].split('/')[0]}`]
-    const { properties } = layer.features[key]
-
-    const actions = {
-      back: () => evented.emit({ type: 'search-scope.changed', scope: 'layer' })
-    }
+    const { sidc, t } = layer.features[key].properties
 
     return {
       key,
-      title: properties.t || 'N/A',
-      description: layer.name.toUpperCase(),
+      title: t || 'N/A',
+      description: layer.name.toUpperCase() + ' ⏤ ' + hierarchy(sidc).join(' • '),
       scope: 'FEATURE',
-      url: url(properties.sidc),
-      tags: identity(properties.sidc),
-      actions
+      url: url(sidc),
+      tags: identity(sidc),
+      actions: {
+        back: () => evented.emit({ type: 'search-scope.changed', scope: 'layer' })
+      }
     }
   }
 }
