@@ -31,6 +31,12 @@ const Search = () => {
   )
 }
 
+const callAction = (action, target) =>
+  target &&
+  target.actions &&
+  target.actions[action] &&
+  target.actions[action].call()
+
 export const Spotlight = () => {
   // TODO: make multi-select optional (e.g. palette uses single-select)
   const [result, setResult] = React.useState([])
@@ -90,23 +96,14 @@ export const Spotlight = () => {
   const inc = index => index >= 0 ? Math.min(length - 1, index + 1) : 0
   const dec = index => index ? index - 1 : index
 
-  const open = () => result[indexes.focus] &&
-    result[indexes.focus].actions &&
-    result[indexes.focus].actions.open &&
-    result[indexes.focus].actions.open()
-
-  const back = () => result[indexes.focus] &&
-    result[indexes.focus].actions &&
-    result[indexes.focus].actions.back &&
-    result[indexes.focus].actions.back()
 
   const keyHandlers = {
     ArrowDown: ({ shiftKey, metaKey }) => {
-      if (metaKey) open()
+      if (metaKey) callAction('open', result[indexes.focus])
       else updateIndexes(inc, { shiftKey })
     },
     ArrowUp: ({ shiftKey, metaKey }) => {
-      if (metaKey) back()
+      if (metaKey) callAction('back', result[indexes.focus])
       else updateIndexes(dec, { shiftKey })
     },
     PageDown: () => {},

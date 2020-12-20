@@ -1,4 +1,5 @@
 TODO:
+- selection should not follow focus
 - avatar cache: use js-cache (https://www.npmjs.com/package/js-cache)
 - option: edit title
 - search: escape key clear filter
