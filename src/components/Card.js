@@ -29,7 +29,7 @@ export const Card = React.forwardRef((props, ref) => {
       className='card'
       ref={ref}
       role='option'
-      aria-selected={props.selected}
+      aria-selected={props.focus}
       onClick={props.onClick}
      >
       <Body {...props}/>
