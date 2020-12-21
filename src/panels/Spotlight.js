@@ -19,6 +19,14 @@ const Search = () => {
     evented.emit({ type: 'search-filter.changed', value: target.value })
   }
 
+  const handleKeyDown = event => {
+    if (event.code === 'KeyA' && event.metaKey) return event.stopPropagation()
+    if (event.code === 'Escape') {
+      setValue('')
+      evented.emit({ type: 'search-filter.changed', value: '' })
+    }
+  }
+
   return (
     <div className='search-conainer'>
       <input
@@ -26,6 +34,7 @@ const Search = () => {
         placeholder='Spotlight Search'
         value={value}
         onChange={handleChange}
+        onKeyDown={handleKeyDown}
       />
     </div>
   )
@@ -107,6 +116,9 @@ export const Spotlight = () => {
       ArrowUp: ({ shiftKey }) => {
         const succ = focused ? key(previous) : last
         updateFocus(succ, shiftKey)
+      },
+      KeyA: ({ metaKey }) => {
+        if (metaKey) setSelection(result.map(entry => entry.key))
       }
     }
 
