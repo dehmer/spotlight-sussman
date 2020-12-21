@@ -21,6 +21,8 @@ const Search = () => {
 
   const handleKeyDown = event => {
     if (event.code === 'KeyA' && event.metaKey) return event.stopPropagation()
+    if (event.code === 'ArrowDown') return event.preventDefault()
+    if (event.code === 'ArrowUp') return event.preventDefault()
     if (event.code === 'Escape') {
       setValue('')
       evented.emit({ type: 'search-filter.changed', value: '' })
@@ -109,11 +111,13 @@ export const Spotlight = () => {
     const last = R.always(result.length ? result[result.length - 1].key : null)
 
     const keyHandlers = {
-      ArrowDown: ({ shiftKey }) => {
+      ArrowDown: ({ shiftKey, metaKey }) => {
+        if (metaKey && result.length) return updateFocus(last)
         const succ = focused ? key(next) : first
         updateFocus(succ, shiftKey)
       },
-      ArrowUp: ({ shiftKey }) => {
+      ArrowUp: ({ shiftKey, metaKey }) => {
+        if (metaKey && result.length) return updateFocus(first)
         const succ = focused ? key(previous) : last
         updateFocus(succ, shiftKey)
       },
