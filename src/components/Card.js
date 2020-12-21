@@ -24,12 +24,17 @@ const Body = props => {
 }
 
 export const Card = React.forwardRef((props, ref) => {
+  // Selection has precedence over focus:
+  const className = (props.focus && !props.selected)
+    ? 'card card-focus'
+    : 'card'
+
   return (
     <div
-      className='card'
+      className={className}
       ref={ref}
       role='option'
-      aria-selected={props.focus}
+      aria-selected={props.selected}
       onClick={props.onClick}
      >
       <Body {...props}/>

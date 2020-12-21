@@ -1,5 +1,13 @@
-*:focus {
+input:focus, div:focus {
   outline: none;
+}
+
+input {
+  border: 0;
+}
+
+div {
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .fullscreen {
@@ -44,10 +52,9 @@
   grid-area: R;
   display: flex;
   flex-direction: column;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 100%;
 }
 
+/* TODO: Do we need this container and why? */
 .search-conainer {
   padding: 8px;
   display: inline-flex;
@@ -59,10 +66,8 @@
 .search-input {
   font-size: 1.2em;
   width: 100%;
-  border: 0;
   margin: 0;
   padding: 6px 0 7px;
-  outline: none;
 }
 
 .list-container {
@@ -70,7 +75,9 @@
   overflow: auto;
 }
 
+/* FIXME: WebKit height issue. */
 .list {
+  /* max-height - Necessary but why exactly? */
   max-height: 0px;
   margin: 0;
   padding: 0;
@@ -86,22 +93,22 @@
   border-color: gray;
 }
 
-/* .card:hover {
-  background-color: #f2f2f2f2;
-} */
+/* TODO: focus background should not be grayed when input has focus. */
+.spotlight:focus .card-focus {
+  background-color: #e3f5f7;
+}
+
+.card-focus {
+  background-color: #eeeeee;
+}
+
+.spotlight:focus .card[aria-selected="true"] {
+  background-color: #c3e8ec;
+}
 
 .card[aria-selected="true"] {
-  background-color: #e3f5f7;
+  background-color: #dadbdb;
 }
-
-.focus {
-  background-color: #e3f5f7;
-}
-
-.card:active {
-  background-color: #e3f5f7;
-}
-
 .card-avatar {
   margin-right: 8px;
   margin-left: 8px;

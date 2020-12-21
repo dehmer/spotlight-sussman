@@ -45,16 +45,14 @@ export const Spotlight = () => {
   // TODO: make multi-select optional (e.g. palette uses single-select)
   const [result, setResult] = React.useState([])
   const [focus, setFocus] = React.useState()
+  const [selection, setSelection] = React.useState([])
 
   const cardrefs = result.reduce((acc, value) => {
     acc[value.key] = React.createRef()
     return acc
   }, {})
 
-  const hasfocus = focus && cardrefs[focus]
-
   const scrollIntoView = key =>
-    key &&
     cardrefs[key] &&
     cardrefs[key].current &&
     cardrefs[key].current.scrollIntoView({
@@ -62,11 +60,11 @@ export const Spotlight = () => {
       block: "nearest"
     })
 
-  // key :: (element -> element) -> key -> [key]
-  // Not super-efficient but seemingly fast enough:
-  const key = fn => key => Object.entries(cardrefs)
-    .filter(([_, ref]) => current(ref) === fn(current(cardrefs[key])))
-    .map(([key]) => key)
+  const key = fn => key => {
+    const sameRef = ([_, ref]) => current(ref) === fn(current(cardrefs[key]))
+    const entry = Object.entries(cardrefs).find(sameRef)
+    return entry ? entry[0] : null
+  }
 
   React.useEffect(() => {
     evented.on(({ type, result }) => {
@@ -75,17 +73,52 @@ export const Spotlight = () => {
     })
   }, [])
 
-  const updateFocus = succ => succ(focus).forEach(focus => {
-    scrollIntoView(focus)
-    setFocus(focus)
-  })
+  const updateFocus = (succ, shiftKey) => {
+    const key = succ(focus)
+    scrollIntoView(key)
 
-  const keyHandlers = {
-    ArrowDown: () => updateFocus(hasfocus ? key(next) : R.always([result[0].key])),
-    ArrowUp: () => updateFocus(hasfocus ? key(previous) : R.always([]))
+    setSelection(shiftKey
+      ? selected(key)
+        ? [...toggleSelection(focus), key]
+        : [...selection, focus, key]
+      : []
+    )
+
+    setFocus(key)
   }
 
-  const handleKeyDown = event => (keyHandlers[event.code] || R.always({}))(event)
+  const selected = key => selection.includes(key)
+  const toggleSelection = key => key
+    ? selected(key)
+      ? selection.filter(x => x !== key)
+      : [...selection, key]
+    : selection
+
+  const handleKeyDown = event => {
+    const focused = focus && cardrefs[focus]
+    const first = R.always(result.length ? result[0].key : null)
+    const last = R.always(result.length ? result[result.length - 1].key : null)
+
+    const keyHandlers = {
+      ArrowDown: ({ shiftKey }) => {
+        const succ = focused ? key(next) : first
+        updateFocus(succ, shiftKey)
+      },
+      ArrowUp: ({ shiftKey }) => {
+        const succ = focused ? key(previous) : last
+        updateFocus(succ, shiftKey)
+      }
+    }
+
+    ;(keyHandlers[event.code] || R.always({}))(event)
+  }
+
+  const card = props => <Card
+    ref={cardrefs[props.key]}
+    focus={focus === props.key}
+    selected={selection.includes(props.key)}
+    {...props}
+  />
 
   return (
     <div
@@ -94,17 +127,7 @@ export const Spotlight = () => {
       onKeyDown={handleKeyDown}
     >
       <Search/>
-      <CardList>
-        {
-          result.map((props, index) => {
-            return <Card
-              ref={cardrefs[props.key]}
-              focus={focus === props.key}
-              {...props}
-            />
-          })
-        }
-      </CardList>
+      <CardList>{result.map(card)}</CardList>
     </div>
   )
 }
