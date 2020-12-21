@@ -113,10 +113,16 @@ export const Spotlight = () => {
     ;(keyHandlers[event.code] || R.always({}))(event)
   }
 
+  const handleClick = key => ({ metaKey }) => {
+    setFocus(key)
+    setSelection(metaKey ? toggleSelection(key) : [])
+  }
+
   const card = props => <Card
     ref={cardrefs[props.key]}
     focus={focus === props.key}
     selected={selection.includes(props.key)}
+    onClick={handleClick(props.key)}
     {...props}
   />
 
