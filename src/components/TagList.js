@@ -7,5 +7,5 @@ export const TagList = ({ scope, tags }) => {
     ...tags.map(text => <Tag key={text} text={text}/>)
   ]
 
-  return <div className='tag-container'> {components} </div>
+  return <div>{components}</div>
 }
