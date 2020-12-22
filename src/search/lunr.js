@@ -57,19 +57,20 @@ const term = R.cond([
   [R.T, R.always('')]
 ])
 
-const terms = value =>
-  (value || '')
+const terms = value => {
+  if (value.startsWith(':')) return value.substring(1)
+  else return (value || '')
     .split(' ')
     .filter(R.identity)
     .map(term)
     .join(' ')
+}
 
 const search = R.tryCatch(
   terms => terms.trim() ? index.search(terms.trim()) : [],
   R.always([])
 )
 
-// TODO: return </Card>
 const option = ref => scopes[ref.split(':')[0]].option(ref)
 // const limit = R.identity /* no limits */
 const limit = R.take(150)
