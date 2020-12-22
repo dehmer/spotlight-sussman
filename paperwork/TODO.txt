@@ -1,8 +1,5 @@
 TODO:
-- selection should not follow focus
 - avatar cache: use js-cache (https://www.npmjs.com/package/js-cache)
-- option: edit title
-- search: escape key clear filter
 - map: layer styling
 - option: layer actions hide/show, lock
 - option: add/remove user tags
@@ -19,3 +16,6 @@ DONE:
 - list: multi-select
 - map: show layers
 - featue option: show layer name as description not as tag
+- selection should not follow focus
+- option: edit title
+- search: escape key clear filter

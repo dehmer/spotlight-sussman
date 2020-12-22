@@ -52,13 +52,54 @@ const callAction = (action, target) =>
   target.actions[action] &&
   target.actions[action].call()
 
+const reducer = (state, event) => {
+  switch (event.type) {
+    case 'snapshot': return event.snapshot
+    case 'toggle-edit': {
+      const index = state.findIndex(entry => entry.key === event.key)
+      const entry = state[index]
+      if (!entry || !entry.actions || !entry.actions.rename) return state
+
+      const clone = [...state]
+      if (clone[index].editor) {
+        entry.actions.rename(clone[index].editor.value)
+        delete clone[index].editor
+      }
+      else clone[index] = { ...entry, editor: {
+        property: 'title',
+        value: entry.title
+      }}
+
+      return clone
+    }
+    case 'cancel-edit': {
+      const clone = [...state]
+      clone.forEach(entry => delete entry.editor)
+      return clone
+    }
+    case 'property-changed': {
+      const clone = [...state]
+      const index = clone.findIndex(entry => entry.key === event.key)
+      clone[index] = { ...clone[index], editor: {
+        property: event.property,
+        value: event.value
+      }}
+
+      return clone
+    }
+    default: return state
+  }
+}
+
 export const Spotlight = () => {
   // TODO: make multi-select optional (e.g. palette uses single-select)
-  const [result, setResult] = React.useState([])
+
+  const [entries, dispatch] = React.useReducer(reducer, [])
   const [focus, setFocus] = React.useState()
   const [selection, setSelection] = React.useState([])
 
-  const cardrefs = result.reduce((acc, value) => {
+  const ref = React.createRef()
+  const cardrefs = entries.reduce((acc, value) => {
     acc[value.key] = React.createRef()
     return acc
   }, {})
@@ -80,9 +121,17 @@ export const Spotlight = () => {
   React.useEffect(() => {
     evented.on(({ type, result }) => {
       if (type !== 'search-result.changed') return
-      setResult(result)
+      dispatch({ type: 'snapshot', snapshot: result })
     })
   }, [])
+
+
+  const selected = key => selection.includes(key)
+  const toggleSelection = key => key
+    ? selected(key)
+      ? selection.filter(x => x !== key)
+      : [...selection, key]
+    : selection
 
   const updateFocus = (succ, shiftKey) => {
     const key = succ(focus)
@@ -98,31 +147,33 @@ export const Spotlight = () => {
     setFocus(key)
   }
 
-  const selected = key => selection.includes(key)
-  const toggleSelection = key => key
-    ? selected(key)
-      ? selection.filter(x => x !== key)
-      : [...selection, key]
-    : selection
 
   const handleKeyDown = event => {
     const focused = focus && cardrefs[focus]
-    const first = R.always(result.length ? result[0].key : null)
-    const last = R.always(result.length ? result[result.length - 1].key : null)
+    const first = R.always(entries.length ? entries[0].key : null)
+    const last = R.always(entries.length ? entries[entries.length - 1].key : null)
 
     const keyHandlers = {
       ArrowDown: ({ shiftKey, metaKey }) => {
-        if (metaKey && result.length) return updateFocus(last)
+        if (metaKey && entries.length) return updateFocus(last)
         const succ = focused ? key(next) : first
         updateFocus(succ, shiftKey)
       },
       ArrowUp: ({ shiftKey, metaKey }) => {
-        if (metaKey && result.length) return updateFocus(first)
+        if (metaKey && entries.length) return updateFocus(first)
         const succ = focused ? key(previous) : last
         updateFocus(succ, shiftKey)
       },
       KeyA: ({ metaKey }) => {
-        if (metaKey) setSelection(result.map(entry => entry.key))
+        if (metaKey) setSelection(entries.map(entry => entry.key))
+      },
+      Enter: () => {
+        dispatch({ type: 'toggle-edit', property: 'title', key: focus })
+        ref.current.focus()
+      },
+      Escape: () => {
+        dispatch({ type: 'cancel-edit' })
+        ref.current.focus()
       }
     }
 
@@ -134,22 +185,28 @@ export const Spotlight = () => {
     setSelection(metaKey ? toggleSelection(key) : [])
   }
 
+  const handlePropertyChange = key => event => {
+    dispatch({ type: 'property-changed', key, ...event })
+  }
+
   const card = props => <Card
     ref={cardrefs[props.key]}
     focus={focus === props.key}
     selected={selection.includes(props.key)}
     onClick={handleClick(props.key)}
+    onPropertyChange={handlePropertyChange(props.key)}
     {...props}
   />
 
   return (
     <div
+      ref={ref}
       className="spotlight panel"
       tabIndex='0'
       onKeyDown={handleKeyDown}
     >
       <Search/>
-      <CardList>{result.map(card)}</CardList>
+      <CardList>{entries.map(card)}</CardList>
     </div>
   )
 }

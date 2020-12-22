@@ -14,6 +14,8 @@ const format = new GeoJSON({
 })
 
 const readFeatures = features => features.forEach(feature => {
+  // Delete deprecated 'title':
+  delete feature.title
   featureCollection.push(format.readFeature(feature))
 })
 
@@ -64,5 +66,24 @@ export const load = async files => {
   }), layers)
   evented.emit({ type: 'model.changed' })
 }
+
+evented.on(event => {
+  if (event.type === 'command.layer.update') {
+    const layer = layers[event.id]
+    if (layer.name !== event.properties.name) {
+      layer.name = event.properties.name
+      evented.emit({ type: 'model.changed' })
+    }
+  }
+  else if (event.type === 'command.feature.update') {
+    const layerUUID = event.id.split(':')[1].split('/')[0]
+    const layer = layers[`layer:${layerUUID}`]
+    const feature = layer.features[event.id]
+    if (feature.properties.t !== event.properties.t) {
+      feature.properties.t = event.properties.t
+      evented.emit({ type: 'model.changed'})
+    }
+  }
+})
 
 export const identity = sidc => sidc[1] === 'F' ? ['OWN'] : sidc[1] === 'H' ? ['ENEMY'] : []

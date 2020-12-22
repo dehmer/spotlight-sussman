@@ -122,18 +122,28 @@ div {
   flex: 1 1 auto;
 }
 
-.card-title {
+.title-label {
   font-weight: bold;
+  margin-bottom: 6px;
+}
+
+.title-input {
+  background-color: inherit;
+  font-weight: bold;
+  color: #e03c31;
+  font-size: 100%;
+  padding: 0;
   margin-bottom: 6px;
 }
 
 .card-description {
   font-size: 0.9em;
-  margin-bottom: 6px;
+  margin-bottom: 16px;
+  padding: 0;
 }
 
 .tag-container {
-  margin-top: 8px;
+  padding-top: 6px;
 }
 
 .tag {

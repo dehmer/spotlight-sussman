@@ -24,16 +24,19 @@ const layer = {
   option: key => {
     const layer = layers[key]
 
-    const actions = {
-      open: dispatchProvider(featureList(layer.id))
-    }
-
     return {
       key: key,
       title: layer.name,
       scope: 'LAYER',
       tags: [],
-      actions
+      actions: {
+        open: dispatchProvider(featureList(layer.id)),
+        rename: title => evented.emit({
+          type: 'command.layer.update',
+          id: key,
+          properties: { name: title }
+        })
+      }
     }
   }
 }
@@ -41,7 +44,8 @@ const layer = {
 const feature = {
   option: key => {
     const layer = layers[`layer:${key.split(':')[1].split('/')[0]}`]
-    const { sidc, t } = layer.features[key].properties
+    const properties = layer.features[key].properties
+    const { sidc, t } = properties
 
     return {
       key,
@@ -51,7 +55,12 @@ const feature = {
       url: url(sidc),
       tags: identity(sidc),
       actions: {
-        back: () => evented.emit({ type: 'search-scope.changed', scope: 'layer' })
+        back: () => evented.emit({ type: 'search-scope.changed', scope: 'layer' }),
+        rename: title => evented.emit({
+          type: 'command.feature.update',
+          id: key,
+          properties: { ...properties, t: title }
+        })
       }
     }
   }
