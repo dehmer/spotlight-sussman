@@ -157,23 +157,22 @@ export const Spotlight = () => {
     setFocus(key)
   }
 
-
   const handleKeyDown = event => {
     const focused = focus && cardrefs[focus]
     const first = R.always(entries.length ? entries[0].key : null)
     const last = R.always(entries.length ? entries[entries.length - 1].key : null)
 
     const keyHandlers = {
-      ArrowDown: ({ shiftKey, metaKey }) => {
-        if (metaKey && entries.length) return updateFocus(last)
+      ArrowDown: ({ shiftKey }) => {
         const succ = focused ? key(next) : first
         updateFocus(succ, shiftKey)
       },
-      ArrowUp: ({ shiftKey, metaKey }) => {
-        if (metaKey && entries.length) return updateFocus(first)
+      ArrowUp: ({ shiftKey }) => {
         const succ = focused ? key(previous) : last
         updateFocus(succ, shiftKey)
       },
+      Home: () => updateFocus(first),
+      End: () => updateFocus(last),
       KeyA: ({ metaKey }) => {
         if (metaKey) updateSelection(entries.map(entry => entry.key))
       },
@@ -192,7 +191,11 @@ export const Spotlight = () => {
 
   const handleClick = key => ({ metaKey }) => {
     setFocus(key)
-    updateSelection(metaKey ? toggleSelection(key) : [])
+    const selection = metaKey ?
+      [...toggleSelection(key), focus] :
+      []
+
+    updateSelection(selection)
   }
 
   const handlePropertyChange = key => event => {
