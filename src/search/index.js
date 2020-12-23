@@ -14,7 +14,8 @@ const handlers = {
   },
   'search-provider.changed': ({ provider: theProvider }) => {
     provider = theProvider
-    emit(provider(''))
+    filter = ''
+    emit(provider(filter))
   }
 }
 

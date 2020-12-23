@@ -152,23 +152,43 @@ div {
   font-size: 0.9em;
 }
 
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .tag {
   font-size: 0.7em;
   padding: 3px;
   margin-right: 6px;
+  margin-bottom: 6px;
   border-radius: 2px;
   white-space:nowrap;
 }
 
-.tag-default {
-  border-width: 1px;
-  border-style: solid;
-  border-color:#e03c31;
+.tag-active {
+  font-size: 0.7em;
+  padding: 3px;
+  margin-right: 6px;
+  margin-bottom: 6px;
+  border-radius: 2px;
+  white-space:nowrap;
+}
+
+.tag-active:hover {
+  background-color: #fdd7d5;
+  background-color: #e2e2e2;
 }
 
 .tag-scope {
   color: white;
   background-color: #e03c31; /* CG red */
+}
+
+.tag-system {
+  border-width: 1px;
+  border-style: solid;
+  border-color:#e03c31;
 }
 
 .toolbar {

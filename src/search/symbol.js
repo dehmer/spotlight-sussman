@@ -19,7 +19,9 @@ const documents = () => {
 const option = key => {
   const replace = (s, i, r) => s.substring(0, i) + r + s.substring(i + r.length)
   const descriptor = symbols[key]
-  const dimension = descriptor.dimension ? descriptor.dimension.split(', ') : []
+  const dimension = descriptor.dimension
+    ? descriptor.dimension.split(', ').map(label => ({ type: 'SYSTEM', label }))
+    : []
 
   return {
     key,
@@ -27,7 +29,17 @@ const option = key => {
     description: R.dropLast(1, descriptor.hierarchy).join(' • '),
     url: url(replace(replace(descriptor.sidc, 1, 'F'), 3, 'P')),
     scope: 'SYMBOL',
-    tags: [...dimension, descriptor.scope].filter(R.identity)
+    tags: [
+      {
+        type: 'SCOPE',
+        label: 'SYMBOL'
+      },
+      ...dimension,
+      {
+        type: 'SYSTEM',
+        label: descriptor.scope
+      }
+    ].filter(R.identity)
   }
 }
 

@@ -32,6 +32,11 @@ const descriptors = [
     path: mdi.mdiPaletteOutline,
     action: () => providerSelected('symbol')
   },
+  {
+    key: 'favorites',
+    enabled: false,
+    path: mdi.mdiHeartOutline
+  },
   { key: 'basemaps', enabled: false, path: mdi.mdiMap },
   { key: 'meassure', enabled: false, path: mdi.mdiAngleAcute },
   { key: 'bookmarks', enabled: false, path: mdi.mdiBookmarkMultiple },

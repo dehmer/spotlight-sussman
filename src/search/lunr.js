@@ -1,9 +1,9 @@
 import * as R from 'ramda'
 import lunr from 'lunr'
 import evented from '../evented'
-import { compare } from './scope-common'
-import symbol from './scope-symbol'
-import { layer, feature } from './scope-layer'
+import { compare } from './common'
+import symbol from './symbol'
+import { layer, feature } from './layer'
 
 /**
  * Adapt domain models to indexable documents and

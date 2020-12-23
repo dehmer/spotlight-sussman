@@ -1,14 +1,20 @@
 import * as R from 'ramda'
 import { url } from '../model/symbol'
 import { layers, identity } from '../model/layer'
-import { dispatchProvider, compare } from './scope-common'
+import { dispatchProvider, compare } from './common'
 import evented from '../evented'
 import { hierarchy } from '../model/feature-descriptor'
 
 const layer = {
   documents: () => {
     return Object.entries(layers).reduce((acc, [id, layer]) => {
-      acc.push({ id, scope: 'layer', text:  layer.name })
+      const visibility = layer.hidden ? 'hidden' : 'visible'
+      acc.push({
+        id,
+        scope: 'layer',
+        text: layer.name,
+        tags: [visibility]
+      })
       return Object.entries(layer.features).reduce((acc, [id, feature]) => {
         const { t, sidc } = feature.properties
         acc.push({
@@ -24,12 +30,18 @@ const layer = {
 
   option: key => {
     const layer = layers[key]
-
     return {
       key: key,
       title: layer.name,
-      scope: 'LAYER',
-      tags: [],
+      tags: [
+        {
+          type: 'SCOPE',
+          label: 'LAYER'
+        },
+        layer.hidden
+          ? { type: 'SYSTEM', label: 'HIDDEN', action: () => evented.emit({ type: 'command.layer.show', id: key }) }
+          : { type: 'SYSTEM', label: 'VISIBLE', action: () => evented.emit({ type: 'command.layer.hide', id: key }) }
+      ],
       actions: {
         open: dispatchProvider(featureList(layer.id)),
         rename: title => evented.emit({
@@ -52,9 +64,14 @@ const feature = {
       key,
       title: t || 'N/A',
       description: layer.name.toUpperCase() + ' ⏤ ' + hierarchy(sidc).join(' • '),
-      scope: 'FEATURE',
       url: url(sidc),
-      tags: identity(sidc),
+      tags: [
+        {
+          type: 'SCOPE',
+          label: 'FEATURE'
+        },
+        ...identity(sidc).map(label => ({ type: 'SYSTEM', label }))
+      ],
       actions: {
         back: () => evented.emit({ type: 'search-scope.changed', scope: 'layer' }),
         rename: title => evented.emit({

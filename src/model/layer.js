@@ -6,6 +6,16 @@ import scenario from './mip-scenario.json'
 import evented from '../evented'
 
 const featureCollection = new Collection()
+
+const filterFeatures = p => {
+  const features = []
+  featureCollection.forEach(feature => {
+    if (p(feature)) features.push(feature)
+  })
+
+  return features
+}
+
 export const source = new VectorSource({ features: featureCollection })
 
 const format = new GeoJSON({
@@ -74,8 +84,7 @@ evented.on(event => {
       layer.name = event.properties.name
       evented.emit({ type: 'model.changed' })
     }
-  }
-  else if (event.type === 'command.feature.update') {
+  } else if (event.type === 'command.feature.update') {
     const layerUUID = event.id.split(':')[1].split('/')[0]
     const layer = layers[`layer:${layerUUID}`]
     const feature = layer.features[event.id]
@@ -83,7 +92,25 @@ evented.on(event => {
       feature.properties.t = event.properties.t
       evented.emit({ type: 'model.changed'})
     }
+  } else if (event.type === 'command.layer.hide') {
+    const layer = layers[event.id]
+    layer.hidden = true
+    evented.emit({ type: 'model.changed'})
+    filterFeatures(feature => {
+      const layerId = `layer:${feature.getId().split(':')[1].split('/')[0]}`
+      return layerId === event.id
+    }).forEach(feature => featureCollection.remove(feature))
+  } else if (event.type === 'command.layer.show') {
+    const layer = layers[event.id]
+    delete layer.hidden
+    evented.emit({ type: 'model.changed'})
+    readFeatures(Object.values(layer.features))
   }
 })
 
-export const identity = sidc => sidc[1] === 'F' ? ['OWN'] : sidc[1] === 'H' ? ['ENEMY'] : []
+export const identity = sidc => sidc[1] === 'F'
+  ? ['OWN']
+  : sidc[1] === 'H'
+    ? ['ENEMY']
+    : []
+
