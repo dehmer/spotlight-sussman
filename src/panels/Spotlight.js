@@ -100,7 +100,7 @@ export const Spotlight = () => {
   const [selection, setSelection] = React.useState([])
 
   const updateSelection = items => {
-    const uniqueItems = R.uniq(items)
+    const uniqueItems = R.uniq(items.filter(R.identity)) // filter nulls; make unique
     const additions = uniqueItems.filter(x => !selection.includes(x))
     const removals = selection.filter(x => !uniqueItems.includes(x))
     selectionService.select(additions)
@@ -189,11 +189,45 @@ export const Spotlight = () => {
     ;(keyHandlers[event.code] || R.always({}))(event)
   }
 
-  const handleClick = key => ({ metaKey }) => {
+  const findIndex = key => entries.findIndex(entry => entry.key === key)
+  const rangeSelection = key => {
+
+    const keyRange = (from, to) => {
+      const reverse = from > to ? R.reverse : R.identity
+      const key = i => entries[i].key
+      return reverse(R.map(key, R.range(from, to + 1)))
+    }
+
+    if (!selection.length) {
+      // No prior selection to take into account.
+      const [from, to] = [focus || entries[0], key].map(findIndex)
+      return from < to
+        ? keyRange(from, to) // ascending
+        : keyRange(to, from).reverse() // descending
+    } else {
+      // Superimpose with current selection.
+      // NOTE: Indexes of current selection define an order (asc/desc).
+      const indexes = selection.map(findIndex)
+      const index = findIndex(key)
+      return R.head(indexes) < R.last(indexes) // ascending
+        ? index > R.head(indexes)
+          ? keyRange(R.head(indexes), index) // ascending
+          : keyRange(index, R.head(indexes)).reverse() // descending
+        : index < R.head(indexes)
+          ? keyRange(index, R.head(indexes)).reverse() // descending
+          : keyRange(R.head(indexes), index) // ascending
+    }
+  }
+
+  const handleClick = key => ({ metaKey, shiftKey }) => {
     setFocus(key)
-    const selection = metaKey ?
-      [...toggleSelection(key), focus] :
-      []
+
+    const selection = metaKey
+      ? [...toggleSelection(key), focus]
+      : shiftKey
+        ? rangeSelection(key)
+        : []
+
 
     updateSelection(selection)
   }

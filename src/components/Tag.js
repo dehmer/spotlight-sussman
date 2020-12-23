@@ -9,7 +9,7 @@ export const Tag = props => {
 
   const handleClick = event => {
     event.stopPropagation()
-    props.action()
+    props.action && props.action()
   }
 
   return (

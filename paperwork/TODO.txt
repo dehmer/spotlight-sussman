@@ -4,7 +4,6 @@ TODO:
 - option: add/remove user tags
 - fix WebKit height issue
 - CMD/CTRL-F should focus search input
-- SHIFT+click should select from current focus to clicked
 - switching search scope should clear selection
 - CMD+arrowup: back action
 - CMD+arrowdown: open action
@@ -24,4 +23,5 @@ DONE:
 - integrate selection 'service'
 - option: layer actions hide/show
 - Support HOME/END key navigaiton
-- CMD+click should also select current focus
+- CMD+click: also select current focus
+- SHIFT+click: select from current focus to clicked
