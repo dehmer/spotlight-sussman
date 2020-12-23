@@ -1,11 +1,10 @@
 TODO:
 - avatar cache: use js-cache (https://www.npmjs.com/package/js-cache)
 - map: layer styling
-- option: layer actions hide/show, lock
 - option: add/remove user tags
 - fix WebKit height issue
-- integrate selection 'service'
 - CMD/CTRL-F should focus search input
+. CMD+click should also select current focus
 
 DONE:
 - toolbar / scopebar
@@ -19,3 +18,5 @@ DONE:
 - selection should not follow focus
 - option: edit title
 - search: escape key clear filter
+- integrate selection 'service'
+- option: layer actions hide/show

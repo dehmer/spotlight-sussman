@@ -1,13 +1,30 @@
 import VectorSource from 'ol/source/Vector'
 import Collection from 'ol/Collection'
+import Feature from 'ol/Feature'
 import GeoJSON from 'ol/format/GeoJSON'
 import uuid from 'uuid-random'
 import scenario from './mip-scenario.json'
 import evented from '../evented'
 
+const isString = v => typeof v === 'string' || v instanceof String
+export const isLayer = id => id.startsWith('layer:')
+export const isFeature = id => id.startsWith('feature:')
+
+const layerId = v =>
+  isString(v)
+    ? isFeature(v)
+      ? `layer:${v.split(':')[1].split('/')[0]}`
+      : isLayer(v)
+        ? v
+        : `layer:${v}` // UUID
+    : v instanceof Feature
+      ? layerId(v.getId())
+      : undefined
+
+
 const featureCollection = new Collection()
 
-const filterFeatures = p => {
+const features = (p = () => true) => {
   const features = []
   featureCollection.forEach(feature => {
     if (p(feature)) features.push(feature)
@@ -77,42 +94,60 @@ export const load = async files => {
   evented.emit({ type: 'model.changed' })
 }
 
-evented.on(event => {
-  if (event.type === 'command.layer.update') {
-    const layer = layers[event.id]
-    if (layer.name !== event.properties.name) {
-      layer.name = event.properties.name
-      evented.emit({ type: 'model.changed' })
-    }
-  } else if (event.type === 'command.feature.update') {
-    const layerUUID = event.id.split(':')[1].split('/')[0]
-    const layer = layers[`layer:${layerUUID}`]
-    const feature = layer.features[event.id]
-    if (feature.properties.t !== event.properties.t) {
-      feature.properties.t = event.properties.t
-      evented.emit({ type: 'model.changed'})
-    }
-  } else if (event.type === 'command.layer.hide') {
-    const removals = event.ids.reduce((acc, id) => {
-      const layer = layers[id]
-      layer.hidden = true
-      return acc.concat(filterFeatures(feature => {
-        const layerId = `layer:${feature.getId().split(':')[1].split('/')[0]}`
-        return layerId === id
-      }))
-    }, [])
+// ==> Event handlers
 
-    removals.forEach(feature => featureCollection.remove(feature))
-    evented.emit({ type: 'model.changed'})
-  } else if (event.type === 'command.layer.show') {
-    event.ids.forEach(id => {
-      const layer = layers[id]
-      delete layer.hidden
-      readFeatures(Object.values(layer.features))
-    })
-
+const update = ({ id, properties}) => {
+  if (isLayer(id)) {
+    const layer = layers[id]
+    if (layer.name === properties.name) return
+    layer.name = properties.name
+    evented.emit({ type: 'model.changed' })
+  } else if (isFeature(id)) {
+    const feature = layers[layerId(id)].features[id]
+    if (feature.properties.t === properties.t) return
+    feature.properties.t = properties.t
     evented.emit({ type: 'model.changed'})
   }
+}
+
+const hide = ({ ids }) => {
+  const removals = ids.reduce((acc, id) => {
+    if (isLayer(id)) {
+      layers[id].hidden = true
+      return acc.concat(features(feature => layerId(feature) === id))
+    } else if (isFeature(id)) {
+      layers[layerId(id)].features[id].hidden = true
+      return acc.concat(features(feature => feature.getId() === id))
+    } else return acc
+  }, [])
+
+  removals.forEach(feature => featureCollection.remove(feature))
+  evented.emit({ type: 'model.changed'})
+}
+
+const show = ({ ids }) => {
+  const additions = ids.reduce((acc, id) => {
+    if (isLayer(id)) {
+      delete layers[id].hidden
+      return acc.concat(Object.values(layers[id].features))
+    } else if (isFeature(id)) {
+      delete layers[layerId(id)].features[id].hidden
+      return acc.concat(layers[layerId(id)].features[id])
+    } return acc
+  }, [])
+
+  readFeatures(additions)
+  evented.emit({ type: 'model.changed'})
+}
+
+const handlers = {
+  update, hide, show
+}
+
+evented.on(event => {
+  if (!event.type.startsWith('command.layer')) return
+  const command = event.type.split('.')[2]
+  ;(handlers[command] || (() => {}))(event)
 })
 
 export const identity = sidc => sidc[1] === 'F'
