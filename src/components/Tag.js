@@ -7,7 +7,10 @@ export const Tag = props => {
     ? `tag-active tag-${type.toLowerCase()}`
     : `tag tag-${type.toLowerCase()}`
 
-  const handleClick = props.action
+  const handleClick = event => {
+    event.stopPropagation()
+    props.action()
+  }
 
   return (
     <span

@@ -3,6 +3,7 @@ import * as R from 'ramda'
 import { CardList } from '../components/CardList'
 import { Card } from '../components/Card'
 import evented from '../evented'
+import selectionService from '../selection'
 
 const Search = () => {
   const [value, setValue] = React.useState('')
@@ -98,6 +99,15 @@ export const Spotlight = () => {
   const [focus, setFocus] = React.useState()
   const [selection, setSelection] = React.useState([])
 
+  const updateSelection = items => {
+    const uniqueItems = R.uniq(items)
+    const additions = uniqueItems.filter(x => !selection.includes(x))
+    const removals = selection.filter(x => !uniqueItems.includes(x))
+    selectionService.select(additions)
+    selectionService.deselect(removals)
+    setSelection(uniqueItems)
+  }
+
   const ref = React.createRef()
   const cardrefs = entries.reduce((acc, value) => {
     acc[value.key] = React.createRef()
@@ -137,7 +147,7 @@ export const Spotlight = () => {
     const key = succ(focus)
     scrollIntoView(key)
 
-    setSelection(shiftKey
+    updateSelection(shiftKey
       ? selected(key)
         ? [...toggleSelection(focus), key]
         : [...selection, focus, key]
@@ -165,7 +175,7 @@ export const Spotlight = () => {
         updateFocus(succ, shiftKey)
       },
       KeyA: ({ metaKey }) => {
-        if (metaKey) setSelection(entries.map(entry => entry.key))
+        if (metaKey) updateSelection(entries.map(entry => entry.key))
       },
       Enter: () => {
         dispatch({ type: 'toggle-edit', property: 'title', key: focus })
@@ -182,7 +192,7 @@ export const Spotlight = () => {
 
   const handleClick = key => ({ metaKey }) => {
     setFocus(key)
-    setSelection(metaKey ? toggleSelection(key) : [])
+    updateSelection(metaKey ? toggleSelection(key) : [])
   }
 
   const handlePropertyChange = key => event => {

@@ -93,18 +93,25 @@ evented.on(event => {
       evented.emit({ type: 'model.changed'})
     }
   } else if (event.type === 'command.layer.hide') {
-    const layer = layers[event.id]
-    layer.hidden = true
+    const removals = event.ids.reduce((acc, id) => {
+      const layer = layers[id]
+      layer.hidden = true
+      return acc.concat(filterFeatures(feature => {
+        const layerId = `layer:${feature.getId().split(':')[1].split('/')[0]}`
+        return layerId === id
+      }))
+    }, [])
+
+    removals.forEach(feature => featureCollection.remove(feature))
     evented.emit({ type: 'model.changed'})
-    filterFeatures(feature => {
-      const layerId = `layer:${feature.getId().split(':')[1].split('/')[0]}`
-      return layerId === event.id
-    }).forEach(feature => featureCollection.remove(feature))
   } else if (event.type === 'command.layer.show') {
-    const layer = layers[event.id]
-    delete layer.hidden
+    event.ids.forEach(id => {
+      const layer = layers[id]
+      delete layer.hidden
+      readFeatures(Object.values(layer.features))
+    })
+
     evented.emit({ type: 'model.changed'})
-    readFeatures(Object.values(layer.features))
   }
 })
 

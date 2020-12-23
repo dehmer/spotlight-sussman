@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom'
 import Mousetrap from 'mousetrap'
 import { App } from './App'
 import * as Layer from './model/layer'
+import './selection'
 
 Mousetrap.bind('command+f', event => {
   console.log('[Mousetrap]', event)
@@ -27,4 +28,3 @@ app.addEventListener('drop', event => {
   event.stopPropagation()
   Layer.load([...event.dataTransfer.files])
 }, false)
-

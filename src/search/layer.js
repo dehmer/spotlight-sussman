@@ -4,6 +4,7 @@ import { layers, identity } from '../model/layer'
 import { dispatchProvider, compare } from './common'
 import evented from '../evented'
 import { hierarchy } from '../model/feature-descriptor'
+import selection from '../selection'
 
 const layer = {
   documents: () => {
@@ -20,8 +21,8 @@ const layer = {
         acc.push({
           id,
           scope: 'feature',
-          tags: [layer.name, ...identity(feature.properties.sidc)],
-          text: `${t} ${hierarchy(sidc).join(' ')}`
+          tags: [...identity(feature.properties.sidc), visibility],
+          text: `${t} ${hierarchy(sidc).join(' ')} ${layer.name}`
         })
         return acc
       }, acc)
@@ -30,6 +31,28 @@ const layer = {
 
   option: key => {
     const layer = layers[key]
+
+    const selected = () => {
+      const ids = selection.selected(s => s.startsWith('layer:'))
+      return ids.length ? ids : [key]
+    }
+
+    const visibility = layer.hidden
+      ? {
+          type: 'SYSTEM',
+          label: 'HIDDEN',
+          action: () => {
+            evented.emit({ type: 'command.layer.show', ids: selected() })
+          }
+        }
+      : {
+          type: 'SYSTEM',
+          label: 'VISIBLE',
+          action: () => {
+            evented.emit({ type: 'command.layer.hide', ids: selected() })
+          }
+        }
+
     return {
       key: key,
       title: layer.name,
@@ -38,9 +61,7 @@ const layer = {
           type: 'SCOPE',
           label: 'LAYER'
         },
-        layer.hidden
-          ? { type: 'SYSTEM', label: 'HIDDEN', action: () => evented.emit({ type: 'command.layer.show', id: key }) }
-          : { type: 'SYSTEM', label: 'VISIBLE', action: () => evented.emit({ type: 'command.layer.hide', id: key }) }
+        visibility
       ],
       actions: {
         open: dispatchProvider(featureList(layer.id)),
@@ -56,9 +77,34 @@ const layer = {
 
 const feature = {
   option: key => {
-    const layer = layers[`layer:${key.split(':')[1].split('/')[0]}`]
+    const layerId = `layer:${key.split(':')[1].split('/')[0]}`
+    const layer = layers[layerId]
     const properties = layer.features[key].properties
     const { sidc, t } = properties
+
+    const selected = () => {
+      const ids = selection
+        .selected(s => s.startsWith('feature:'))
+        .map(id => `layer:${id.split(':')[1].split('/')[0]}`)
+
+      return ids.length ? R.uniq(ids) : [layerId]
+    }
+
+    const visibility = layer.hidden
+      ? {
+          type: 'SYSTEM',
+          label: 'HIDDEN',
+          action: () => {
+            evented.emit({ type: 'command.layer.show', ids: selected() })
+          }
+        }
+      : {
+          type: 'SYSTEM',
+          label: 'VISIBLE',
+          action: () => {
+            evented.emit({ type: 'command.layer.hide', ids: selected() })
+          }
+        }
 
     return {
       key,
@@ -70,7 +116,8 @@ const feature = {
           type: 'SCOPE',
           label: 'FEATURE'
         },
-        ...identity(sidc).map(label => ({ type: 'SYSTEM', label }))
+        ...identity(sidc).map(label => ({ type: 'SYSTEM', label })),
+        visibility
       ],
       actions: {
         back: () => evented.emit({ type: 'search-scope.changed', scope: 'layer' }),
