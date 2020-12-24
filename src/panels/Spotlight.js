@@ -92,6 +92,9 @@ const reducer = (state, event) => {
   }
 }
 
+/**
+ *
+ */
 export const Spotlight = () => {
   // TODO: make multi-select optional (e.g. palette uses single-select)
 
@@ -157,39 +160,8 @@ export const Spotlight = () => {
     setFocus(key)
   }
 
-  const handleKeyDown = event => {
-    const focused = focus && cardrefs[focus]
-    const first = R.always(entries.length ? entries[0].key : null)
-    const last = R.always(entries.length ? entries[entries.length - 1].key : null)
-
-    const keyHandlers = {
-      ArrowDown: ({ shiftKey }) => {
-        const succ = focused ? key(next) : first
-        updateFocus(succ, shiftKey)
-      },
-      ArrowUp: ({ shiftKey }) => {
-        const succ = focused ? key(previous) : last
-        updateFocus(succ, shiftKey)
-      },
-      Home: () => updateFocus(first),
-      End: () => updateFocus(last),
-      KeyA: ({ metaKey }) => {
-        if (metaKey) updateSelection(entries.map(entry => entry.key))
-      },
-      Enter: () => {
-        dispatch({ type: 'toggle-edit', property: 'title', key: focus })
-        ref.current.focus()
-      },
-      Escape: () => {
-        dispatch({ type: 'cancel-edit' })
-        ref.current.focus()
-      }
-    }
-
-    ;(keyHandlers[event.code] || R.always({}))(event)
-  }
-
   const findIndex = key => entries.findIndex(entry => entry.key === key)
+  const findEntry = key => entries[findIndex(key)]
   const rangeSelection = key => {
 
     const keyRange = (from, to) => {
@@ -217,6 +189,54 @@ export const Spotlight = () => {
           ? keyRange(index, R.head(indexes)).reverse() // descending
           : keyRange(R.head(indexes), index) // ascending
     }
+  }
+
+  const handleKeyDown = event => {
+    const focused = focus && cardrefs[focus]
+    const first = R.always(entries.length ? R.head(entries).key : null)
+    const last = R.always(entries.length ? R.last(entries).key : null)
+
+    const keyHandlers = {
+      ArrowDown: ({ shiftKey, metaKey }) => {
+        if (metaKey) callAction('open', findEntry(focus))
+        else {
+          const succ = focused ? key(next) : first
+          updateFocus(succ, shiftKey)
+        }
+      },
+      ArrowUp: ({ shiftKey, metaKey }) => {
+        if (metaKey) callAction('back', findEntry(focus))
+        else {
+          const succ = focused ? key(previous) : last
+          updateFocus(succ, shiftKey)
+        }
+      },
+      Home: ({ shiftKey }) => {
+        const key = first()
+        if (shiftKey) setSelection(rangeSelection(key))
+        scrollIntoView(key)
+        setFocus(key)
+      },
+      End: ({ shiftKey }) => {
+        const key = last()
+        if (shiftKey) setSelection(rangeSelection(key))
+        scrollIntoView(key)
+        setFocus(key)
+      },
+      KeyA: ({ metaKey }) => {
+        if (metaKey) updateSelection(entries.map(entry => entry.key))
+      },
+      Enter: () => {
+        dispatch({ type: 'toggle-edit', property: 'title', key: focus })
+        ref.current.focus()
+      },
+      Escape: () => {
+        dispatch({ type: 'cancel-edit' })
+        ref.current.focus()
+      }
+    }
+
+    ;(keyHandlers[event.code] || R.always({}))(event)
   }
 
   const handleClick = key => ({ metaKey, shiftKey }) => {

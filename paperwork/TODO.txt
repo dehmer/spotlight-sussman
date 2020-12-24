@@ -5,8 +5,6 @@ TODO:
 - fix WebKit height issue
 - CMD/CTRL-F should focus search input
 - switching search scope should clear selection
-- CMD+arrowup: back action
-- CMD+arrowdown: open action
 
 DONE:
 - toolbar / scopebar
@@ -25,3 +23,5 @@ DONE:
 - Support HOME/END key navigaiton
 - CMD+click: also select current focus
 - SHIFT+click: select from current focus to clicked
+- CMD+arrowup: back action
+- CMD+arrowdown: open action
