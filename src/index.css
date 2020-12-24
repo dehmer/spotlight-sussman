@@ -33,7 +33,7 @@ div {
   touch-action: none;
 }
 
-.panel-root {
+.panel-container {
   z-index: 20;
 
   padding-top: 6em;
@@ -46,6 +46,12 @@ div {
   grid-template-columns: 20em auto 26em 48px;
   grid-template-areas: "L . R T";
   pointer-events: none;
+
+  /*
+    Give WebKit a chance to calculate determine explicit height.
+    This is necessary to stretch children to desired height.
+  */
+  height: calc(100vh - 10em);
 }
 
 .spotlight {
@@ -75,9 +81,7 @@ div {
   overflow: auto;
 }
 
-/* FIXME: WebKit height issue. */
 .list {
-  /* max-height - Necessary but why exactly? */
   max-height: 0px;
   margin: 0;
   padding: 0;

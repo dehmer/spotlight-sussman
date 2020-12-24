@@ -2,9 +2,10 @@ TODO:
 - avatar cache: use js-cache (https://www.npmjs.com/package/js-cache)
 - map: layer styling
 - option: add/remove user tags
-- fix WebKit height issue
 - CMD/CTRL-F should focus search input
 - switching search scope should clear selection
+- remove cyclic scroll
+- issue: user-select: none ignored by WebKit
 
 DONE:
 - toolbar / scopebar
@@ -25,3 +26,4 @@ DONE:
 - SHIFT+click: select from current focus to clicked
 - CMD+arrowup: back action
 - CMD+arrowdown: open action
+- fix WebKit height issue

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Map } from './components/Map'
-import { PanelRoot } from './panels/PanelRoot'
+import { PanelContainer } from './panels/PanelContainer'
 import './search'
 
 /**
@@ -10,7 +10,7 @@ export const App = () => {
   return (
     <>
       <Map></Map>
-      <PanelRoot></PanelRoot>
+      <PanelContainer></PanelContainer>
     </>
   )
 }
