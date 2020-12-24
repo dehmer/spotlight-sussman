@@ -31,7 +31,7 @@ const Search = () => {
   }
 
   return (
-    <div className='search-conainer'>
+    <div className='search-container'>
       <input
         className='search-input'
         placeholder='Spotlight Search'

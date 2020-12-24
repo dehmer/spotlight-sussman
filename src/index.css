@@ -55,7 +55,7 @@ div {
 }
 
 /* TODO: Do we need this container and why? */
-.search-conainer {
+.search-container {
   padding: 8px;
   display: inline-flex;
   position: relative;
