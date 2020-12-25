@@ -1,0 +1,16 @@
+import React from 'react'
+import Icon from '@mdi/react'
+
+export const TagIcon = props => {
+  const { path, closable, onClose } = props
+
+  const className = closable
+    ? 'tag-icon tag-close-icon'
+    : 'tag-icon'
+
+  return (
+    <span className={className} onClick={onClose}>
+      <Icon path={path} size='12px' />
+    </span>
+  )
+}

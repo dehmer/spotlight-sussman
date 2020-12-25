@@ -48,10 +48,13 @@ const readFeatures = features => features.forEach(feature => {
 
 export const layers = (() => {
   Object.values(scenario).forEach(layer => {
-    readFeatures(Object.values(layer.features))
+    const features = Object.values(layer.features)
+    readFeatures(features)
   })
   return scenario
 })()
+
+const feature = id => layers[layerId(id)].features[id]
 
 const K = v => fn => { fn(v); return v }
 
@@ -96,6 +99,7 @@ export const load = async files => {
 
 // ==> Event handlers
 
+// TODO: handle tags updated
 const update = ({ id, properties}) => {
   if (isLayer(id)) {
     const layer = layers[id]
@@ -106,7 +110,7 @@ const update = ({ id, properties}) => {
     const feature = layers[layerId(id)].features[id]
     if (feature.properties.t === properties.t) return
     feature.properties.t = properties.t
-    evented.emit({ type: 'model.changed'})
+    evented.emit({ type: 'model.changed' })
   }
 }
 
@@ -122,7 +126,7 @@ const hide = ({ ids }) => {
   }, [])
 
   removals.forEach(feature => featureCollection.remove(feature))
-  evented.emit({ type: 'model.changed'})
+  evented.emit({ type: 'model.changed' })
 }
 
 const show = ({ ids }) => {
@@ -137,17 +141,51 @@ const show = ({ ids }) => {
   }, [])
 
   readFeatures(additions)
-  evented.emit({ type: 'model.changed'})
+  evented.emit({ type: 'model.changed' })
 }
 
 const handlers = {
-  update, hide, show
+  update, hide, show,
+  layer: event => {
+    switch (event.property) {
+      case 'tags': {
+        const tags = event.value
+          .filter(tag => tag.type === 'USER')
+          .map(tag => tag.label)
+
+        layers[event.id].tags = tags
+        evented.emit({ type: 'model.changed' })
+        break
+      }
+    }
+  },
+  feature: event => {
+    switch (event.property) {
+      case 'tags': {
+        const tags = event.value
+          .filter(tag => tag.type === 'USER')
+          .map(tag => tag.label)
+
+        feature(event.id).tags = tags
+        evented.emit({ type: 'model.changed' })
+        break
+      }
+    }
+  }
 }
 
+
+
 evented.on(event => {
-  if (!event.type.startsWith('command.layer')) return
-  const command = event.type.split('.')[2]
-  ;(handlers[command] || (() => {}))(event)
+  if (event.type.startsWith('command.layer')) {
+    // more old school way...
+    const command = event.type.split('.')[2]
+    ;(handlers[command] || (() => {}))(event)
+  } else if (event.type === 'command.model.update') {
+    // fresh attempt on event handling...
+    const [scope] = event.id.split(':')
+    ;(handlers[scope] || (() => {}))(event)
+  }
 })
 
 export const identity = sidc => sidc[1] === 'F'

@@ -10,8 +10,8 @@ const Search = () => {
 
   React.useEffect(() => {
     evented.on(event => {
-      if (event.type !== 'search-scope.changed') return
-      setValue('')
+      if (event.type === 'search-scope.changed') setValue('')
+      else if (event.type === 'search-tag.changed') setValue('')
     })
   })
 
@@ -262,6 +262,7 @@ export const Spotlight = () => {
     selected={selection.includes(props.key)}
     onClick={handleClick(props.key)}
     onPropertyChange={handlePropertyChange(props.key)}
+    id={props.key}
     {...props}
   />
 

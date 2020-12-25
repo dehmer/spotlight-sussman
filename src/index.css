@@ -167,7 +167,10 @@ div {
   margin-right: 6px;
   margin-bottom: 6px;
   border-radius: 2px;
-  white-space:nowrap;
+  white-space: nowrap;
+  display: inline-block;
+  box-sizing: border-box;
+  text-transform: uppercase;
 }
 
 .tag-active {
@@ -176,7 +179,41 @@ div {
   margin-right: 6px;
   margin-bottom: 6px;
   border-radius: 2px;
-  white-space:nowrap;
+  white-space: nowrap;
+  display: inline-block;
+  box-sizing: border-box;
+  text-transform: uppercase;
+}
+
+.tag-icon {
+  display: inline-block;
+  color: inherit;
+  line-height: 0;
+  vertical-align: -.265em;
+  margin-right: 3px;
+}
+
+.tag-close-icon {
+  cursor: pointer;
+  margin-left: 3px;
+}
+
+.tag-input {
+  font-size: 0.7em;
+  display: inline-block;
+  background-color: inherit;
+  box-sizing: border-box;
+
+  padding: 3px;
+  margin-right: 6px;
+  margin-bottom: 6px;
+  line-height: 12px;
+  width: 67px;
+}
+
+.tag-input:focus {
+  border: 1px dashed darkgrey;
+  border-radius: 2px;
 }
 
 .tag-active:hover {
@@ -186,6 +223,9 @@ div {
 
 .tag-scope {
   color: white;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #e03c31;
   background-color: #e03c31; /* CG red */
 }
 
@@ -193,6 +233,16 @@ div {
   border-width: 1px;
   border-style: solid;
   border-color:#e03c31;
+}
+
+.tag-user {
+  border-width: 1px;
+  border-style: solid;
+  border-color:#1fc3ce;
+}
+
+.tag-plus {
+  border: 1px dashed darkgrey;
 }
 
 .toolbar {

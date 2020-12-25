@@ -1,6 +1,7 @@
 import * as R from 'ramda'
 import { url } from '../model/symbol'
 import { symbols } from '../model/feature-descriptor'
+import evented from '../evented'
 
 const documents = () => {
   const document = symbol => ({
@@ -9,7 +10,8 @@ const documents = () => {
     text: symbol.hierarchy.join(' '),
     tags: [
       ...symbol.dimension ? symbol.dimension.split(', ') : [],
-      ...symbol.scope ? symbol.scope.split(', ') : []
+      ...symbol.scope ? symbol.scope.split(', ') : [],
+      ...[symbol.tags || []]
     ].flat().join(' ')
   })
 
@@ -38,8 +40,13 @@ const option = key => {
       {
         type: 'SYSTEM',
         label: descriptor.scope
-      }
-    ].filter(R.identity)
+      },
+      ...(descriptor.tags || []).map(label => ({
+        type: 'USER',
+        label,
+        action: () => evented.emit({ type: 'search-tag.changed', tag: label })
+      }))
+    ]
   }
 }
 

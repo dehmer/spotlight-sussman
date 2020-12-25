@@ -3,39 +3,33 @@ import * as mdi from '@mdi/js'
 import { IconButton } from '../components/IconButton'
 import evented from '../evented'
 
-const providerSelected = scope =>
-  evented.emit({ type: 'search-scope.changed', scope })
+const changeScope = scope => evented.emit({ type: 'search-scope.changed', scope })
 
 const descriptors = [
   {
     key: 'search',
     enabled: true,
     path: mdi.mdiMagnify,
-    action: () => providerSelected(),
+    action: () => changeScope(),
     selected: true
   },
   {
     key: 'layers',
     enabled: true,
     path: mdi.mdiLayersTriple,
-    action: () => providerSelected('layer')
+    action: () => changeScope('layer')
   },
   {
     key: 'features',
     enabled: true,
     path: mdi.mdiShapeOutline,
-    action: () => providerSelected('feature')
+    action: () => changeScope('feature')
   },
   {
     key: 'palette',
     enabled: true,
     path: mdi.mdiPaletteOutline,
-    action: () => providerSelected('symbol')
-  },
-  {
-    key: 'favorites',
-    enabled: false,
-    path: mdi.mdiHeartOutline
+    action: () => changeScope('symbol')
   },
   { key: 'basemaps', enabled: false, path: mdi.mdiMap },
   { key: 'meassure', enabled: false, path: mdi.mdiAngleAcute },

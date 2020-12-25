@@ -18,20 +18,23 @@ const commands = {
 const layer = {
   documents: () => {
     return Object.entries(layers).reduce((acc, [id, layer]) => {
+      const tags = [layer.hidden ? 'hidden' : 'visible', ...(layer.tags || [])]
       acc.push({
         id,
         scope: 'layer',
         text: layer.name,
-        tags: [layer.hidden ? 'hidden' : 'visible']
+        tags
       })
       return Object.entries(layer.features).reduce((acc, [id, feature]) => {
-        const { t, sidc } = feature.properties
+        const { properties, tags = [] } = feature
+        const { t, sidc } = properties
         acc.push({
           id,
           scope: 'feature',
           tags: [
             ...identity(feature.properties.sidc),
-            feature.hidden ? 'hidden' : 'visible'
+            feature.hidden ? 'hidden' : 'visible',
+            ...tags
           ],
           text: `${t} ${hierarchy(sidc).join(' ')} ${layer.name}`
         })
@@ -62,7 +65,12 @@ const layer = {
           type: 'SCOPE',
           label: 'LAYER'
         },
-        visibility
+        visibility,
+        ...(layer.tags || []).map(label => ({
+          type: 'USER',
+          label,
+          action: () => evented.emit({ type: 'search-tag.changed', tag: label })
+        }))
       ],
       actions: {
         open: dispatchProvider(featureList(layer.id)),
@@ -81,7 +89,7 @@ const feature = {
     const layerId = `layer:${key.split(':')[1].split('/')[0]}`
     const layer = layers[layerId]
     const feature = layer.features[key]
-    const properties = feature.properties
+    const { properties, tags = [] } = feature
     const { sidc, t } = properties
 
     const visibility = feature.hidden
@@ -107,7 +115,12 @@ const feature = {
           label: 'FEATURE'
         },
         ...identity(sidc).map(label => ({ type: 'SYSTEM', label })),
-        visibility
+        visibility,
+        ...tags.map(label => ({
+          type: 'USER',
+          label,
+          action: () => evented.emit({ type: 'search-tag.changed', tag: label })
+        }))
       ],
       actions: {
         back: () => evented.emit({ type: 'search-scope.changed', scope: 'layer' }),

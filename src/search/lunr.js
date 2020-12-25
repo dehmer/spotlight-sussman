@@ -85,6 +85,12 @@ const handlers = {
     provider: scope
       ? filter => searchIndex(`@${scope} ${filter}`)
       : searchIndex
+  }),
+  'search-tag.changed': ({ tag }) => evented.emit({
+    type: 'search-provider.changed',
+    provider: tag
+      ? filter => searchIndex(`#${tag} ${filter}`)
+      : searchIndex
   })
 }
 
