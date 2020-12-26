@@ -2,7 +2,8 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import Mousetrap from 'mousetrap'
 import { App } from './App'
-import * as Layer from './model/layer'
+import { loadLayerFiles } from './model/io'
+import { pushLayers } from './model/layers'
 import './selection'
 
 Mousetrap.bind('command+f', event => {
@@ -13,7 +14,6 @@ Mousetrap.bind('command+f', event => {
   return false
 })
 
-
 const app = document.getElementById('app')
 ReactDOM.render(<App></App>, app)
 
@@ -23,8 +23,9 @@ app.addEventListener('dragover', event => {
   event.stopPropagation()
 }, false)
 
-app.addEventListener('drop', event => {
+app.addEventListener('drop', async event => {
   event.preventDefault()
   event.stopPropagation()
-  Layer.load([...event.dataTransfer.files])
+  const layers = await loadLayerFiles([...event.dataTransfer.files])
+  pushLayers(layers)
 }, false)

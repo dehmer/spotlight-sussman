@@ -57,13 +57,16 @@ const reducer = (state, event) => {
   switch (event.type) {
     case 'snapshot': return event.snapshot
     case 'toggle-edit': {
-      const index = state.findIndex(entry => entry.key === event.key)
+      const index = state.findIndex(entry => entry.id === event.id)
       const entry = state[index]
-      if (!entry || !entry.actions || !entry.actions.rename) return state
+
+      if (!(entry.capabilities || []).includes('RENAME')) return state
 
       const clone = [...state]
       if (clone[index].editor) {
-        entry.actions.rename(clone[index].editor.value)
+        const id = entry.id
+        const name = clone[index].editor.value
+        evented.emit({ type: 'command.update-name', id, name })
         delete clone[index].editor
       }
       else clone[index] = { ...entry, editor: {
@@ -80,7 +83,7 @@ const reducer = (state, event) => {
     }
     case 'property-changed': {
       const clone = [...state]
-      const index = clone.findIndex(entry => entry.key === event.key)
+      const index = clone.findIndex(entry => entry.id === event.id)
       clone[index] = { ...clone[index], editor: {
         property: event.property,
         value: event.value
@@ -113,14 +116,14 @@ export const Spotlight = () => {
 
   const ref = React.createRef()
   const cardrefs = entries.reduce((acc, value) => {
-    acc[value.key] = React.createRef()
+    acc[value.id] = React.createRef()
     return acc
   }, {})
 
-  const scrollIntoView = key =>
-    cardrefs[key] &&
-    cardrefs[key].current &&
-    cardrefs[key].current.scrollIntoView({
+  const scrollIntoView = id =>
+    cardrefs[id] &&
+    cardrefs[id].current &&
+    cardrefs[id].current.scrollIntoView({
       behavior: "auto",
       block: "nearest"
     })
@@ -160,19 +163,19 @@ export const Spotlight = () => {
     setFocus(key)
   }
 
-  const findIndex = key => entries.findIndex(entry => entry.key === key)
-  const findEntry = key => entries[findIndex(key)]
-  const rangeSelection = key => {
+  const findIndex = id => entries.findIndex(entry => entry.id === id)
+  const findEntry = id => entries[findIndex(id)]
+  const rangeSelection = id => {
 
     const keyRange = (from, to) => {
       const reverse = from > to ? R.reverse : R.identity
-      const key = i => entries[i].key
-      return reverse(R.map(key, R.range(from, to + 1)))
+      const id = i => entries[i].id
+      return reverse(R.map(id, R.range(from, to + 1)))
     }
 
     if (!selection.length) {
       // No prior selection to take into account.
-      const [from, to] = [focus || entries[0], key].map(findIndex)
+      const [from, to] = [focus || entries[0], id].map(findIndex)
       return from < to
         ? keyRange(from, to) // ascending
         : keyRange(to, from).reverse() // descending
@@ -180,7 +183,7 @@ export const Spotlight = () => {
       // Superimpose with current selection.
       // NOTE: Indexes of current selection define an order (asc/desc).
       const indexes = selection.map(findIndex)
-      const index = findIndex(key)
+      const index = findIndex(id)
       return R.head(indexes) < R.last(indexes) // ascending
         ? index > R.head(indexes)
           ? keyRange(R.head(indexes), index) // ascending
@@ -193,8 +196,8 @@ export const Spotlight = () => {
 
   const handleKeyDown = event => {
     const focused = focus && cardrefs[focus]
-    const first = R.always(entries.length ? R.head(entries).key : null)
-    const last = R.always(entries.length ? R.last(entries).key : null)
+    const first = R.always(entries.length ? R.head(entries).id : null)
+    const last = R.always(entries.length ? R.last(entries).id : null)
 
     const keyHandlers = {
       ArrowDown: ({ shiftKey, metaKey }) => {
@@ -224,10 +227,10 @@ export const Spotlight = () => {
         setFocus(key)
       },
       KeyA: ({ metaKey }) => {
-        if (metaKey) updateSelection(entries.map(entry => entry.key))
+        if (metaKey) updateSelection(entries.map(entry => entry.id))
       },
       Enter: () => {
-        dispatch({ type: 'toggle-edit', property: 'title', key: focus })
+        dispatch({ type: 'toggle-edit', property: 'title', id: focus })
         ref.current.focus()
       },
       Escape: () => {
@@ -239,30 +242,30 @@ export const Spotlight = () => {
     ;(keyHandlers[event.code] || R.always({}))(event)
   }
 
-  const handleClick = key => ({ metaKey, shiftKey }) => {
-    setFocus(key)
+  const handleClick = id => ({ metaKey, shiftKey }) => {
+    setFocus(id)
 
     const selection = metaKey
-      ? [...toggleSelection(key), focus]
+      ? [...toggleSelection(id), focus]
       : shiftKey
-        ? rangeSelection(key)
+        ? rangeSelection(id)
         : []
 
 
     updateSelection(selection)
   }
 
-  const handlePropertyChange = key => event => {
-    dispatch({ type: 'property-changed', key, ...event })
+  const handlePropertyChange = id => event => {
+    dispatch({ type: 'property-changed', id, ...event })
   }
 
   const card = props => <Card
-    ref={cardrefs[props.key]}
-    focus={focus === props.key}
-    selected={selection.includes(props.key)}
-    onClick={handleClick(props.key)}
-    onPropertyChange={handlePropertyChange(props.key)}
-    id={props.key}
+    key={props.id}
+    ref={cardrefs[props.id]}
+    focus={focus === props.id}
+    selected={selection.includes(props.id)}
+    onClick={handleClick(props.id)}
+    onPropertyChange={handlePropertyChange(props.id)}
     {...props}
   />
 

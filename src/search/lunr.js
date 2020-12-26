@@ -2,8 +2,9 @@ import * as R from 'ramda'
 import lunr from 'lunr'
 import evented from '../evented'
 import { compare } from './common'
-import symbol from './symbol'
-import { layer, feature } from './layer'
+import * as layers from '../model/layers'
+import * as features from '../model/features'
+import * as symbols from '../model/symbols'
 
 /**
  * Adapt domain models to indexable documents and
@@ -11,9 +12,9 @@ import { layer, feature } from './layer'
  */
 
 const scopes = {
-  symbol: symbol,
-  layer: layer,
-  feature: feature
+  symbol: symbols,
+  layer: layers,
+  feature: features
 }
 
 var index
@@ -22,7 +23,6 @@ var index
   const reindex = () => {
     console.time('[lunr] re-index')
     index = lunr(function () {
-      const add = this.add.bind(this)
       this.pipeline.remove(lunr.stemmer)
       this.pipeline.remove(lunr.stopWordFilter) // allow word like 'so', 'own', etc.
       this.searchPipeline.remove(lunr.stemmer)
@@ -31,9 +31,8 @@ var index
       this.field('tags')
 
       Object.values(scopes)
-        .filter(scope => scope.documents)
-        .flatMap(({ documents }) => documents())
-        .forEach(add)
+        .flatMap(scope => scope.lunr())
+        .forEach(document => this.add(document))
     })
 
     console.timeEnd('[lunr] re-index')

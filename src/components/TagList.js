@@ -12,14 +12,11 @@ export const TagList = props => {
   const [inputValue, setInputValue] = React.useState('')
   const inputRef = React.createRef()
 
-  const handleClose = label => () => {
-    evented.emit({
-      type: 'command.model.update',
-      id: props.id,
-      property: 'tags',
-      value: tags.filter(tag => tag.label !== label)
-    })
-  }
+  const handleClose = tag => () => evented.emit({
+    type: 'command.remove-tag',
+    id: props.id,
+    tag
+  })
 
   const tag = tag => {
     const closable = tag.type === 'USER'
@@ -44,12 +41,7 @@ export const TagList = props => {
   const confirmInput = () => {
     setInputVisible(false)
     if (!inputValue) return
-    evented.emit({
-      type: 'command.model.update',
-      id: props.id,
-      property: 'tags',
-      value: [...tags, { type: 'USER', label: inputValue }]
-    })
+    evented.emit({ type: 'command.add-tag', id: props.id, tag: inputValue })
   }
 
   const handleKeyDown = event => {
