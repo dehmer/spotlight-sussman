@@ -3,6 +3,7 @@ import { layerId } from './ids'
 import { preloadLayerFiles } from './io'
 import { pushFeatures } from './features'
 import evented from '../evented'
+import selection from '../selection'
 
 const layers = {}
 
@@ -73,10 +74,16 @@ evented.on(event => {
   if (type !== 'command') return
   if (!event.id.startsWith('layer:')) return
 
+  const selected = id => [id, ...selection.selected(x => x.startsWith('layer:'))]
+  const forSelected = (id, fn) => R.uniq(selected(id)).forEach(fn)
+
+  const addtag = tag => id => layers[id].tags = R.uniq([...(layers[id].tags || []), tag])
+  const removetag = tag => id => layers[id].tags = layers[id].tags.filter(x => x !== tag)
+
   const handlers = {
     'update-name': ({ id, name }) => layers[id].name = name,
-    'add-tag': ({ id, tag }) => layers[id].tags = R.uniq([...(layers[id].tags || []), tag]),
-    'remove-tag': ({ id, tag }) => layers[id].tags = layers[id].tags.filter(x => x !== tag),
+    'add-tag': ({ id, tag }) => forSelected(id, addtag(tag)),
+    'remove-tag': ({ id, tag }) => forSelected(id, removetag(tag)),
     'hide': ({ id }) => layers[id].hidden = true,
     'show': ({ id }) => delete layers[id].hidden
   }
