@@ -18,17 +18,17 @@ export const TagList = props => {
     tag
   })
 
-  const tag = tag => {
-    const closable = tag.type === 'USER'
+  const tag = props => {
+    const closable = props.type === 'USER'
     return (
       <Tag
-        key={tag.label}
-        variant={tag.type}
-        action={tag.action}
+        key={props.label}
+        variant={props.type}
+        action={props.action}
         closable={closable}
-        onClose={handleClose(tag.label)}
+        onClose={handleClose(props.label)}
       >
-        <span>{tag.label}</span>
+        <span>{props.label}</span>
       </Tag>
     )
   }

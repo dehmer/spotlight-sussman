@@ -5,19 +5,40 @@ import { Card } from '../components/Card'
 import evented from '../evented'
 import selectionService from '../selection'
 
+const tag = s => s.length < 2 ? '' : `+tags:${s.substring(1)}*`
+const scope = s => (s.length < 2) ? '' : `+scope:${s.substring(1)}`
+
+const term = R.cond([
+  [R.startsWith('#'), tag],
+  [R.startsWith('@'), scope],
+  [R.identity, s => `+text:${s}*`],
+  [R.T, R.always('')]
+])
+
+const terms = value => {
+  if (value.startsWith(':')) return value.substring(1)
+  else return (value || '')
+    .split(' ')
+    .filter(R.identity)
+    .map(term)
+    .join(' ')
+}
+
 const Search = () => {
   const [value, setValue] = React.useState('')
+  const ref = React.useRef()
 
   React.useEffect(() => {
     evented.on(event => {
-      if (event.type === 'search-scope.changed') setValue('')
-      else if (event.type === 'search-tag.changed') setValue('')
+      if (event.type !== 'search-provider.changed') return
+      setValue('')
+      ref.current.focus()
     })
   })
 
   const handleChange = ({ target }) => {
     setValue(target.value)
-    evented.emit({ type: 'search-filter.changed', value: target.value })
+    evented.emit({ type: 'search-filter.changed', value: terms(target.value) })
   }
 
   const handleKeyDown = event => {
@@ -33,6 +54,7 @@ const Search = () => {
   return (
     <div className='search-container'>
       <input
+        ref={ref}
         className='search-input'
         placeholder='Spotlight Search'
         value={value}
@@ -136,8 +158,11 @@ export const Spotlight = () => {
 
   React.useEffect(() => {
     evented.on(({ type, result }) => {
-      if (type !== 'search-result.changed') return
-      dispatch({ type: 'snapshot', snapshot: result })
+      if (type === 'search-result.changed') dispatch({ type: 'snapshot', snapshot: result })
+      if (type === 'search-provider.changed') {
+        setSelection([])
+        setFocus(null)
+      }
     })
   }, [])
 

@@ -3,9 +3,9 @@ TODO:
 - map: layer styling
 - option: add/remove user tags
 - CMD/CTRL-F should focus search input
-- switching search scope should clear selection
 - remove cyclic scroll
 - issue: user-select: none ignored by WebKit
+- create group from last search
 
 DONE:
 - toolbar / scopebar
@@ -27,3 +27,5 @@ DONE:
 - CMD+arrowup: back action
 - CMD+arrowdown: open action
 - fix WebKit height issue
+- move term builder from lunr to search field
+- switching search scope/provider should clear selection

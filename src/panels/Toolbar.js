@@ -2,8 +2,12 @@ import React from 'react'
 import * as mdi from '@mdi/js'
 import { IconButton } from '../components/IconButton'
 import evented from '../evented'
+import { searchProvider } from '../search/lunr'
 
-const changeScope = scope => evented.emit({ type: 'search-scope.changed', scope })
+const changeScope = scope => evented.emit({
+  type: 'search-provider.changed',
+  provider: searchProvider(scope ? `+scope:${scope}` : '')
+})
 
 const descriptors = [
   {

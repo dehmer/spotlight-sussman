@@ -47,10 +47,14 @@ export const option = (() => {
       ? symbol.dimension.split(', ').map(label => ({ type: 'SYSTEM', label }))
       : []
 
+    const scope = symbol.scope
+      ? [{ type: 'SYSTEM', label: symbol.scope }]
+      : []
+
     return [
       { type: 'SCOPE', label: 'SYMBOL' },
       ...dimension,
-      { type: 'SYSTEM', label: symbol.scope },
+      ...scope,
       ...(symbol.tags || []).map(label => ({ type: 'USER', label }))
     ]
   }
