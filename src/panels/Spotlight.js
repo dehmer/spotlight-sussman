@@ -43,11 +43,15 @@ const Search = () => {
 
   const handleKeyDown = event => {
     if (event.code === 'KeyA' && event.metaKey) return event.stopPropagation()
-    if (event.code === 'ArrowDown') return event.preventDefault()
-    if (event.code === 'ArrowUp') return event.preventDefault()
-    if (event.code === 'Escape') {
+    else if (event.code === 'ArrowDown') return event.preventDefault()
+    else if (event.code === 'ArrowUp') return event.preventDefault()
+    else if (event.code === 'Escape') {
       setValue('')
       evented.emit({ type: 'search-filter.changed', value: '' })
+    }
+    else if (event.code === 'Enter' && event.metaKey) {
+      event.stopPropagation()
+      evented.emit({ type: 'command.group.create' })
     }
   }
 
@@ -81,6 +85,7 @@ const reducer = (state, event) => {
     case 'toggle-edit': {
       const index = state.findIndex(entry => entry.id === event.id)
       const entry = state[index]
+      if (!entry) return state
 
       if (!(entry.capabilities || []).includes('RENAME')) return state
 
@@ -255,6 +260,7 @@ export const Spotlight = () => {
         if (metaKey) updateSelection(entries.map(entry => entry.id))
       },
       Enter: () => {
+        if (!focus) return
         dispatch({ type: 'toggle-edit', property: 'title', id: focus })
         ref.current.focus()
       },

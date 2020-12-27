@@ -5,6 +5,7 @@ import { compare } from './common'
 import * as layers from '../model/layers'
 import * as features from '../model/features'
 import * as symbols from '../model/symbols'
+import * as groups from '../model/groups'
 
 /**
  * Adapt domain models to indexable documents and
@@ -14,7 +15,8 @@ import * as symbols from '../model/symbols'
 const scopes = {
   symbol: symbols,
   layer: layers,
-  feature: features
+  feature: features,
+  group: groups
 }
 
 var index
@@ -46,7 +48,7 @@ var index
   })
 })()
 
-const search = R.tryCatch(
+export const search = R.tryCatch(
   terms => terms.trim() ? index.search(terms.trim()) : [],
   R.always([])
 )
@@ -54,11 +56,15 @@ const search = R.tryCatch(
 const option = ref => scopes[ref.split(':')[0]].option(ref)
 // const limit = R.identity /* no limits */
 const limit = R.take(100)
-const sort = entries => entries.sort(compare(R.prop('title')))
+// const sort = entries => entries.sort(compare(R.prop('title')))
+const sort = entries => entries
 const refs = R.map(({ ref }) => option(ref))
 
 // Default search provider:
-export const searchIndex = R.compose(sort, refs, limit, search)
+export const searchIndex = terms => {
+  evented.emit({ type: 'search.current', terms })
+  return R.compose(sort, refs, limit, search)(terms)
+}
 
 export const searchProvider = prefix => prefix
   ? filter => searchIndex(`${prefix} ${filter}`)
