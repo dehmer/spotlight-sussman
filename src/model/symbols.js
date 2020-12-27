@@ -100,11 +100,12 @@ export const url = sidc => {
 evented.on(event => {
   const [type, command] = event.type.split('.')
   if (type !== 'command') return
+  if (!event.id) return
   if (!event.id.startsWith('symbol:')) return
 
   const handlers = {
     'add-tag': ({ id, tag }) => symbols[id].tags = R.uniq([...(symbols[id].tags || []), tag]),
-    'remove-tag': ({ id, tag }) => symbols[id].tags = symbols[id].tags.filter(x => x !== tag)
+    'remove-tag': ({ id, tag }) => symbols[id].tags = (symbols[id].tags || []).filter(x => x !== tag)
   }
 
   if (handlers[command]) {
