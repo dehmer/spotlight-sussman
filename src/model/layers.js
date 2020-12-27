@@ -72,6 +72,7 @@ export const option = (() => {
 evented.on(event => {
   const [type, command] = event.type.split('.')
   if (type !== 'command') return
+  if (!event.id) return
   if (!event.id.startsWith('layer:')) return
 
   const selected = id => [id, ...selection.selected(x => x.startsWith('layer:'))]

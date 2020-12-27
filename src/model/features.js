@@ -142,6 +142,7 @@ export const pushFeatures = xs => {
   evented.on(event => {
     const [type, command] = event.type.split('.')
     if (type !== 'command') return
+    if (!event.id) return
 
     const [scope] = event.id.split(':')
     if (!handlers[scope]) return

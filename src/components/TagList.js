@@ -22,7 +22,7 @@ export const TagList = props => {
     const closable = props.type === 'USER'
     return (
       <Tag
-        key={props.label}
+        key={`${props.type}:${props.label}`}
         variant={props.type}
         action={props.action}
         closable={closable}
