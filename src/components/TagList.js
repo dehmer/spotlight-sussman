@@ -4,19 +4,16 @@ import * as mdi from '@mdi/js'
 import evented from '../evented'
 import { TagIcon } from './TagIcon'
 
-
 export const TagList = props => {
-  const { tags } = props
+  const { id, tags } = props
 
   const [inputVisible, setInputVisible] = React.useState(false)
   const [inputValue, setInputValue] = React.useState('')
   const inputRef = React.createRef()
 
-  const handleClose = tag => () => evented.emit({
-    type: 'command.remove-tag',
-    id: props.id,
-    tag
-  })
+  const handleClose = tag => () => {
+    evented.emit({ type: 'command.storage.removetag', ids: [id], tag })
+  }
 
   const tag = props => {
     const closable = props.type === 'USER'
@@ -41,7 +38,7 @@ export const TagList = props => {
   const confirmInput = () => {
     setInputVisible(false)
     if (!inputValue) return
-    evented.emit({ type: 'command.add-tag', id: props.id, tag: inputValue })
+    evented.emit({ type: 'command.storage.addtag', ids: [props.id], tag: inputValue })
   }
 
   const handleKeyDown = event => {
@@ -84,7 +81,6 @@ export const TagList = props => {
               <span>ADD TAG</span>
             </Tag>
       }
-
     </div>
   )
 }

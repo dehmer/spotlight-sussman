@@ -5,12 +5,14 @@ import { Description } from './Description'
 import { TagList } from './TagList'
 
 export const Body = props => {
-  const title = props.editor ? <TitleEditor {...props}/> : <TitleLabel {...props}/>
   return (
     <div className='card-body'>
-      { title }
+      { props.editor
+          ? <TitleEditor editor={props.editor} onPropertyChange={props.onPropertyChange}/>
+          : <TitleLabel title={props.title}/>
+      }
       <Description value={props.description}/>
-      <TagList {...props}/>
+      <TagList id={props.id} tags={props.tags}/>
     </div>
   )
 }

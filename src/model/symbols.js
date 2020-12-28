@@ -2,38 +2,41 @@ import * as R from 'ramda'
 import ms from 'milsymbol'
 import json from './symbols.json'
 import { normalize } from './sidc'
-import evented from '../evented'
+import { storage } from '../storage'
 
 const id = descriptor => `symbol:${descriptor.sidc.substring(0, 10)}`
 
-export const symbols = json.reduce((acc, descriptor) => R.tap(acc => {
-  descriptor.id = id(descriptor)
-  acc[descriptor.id] = descriptor
-}, acc), {})
+// Populate storage with symbols if missing:
+if (!storage.keys().some(key => key.startsWith('symbol:'))) {
+  json.forEach(symbol => {
+    symbol.id = id(symbol)
+    storage.setItem(symbol)
+  })
+}
 
 export const hierarchy = sidc => {
-  const descriptor = symbols[`symbol:${normalize(sidc)}`]
+  const descriptor = storage.getItem(`symbol:${normalize(sidc)}`)
   return descriptor ? descriptor.hierarchy : ['N/A']
 }
 
 // -> lunr documents interface
 
-export const lunr = (() => {
+export const document = id => {
   const tags = ({ dimension, scope, tags }) => [
     ...dimension ? dimension.split(', ') : [],
     ...scope ? scope.split(', ') : [],
     ...(tags || [])
   ]
 
-  const document = symbol => ({
+  const symbol = storage.getItem(id)
+
+  return ({
     id: symbol.id,
     scope: 'symbol',
     text: symbol.hierarchy.join(' '),
     tags: tags(symbol)
   })
-
-  return () => Object.values(symbols).map(document)
-})()
+}
 
 // <- lunr documents interface
 
@@ -70,7 +73,7 @@ export const option = (() => {
     }
   }
 
-  return id => option(symbols[id])
+  return id => option(storage.getItem(id))
 })()
 
 // <- Spotlight interface
@@ -94,24 +97,3 @@ export const url = sidc => {
 }
 
 // <- Symbol URL and cache
-
-// -> command interface
-
-evented.on(event => {
-  const [type, command] = event.type.split('.')
-  if (type !== 'command') return
-  if (!event.id) return
-  if (!event.id.startsWith('symbol:')) return
-
-  const handlers = {
-    'add-tag': ({ id, tag }) => symbols[id].tags = R.uniq([...(symbols[id].tags || []), tag]),
-    'remove-tag': ({ id, tag }) => symbols[id].tags = (symbols[id].tags || []).filter(x => x !== tag)
-  }
-
-  if (handlers[command]) {
-    handlers[command](event)
-    evented.emit({ type: 'model.changed' })
-  }
-})
-
-// <- command interface

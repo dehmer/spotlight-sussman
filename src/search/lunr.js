@@ -5,6 +5,7 @@ import { compare } from './common'
 import * as layers from '../model/layers'
 import * as features from '../model/features'
 import * as symbols from '../model/symbols'
+import { storage } from '../storage'
 
 /**
  * Adapt domain models to indexable documents and
@@ -30,8 +31,8 @@ var index
       this.field('scope')
       this.field('tags')
 
-      Object.values(scopes)
-        .flatMap(scope => scope.lunr())
+      storage.keys()
+        .map(key => scopes[key.split(':')[0]].document(key))
         .forEach(document => this.add(document))
     })
 

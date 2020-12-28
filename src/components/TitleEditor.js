@@ -1,6 +1,7 @@
 import React from 'react'
 
 export const TitleEditor = props => {
+
   const handleChange = ({ target }) => {
     props.onPropertyChange({ property: 'title', value: target.value })
   }

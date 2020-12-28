@@ -81,6 +81,7 @@ const reducer = (state, event) => {
     case 'toggle-edit': {
       const index = state.findIndex(entry => entry.id === event.id)
       const entry = state[index]
+      if (!entry) return state
 
       if (!(entry.capabilities || []).includes('RENAME')) return state
 
@@ -88,7 +89,7 @@ const reducer = (state, event) => {
       if (clone[index].editor) {
         const id = entry.id
         const name = clone[index].editor.value
-        evented.emit({ type: 'command.update-name', id, name })
+        evented.emit({ type: 'command.storage.rename', id, name })
         delete clone[index].editor
       }
       else clone[index] = { ...entry, editor: {
@@ -289,12 +290,12 @@ export const Spotlight = () => {
     ref={cardrefs[props.id]}
     focus={focus === props.id}
     selected={selection.includes(props.id)}
-    onClick={handleClick(props.id)}
-    onPropertyChange={handlePropertyChange(props.id)}
+    onClick={event => handleClick(props.id)(event)}
+    onPropertyChange={event => handlePropertyChange(props.id)(event)}
     {...props}
   />
 
-  return (
+  const component = (
     <div
       ref={ref}
       className="spotlight panel"
@@ -305,4 +306,6 @@ export const Spotlight = () => {
       <CardList>{entries.map(card)}</CardList>
     </div>
   )
+
+  return component
 }
