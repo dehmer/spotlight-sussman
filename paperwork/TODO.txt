@@ -3,7 +3,6 @@ TODO:
 - CMD/CTRL-F should focus search input
 - remove cyclic scroll
 - issue: user-select: none ignored by WebKit
-- sort groups to top
 - CMD+arrowup: back action
 - CMD+arrowdown: open action
 - tag: back action
@@ -39,3 +38,4 @@ DONE:
 - option: add/remove user tags
 - delete item
 - map: layer styling
+- sort groups to top
