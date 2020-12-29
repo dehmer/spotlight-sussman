@@ -103,6 +103,7 @@ const visible = ({ ids }) => storage.getItems(ids).forEach(item => {
   if (isGroupId(item.id)) {
     const ids = search(item.terms)
       .filter(({ ref }) => !ref.startsWith('group:'))
+      .filter(({ ref }) => !ref.startsWith('symbol:'))
       .map(({ ref }) => ref)
     evented.emit({ type: 'command.storage.visible', ids })
     return
@@ -125,6 +126,7 @@ const hidden = ({ ids }) => storage.getItems(ids).forEach(item => {
   if (isGroupId(item.id)) {
     const ids = search(item.terms)
       .filter(({ ref }) => !ref.startsWith('group:'))
+      .filter(({ ref }) => !ref.startsWith('symbol:'))
       .map(({ ref }) => ref)
     evented.emit({ type: 'command.storage.hidden', ids })
     return
@@ -140,12 +142,14 @@ const hidden = ({ ids }) => storage.getItems(ids).forEach(item => {
  *
  */
 const addtag = ({ ids, tag }) => storage.getItems(ids)
+  .filter(R.identity)
   .forEach(storage.updateItem(item => item.tags = R.uniq([...(item.tags || []), tag])))
 
 /**
  *
  */
 const removetag = ({ ids, tag }) => storage.getItems(ids)
+  .filter(R.identity)
   .forEach(storage.updateItem(item => item.tags = item.tags.filter(x => x !== tag)))
 
 /**
@@ -177,6 +181,19 @@ const group = () => {
   storage.setItem({ id, name, terms, ...fields })
 }
 
+const remove = ({ ids }) => storage.getItems(ids).forEach(item => {
+  if (!item) return
+
+  storage.removeItem(item.id)
+  const features = containedFeatures(item)
+  features.forEach(item => storage.removeItem(item.id))
+
+  const visible = isLayerId(item.id)
+    ? feature => layerId(feature) === item.id
+    : feature => feature.getId() === item.id
+  filterFeatures(visible).forEach(removeFeature)
+})
+
 const handlers = {
   addlayers,
   visible,
@@ -184,7 +201,8 @@ const handlers = {
   addtag,
   removetag,
   rename,
-  group
+  group,
+  remove
 }
 
 // <- command handlers

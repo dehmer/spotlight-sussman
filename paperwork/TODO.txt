@@ -1,11 +1,14 @@
 TODO:
 - avatar cache: use js-cache (https://www.npmjs.com/package/js-cache)
 - map: layer styling
-- option: add/remove user tags
 - CMD/CTRL-F should focus search input
 - remove cyclic scroll
 - issue: user-select: none ignored by WebKit
-- create group from last search
+- sort groups to top
+- CMD+arrowup: back action
+- CMD+arrowdown: open action
+- tag: back action
+- tag: open action
 
 DONE:
 - toolbar / scopebar
@@ -24,8 +27,9 @@ DONE:
 - Support HOME/END key navigaiton
 - CMD+click: also select current focus
 - SHIFT+click: select from current focus to clicked
-- CMD+arrowup: back action
-- CMD+arrowdown: open action
 - fix WebKit height issue
 - move term builder from lunr to search field
 - switching search scope/provider should clear selection
+- create group from last search
+- option: add/remove user tags
+- delete item
