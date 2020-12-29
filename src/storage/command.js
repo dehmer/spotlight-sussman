@@ -98,7 +98,9 @@ const addlayers = ({ layers }) => {
 /**
  *
  */
-const visible = ({ ids }) => storage.getItems(ids).forEach(item => {
+const visible = ({ ids }) => storage.getItems(ids)
+  .filter(R.identity)
+  .forEach(item => {
 
   if (isGroupId(item.id)) {
     const ids = search(item.terms)
@@ -121,7 +123,9 @@ const visible = ({ ids }) => storage.getItems(ids).forEach(item => {
 /**
  *
  */
-const hidden = ({ ids }) => storage.getItems(ids).forEach(item => {
+const hidden = ({ ids }) => storage.getItems(ids)
+  .filter(R.identity)
+  .forEach(item => {
 
   if (isGroupId(item.id)) {
     const ids = search(item.terms)

@@ -1,6 +1,5 @@
 TODO:
 - avatar cache: use js-cache (https://www.npmjs.com/package/js-cache)
-- map: layer styling
 - CMD/CTRL-F should focus search input
 - remove cyclic scroll
 - issue: user-select: none ignored by WebKit
@@ -9,6 +8,12 @@ TODO:
 - CMD+arrowdown: open action
 - tag: back action
 - tag: open action
+- preferences: current center/view
+- add bookmark
+- focus action
+- 'id' function (highlight in map)
+- default layer
+- group:0 (+save)
 
 DONE:
 - toolbar / scopebar
@@ -33,3 +38,4 @@ DONE:
 - create group from last search
 - option: add/remove user tags
 - delete item
+- map: layer styling

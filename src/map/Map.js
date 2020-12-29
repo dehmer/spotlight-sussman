@@ -4,6 +4,8 @@ import * as ol from 'ol'
 import { OSM } from 'ol/source'
 import { Tile as TileLayer, Vector as VectorLayer } from 'ol/layer'
 import { source } from '../storage/command'
+import './epsg'
+import style from './style'
 
 export const Map = props => {
   React.useEffect(() => {
@@ -14,7 +16,7 @@ export const Map = props => {
     const view = new ol.View({ center, zoom })
     const layers = [
       new TileLayer({ source: new OSM() }),
-      new VectorLayer({ source })
+      new VectorLayer({ source, style: style('default') })
     ]
     new ol.Map({ target, controls, layers, view })
   }, [])

@@ -49,9 +49,9 @@ export const search = R.tryCatch(
 )
 
 const option = ref => options[ref.split(':')[0]](ref)
-// const limit = R.identity /* no limits */
 // const sort = entries => entries.sort(compare(R.prop('title')))
-const limit = R.take(200)
+const limit = R.identity /* no limits */
+// const limit = R.take(200)
 const sort = entries => entries
 const refs = R.map(({ ref }) => option(ref))
 

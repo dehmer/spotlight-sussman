@@ -1,5 +1,5 @@
 import React from 'react'
-import { Map } from './components/Map'
+import { Map } from './map/Map'
 import { PanelContainer } from './panels/PanelContainer'
 import './search'
 
