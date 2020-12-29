@@ -73,12 +73,6 @@ const current = ref => ref && ref.current
 const next = R.prop('nextSibling')
 const previous = R.prop('previousSibling')
 
-const callAction = (action, target) =>
-  target &&
-  target.actions &&
-  target.actions[action] &&
-  target.actions[action].call()
-
 const reducer = (state, event) => {
   switch (event.type) {
     case 'snapshot': return event.snapshot
@@ -100,8 +94,6 @@ const reducer = (state, event) => {
  *
  */
 const Spotlight = () => {
-  // TODO: make multi-select optional (e.g. palette uses single-select)
-
   const [entries, dispatch] = React.useReducer(reducer, [])
   const [focus, setFocus] = React.useState()
   const [selection, setSelection] = React.useState([])
@@ -155,8 +147,9 @@ const Spotlight = () => {
 
   const updateFocus = (succ, shiftKey) => {
     const key = succ(focus)
-    scrollIntoView(key)
+    if (!key) return /* don't 'cycle' */
 
+    scrollIntoView(key)
     updateSelection(shiftKey
       ? selected(key)
         ? [...toggleSelection(focus), key]
@@ -168,7 +161,6 @@ const Spotlight = () => {
   }
 
   const findIndex = id => entries.findIndex(entry => entry.id === id)
-  const findEntry = id => entries[findIndex(id)]
   const rangeSelection = id => {
 
     const keyRange = (from, to) => {
@@ -198,38 +190,38 @@ const Spotlight = () => {
     }
   }
 
-  const handleKeyDown = event => {
-    const focused = focus && cardrefs[focus]
-    const first = R.always(entries.length ? R.head(entries).id : null)
-    const last = R.always(entries.length ? R.last(entries).id : null)
+  const focused = focus && cardrefs[focus]
+  const first = R.always(entries.length ? R.head(entries).id : null)
+  const last = R.always(entries.length ? R.last(entries).id : null)
 
+  const home = shiftKey => {
+    const key = first()
+    if (shiftKey) setSelection(rangeSelection(key))
+    scrollIntoView(key)
+    setFocus(key)
+  }
+
+  const end = shiftKey => {
+    const key = last()
+    if (shiftKey) setSelection(rangeSelection(key))
+    scrollIntoView(key)
+    setFocus(key)
+  }
+
+  const handleKeyDown = event => {
     const keyHandlers = {
       ArrowDown: ({ shiftKey, metaKey }) => {
-        if (metaKey) callAction('open', findEntry(focus))
-        else {
-          const succ = focused ? key(next) : first
-          updateFocus(succ, shiftKey)
-        }
+        if (metaKey) return end(shiftKey)
+        const succ = focused ? key(next) : first
+        updateFocus(succ, shiftKey)
       },
       ArrowUp: ({ shiftKey, metaKey }) => {
-        if (metaKey) callAction('back', findEntry(focus))
-        else {
-          const succ = focused ? key(previous) : last
-          updateFocus(succ, shiftKey)
-        }
+        if (metaKey) return home(shiftKey)
+        const succ = focused ? key(previous) : last
+        updateFocus(succ, shiftKey)
       },
-      Home: ({ shiftKey }) => {
-        const key = first()
-        if (shiftKey) setSelection(rangeSelection(key))
-        scrollIntoView(key)
-        setFocus(key)
-      },
-      End: ({ shiftKey }) => {
-        const key = last()
-        if (shiftKey) setSelection(rangeSelection(key))
-        scrollIntoView(key)
-        setFocus(key)
-      },
+      Home: ({ shiftKey }) => home(shiftKey),
+      End: ({ shiftKey }) => end(shiftKey),
       KeyA: ({ metaKey }) => {
         if (metaKey) updateSelection(entries.map(entry => entry.id))
       },
@@ -251,11 +243,10 @@ const Spotlight = () => {
     setFocus(id)
 
     const selection = metaKey
-      ? [...toggleSelection(id), focus]
+      ? [...toggleSelection(id)]
       : shiftKey
         ? rangeSelection(id)
         : []
-
 
     updateSelection(selection)
   }, [focus, selection])

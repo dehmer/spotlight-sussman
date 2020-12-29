@@ -1,12 +1,9 @@
 TODO:
 - avatar cache: use js-cache (https://www.npmjs.com/package/js-cache)
 - CMD/CTRL-F should focus search input
-- remove cyclic scroll
 - issue: user-select: none ignored by WebKit
-- CMD+arrowup: back action
-- CMD+arrowdown: open action
-- tag: back action
 - tag: open action
+- tag: back action
 - preferences: current center/view
 - add bookmark
 - focus action
@@ -39,3 +36,4 @@ DONE:
 - delete item
 - map: layer styling
 - sort groups to top
+- remove cyclic scroll
