@@ -169,7 +169,8 @@ const group = () => {
   const { terms } = search
 
   const fields = terms.split(' ')
-    .map(part => R.drop(1, (/\+(\-?\w+):(\w+)/g).exec(part)))
+    .filter(R.identity)
+    .map(part => R.drop(1, (/\+?(\w+):(\w+)/g).exec(part)))
     .reduce((acc, tuple) => {
       acc[tuple[0]] = acc[tuple[0]] || []
       acc[tuple[0]].push(tuple[1])

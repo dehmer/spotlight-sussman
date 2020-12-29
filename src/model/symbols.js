@@ -18,29 +18,21 @@ export const hierarchy = sidc => {
   return descriptor ? descriptor.hierarchy : ['N/A']
 }
 
-// -> lunr documents interface
-
-export const document = id => {
-  const tags = ({ dimension, scope, tags }) => [
-    ...dimension ? dimension.split(', ') : [],
-    ...scope ? scope.split(', ') : [],
-    ...(tags || [])
-  ]
-
-  const symbol = storage.getItem(id)
-
-  return ({
-    id: symbol.id,
-    scope: 'symbol',
-    text: symbol.hierarchy.join(' '),
-    tags: tags(symbol)
-  })
+export const dimensions = sidc => {
+  const descriptor = storage.getItem(`symbol:${normalize(sidc)}`)
+  if (!descriptor) return []
+  return descriptor.dimension
+    ? descriptor.dimension.split(', ')
+    : []
 }
 
-// <- lunr documents interface
-
-
-// -> Symbol URL and cache
+export const scopes = sidc => {
+  const descriptor = storage.getItem(`symbol:${normalize(sidc)}`)
+  if (!descriptor) return []
+  return descriptor.scope
+    ? [descriptor.scope]
+    : []
+}
 
 const placeholderSymbol = new ms.Symbol('')
 

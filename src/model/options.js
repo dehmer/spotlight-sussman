@@ -1,6 +1,6 @@
 import * as R from 'ramda'
 import { storage } from '../storage'
-import { hierarchy, url } from './symbols'
+import { hierarchy, url, dimensions, scopes } from './symbols'
 import { search } from '../search/lunr'
 import { layerId } from '../storage/ids'
 import { identity } from './sidc'
@@ -17,6 +17,8 @@ options.feature = (() => {
   const tags = ({ hidden, tags }, sidc) => [
     'SCOPE:FEATURE:NONE',
     `SYSTEM:${hidden ? 'HIDDEN' : 'VISIBLE'}:CLICK`,
+    ...dimensions(sidc).map(label => `SYSTEM:${label}:NONE`),
+    ...scopes(sidc).map(label => `SYSTEM:${label}:NONE`),
     ...(identity(sidc)).map(label => `SYSTEM:${label}:NONE`),
     ...(tags || []).map(label => `USER:${label}:NONE`)
   ].join(' ')
@@ -100,22 +102,12 @@ options.layer = (() => {
 options.symbol = (() => {
   const replace = (s, i, r) => s.substring(0, i) + r + s.substring(i + r.length)
 
-  const tags = symbol => {
-    const dimension = symbol.dimension
-      ? symbol.dimension.split(', ').map(label => `SYSTEM:${label}:NONE`)
-      : []
-
-    const scope = symbol.scope
-      ? [`SYSTEM:${symbol.scope}:NONE`]
-      : []
-
-    return [
-      'SCOPE:SYMBOL:NONE',
-      ...dimension,
-      ...scope,
-      ...(symbol.tags || []).map(label => `USER:${label}:NONE`)
-    ].join(' ')
-  }
+  const tags = ({ sidc, tags }) => [
+    'SCOPE:SYMBOL:NONE',
+    ...dimensions(sidc).map(label => `SYSTEM:${label}:NONE`),
+    ...scopes(sidc).map(label => `SYSTEM:${label}:NONE`),
+    ...(tags || []).map(label => `USER:${label}:NONE`)
+  ].join(' ')
 
   const option = symbol => {
     return {

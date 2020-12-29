@@ -5,7 +5,7 @@ import Card from '../components/Card'
 import evented from '../evented'
 import selectionService from '../selection'
 
-const tag = s => s.length < 2 ? '' : `tags:${s.substring(1)}*`
+const tag = s => s.length < 2 ? '' : `+tags:${s.substring(1)}*`
 const scope = s => (s.length < 2) ? '' : `+scope:${s.substring(1)}`
 
 const term = R.cond([

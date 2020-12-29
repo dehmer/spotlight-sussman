@@ -1,30 +1,20 @@
 import * as R from 'ramda'
 import lunr from 'lunr'
 import evented from '../evented'
-import * as layers from '../model/layers'
-import * as features from '../model/features'
-import * as symbols from '../model/symbols'
-import * as groups from '../model/groups'
 import { storage } from '../storage'
 import { options } from '../model/options'
+import { documents } from '../model/documents'
 
 /**
  * Adapt domain models to indexable documents and
  * document refs to spotlight (view) model objects.
  */
 
-const scopes = {
-  symbol: symbols,
-  layer: layers,
-  feature: features,
-  group: groups
-}
-
 var index
 
 ;(() => {
-  const nullScope = { document: () => null}
-  const scope = key => scopes[key.split(':')[0]] || nullScope
+  const nullScope = () => null
+  const scope = key => documents[key.split(':')[0]] || nullScope
 
   const reindex = () => {
     console.time('[lunr] re-index')
@@ -37,7 +27,7 @@ var index
       this.field('tags')
 
       storage.keys()
-        .map(key => scope(key).document(key))
+        .map(key => scope(key)(key))
         .filter(R.identity)
         .forEach(document => this.add(document))
     })
