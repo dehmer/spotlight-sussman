@@ -4,7 +4,6 @@ TODO:
 - issue: user-select: none ignored by WebKit
 - tag: open action
 - tag: back action
-- preferences: current center/view
 - add bookmark
 - focus action
 - 'id' function (highlight in map)
@@ -37,3 +36,4 @@ DONE:
 - map: layer styling
 - sort groups to top
 - remove cyclic scroll
+- preferences: current center/view
