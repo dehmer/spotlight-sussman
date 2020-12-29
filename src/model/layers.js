@@ -20,25 +20,17 @@ export const document = id => {
 
 export const option = (() => {
 
-  const tags = layer => {
-    const changeVisibility = () => evented.emit({
-      type: `command.storage.${layer.hidden ? 'show' : 'hide'}`,
-      ids: [layer.id]
-    })
-
-    const scope = { type: 'SCOPE', label: 'LAYER' }
-    const visibility = layer.hidden
-      ? { type: 'SYSTEM', label: 'HIDDEN', action: changeVisibility }
-      : { type: 'SYSTEM', label: 'VISIBLE', action: changeVisibility }
-    const user = (layer.tags || []).map(label => ({ type: 'USER', label }))
-    return [scope, visibility, ...user]
-  }
+  const tags = ({ hidden, tags }) => [
+    'SCOPE:LAYER:NONE',
+    `SYSTEM:${hidden ? 'HIDDEN' : 'VISIBLE'}:CLICK`,
+    ...(tags || []).map(label => `USER:${label}:NONE`)
+  ].join(' ')
 
   const option = layer => ({
     id: layer.id,
     title: layer.name,
     tags: tags(layer),
-    capabilities: ['RENAME']
+    capabilities: 'RENAME'
   })
 
   return id => option(storage.getItem(id))

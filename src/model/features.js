@@ -29,23 +29,12 @@ export const document = id => {
 // -> Spotlight interface
 
 export const option = (() => {
-  const tags = ({ id, hidden, tags }) => {
-    const changeVisibility = () => evented.emit({
-      type: `command.storage.${hidden ? 'show' : 'hide'}`,
-      ids: [id]
-    })
 
-    const scope = { type: 'SCOPE', label: 'FEATURE' }
-    const visibility = hidden
-      ? { type: 'SYSTEM', label: 'HIDDEN', action: changeVisibility }
-      : { type: 'SYSTEM', label: 'VISIBLE', action: changeVisibility }
-
-    return [
-      scope,
-      visibility,
-      ...(tags || []).map(label => ({ type: 'USER', label }))
-    ]
-  }
+  const tags = ({ hidden, tags }) => [
+    'SCOPE:FEATURE:NONE',
+    `SYSTEM:${hidden ? 'HIDDEN' : 'VISIBLE'}:CLICK`,
+    ...(tags || []).map(label => `USER:${label}:NONE`)
+  ].join(' ')
 
   const option = feature => {
     const layer = storage.getItem(layerId(feature.id))
@@ -59,7 +48,7 @@ export const option = (() => {
       description,
       url: url(sidc),
       tags: tags(feature),
-      capabilities: ['RENAME']
+      capabilities: 'RENAME'
     }
   }
 

@@ -2,13 +2,13 @@ import React from 'react'
 import { TitleEditor } from './TitleEditor'
 import { TitleLabel } from './TitleLabel'
 import { Description } from './Description'
-import { TagList } from './TagList'
+import TagList from './TagList'
 
-export const Body = props => {
+const Body = props => {
   return (
     <div className='card-body'>
-      { props.editor
-          ? <TitleEditor editor={props.editor} onPropertyChange={props.onPropertyChange}/>
+      { props.edit
+          ? <TitleEditor id={props.id} value={props.title}/>
           : <TitleLabel title={props.title}/>
       }
       <Description value={props.description}/>
@@ -16,3 +16,5 @@ export const Body = props => {
     </div>
   )
 }
+
+export default React.memo(Body)

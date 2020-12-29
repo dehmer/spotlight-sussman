@@ -47,19 +47,19 @@ export const option = (() => {
 
   const tags = symbol => {
     const dimension = symbol.dimension
-      ? symbol.dimension.split(', ').map(label => ({ type: 'SYSTEM', label }))
+      ? symbol.dimension.split(', ').map(label => `SYSTEM:${label}:NONE`)
       : []
 
     const scope = symbol.scope
-      ? [{ type: 'SYSTEM', label: symbol.scope }]
+      ? [`SYSTEM:${symbol.scope}:NONE`]
       : []
 
     return [
-      { type: 'SCOPE', label: 'SYMBOL' },
+      'SCOPE:SYMBOL:NONE',
       ...dimension,
       ...scope,
-      ...(symbol.tags || []).map(label => ({ type: 'USER', label }))
-    ]
+      ...(symbol.tags || []).map(label => `USER:${label}:NONE`)
+    ].join(' ')
   }
 
   const option = symbol => {

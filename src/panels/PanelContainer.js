@@ -1,5 +1,5 @@
 import React from 'react'
-import { Spotlight } from './Spotlight'
+import Spotlight from './Spotlight'
 import { Toolbar } from './Toolbar'
 
 export const PanelContainer = () => (

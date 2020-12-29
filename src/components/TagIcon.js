@@ -1,7 +1,7 @@
 import React from 'react'
 import Icon from '@mdi/react'
 
-export const TagIcon = props => {
+export const TagIcon = React.memo(props => {
   const { path, closable, onClose } = props
 
   const className = closable
@@ -13,4 +13,4 @@ export const TagIcon = props => {
       <Icon path={path} size='12px' />
     </span>
   )
-}
+})

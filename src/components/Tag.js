@@ -1,9 +1,11 @@
 import React from 'react'
 import { TagIcon } from './TagIcon'
 import * as mdi from '@mdi/js'
+import evented from '../evented'
 
-export const Tag = props => {
+const Tag = props => {
   const { variant, children } = props
+  const closable = variant === 'USER'
   const variantClassName = variant ? `tag-${variant.toLowerCase()}` : ''
   const className = props.action
     ? `tag-active ${variantClassName}`
@@ -17,7 +19,11 @@ export const Tag = props => {
 
   const handleClick = event => {
     event.stopPropagation()
-    props.action && props.action()
+    if (props.onClick) props.onClick()
+    else if (props.action === 'CLICK') {
+      const type = `command.storage.${props.label.toLowerCase()}`
+      evented.emit({ type, ids: [props.id]})
+    }
   }
 
   return (
@@ -28,9 +34,9 @@ export const Tag = props => {
     >
       { children }
       {
-        props.closable && <TagIcon
+        closable && <TagIcon
           path={mdi.mdiClose}
-          closable={props.closable}
+          closable={closable}
           onClose={props.onClose}
         />
       }
@@ -38,3 +44,5 @@ export const Tag = props => {
     </span>
   )
 }
+
+export default React.memo(Tag)

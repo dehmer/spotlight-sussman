@@ -1,9 +1,8 @@
 import React from 'react'
-import { Body } from './Body'
+import Body from './Body'
 import { Avatar } from './Avatar'
 
-
-export const Card = React.forwardRef((props, ref) => {
+const Card = React.forwardRef((props, ref) => {
 
   // Selection has precedence over focus:
   const className = (props.focus && !props.selected)
@@ -23,8 +22,7 @@ export const Card = React.forwardRef((props, ref) => {
         title={props.title}
         description={props.description}
         tags={props.tags}
-        editor={props.editor}
-        onPropertyChange={props.onPropertyChange}
+        edit={props.edit}
       />
       { props.url ? <Avatar url={props.url}/> : null }
     </div>
@@ -32,3 +30,5 @@ export const Card = React.forwardRef((props, ref) => {
 
   return component
 })
+
+export default React.memo(Card)

@@ -54,7 +54,7 @@ const search = R.tryCatch(
 
 const option = ref => scopes[ref.split(':')[0]].option(ref)
 // const limit = R.identity /* no limits */
-const limit = R.take(100)
+const limit = R.take(200)
 const sort = entries => entries.sort(compare(R.prop('title')))
 const refs = R.map(({ ref }) => option(ref))
 

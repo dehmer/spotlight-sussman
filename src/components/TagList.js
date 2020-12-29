@@ -1,12 +1,11 @@
 import React from 'react'
-import { Tag } from './Tag'
+import Tag from './Tag'
 import * as mdi from '@mdi/js'
 import evented from '../evented'
 import { TagIcon } from './TagIcon'
 
-export const TagList = props => {
+const TagList = props => {
   const { id, tags } = props
-
   const [inputVisible, setInputVisible] = React.useState(false)
   const [inputValue, setInputValue] = React.useState('')
   const inputRef = React.createRef()
@@ -15,24 +14,25 @@ export const TagList = props => {
     evented.emit({ type: 'command.storage.removetag', ids: [id], tag })
   }
 
-  const tag = props => {
-    const closable = props.type === 'USER'
-    return (
-      <Tag
-        key={`${props.type}:${props.label}`}
-        variant={props.type}
-        action={props.action}
-        closable={closable}
-        onClose={handleClose(props.label)}
-      >
-        <span>{props.label}</span>
-      </Tag>
-    )
-  }
-
-  const action = () => {
+  const onClick = () => {
     setInputValue('')
     setInputVisible(true)
+  }
+
+  const tag = spec => {
+    const [variant, label, action] = spec.split(':')
+    return (
+      <Tag
+        key={`${variant}:${label}`}
+        id={id}
+        variant={variant}
+        action={action}
+        label={label}
+        onClose={handleClose(label)}
+      >
+        <span>{label}</span>
+      </Tag>
+    )
   }
 
   const confirmInput = () => {
@@ -61,10 +61,9 @@ export const TagList = props => {
   }
 
   const handleChange = ({ target }) => setInputValue(target.value)
-
   return (
     <div className='tag-list'>
-      { tags.map(tag) }
+      { tags.split(' ').map(tag) }
       {
         inputVisible
           ? <input
@@ -76,7 +75,7 @@ export const TagList = props => {
               onChange={handleChange}
             >
             </input>
-          : <Tag variant='plus' action={action} color='black'>
+          : <Tag variant='plus' onClick={onClick} color='black'>
               <TagIcon path={mdi.mdiPlus} size='12px'/>
               <span>ADD TAG</span>
             </Tag>
@@ -84,3 +83,5 @@ export const TagList = props => {
     </div>
   )
 }
+
+export default React.memo(TagList)

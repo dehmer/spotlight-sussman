@@ -95,7 +95,7 @@ const addlayers = ({ layers }) => {
 /**
  *
  */
-const hide = ({ ids }) => storage.getItems(ids).forEach(item => {
+const visible = ({ ids }) => storage.getItems(ids).forEach(item => {
   const hide = storage.updateItem(item => item.hidden = true)
   const features = containedFeatures(item)
   ;[item, ...features].forEach(hide)
@@ -108,7 +108,7 @@ const hide = ({ ids }) => storage.getItems(ids).forEach(item => {
 /**
  *
  */
-const show = ({ ids }) => storage.getItems(ids).forEach(item => {
+const hidden = ({ ids }) => storage.getItems(ids).forEach(item => {
   const show = storage.updateItem(item => delete item.hidden)
   const features = containedFeatures(item)
   ;[item, ...features].forEach(show)
@@ -140,8 +140,8 @@ const rename = ({ id, name }) => {
 
 const handlers = {
   addlayers,
-  hide,
-  show,
+  visible,
+  hidden,
   addtag,
   removetag,
   rename
