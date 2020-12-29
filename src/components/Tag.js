@@ -1,7 +1,9 @@
+import * as R from 'ramda'
 import React from 'react'
 import { TagIcon } from './TagIcon'
 import * as mdi from '@mdi/js'
 import evented from '../evented'
+import selection from '../selection'
 
 const Tag = props => {
   const { variant, children } = props
@@ -21,8 +23,9 @@ const Tag = props => {
     event.stopPropagation()
     if (props.onClick) props.onClick()
     else if (props.action === 'CLICK') {
+      const ids = R.uniq([props.id, ...selection.selected()])
       const type = `command.storage.${props.label.toLowerCase()}`
-      evented.emit({ type, ids: [props.id]})
+      evented.emit({ type, ids })
     }
   }
 
