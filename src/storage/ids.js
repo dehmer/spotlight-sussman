@@ -8,7 +8,7 @@ export const layerId = R.cond([
   // // must be a string then...
   [R.startsWith('feature:'), x => `layer:${x.split(':')[1].split('/')[0]}`],
   [R.startsWith('layer:'), R.identity],
-  [R.T, R.always(undefined)]
+  [R.T, x => layerId(x.id)]
 ])
 
 export const featureId = layerId =>

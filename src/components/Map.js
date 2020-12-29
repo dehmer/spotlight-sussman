@@ -3,7 +3,7 @@ import 'ol/ol.css'
 import * as ol from 'ol'
 import { OSM } from 'ol/source'
 import { Tile as TileLayer, Vector as VectorLayer } from 'ol/layer'
-import { source } from '../model/features'
+import { source } from '../storage/command'
 
 export const Map = props => {
   React.useEffect(() => {

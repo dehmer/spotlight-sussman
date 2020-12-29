@@ -1,11 +1,12 @@
 import * as R from 'ramda'
 import lunr from 'lunr'
 import evented from '../evented'
-import { compare } from './common'
 import * as layers from '../model/layers'
 import * as features from '../model/features'
 import * as symbols from '../model/symbols'
 import * as groups from '../model/groups'
+import { storage } from '../storage'
+import { options } from '../model/options'
 
 /**
  * Adapt domain models to indexable documents and
@@ -22,6 +23,9 @@ const scopes = {
 var index
 
 ;(() => {
+  const nullScope = { document: () => null}
+  const scope = key => scopes[key.split(':')[0]] || nullScope
+
   const reindex = () => {
     console.time('[lunr] re-index')
     index = lunr(function () {
@@ -32,8 +36,9 @@ var index
       this.field('scope')
       this.field('tags')
 
-      Object.values(scopes)
-        .flatMap(scope => scope.lunr())
+      storage.keys()
+        .map(key => scope(key).document(key))
+        .filter(R.identity)
         .forEach(document => this.add(document))
     })
 
@@ -53,10 +58,10 @@ export const search = R.tryCatch(
   R.always([])
 )
 
-const option = ref => scopes[ref.split(':')[0]].option(ref)
+const option = ref => options[ref.split(':')[0]](ref)
 // const limit = R.identity /* no limits */
-const limit = R.take(100)
 // const sort = entries => entries.sort(compare(R.prop('title')))
+const limit = R.take(200)
 const sort = entries => entries
 const refs = R.map(({ ref }) => option(ref))
 

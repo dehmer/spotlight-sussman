@@ -1,7 +1,4 @@
 import * as R from 'ramda'
-import scenario from './scenario.json'
-
-export const preloadLayerFiles = () => scenario
 
 const loadLayerFile = file => new Promise((resolve, reject) => {
   const layername = filename => R.dropLast(5, filename) // '.json'

@@ -3,8 +3,9 @@ import ReactDOM from 'react-dom'
 import Mousetrap from 'mousetrap'
 import { App } from './App'
 import { loadLayerFiles } from './model/io'
-import { pushLayers } from './model/layers'
 import './selection'
+import './storage/command'
+import evented from './evented'
 
 Mousetrap.bind('command+f', event => {
   console.log('[Mousetrap]', event)
@@ -27,5 +28,5 @@ app.addEventListener('drop', async event => {
   event.preventDefault()
   event.stopPropagation()
   const layers = await loadLayerFiles([...event.dataTransfer.files])
-  pushLayers(layers)
+  evented.emit({ type: 'command.storage.addlayers', layers })
 }, false)

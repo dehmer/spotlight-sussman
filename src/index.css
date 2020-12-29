@@ -221,6 +221,14 @@ div {
   background-color: #e2e2e2;
 }
 
+.tag-group {
+  color: white;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #1fc3ce;
+  background-color: #1fc3ce; /* CG red */
+}
+
 .tag-scope {
   color: white;
   border-width: 1px;

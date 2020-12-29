@@ -2,15 +2,19 @@ import React from 'react'
 import { TitleEditor } from './TitleEditor'
 import { TitleLabel } from './TitleLabel'
 import { Description } from './Description'
-import { TagList } from './TagList'
+import TagList from './TagList'
 
-export const Body = props => {
-  const title = props.editor ? <TitleEditor {...props}/> : <TitleLabel {...props}/>
+const Body = props => {
   return (
     <div className='card-body'>
-      { title }
+      { props.edit
+          ? <TitleEditor id={props.id} value={props.title}/>
+          : <TitleLabel title={props.title}/>
+      }
       <Description value={props.description}/>
-      <TagList {...props}/>
+      <TagList id={props.id} tags={props.tags}/>
     </div>
   )
 }
+
+export default React.memo(Body)

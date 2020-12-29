@@ -1,7 +1,7 @@
 import React from 'react'
 import * as R from 'ramda'
 import { CardList } from '../components/CardList'
-import { Card } from '../components/Card'
+import Card from '../components/Card'
 import evented from '../evented'
 import selectionService from '../selection'
 
@@ -51,7 +51,7 @@ const Search = () => {
     }
     else if (event.code === 'Enter' && event.metaKey) {
       event.stopPropagation()
-      evented.emit({ type: 'command.group.create' })
+      evented.emit({ type: 'command.storage.group' })
     }
   }
 
@@ -86,36 +86,10 @@ const reducer = (state, event) => {
       const index = state.findIndex(entry => entry.id === event.id)
       const entry = state[index]
       if (!entry) return state
-
-      if (!(entry.capabilities || []).includes('RENAME')) return state
+      if (!(entry.capabilities || '').includes('RENAME')) return state
 
       const clone = [...state]
-      if (clone[index].editor) {
-        const id = entry.id
-        const name = clone[index].editor.value
-        evented.emit({ type: 'command.update-name', id, name })
-        delete clone[index].editor
-      }
-      else clone[index] = { ...entry, editor: {
-        property: 'title',
-        value: entry.title
-      }}
-
-      return clone
-    }
-    case 'cancel-edit': {
-      const clone = [...state]
-      clone.forEach(entry => delete entry.editor)
-      return clone
-    }
-    case 'property-changed': {
-      const clone = [...state]
-      const index = clone.findIndex(entry => entry.id === event.id)
-      clone[index] = { ...clone[index], editor: {
-        property: event.property,
-        value: event.value
-      }}
-
+      clone[index].edit = true
       return clone
     }
     default: return state
@@ -125,7 +99,7 @@ const reducer = (state, event) => {
 /**
  *
  */
-export const Spotlight = () => {
+const Spotlight = () => {
   // TODO: make multi-select optional (e.g. palette uses single-select)
 
   const [entries, dispatch] = React.useReducer(reducer, [])
@@ -263,17 +237,13 @@ export const Spotlight = () => {
         if (!focus) return
         dispatch({ type: 'toggle-edit', property: 'title', id: focus })
         ref.current.focus()
-      },
-      Escape: () => {
-        dispatch({ type: 'cancel-edit' })
-        ref.current.focus()
       }
     }
 
     ;(keyHandlers[event.code] || R.always({}))(event)
   }
 
-  const handleClick = id => ({ metaKey, shiftKey }) => {
+  const handleClick = React.useCallback((id, { metaKey, shiftKey }) => {
     setFocus(id)
 
     const selection = metaKey
@@ -284,23 +254,18 @@ export const Spotlight = () => {
 
 
     updateSelection(selection)
-  }
-
-  const handlePropertyChange = id => event => {
-    dispatch({ type: 'property-changed', id, ...event })
-  }
+  }, [focus, selection])
 
   const card = props => <Card
     key={props.id}
     ref={cardrefs[props.id]}
     focus={focus === props.id}
     selected={selection.includes(props.id)}
-    onClick={handleClick(props.id)}
-    onPropertyChange={handlePropertyChange(props.id)}
+    onClick={event => handleClick(props.id, event)}
     {...props}
   />
 
-  return (
+  const component = (
     <div
       ref={ref}
       className="spotlight panel"
@@ -311,4 +276,8 @@ export const Spotlight = () => {
       <CardList>{entries.map(card)}</CardList>
     </div>
   )
+
+  return component
 }
+
+export default React.memo(Spotlight)

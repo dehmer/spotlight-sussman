@@ -35,6 +35,12 @@ const descriptors = [
     path: mdi.mdiPaletteOutline,
     action: () => changeScope('symbol')
   },
+  {
+    key: 'groups',
+    enabled: true,
+    path: mdi.mdiSelectGroup,
+    action: () => changeScope('group')
+  },
   { key: 'basemaps', enabled: false, path: mdi.mdiMap },
   { key: 'meassure', enabled: false, path: mdi.mdiAngleAcute },
   { key: 'bookmarks', enabled: false, path: mdi.mdiBookmarkMultiple },
