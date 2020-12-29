@@ -37,7 +37,9 @@ const Tag = props => {
     >
       { children }
       {
-        closable && <TagIcon
+        closable &&
+        props.capabilities.includes('TAG') &&
+        <TagIcon
           path={mdi.mdiClose}
           closable={closable}
           onClose={props.onClose}

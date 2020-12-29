@@ -35,7 +35,7 @@ options.feature = (() => {
       description,
       url: url(sidc),
       tags: tags(feature, sidc),
-      capabilities: 'RENAME'
+      capabilities: 'RENAME|TAG'
     }
   }
 
@@ -89,7 +89,7 @@ options.layer = (() => {
     id: layer.id,
     title: layer.name,
     tags: tags(layer),
-    capabilities: 'RENAME'
+    capabilities: 'RENAME|TAG'
   })
 
   return id => option(storage.getItem(id))
@@ -116,7 +116,8 @@ options.symbol = (() => {
       description: R.dropLast(1, symbol.hierarchy).join(' • '),
       url: url(replace(replace(symbol.sidc, 1, 'F'), 3, 'P')),
       scope: 'SYMBOL',
-      tags: tags(symbol)
+      tags: tags(symbol),
+      capabilities: 'TAG'
     }
   }
 

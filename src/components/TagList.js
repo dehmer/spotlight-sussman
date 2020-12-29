@@ -32,6 +32,7 @@ const TagList = props => {
         action={action}
         label={label}
         onClose={handleClose(label)}
+        capabilities={props.capabilities}
       >
         <span>{label}</span>
       </Tag>
@@ -63,26 +64,32 @@ const TagList = props => {
     }
   }
 
-  const handleChange = ({ target }) => setInputValue(target.value)
+  const handleChange = ({ target }) => {
+    setInputValue(target.value)
+  }
+
+  const newTag = props.capabilities.includes('TAG')
+    ? inputVisible
+      ? <input
+        className='tag-input'
+        ref={inputRef}
+        autoFocus
+        onBlur={confirmInput}
+        onKeyDown={handleKeyDown}
+        onChange={handleChange}
+      >
+      </input>
+    : <Tag variant='plus' onClick={onClick} color='black'>
+        <TagIcon path={mdi.mdiPlus} size='12px'/>
+        <span>ADD TAG</span>
+      </Tag>
+  : null
+
+
   return (
     <div className='tag-list'>
       { tags.split(' ').map(tag) }
-      {
-        inputVisible
-          ? <input
-              className='tag-input'
-              ref={inputRef}
-              autoFocus
-              onBlur={confirmInput}
-              onKeyDown={handleKeyDown}
-              onChange={handleChange}
-            >
-            </input>
-          : <Tag variant='plus' onClick={onClick} color='black'>
-              <TagIcon path={mdi.mdiPlus} size='12px'/>
-              <span>ADD TAG</span>
-            </Tag>
-      }
+      { newTag }
     </div>
   )
 }
