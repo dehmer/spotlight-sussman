@@ -1,8 +1,14 @@
+import * as R from 'ramda'
 import { hierarchy, url } from './symbols'
-import evented from '../evented'
 import { layerId } from '../storage/ids'
 import { storage } from '../storage'
 
+const identity = sidc => R.cond([
+  [R.equals('F'), R.always(['OWN'])],
+  [R.equals('H'), R.always(['ENY'])],
+  [R.equals('U'), R.always(['UKN'])],
+  [R.T, R.always([])]
+])(sidc[1])
 
 // -> lunr documents interface
 
@@ -13,7 +19,8 @@ export const document = id => {
 
   const tags = ({ hidden, tags }) => [
     hidden ? 'hidden' : 'visible',
-    ...(tags || [])
+    ...(tags || []),
+    ...identity(sidc)
   ]
 
   return {
@@ -30,9 +37,10 @@ export const document = id => {
 
 export const option = (() => {
 
-  const tags = ({ hidden, tags }) => [
+  const tags = ({ hidden, tags }, sidc) => [
     'SCOPE:FEATURE:NONE',
     `SYSTEM:${hidden ? 'HIDDEN' : 'VISIBLE'}:CLICK`,
+    ...(identity(sidc)).map(label => `SYSTEM:${label}:NONE`),
     ...(tags || []).map(label => `USER:${label}:NONE`)
   ].join(' ')
 
@@ -47,7 +55,7 @@ export const option = (() => {
       title: t || 'N/A',
       description,
       url: url(sidc),
-      tags: tags(feature),
+      tags: tags(feature, sidc),
       capabilities: 'RENAME'
     }
   }

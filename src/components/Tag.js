@@ -9,7 +9,7 @@ const Tag = props => {
   const { variant, children } = props
   const closable = variant === 'USER'
   const variantClassName = variant ? `tag-${variant.toLowerCase()}` : ''
-  const className = props.action
+  const className = props.action === 'CLICK'
     ? `tag-active ${variantClassName}`
     : `tag ${variantClassName}`
 
@@ -41,6 +41,7 @@ const Tag = props => {
           path={mdi.mdiClose}
           closable={closable}
           onClose={props.onClose}
+          color='grey'
         />
       }
 

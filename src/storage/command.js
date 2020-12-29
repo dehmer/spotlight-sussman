@@ -151,7 +151,6 @@ const handlers = {
 
 evented.on(event => {
   if (!event.type.startsWith('command.storage')) return
-  console.log('[storage/command]', event)
   const handler = handlers[event.type.split('.')[2]]
   if (!handler) return
   handler(event)
