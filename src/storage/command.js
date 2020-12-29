@@ -96,6 +96,17 @@ const addlayers = ({ layers }) => {
 }
 
 /**
+ * Item-related helpers.
+ */
+const Item = {
+  show: storage.updateItem(item => delete item.hidden),
+  hide: storage.updateItem(item => item.hidden = true),
+  addtag: tag => storage.updateItem(item => item.tags = R.uniq([...(item.tags || []), tag])),
+  removetag: tag => storage.updateItem(item => item.tags = (item.tags || []).filter(x => x !== tag))
+}
+
+
+/**
  *
  */
 const visible = ({ ids }) => storage.getItems(ids)
@@ -111,9 +122,8 @@ const visible = ({ ids }) => storage.getItems(ids)
     return
   }
 
-  const hide = storage.updateItem(item => item.hidden = true)
   const features = containedFeatures(item)
-  ;[item, ...features].forEach(hide)
+  ;[item, ...features].forEach(Item.hide)
   const visible = isLayerId(item.id)
     ? feature => layerId(feature) === item.id
     : feature => feature.getId() === item.id
@@ -136,9 +146,8 @@ const hidden = ({ ids }) => storage.getItems(ids)
     return
   }
 
-  const show = storage.updateItem(item => delete item.hidden)
   const features = containedFeatures(item)
-  ;[item, ...features].forEach(show)
+  ;[item, ...features].forEach(Item.show)
   readFeatures(isLayerId(item.id) ? features : [item])
 })
 
@@ -147,14 +156,14 @@ const hidden = ({ ids }) => storage.getItems(ids)
  */
 const addtag = ({ ids, tag }) => storage.getItems(ids)
   .filter(R.identity)
-  .forEach(storage.updateItem(item => item.tags = R.uniq([...(item.tags || []), tag])))
+  .forEach(Item.addtag(tag))
 
 /**
  *
  */
 const removetag = ({ ids, tag }) => storage.getItems(ids)
   .filter(R.identity)
-  .forEach(storage.updateItem(item => item.tags = item.tags.filter(x => x !== tag)))
+  .forEach(Item.removetag(tag))
 
 /**
  *
