@@ -5,7 +5,6 @@ import Card from '../components/Card'
 import TagList from '../components/TagList'
 import evented from '../evented'
 import selectionService from '../selection'
-import { searchProvider } from '../search/lunr'
 
 const tag = s => s.length < 2 ? '' : `+tags:${s.substring(1)}*`
 const scope = s => (s.length < 2) ? '' : `+scope:${s.substring(1)}`
@@ -55,11 +54,11 @@ const Search = () => {
       event.stopPropagation()
       evented.emit({ type: 'command.storage.newgroup' })
     }
-    else if (event.code === 'Digit1' && event.metaKey) evented.emit({ type: 'event.tag.click.all' })
-    else if (event.code === 'Digit2' && event.metaKey) evented.emit({ type: 'event.tag.click.layer' })
-    else if (event.code === 'Digit3' && event.metaKey) evented.emit({ type: 'event.tag.click.feature' })
-    else if (event.code === 'Digit4' && event.metaKey) evented.emit({ type: 'event.tag.click.symbol' })
-    else if (event.code === 'Digit5' && event.metaKey) evented.emit({ type: 'event.tag.click.group' })
+    else if (event.code === 'Digit1' && event.metaKey) evented.emit({ type: 'command.search.scope.all' })
+    else if (event.code === 'Digit2' && event.metaKey) evented.emit({ type: 'command.search.scope.layer' })
+    else if (event.code === 'Digit3' && event.metaKey) evented.emit({ type: 'command.search.scope.feature' })
+    else if (event.code === 'Digit4' && event.metaKey) evented.emit({ type: 'command.search.scope.symbol' })
+    else if (event.code === 'Digit5' && event.metaKey) evented.emit({ type: 'command.search.scope.group' })
   }
 
   return (
@@ -105,7 +104,8 @@ const Spotlight = () => {
   const [focus, setFocus] = React.useState()
   const [selection, setSelection] = React.useState([])
 
-  const [scopes, updateScopes] = React.useReducer((state, { type }) => {
+  const [scopes, updateScopes] = React.useReducer((state, event) => {
+    const { type } = event
     const activate = (state, label) => {
       const clone = state.map(tag => {
         const [_, text, action] = tag.split(':')
@@ -118,26 +118,16 @@ const Spotlight = () => {
       return clone
     }
 
-    if (type.startsWith('event.tag.click')) {
-      const scope = type.split('.')[3]
-      if (!['all', 'layer', 'feature', 'bookmark', 'symbol', 'group'].includes(scope)) return state
-
-      setTimeout(() => {
-        evented.emit({
-          type: 'search-provider.changed',
-          provider: searchProvider(scope !== 'search' ? `+scope:${scope}` : '')
-        })
-      })
-
-      return activate(state, scope)
+    if (type === 'search-provider.changed') {
+      return activate(state, event.scope)
     } else return state
   }, [
-    'SCOPE:ALL:CLICK',
-    'SYSTEM:LAYER:CLICK',
-    'SYSTEM:FEATURE:CLICK',
-    // 'SYSTEM:BOOKMARK:CLICK',
-    'SYSTEM:SYMBOL:CLICK',
-    'SYSTEM:GROUP:CLICK'
+    'SCOPE:ALL:command.search.scope',
+    'SYSTEM:LAYER:command.search.scope',
+    'SYSTEM:FEATURE:command.search.scope',
+    // 'SYSTEM:BOOKMARK:command.search.scope',
+    'SYSTEM:SYMBOL:command.search.scope',
+    'SYSTEM:GROUP:command.search.scope'
   ])
 
   const updateSelection = items => {

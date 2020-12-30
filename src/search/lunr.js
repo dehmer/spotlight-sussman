@@ -4,7 +4,7 @@ import evented from '../evented'
 import { storage } from '../storage'
 import { options } from '../model/options'
 import { documents } from '../model/documents'
-import { compare } from './common'
+import { compare } from './compare'
 
 /**
  * Adapt domain models to indexable documents and
@@ -44,7 +44,7 @@ var index
   })
 })()
 
-export const search = R.tryCatch(
+export const searchIndex = R.tryCatch(
   terms => terms.trim() ? index.search(terms.trim()) : [],
   R.always([])
 )
@@ -67,11 +67,11 @@ const sort = entries => entries.sort((a, b) => {
 const refs = R.map(({ ref }) => option(ref))
 
 // Default search provider:
-export const searchIndex = terms => {
+export const search = terms => {
   evented.emit({ type: 'search.current', terms })
-  return R.compose(limit, sort, refs, search)(terms)
+  return R.compose(limit, sort, refs, searchIndex)(terms)
 }
 
-export const searchProvider = prefix => prefix
-  ? filter => searchIndex(`${prefix} ${filter}`)
-  : searchIndex
+export const scopedSearch = scope => scope
+  ? filter => search(`+scope:${scope} ${filter}`)
+  : search

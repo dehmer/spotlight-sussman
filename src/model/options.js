@@ -1,7 +1,7 @@
 import * as R from 'ramda'
 import { storage } from '../storage'
 import { hierarchy, url, dimensions, scopes } from './symbols'
-import { search } from '../search/lunr'
+import { searchIndex } from '../search/lunr'
 import { layerId } from '../storage/ids'
 import { identity } from './sidc'
 
@@ -16,7 +16,7 @@ options.feature = (() => {
 
   const tags = ({ hidden, tags }, sidc) => [
     'SCOPE:FEATURE:NONE',
-    `SYSTEM:${hidden ? 'HIDDEN' : 'VISIBLE'}:CLICK`,
+    `SYSTEM:${hidden ? 'HIDDEN' : 'VISIBLE'}:command.storage`,
     ...dimensions(sidc).map(label => `SYSTEM:${label}:NONE`),
     ...scopes(sidc).map(label => `SYSTEM:${label}:NONE`),
     ...(identity(sidc)).map(label => `SYSTEM:${label}:NONE`),
@@ -50,12 +50,12 @@ options.group = (() => {
   const option = group => {
 
     // TODO: Dynamically determine terms
-    const items = search(group.terms)
+    const items = searchIndex(group.terms)
       .filter(({ ref }) => !ref.startsWith('group:'))
       .map(({ ref }) => options[ref.split(':')[0]](ref))
 
     const tags = R.uniq(items.flatMap(item => item.tags.split(' ')))
-      .filter(tag => tag.match(/SYSTEM:.*:CLICK/))
+      .filter(tag => tag.match(/SYSTEM:.*:command\.storage/))
 
     return {
       id: group.id,
@@ -81,7 +81,7 @@ options.layer = (() => {
 
   const tags = ({ hidden, tags }) => [
     'SCOPE:LAYER:NONE',
-    `SYSTEM:${hidden ? 'HIDDEN' : 'VISIBLE'}:CLICK`,
+    `SYSTEM:${hidden ? 'HIDDEN' : 'VISIBLE'}:command.storage`,
     ...(tags || []).map(label => `USER:${label}:NONE`)
   ].join(' ')
 

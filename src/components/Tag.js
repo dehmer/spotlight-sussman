@@ -9,7 +9,7 @@ const Tag = props => {
   const { variant, children } = props
   const closable = variant === 'USER'
   const variantClassName = variant ? `tag-${variant.toLowerCase()}` : ''
-  const className = props.action === 'CLICK'
+  const className = props.action !== 'NONE'
     ? `tag-active ${variantClassName}`
     : `tag ${variantClassName}`
 
@@ -22,9 +22,9 @@ const Tag = props => {
   const handleClick = event => {
     event.stopPropagation()
     if (props.onClick) props.onClick()
-    else if (props.action === 'CLICK') {
+    else if (props.action !== 'NONE') {
       const ids = R.uniq([props.id, ...selection.selected()])
-      const type = `event.tag.click.${props.label.toLowerCase()}`
+      const type = `${props.action}.${props.label.toLowerCase()}`
       evented.emit({ type, ids })
     }
   }

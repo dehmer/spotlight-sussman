@@ -8,27 +8,27 @@ import './storage/command'
 import evented from './evented'
 
 Mousetrap.bind('command+1', () => {
-  evented.emit({ type: 'event.tag.click.all' })
+  evented.emit({ type: 'command.search.scope.all' })
   return false
 })
 
 Mousetrap.bind('command+2', () => {
-  evented.emit({ type: 'event.tag.click.layer' })
+  evented.emit({ type: 'command.search.scope.layer' })
   return false
 })
 
 Mousetrap.bind('command+3', () => {
-  evented.emit({ type: 'event.tag.click.feature' })
+  evented.emit({ type: 'command.search.scope.feature' })
   return false
 })
 
 Mousetrap.bind('command+4', () => {
-  evented.emit({ type: 'event.tag.click.symbol' })
+  evented.emit({ type: 'command.search.scope.symbol' })
   return false
 })
 
 Mousetrap.bind('command+5', () => {
-  evented.emit({ type: 'event.tag.click.group' })
+  evented.emit({ type: 'command.search.scope.group' })
   return false
 })
 

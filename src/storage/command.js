@@ -6,7 +6,7 @@ import GeoJSON from 'ol/format/GeoJSON'
 import { storage } from '.'
 import { layerId, featureId } from './ids'
 import evented from '../evented'
-import { search } from '../search/lunr'
+import { searchIndex } from '../search/lunr'
 
 const isId = prefix => id => id.startsWith(prefix)
 const isLayerId = isId('layer:')
@@ -114,7 +114,7 @@ const visible = ({ ids }) => storage.getItems(ids)
   .forEach(item => {
 
   if (isGroupId(item.id)) {
-    const ids = search(item.terms)
+    const ids = searchIndex(item.terms)
       .filter(({ ref }) => !ref.startsWith('group:'))
       .filter(({ ref }) => !ref.startsWith('symbol:'))
       .map(({ ref }) => ref)
@@ -138,7 +138,7 @@ const hidden = ({ ids }) => storage.getItems(ids)
   .forEach(item => {
 
   if (isGroupId(item.id)) {
-    const ids = search(item.terms)
+    const ids = searchIndex(item.terms)
       .filter(({ ref }) => !ref.startsWith('group:'))
       .filter(({ ref }) => !ref.startsWith('symbol:'))
       .map(({ ref }) => ref)
@@ -232,16 +232,6 @@ evented.on(event => {
   handler(event)
   evented.emit({ type: 'model.changed' })
 })
-
-evented.on(event => {
-  if (!event.type) return
-  if (!event.type.startsWith('event.tag.click')) return
-  const handler = handlers[event.type.split('.')[3]]
-  if (!handler) return
-  handler(event)
-  evented.emit({ type: 'model.changed' })
-})
-
 
 evented.on(event => {
   if (event.type !== 'search.current') return
