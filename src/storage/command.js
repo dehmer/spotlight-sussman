@@ -12,6 +12,7 @@ const isId = prefix => id => id.startsWith(prefix)
 const isLayerId = isId('layer:')
 const isFeatureId = isId('feature:')
 const isGroupId = isId('group:')
+const isSymbolId = isId('symbol:')
 const item = id => storage.getItem(id)
 const features = keys => p => keys.filter(isFeatureId).map(item).filter(p)
 
@@ -105,18 +106,19 @@ const Item = {
   removetag: tag => storage.updateItem(item => item.tags = (item.tags || []).filter(x => x !== tag))
 }
 
+const cantag = id => !isGroupId(id)
+const onmap = id => id && (isFeatureId(id) || isLayerId(id)) || isGroupId(id)
 
 /**
  *
  */
-const visible = ({ ids }) => storage.getItems(ids)
-  .filter(R.identity)
+const visible = ({ ids }) => storage.getItems(ids.filter(onmap))
   .forEach(item => {
 
   if (isGroupId(item.id)) {
     const ids = searchIndex(item.terms)
-      .filter(({ ref }) => !ref.startsWith('group:'))
-      .filter(({ ref }) => !ref.startsWith('symbol:'))
+      .filter(({ ref }) => !isGroupId(ref))
+      .filter(({ ref }) => !isSymbolId(ref))
       .map(({ ref }) => ref)
     evented.emit({ type: 'command.storage.visible', ids })
     return
@@ -133,14 +135,13 @@ const visible = ({ ids }) => storage.getItems(ids)
 /**
  *
  */
-const hidden = ({ ids }) => storage.getItems(ids)
-  .filter(R.identity)
+const hidden = ({ ids }) => storage.getItems(ids.filter(onmap))
   .forEach(item => {
 
   if (isGroupId(item.id)) {
     const ids = searchIndex(item.terms)
-      .filter(({ ref }) => !ref.startsWith('group:'))
-      .filter(({ ref }) => !ref.startsWith('symbol:'))
+      .filter(({ ref }) => !isGroupId(ref))
+      .filter(({ ref }) => !isSymbolId(ref))
       .map(({ ref }) => ref)
     evented.emit({ type: 'command.storage.hidden', ids })
     return
@@ -150,8 +151,6 @@ const hidden = ({ ids }) => storage.getItems(ids)
   ;[item, ...features].forEach(Item.show)
   readFeatures(isLayerId(item.id) ? features : [item])
 })
-
-const cantag = id => !isGroupId(id)
 
 /**
  *
