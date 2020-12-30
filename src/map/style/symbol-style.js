@@ -29,12 +29,12 @@ const modifiers = properties => Object.entries(properties)
   .reduce((acc, [key, value]) => R.tap(acc => (acc[MODIFIERS[key]] = value), acc), {})
 
 
-const icon = symbol => {
+const icon = (symbol, resolution) => {
   const anchor = [symbol.getAnchor().x, symbol.getAnchor().y]
   const imgSize = size => [Math.floor(size.width), Math.floor(size.height)]
   return new Icon({
     anchor,
-    scale: 0.4,
+    scale: 0.2,
     anchorXUnits: 'pixels',
     anchorYUnits: 'pixels',
     imgSize: imgSize(symbol.getSize()),
@@ -60,7 +60,7 @@ export const symbolStyle = mode => (feature, resolution) => {
 
   return symbol.isValid()
     ? [
-      new Style({ image: icon(symbol) }),
+      new Style({ image: icon(symbol, resolution) }),
       mode === 'multi' ? factory.handles(feature.getGeometry()) : []
     ].flat()
     : defaultStyle(feature)

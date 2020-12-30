@@ -68,7 +68,7 @@ const TagList = props => {
     setInputValue(target.value)
   }
 
-  const newTag = props.capabilities.includes('TAG')
+  const newTag = (props.capabilities || '').includes('TAG')
     ? inputVisible
       ? <input
         className='tag-input'
@@ -88,7 +88,7 @@ const TagList = props => {
 
   return (
     <div className='tag-list'>
-      { tags.split(' ').map(tag) }
+      { (tags || '').split(' ').map(tag) }
       { newTag }
     </div>
   )

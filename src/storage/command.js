@@ -151,17 +151,20 @@ const hidden = ({ ids }) => storage.getItems(ids)
   readFeatures(isLayerId(item.id) ? features : [item])
 })
 
-/**
- *
- */
-const addtag = ({ ids, tag }) => storage.getItems(ids)
-  .filter(R.identity)
-  .forEach(Item.addtag(tag))
+const cantag = id => !isGroupId(id)
 
 /**
  *
  */
-const removetag = ({ ids, tag }) => storage.getItems(ids)
+const addtag = ({ ids, tag }) => storage.getItems(ids.filter(cantag))
+  .filter(R.identity)
+  .forEach(Item.addtag(tag))
+
+
+/**
+ *
+ */
+const removetag = ({ ids, tag }) => storage.getItems(ids.filter(cantag))
   .filter(R.identity)
   .forEach(Item.removetag(tag))
 
@@ -176,7 +179,7 @@ const rename = ({ id, name }) => {
   storage.updateKey(rename)(id)
 }
 
-const group = () => {
+const newgroup = () => {
   const search = storage.getItem('search:')
   if (!search) return
   const { terms } = search
@@ -215,15 +218,25 @@ const handlers = {
   addtag,
   removetag,
   rename,
-  group,
+  newgroup,
   remove
 }
 
 // <- command handlers
 
 evented.on(event => {
+  if (!event.type) return
   if (!event.type.startsWith('command.storage')) return
   const handler = handlers[event.type.split('.')[2]]
+  if (!handler) return
+  handler(event)
+  evented.emit({ type: 'model.changed' })
+})
+
+evented.on(event => {
+  if (!event.type) return
+  if (!event.type.startsWith('event.tag.click')) return
+  const handler = handlers[event.type.split('.')[3]]
   if (!handler) return
   handler(event)
   evented.emit({ type: 'model.changed' })

@@ -1,8 +1,8 @@
 import * as R from 'ramda'
 
-const reset = false
+const clear = false
 const store = window.localStorage
-if (reset) window.localStorage.clear()
+if (clear) window.localStorage.clear()
 
 const setItem = item => store.setItem(item.id, JSON.stringify(item))
 const getItem = id => JSON.parse(store.getItem(id))

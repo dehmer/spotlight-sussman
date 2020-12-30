@@ -24,7 +24,7 @@ const Tag = props => {
     if (props.onClick) props.onClick()
     else if (props.action === 'CLICK') {
       const ids = R.uniq([props.id, ...selection.selected()])
-      const type = `command.storage.${props.label.toLowerCase()}`
+      const type = `event.tag.click.${props.label.toLowerCase()}`
       evented.emit({ type, ids })
     }
   }

@@ -7,11 +7,33 @@ import './selection'
 import './storage/command'
 import evented from './evented'
 
-Mousetrap.bind('command+f', event => {
-  console.log('[Mousetrap]', event)
+Mousetrap.bind('command+1', () => {
+  evented.emit({ type: 'event.tag.click.all' })
+  return false
+})
 
-  // Returning false here works the same way as jQuery's return false.
-  // It prevents the default action and stops the event from bubbling up.
+Mousetrap.bind('command+2', () => {
+  evented.emit({ type: 'event.tag.click.layer' })
+  return false
+})
+
+Mousetrap.bind('command+3', () => {
+  evented.emit({ type: 'event.tag.click.feature' })
+  return false
+})
+
+Mousetrap.bind('command+4', () => {
+  evented.emit({ type: 'event.tag.click.symbol' })
+  return false
+})
+
+Mousetrap.bind('command+5', () => {
+  evented.emit({ type: 'event.tag.click.group' })
+  return false
+})
+
+Mousetrap.bind('ctrl+n b', () => {
+  console.log('[Mousetrap] new bookmark')
   return false
 })
 

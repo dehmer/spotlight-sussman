@@ -1,6 +1,5 @@
 TODO:
 - avatar cache: use js-cache (https://www.npmjs.com/package/js-cache)
-- CMD/CTRL-F should focus search input
 - issue: user-select: none ignored by WebKit
 - tag: open action
 - tag: back action
@@ -37,3 +36,4 @@ DONE:
 - sort groups to top
 - remove cyclic scroll
 - preferences: current center/view
+- CMD-1 should focus search input

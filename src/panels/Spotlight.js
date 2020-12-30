@@ -2,8 +2,10 @@ import React from 'react'
 import * as R from 'ramda'
 import { CardList } from '../components/CardList'
 import Card from '../components/Card'
+import TagList from '../components/TagList'
 import evented from '../evented'
 import selectionService from '../selection'
+import { searchProvider } from '../search/lunr'
 
 const tag = s => s.length < 2 ? '' : `+tags:${s.substring(1)}*`
 const scope = s => (s.length < 2) ? '' : `+scope:${s.substring(1)}`
@@ -51,8 +53,13 @@ const Search = () => {
     }
     else if (event.code === 'Enter' && event.metaKey) {
       event.stopPropagation()
-      evented.emit({ type: 'command.storage.group' })
+      evented.emit({ type: 'command.storage.newgroup' })
     }
+    else if (event.code === 'Digit1' && event.metaKey) evented.emit({ type: 'event.tag.click.all' })
+    else if (event.code === 'Digit2' && event.metaKey) evented.emit({ type: 'event.tag.click.layer' })
+    else if (event.code === 'Digit3' && event.metaKey) evented.emit({ type: 'event.tag.click.feature' })
+    else if (event.code === 'Digit4' && event.metaKey) evented.emit({ type: 'event.tag.click.symbol' })
+    else if (event.code === 'Digit5' && event.metaKey) evented.emit({ type: 'event.tag.click.group' })
   }
 
   return (
@@ -98,6 +105,41 @@ const Spotlight = () => {
   const [focus, setFocus] = React.useState()
   const [selection, setSelection] = React.useState([])
 
+  const [scopes, updateScopes] = React.useReducer((state, { type }) => {
+    const activate = (state, label) => {
+      const clone = state.map(tag => {
+        const [_, text, action] = tag.split(':')
+        return [
+          text === (label || '').toUpperCase() ? 'SCOPE' : 'SYSTEM',
+          text,
+          action
+        ].join(':')
+      })
+      return clone
+    }
+
+    if (type.startsWith('event.tag.click')) {
+      const scope = type.split('.')[3]
+      if (!['all', 'layer', 'feature', 'bookmark', 'symbol', 'group'].includes(scope)) return state
+
+      setTimeout(() => {
+        evented.emit({
+          type: 'search-provider.changed',
+          provider: searchProvider(scope !== 'search' ? `+scope:${scope}` : '')
+        })
+      })
+
+      return activate(state, scope)
+    } else return state
+  }, [
+    'SCOPE:ALL:CLICK',
+    'SYSTEM:LAYER:CLICK',
+    'SYSTEM:FEATURE:CLICK',
+    // 'SYSTEM:BOOKMARK:CLICK',
+    'SYSTEM:SYMBOL:CLICK',
+    'SYSTEM:GROUP:CLICK'
+  ])
+
   const updateSelection = items => {
     const uniqueItems = R.uniq(items.filter(R.identity)) // filter nulls; make unique
     const additions = uniqueItems.filter(x => !selection.includes(x))
@@ -128,7 +170,9 @@ const Spotlight = () => {
   }
 
   React.useEffect(() => {
-    evented.on(({ type, result }) => {
+    evented.on((event) => {
+      updateScopes(event)
+      const { type, result } = event
       if (type === 'search-result.changed') dispatch({ type: 'snapshot', snapshot: result })
       if (type === 'search-provider.changed') {
         setSelection([])
@@ -260,6 +304,15 @@ const Spotlight = () => {
     {...props}
   />
 
+  const tagListContainerStyle = {
+    padding: '12px',
+    paddingBottom: '4px',
+    borderBottomStyle: 'solid',
+    borderWidth: '1px',
+    borderColor: 'grey',
+    fontSize: '90%'
+  }
+
   const component = (
     <div
       ref={ref}
@@ -267,6 +320,11 @@ const Spotlight = () => {
       tabIndex='0'
       onKeyDown={handleKeyDown}
     >
+      <div style={tagListContainerStyle}>
+        <TagList
+          tags={scopes.join(' ')}
+        />
+      </div>
       <Search/>
       <CardList>{entries.map(card)}</CardList>
     </div>
