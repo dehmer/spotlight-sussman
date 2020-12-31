@@ -32,6 +32,11 @@ Mousetrap.bind('command+5', () => {
   return false
 })
 
+Mousetrap.bind('command+6', () => {
+  evented.emit({ type: 'command.search.scope.place' })
+  return false
+})
+
 Mousetrap.bind('ctrl+n b', () => {
   console.log('[Mousetrap] new bookmark')
   return false

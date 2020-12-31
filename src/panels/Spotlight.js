@@ -6,25 +6,6 @@ import TagList from '../components/TagList'
 import evented from '../evented'
 import selectionService from '../selection'
 
-const tag = s => s.length < 2 ? '' : `+tags:${s.substring(1)}*`
-const scope = s => (s.length < 2) ? '' : `+scope:${s.substring(1)}`
-
-const term = R.cond([
-  [R.startsWith('#'), tag],
-  [R.startsWith('@'), scope],
-  [R.identity, s => `+text:${s}*`],
-  [R.T, R.always('')]
-])
-
-const terms = value => {
-  if (value.startsWith(':')) return value.substring(1)
-  else return (value || '')
-    .split(' ')
-    .filter(R.identity)
-    .map(term)
-    .join(' ')
-}
-
 const Search = () => {
   const [value, setValue] = React.useState('')
   const ref = React.useRef()
@@ -39,7 +20,11 @@ const Search = () => {
 
   const handleChange = ({ target }) => {
     setValue(target.value)
-    evented.emit({ type: 'search-filter.changed', value: terms(target.value) })
+    evented.emit({
+      type: 'search-filter.changed',
+      value: target.value,
+      mode: 'continuous'
+    })
   }
 
   const handleKeyDown = event => {
@@ -48,17 +33,27 @@ const Search = () => {
     else if (event.code === 'ArrowUp') return event.preventDefault()
     else if (event.code === 'Escape') {
       setValue('')
-      evented.emit({ type: 'search-filter.changed', value: '' })
+      evented.emit({
+        type: 'search-filter.changed',
+        value: '',
+        mode: 'continuous'
+      })
     }
-    else if (event.code === 'Enter' && event.metaKey) {
+    else if (event.code === 'Enter') {
       event.stopPropagation()
-      evented.emit({ type: 'command.storage.newgroup' })
+      if (event.metaKey) evented.emit({ type: 'command.storage.newgroup' })
+      else evented.emit({
+        type: 'search-filter.changed',
+        value,
+        mode: 'enter'
+      })
     }
     else if (event.code === 'Digit1' && event.metaKey) evented.emit({ type: 'command.search.scope.all' })
     else if (event.code === 'Digit2' && event.metaKey) evented.emit({ type: 'command.search.scope.layer' })
     else if (event.code === 'Digit3' && event.metaKey) evented.emit({ type: 'command.search.scope.feature' })
     else if (event.code === 'Digit4' && event.metaKey) evented.emit({ type: 'command.search.scope.symbol' })
     else if (event.code === 'Digit5' && event.metaKey) evented.emit({ type: 'command.search.scope.group' })
+    else if (event.code === 'Digit5' && event.metaKey) evented.emit({ type: 'command.search.scope.place' })
   }
 
   return (
@@ -125,9 +120,9 @@ const Spotlight = () => {
     'SCOPE:ALL:command.search.scope',
     'SYSTEM:LAYER:command.search.scope',
     'SYSTEM:FEATURE:command.search.scope',
-    // 'SYSTEM:BOOKMARK:command.search.scope',
     'SYSTEM:SYMBOL:command.search.scope',
-    'SYSTEM:GROUP:command.search.scope'
+    'SYSTEM:GROUP:command.search.scope',
+    'SYSTEM:PLACE:command.search.scope'
   ])
 
   const updateSelection = items => {
