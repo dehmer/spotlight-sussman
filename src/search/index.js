@@ -28,27 +28,24 @@ const scopedSearch = scope => {
   }
 
   return scope
-    ? filter => search(`+scope:${scope} ${filter}`)
-    : search
+    ? (filter, callback) => callback(search(`+scope:${scope} ${filter}`))
+    : (filter, callback) => callback(search(filter))
 }
 
-var filter = '' /* last search string */
+var currentFilter = '' /* current search string */
 var provider = scopedSearch('')
 
 evented.on(event => {
+  const search = filter => {
+    currentFilter = filter
+    provider(filter, result => evented.emit({ type: 'search-result.changed', result }))
+  }
 
-  const emit = result => evented.emit({ type: 'search-result.changed', result })
-  const { type } = event
-
-  if (type.startsWith('command.search.scope')) {
-    filter = ''
+  if (event.type.startsWith('command.search.scope')) {
     const scope = event.type.split('.')[3]
     provider = scopedSearch(scope != 'all' ? scope : '')
     evented.emit({ type: 'search-provider.changed', scope })
-    emit(provider(filter))
-  } else if (type === 'search-index.refreshed') emit(provider(filter))
-  else if (type === 'search-filter.changed') {
-    filter = event.value
-    emit(provider(filter))
-  }
+    search('')
+  } else if (event.type === 'search-index.refreshed') search(currentFilter)
+  else if (event.type === 'search-filter.changed') search(event.value)
 })
