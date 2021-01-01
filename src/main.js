@@ -5,6 +5,7 @@ import { App } from './App'
 import { loadLayerFiles } from './model/io'
 import './selection'
 import './storage/command'
+import './storage/action'
 import evented from './evented'
 
 Mousetrap.bind('command+1', () => {

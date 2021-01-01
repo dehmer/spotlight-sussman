@@ -23,7 +23,7 @@ const TagList = props => {
   }
 
   const tag = spec => {
-    const [variant, label, action] = spec.split(':')
+    const [variant, label, action, path] = spec.split(':')
     return (
       <Tag
         key={`${variant}:${label}`}
@@ -34,7 +34,11 @@ const TagList = props => {
         onClose={handleClose(label)}
         capabilities={props.capabilities}
       >
-        <span>{label}</span>
+        {
+          variant !== 'IMAGE'
+            ? <span>{label}</span>
+            : <TagIcon path={mdi[path]} color='black' size='12px'/>
+        }
       </Tag>
     )
   }

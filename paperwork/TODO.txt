@@ -1,13 +1,12 @@
 TODO:
 - avatar cache: use js-cache (https://www.npmjs.com/package/js-cache)
 - issue: user-select: none ignored by WebKit
-- tag: open action
-- tag: back action
 - add bookmark
 - focus action
 - 'id' function (highlight in map)
 - default layer
 - group:0 (+save)
+- sync focus/selection between list and map
 
 DONE:
 - toolbar / scopebar
@@ -37,3 +36,5 @@ DONE:
 - remove cyclic scroll
 - preferences: current center/view
 - CMD-1 should focus search input
+- tag: open action
+- tag: back action

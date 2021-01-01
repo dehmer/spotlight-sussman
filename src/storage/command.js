@@ -5,16 +5,10 @@ import VectorSource from 'ol/source/Vector'
 import GeoJSON from 'ol/format/GeoJSON'
 import { storage } from '.'
 import { layerId, featureId } from './ids'
+import { isLayer, isFeature, isGroup, isSymbol } from './ids'
 import evented from '../evented'
 import { searchIndex } from '../search/lunr'
-
-const isId = prefix => id => id.startsWith(prefix)
-const isLayerId = isId('layer:')
-const isFeatureId = isId('feature:')
-const isGroupId = isId('group:')
-const isSymbolId = isId('symbol:')
-const item = id => storage.getItem(id)
-const features = keys => p => keys.filter(isFeatureId).map(item).filter(p)
+import { features, containedFeatures } from './helpers'
 
 // -> OpenLayers interface (ol/source/Vector)
 
@@ -50,12 +44,6 @@ const readFeatures = features => features.forEach(feature => {
 
 // -> command handlers
 
-const isContained = id => feature => layerId(feature) === id
-const containedFeatures = parent => isLayerId(parent.id)
-  ? features(storage.keys())(isContained(parent.id))
-  : []
-
-
 /**
  *
  */
@@ -63,8 +51,8 @@ const addlayers = ({ layers }) => {
 
   // Overwrite existing layers, i.e. delete before re-adding.
   const names = layers.map(R.prop('name'))
-  const [layerIds, otherIds] = R.partition(isLayerId, storage.keys())
-  const featureIds = otherIds.filter(isFeatureId)
+  const [layerIds, otherIds] = R.partition(isLayer, storage.keys())
+  const featureIds = otherIds.filter(isFeature)
 
   const removals = layerIds
     .map(item)
@@ -106,27 +94,29 @@ const Item = {
   removetag: tag => storage.updateItem(item => item.tags = (item.tags || []).filter(x => x !== tag))
 }
 
-const cantag = id => !isGroupId(id)
-const onmap = id => id && (isFeatureId(id) || isLayerId(id)) || isGroupId(id)
+const cantag = id => !isGroup(id)
+const onmap = id => id && (isFeature(id) || isLayer(id)) || isGroup(id)
+
+const handlers = {}
 
 /**
  *
  */
-const visible = ({ ids }) => storage.getItems(ids.filter(onmap))
+handlers.visible = ({ ids }) => storage.getItems(ids.filter(onmap))
   .forEach(item => {
 
-  if (isGroupId(item.id)) {
+  if (isGroup(item.id)) {
     const ids = searchIndex(item.terms)
-      .filter(({ ref }) => !isGroupId(ref))
-      .filter(({ ref }) => !isSymbolId(ref))
+      .filter(({ ref }) => !isGroup(ref))
+      .filter(({ ref }) => !isSymbol(ref))
       .map(({ ref }) => ref)
     evented.emit({ type: 'command.storage.visible', ids })
     return
   }
 
-  const features = containedFeatures(item)
+  const features = containedFeatures(item.id)
   ;[item, ...features].forEach(Item.hide)
-  const visible = isLayerId(item.id)
+  const visible = isLayer(item.id)
     ? feature => layerId(feature) === item.id
     : feature => feature.getId() === item.id
   filterFeatures(visible).forEach(removeFeature)
@@ -135,27 +125,27 @@ const visible = ({ ids }) => storage.getItems(ids.filter(onmap))
 /**
  *
  */
-const hidden = ({ ids }) => storage.getItems(ids.filter(onmap))
+handlers.hidden = ({ ids }) => storage.getItems(ids.filter(onmap))
   .forEach(item => {
 
-  if (isGroupId(item.id)) {
+  if (isGroup(item.id)) {
     const ids = searchIndex(item.terms)
-      .filter(({ ref }) => !isGroupId(ref))
-      .filter(({ ref }) => !isSymbolId(ref))
+      .filter(({ ref }) => !isGroup(ref))
+      .filter(({ ref }) => !isSymbol(ref))
       .map(({ ref }) => ref)
     evented.emit({ type: 'command.storage.hidden', ids })
     return
   }
 
-  const features = containedFeatures(item)
+  const features = containedFeatures(item.id)
   ;[item, ...features].forEach(Item.show)
-  readFeatures(isLayerId(item.id) ? features : [item])
+  readFeatures(isLayer(item.id) ? features : [item])
 })
 
 /**
  *
  */
-const addtag = ({ ids, tag }) => storage.getItems(ids.filter(cantag))
+handlers.addtag = ({ ids, tag }) => storage.getItems(ids.filter(cantag))
   .filter(R.identity)
   .forEach(Item.addtag(tag))
 
@@ -163,22 +153,22 @@ const addtag = ({ ids, tag }) => storage.getItems(ids.filter(cantag))
 /**
  *
  */
-const removetag = ({ ids, tag }) => storage.getItems(ids.filter(cantag))
+handlers.removetag = ({ ids, tag }) => storage.getItems(ids.filter(cantag))
   .filter(R.identity)
   .forEach(Item.removetag(tag))
 
 /**
  *
  */
-const rename = ({ id, name }) => {
-  const rename = isFeatureId(id)
+handlers.rename = ({ id, name }) => {
+  const rename = isFeature(id)
     ? (feature => feature.properties.t = name.trim())
     : item => item.name = name.trim()
 
   storage.updateKey(rename)(id)
 }
 
-const newgroup = () => {
+handlers.newgroup = () => {
   const search = storage.getItem('search:')
   if (!search) return
   const { terms } = search
@@ -197,29 +187,18 @@ const newgroup = () => {
   storage.setItem({ id, name, terms, ...fields })
 }
 
-const remove = ({ ids }) => storage.getItems(ids).forEach(item => {
+handlers.remove = ({ ids }) => storage.getItems(ids).forEach(item => {
   if (!item) return
 
   storage.removeItem(item.id)
-  const features = containedFeatures(item)
+  const features = containedFeatures(item.id)
   features.forEach(item => storage.removeItem(item.id))
 
-  const visible = isLayerId(item.id)
+  const visible = isLayer(item.id)
     ? feature => layerId(feature) === item.id
     : feature => feature.getId() === item.id
   filterFeatures(visible).forEach(removeFeature)
 })
-
-const handlers = {
-  addlayers,
-  visible,
-  hidden,
-  addtag,
-  removetag,
-  rename,
-  newgroup,
-  remove
-}
 
 // <- command handlers
 

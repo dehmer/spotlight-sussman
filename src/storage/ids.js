@@ -13,3 +13,9 @@ export const layerId = R.cond([
 
 export const featureId = layerId =>
   `feature:${layerId.split(':')[1]}/${uuid()}`
+
+const isId = prefix => id => id.startsWith(prefix)
+export const isLayer = isId('layer:')
+export const isFeature = isId('feature:')
+export const isGroup = isId('group:')
+export const isSymbol = isId('symbol:')

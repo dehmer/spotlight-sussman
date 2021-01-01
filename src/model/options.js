@@ -16,6 +16,7 @@ options.feature = (() => {
 
   const tags = ({ hidden, tags }, sidc) => [
     'SCOPE:FEATURE:NONE',
+    `IMAGE:BACK:action:mdiArrowUp`,
     `SYSTEM:${hidden ? 'HIDDEN' : 'VISIBLE'}:command.storage`,
     ...dimensions(sidc).map(label => `SYSTEM:${label}:NONE`),
     ...scopes(sidc).map(label => `SYSTEM:${label}:NONE`),
@@ -63,6 +64,7 @@ options.group = (() => {
       tags: [
         'GROUP:GROUP:NONE',
         ...(group.scope || []).map(label => `SCOPE:${label}:NONE`),
+        `IMAGE:OPEN:action:mdiArrowDown`,
         ...tags,
         ...(group.tags || []).map(label => `USER:${label}:NONE`)
       ].join(' '),
@@ -81,6 +83,7 @@ options.layer = (() => {
 
   const tags = ({ hidden, tags }) => [
     'SCOPE:LAYER:NONE',
+    `IMAGE:OPEN:action:mdiArrowDown`,
     `SYSTEM:${hidden ? 'HIDDEN' : 'VISIBLE'}:command.storage`,
     ...(tags || []).map(label => `USER:${label}:NONE`)
   ].join(' ')

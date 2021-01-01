@@ -53,7 +53,7 @@ const Search = () => {
     else if (event.code === 'Digit3' && event.metaKey) evented.emit({ type: 'command.search.scope.feature' })
     else if (event.code === 'Digit4' && event.metaKey) evented.emit({ type: 'command.search.scope.symbol' })
     else if (event.code === 'Digit5' && event.metaKey) evented.emit({ type: 'command.search.scope.group' })
-    else if (event.code === 'Digit5' && event.metaKey) evented.emit({ type: 'command.search.scope.place' })
+    else if (event.code === 'Digit6' && event.metaKey) evented.emit({ type: 'command.search.scope.place' })
   }
 
   return (

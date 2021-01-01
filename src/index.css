@@ -250,6 +250,13 @@ div {
   border-color:#e03c31;
 }
 
+.tag-image {
+  border-width: 1px;
+  border-style: solid;
+  border-color:#e03c31;
+  padding-left: 6px;
+}
+
 .tag-user {
   border-width: 1px;
   border-style: solid;

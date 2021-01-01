@@ -8,15 +8,16 @@ import { compare } from './compare'
 const limit = R.take(200)
 // const limit = R.identity /* no limits */
 
-// Sort group to the top and only sort groups by title:
+// Sort group to the top:
 const isGroup = id => id.startsWith('group:')
+const field = x => x.title + x.description
 const sort = entries => entries.sort((a, b) => {
   const GA = isGroup(a.id)
   const GB = isGroup(b.id)
-  if (!GA && !GB) return 0 // chromium sort is/should be stable
+  if (!GA && !GB) return compare(field)(a, b)
   else if (GA && !GB) return -1
   else if (!GA && GB) return 1
-  else return compare(R.prop('title'))(a, b)
+  else return compare(field)(a, b)
 })
 
 const option = ref => options[ref.split(':')[0]](ref)
@@ -58,7 +59,6 @@ var currentQuery = { value: '' }
 var provider = lunrProvider('')
 
 evented.on(event => {
-  console.log('[search]', event)
   const search = query => {
     currentQuery = query
     provider(query, result => evented.emit({ type: 'search-result.changed', result }))
@@ -74,6 +74,11 @@ evented.on(event => {
 
     evented.emit({ type: 'search-provider.changed', scope })
     search({ value: '' })
-  } else if (event.type === 'search-index.refreshed') search(currentQuery)
+  } else if(event.type === 'command.search.provider') {
+    provider = event.provider
+    evented.emit({ type: 'search-provider.changed', scope: event.scope })
+    search({ value: '' })
+  }
+  else if (event.type === 'search-index.refreshed') search(currentQuery)
   else if (event.type === 'search-filter.changed') search(event)
 })
