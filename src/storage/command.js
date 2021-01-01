@@ -1,46 +1,11 @@
 import * as R from 'ramda'
 import uuid from 'uuid-random'
-import Collection from 'ol/Collection'
-import VectorSource from 'ol/source/Vector'
-import GeoJSON from 'ol/format/GeoJSON'
 import { storage } from '.'
 import { layerId, featureId } from './ids'
 import { isLayer, isFeature, isGroup, isSymbol, isPlace } from './ids'
 import evented from '../evented'
 import { searchIndex } from '../search/lunr'
-import { features, containedFeatures } from './helpers'
-
-// -> OpenLayers interface (ol/source/Vector)
-
-const format = new GeoJSON({
-  dataProjection: 'EPSG:4326', // WGS84
-  featureProjection: 'EPSG:3857' // Web-Mercator
-})
-
-const featureCollection = (() => {
-  const collection = new Collection()
-  const push = feature => collection.push(format.readFeature(feature))
-  features(storage.keys())(feature => !feature.hidden).forEach(push)
-  return collection
-})()
-
-const filterFeatures = (p = R.T) => {
-  const features = []
-  featureCollection.forEach(feature => {
-    if (p(feature)) features.push(feature)
-  })
-
-  return features
-}
-
-const removeFeature = feature => featureCollection.remove(feature)
-export const source = new VectorSource({ features: featureCollection })
-
-const readFeatures = features => features.forEach(feature => {
-  featureCollection.push(format.readFeature(feature))
-})
-
-// <- OpenLayers interface (ol/source/Vector)
+import { getContainedFeatures } from './helpers'
 
 // -> command handlers
 
@@ -81,7 +46,6 @@ handlers.addlayers = ({ layers }) => {
   }, removals)
 
   removals.forEach(id => storage.removeItem(id))
-  filterFeatures(feature => removals.includes(feature.getId())).forEach(removeFeature)
 
   // Add layers and featues:
   layers.forEach(layer => {
@@ -95,8 +59,6 @@ handlers.addlayers = ({ layers }) => {
       feature.id = featureId(layer.id)
       storage.setItem(feature)
     })
-
-    readFeatures(features)
   })
 }
 
@@ -116,12 +78,7 @@ handlers.visible = ({ ids }) => storage.getItems(ids.filter(onmap))
     return
   }
 
-  const features = containedFeatures(item.id)
-  ;[item, ...features].forEach(Item.hide)
-  const visible = isLayer(item.id)
-    ? feature => layerId(feature) === item.id
-    : feature => feature.getId() === item.id
-  filterFeatures(visible).forEach(removeFeature)
+  ;[item, ...getContainedFeatures(item.id)].forEach(Item.hide)
 })
 
 /**
@@ -139,9 +96,7 @@ handlers.hidden = ({ ids }) => storage.getItems(ids.filter(onmap))
     return
   }
 
-  const features = containedFeatures(item.id)
-  ;[item, ...features].forEach(Item.show)
-  readFeatures(isLayer(item.id) ? features : [item])
+  ;[item, ...getContainedFeatures(item.id)].forEach(Item.show)
 })
 
 /**
@@ -199,21 +154,14 @@ handlers.newgroup = () => {
 
 handlers.remove = ({ ids }) => storage.getItems(ids).forEach(item => {
   if (!item) return
-
   storage.removeItem(item.id)
-  const features = containedFeatures(item.id)
+  const features = getContainedFeatures(item.id)
   features.forEach(item => storage.removeItem(item.id))
-
-  const visible = isLayer(item.id)
-    ? feature => layerId(feature) === item.id
-    : feature => feature.getId() === item.id
-  filterFeatures(visible).forEach(removeFeature)
 })
 
 // <- command handlers
 
 evented.on(event => {
-  console.log(event)
   if (!event.type) return
   if (!event.type.startsWith('command.storage')) return
   const handler = handlers[event.type.split('.')[2]]

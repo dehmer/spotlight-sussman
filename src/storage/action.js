@@ -1,7 +1,7 @@
 import { storage } from '.'
 import evented from '../evented'
-import { isLayer, isFeature, isGroup, isSymbol, layerId } from './ids'
-import { isContained, item } from './helpers'
+import { isLayer, isFeature, isGroup, isSymbol } from './ids'
+import { isContained, getItem } from './helpers'
 import { options } from '../model/options'
 import { searchIndex } from '../search/lunr'
 
@@ -12,7 +12,7 @@ const handlers = {}
 handlers.open = id => {
   if (isLayer(id)) {
     const layer = option(id)
-    const features = storage.keys()
+    const features = () => storage.keys()
       .filter(isContained(id))
       .filter(isFeature)
       .map(option)
@@ -21,12 +21,12 @@ handlers.open = id => {
       type: 'command.search.provider',
       scope: layer.title,
       provider: (query, callback) => {
-        callback(features)
+        callback(features())
       }
     })
   } else if (isGroup(id)) {
-    const group = item(id)
-    const options = searchIndex(group.terms)
+    const group = getItem(id)
+    const options = () => searchIndex(group.terms)
       .filter(({ ref }) => !isGroup(ref))
       .filter(({ ref }) => !isSymbol(ref))
       .map(({ ref }) => ref)
@@ -36,7 +36,7 @@ handlers.open = id => {
       type: 'command.search.provider',
       scope: group.title,
       provider: (query, callback) => {
-        callback(options)
+        callback(options())
       }
     })
   }
