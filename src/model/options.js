@@ -126,3 +126,25 @@ options.symbol = (() => {
 
   return id => option(storage.getItem(id))
 })()
+
+options.place = (() => {
+  const tags = entry => [entry.class, entry.type]
+    .filter(R.identity)
+    .map(label => `SYSTEM:${label}:NONE`)
+
+  const option = entry => {
+    return {
+      id: entry.id,
+      title: entry.name,
+      description: entry.description,
+      tags: [
+        'SCOPE:PLACE:NONE',
+        ...tags(entry),
+        ...(entry.tags || []).map(label => `USER:${label}:NONE`)
+      ].join(' '),
+      capabilities: 'TAG|RENAME'
+    }
+  }
+
+  return id => option(storage.getItem(id))
+})()

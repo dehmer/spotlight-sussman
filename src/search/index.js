@@ -24,6 +24,7 @@ const option = ref => options[ref.split(':')[0]](ref)
 const refs = R.map(({ ref }) => option(ref))
 
 const lunrProvider = scope => {
+
   const term = R.cond([
     [R.startsWith('#'), s => s.length < 2 ? '' : `+tags:${s.substring(1)}*`],
     [R.startsWith('@'), s => (s.length < 2) ? '' : `+scope:${s.substring(1)}`],
@@ -53,8 +54,6 @@ const lunrProvider = scope => {
   }
 }
 
-const osmProvider = searchOSM
-
 var currentQuery = { value: '' }
 var provider = lunrProvider('')
 
@@ -68,7 +67,6 @@ evented.on(event => {
     const scope = event.type.split('.')[3]
     switch (scope) {
       case 'all': provider = lunrProvider(''); break;
-      case 'place': provider = osmProvider; break;
       default: provider = lunrProvider(scope); break;
     }
 
@@ -80,5 +78,8 @@ evented.on(event => {
     search({ value: '' })
   }
   else if (event.type === 'search-index.refreshed') search(currentQuery)
-  else if (event.type === 'search-filter.changed') search(event)
+  else if (event.type === 'search-filter.changed') {
+    if (event.mode === 'enter') searchOSM(event)
+    search(event)
+  }
 })

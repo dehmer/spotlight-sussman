@@ -5,7 +5,7 @@ import VectorSource from 'ol/source/Vector'
 import GeoJSON from 'ol/format/GeoJSON'
 import { storage } from '.'
 import { layerId, featureId } from './ids'
-import { isLayer, isFeature, isGroup, isSymbol } from './ids'
+import { isLayer, isFeature, isGroup, isSymbol, isPlace } from './ids'
 import evented from '../evented'
 import { searchIndex } from '../search/lunr'
 import { features, containedFeatures } from './helpers'
@@ -44,10 +44,26 @@ const readFeatures = features => features.forEach(feature => {
 
 // -> command handlers
 
+const handlers = {}
+
+/**
+ * Item-related helpers.
+ */
+const Item = {
+  show: storage.updateItem(item => delete item.hidden),
+  hide: storage.updateItem(item => item.hidden = true),
+  addtag: tag => storage.updateItem(item => item.tags = R.uniq([...(item.tags || []), tag])),
+  removetag: tag => storage.updateItem(item => item.tags = (item.tags || []).filter(x => x !== tag))
+}
+
+const cantag = id => !isGroup(id)
+const onmap = id => id && (isFeature(id) || isLayer(id)) || isGroup(id)
+
+
 /**
  *
  */
-const addlayers = ({ layers }) => {
+handlers.addlayers = ({ layers }) => {
 
   // Overwrite existing layers, i.e. delete before re-adding.
   const names = layers.map(R.prop('name'))
@@ -55,7 +71,7 @@ const addlayers = ({ layers }) => {
   const featureIds = otherIds.filter(isFeature)
 
   const removals = layerIds
-    .map(item)
+    .map(storage.getItem)
     .filter(layer => names.includes(layer.name))
     .map(layer => layer.id)
 
@@ -84,20 +100,6 @@ const addlayers = ({ layers }) => {
   })
 }
 
-/**
- * Item-related helpers.
- */
-const Item = {
-  show: storage.updateItem(item => delete item.hidden),
-  hide: storage.updateItem(item => item.hidden = true),
-  addtag: tag => storage.updateItem(item => item.tags = R.uniq([...(item.tags || []), tag])),
-  removetag: tag => storage.updateItem(item => item.tags = (item.tags || []).filter(x => x !== tag))
-}
-
-const cantag = id => !isGroup(id)
-const onmap = id => id && (isFeature(id) || isLayer(id)) || isGroup(id)
-
-const handlers = {}
 
 /**
  *
@@ -147,7 +149,10 @@ handlers.hidden = ({ ids }) => storage.getItems(ids.filter(onmap))
  */
 handlers.addtag = ({ ids, tag }) => storage.getItems(ids.filter(cantag))
   .filter(R.identity)
-  .forEach(Item.addtag(tag))
+  .forEach(item => {
+    Item.addtag(tag)(item)
+    if (isPlace(item.id)) storage.updateItem(place => place.sticky = true)
+  })
 
 
 /**
@@ -161,9 +166,14 @@ handlers.removetag = ({ ids, tag }) => storage.getItems(ids.filter(cantag))
  *
  */
 handlers.rename = ({ id, name }) => {
-  const rename = isFeature(id)
-    ? (feature => feature.properties.t = name.trim())
-    : item => item.name = name.trim()
+  const rename = R.cond([
+    [R.compose(isFeature, R.prop('id')), feature => feature.properties.t = name.trim()],
+    [R.compose(isPlace, R.prop('id')), place => {
+      place.name = name.trim()
+      place.sticky = true
+    }],
+    [R.T, item => item.name = name.trim()]
+  ])
 
   storage.updateKey(rename)(id)
 }
@@ -203,6 +213,7 @@ handlers.remove = ({ ids }) => storage.getItems(ids).forEach(item => {
 // <- command handlers
 
 evented.on(event => {
+  console.log(event)
   if (!event.type) return
   if (!event.type.startsWith('command.storage')) return
   const handler = handlers[event.type.split('.')[2]]

@@ -1,3 +1,4 @@
+import * as R from 'ramda'
 import { hierarchy, dimensions, scopes } from './symbols'
 import { layerId } from '../storage/ids'
 import { storage } from '../storage'
@@ -71,9 +72,19 @@ documents.symbol = id => {
   const symbol = storage.getItem(id)
 
   return ({
-    id: symbol.id,
+    id,
     scope: 'symbol',
     text: symbol.hierarchy.join(' '),
     tags: tags(symbol)
   })
+}
+
+documents.place = id => {
+  const entry = storage.getItem(id)
+  return {
+    id,
+    scope: 'place',
+    text: entry.display_name,
+    tags: [entry.class, entry.type, ...(entry.tags || [])].filter(R.identity)
+  }
 }

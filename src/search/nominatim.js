@@ -1,4 +1,7 @@
 import * as R from 'ramda'
+import { storage } from '../storage'
+import evented from '../evented'
+import uuid from 'uuid-random'
 
 /* eslint-disable */
 // XMLHttpRequest.readyState.
@@ -16,24 +19,25 @@ const options = {
   polygon_geojson: 1
 }
 
-const tags = entry => [entry.class, entry.type]
-  .filter(R.identity)
-  .map(label => `SYSTEM:${label}:NONE`)
-
-const properties = entry => {
+const place = entry => {
   const parts = entry.display_name.split(', ')
   return {
-    id: `osm:${entry.osm_id}`,
-    title: R.head(parts),
+    id: `place:${uuid()}`,
+    name: R.head(parts),
     description: R.tail(parts).join(', '),
-    tags: ['SCOPE:PLACE:NONE', ...tags(entry)].join(' ')
+    ...entry
   }
 }
 
-export const searchOSM = (query, callback) => {
+var lastValue = ''
+export const searchOSM = query => {
   const { value, mode } = query
-  if (!value) callback([])
+  if (!value) return
   if (mode !== 'enter') return
+  if (lastValue === value) return
+
+  // Prevent endless recursion: query (explicit) -> model update -> query (implicit).
+  lastValue = value
 
   const xhr = new XMLHttpRequest()
   xhr.addEventListener('readystatechange', event => {
@@ -42,8 +46,18 @@ export const searchOSM = (query, callback) => {
     switch (request.readyState) {
       case DONE: {
         try {
-          const entries = JSON.parse(request.responseText)
-          callback(entries.map(properties))
+          storage.keys()
+            .filter(id => id.startsWith('place'))
+            .map(storage.getItem)
+            .filter(place => !place.sticky)
+            .forEach(place => storage.removeItem(place.id))
+
+          JSON.parse(request.responseText)
+            .map(place)
+            .forEach(storage.setItem)
+
+          evented.emit({ type: 'model.changed' })
+
         } catch (err) {
           console.error('[nominatim]', err)
         }
