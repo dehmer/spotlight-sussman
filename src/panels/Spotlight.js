@@ -4,7 +4,7 @@ import { CardList } from '../components/CardList'
 import Card from '../components/Card'
 import TagList from '../components/TagList'
 import evented from '../evented'
-import selectionService from '../selection'
+import selectionService from '../model/selection'
 
 const Search = () => {
   const [value, setValue] = React.useState('')

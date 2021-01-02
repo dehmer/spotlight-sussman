@@ -3,7 +3,7 @@ import React from 'react'
 import { TagIcon } from './TagIcon'
 import * as mdi from '@mdi/js'
 import evented from '../evented'
-import selection from '../selection'
+import selection from '../model/selection'
 
 const Tag = props => {
   const { variant, children } = props

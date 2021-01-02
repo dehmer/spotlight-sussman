@@ -7,7 +7,7 @@ const tx = fn => {
   const update = []
 
   const updateItem_ = fn => item => { storage.updateItem(fn)(item); update.push(item) }
-  const updateKey_ = fn => id => storage.updateItem_(fn)(storage.getItem(id))
+  const updateKey_ = fn => id => updateItem_(fn)(storage.getItem(id))
 
   fn({
     setItem: item => { storage.setItem(item); addition.push(item) },

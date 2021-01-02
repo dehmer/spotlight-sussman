@@ -4,7 +4,7 @@ import Tag from './Tag'
 import * as mdi from '@mdi/js'
 import evented from '../evented'
 import { TagIcon } from './TagIcon'
-import selection from '../selection'
+import selection from '../model/selection'
 
 const TagList = props => {
   const { id, tags } = props

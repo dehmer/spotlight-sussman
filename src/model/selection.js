@@ -1,6 +1,6 @@
 // Track selections throughout the application.
 // Selections are URIs.
-import evented from './evented'
+import evented from '../evented'
 
 // Current selections.
 let state = []
