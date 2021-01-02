@@ -1,6 +1,6 @@
 import * as R from 'ramda'
 import uuid from 'uuid-random'
-import { storage } from '.'
+import { storage, tx } from '.'
 import { layerId, featureId } from './ids'
 import { isLayer, isFeature, isGroup, isSymbol, isPlace } from './ids'
 import evented from '../evented'
@@ -11,16 +11,6 @@ import { getContainedFeatures } from './helpers'
 
 const handlers = {}
 
-/**
- * Item-related helpers.
- */
-const Item = {
-  show: storage.updateItem(item => delete item.hidden),
-  hide: storage.updateItem(item => item.hidden = true),
-  addtag: tag => storage.updateItem(item => item.tags = R.uniq([...(item.tags || []), tag])),
-  removetag: tag => storage.updateItem(item => item.tags = (item.tags || []).filter(x => x !== tag))
-}
-
 const cantag = id => !isGroup(id)
 const onmap = id => id && (isFeature(id) || isLayer(id)) || isGroup(id)
 
@@ -28,7 +18,7 @@ const onmap = id => id && (isFeature(id) || isLayer(id)) || isGroup(id)
 /**
  *
  */
-handlers.addlayers = ({ layers }) => {
+handlers.addlayers = (storage, { layers }) => {
 
   // Overwrite existing layers, i.e. delete before re-adding.
   const names = layers.map(R.prop('name'))
@@ -47,7 +37,6 @@ handlers.addlayers = ({ layers }) => {
 
   removals.forEach(id => storage.removeItem(id))
 
-  // Add layers and featues:
   layers.forEach(layer => {
     layer.id = layerId()
     const features = layer.features
@@ -66,7 +55,7 @@ handlers.addlayers = ({ layers }) => {
 /**
  *
  */
-handlers.visible = ({ ids }) => storage.getItems(ids.filter(onmap))
+handlers.visible = (storage, { ids }) => storage.getItems(ids.filter(onmap))
   .forEach(item => {
 
   if (isGroup(item.id)) {
@@ -74,17 +63,18 @@ handlers.visible = ({ ids }) => storage.getItems(ids.filter(onmap))
       .filter(({ ref }) => !isGroup(ref))
       .filter(({ ref }) => !isSymbol(ref))
       .map(({ ref }) => ref)
-    evented.emit({ type: 'command.storage.visible', ids })
+    handlers.visible(storage, { ids })
     return
   }
 
-  ;[item, ...getContainedFeatures(item.id)].forEach(Item.hide)
+  ;[item, ...getContainedFeatures(item.id)]
+    .forEach(storage.updateItem(item => item.hidden = true))
 })
 
 /**
  *
  */
-handlers.hidden = ({ ids }) => storage.getItems(ids.filter(onmap))
+handlers.hidden = (storage, { ids }) => storage.getItems(ids.filter(onmap))
   .forEach(item => {
 
   if (isGroup(item.id)) {
@@ -92,35 +82,37 @@ handlers.hidden = ({ ids }) => storage.getItems(ids.filter(onmap))
       .filter(({ ref }) => !isGroup(ref))
       .filter(({ ref }) => !isSymbol(ref))
       .map(({ ref }) => ref)
-    evented.emit({ type: 'command.storage.hidden', ids })
+    handlers.hidden(storage, { ids })
     return
   }
 
-  ;[item, ...getContainedFeatures(item.id)].forEach(Item.show)
+  ;[item, ...getContainedFeatures(item.id)]
+    .forEach(storage.updateItem(item => delete item.hidden))
 })
 
 /**
  *
  */
-handlers.addtag = ({ ids, tag }) => storage.getItems(ids.filter(cantag))
+handlers.addtag = (storage, { ids, tag }) => storage.getItems(ids.filter(cantag))
   .filter(R.identity)
-  .forEach(item => {
-    Item.addtag(tag)(item)
-    if (isPlace(item.id)) storage.updateItem(place => place.sticky = true)
-  })
+  .forEach(item => storage.updateItem(item => {
+    item.tags = R.uniq([...(item.tags || []), tag])
+    if (isPlace(item.id)) item.sticky = true
+  })(item))
 
 
 /**
  *
  */
-handlers.removetag = ({ ids, tag }) => storage.getItems(ids.filter(cantag))
+handlers.removetag = (storage, { ids, tag }) => storage.getItems(ids.filter(cantag))
   .filter(R.identity)
-  .forEach(Item.removetag(tag))
+  .forEach(storage.updateItem(item => item.tags = (item.tags || []).filter(x => x !== tag)))
+
 
 /**
  *
  */
-handlers.rename = ({ id, name }) => {
+handlers.rename = (storage, { id, name }) => {
   const rename = R.cond([
     [R.compose(isFeature, R.prop('id')), feature => feature.properties.t = name.trim()],
     [R.compose(isPlace, R.prop('id')), place => {
@@ -133,7 +125,11 @@ handlers.rename = ({ id, name }) => {
   storage.updateKey(rename)(id)
 }
 
-handlers.newgroup = () => {
+
+/**
+ *
+ */
+handlers.newgroup = storage => {
   const search = storage.getItem('search:')
   if (!search) return
   const { terms } = search
@@ -152,12 +148,14 @@ handlers.newgroup = () => {
   storage.setItem({ id, name, terms, ...fields })
 }
 
-handlers.remove = ({ ids }) => storage.getItems(ids).forEach(item => {
-  if (!item) return
-  storage.removeItem(item.id)
-  const features = getContainedFeatures(item.id)
-  features.forEach(item => storage.removeItem(item.id))
-})
+handlers.remove = (storage, { ids }) => {
+  storage.getItems(ids).forEach(item => {
+    if (!item) return
+    storage.removeItem(item.id)
+    const features = getContainedFeatures(item.id)
+    features.forEach(item => storage.removeItem(item.id))
+  })
+}
 
 // <- command handlers
 
@@ -166,8 +164,10 @@ evented.on(event => {
   if (!event.type.startsWith('command.storage')) return
   const handler = handlers[event.type.split('.')[2]]
   if (!handler) return
-  handler(event)
+
+  const changes = tx(storage => handler(storage, event))
   evented.emit({ type: 'model.changed' })
+  evented.emit({ type: 'storage.changed', changes })
 })
 
 evented.on(event => {

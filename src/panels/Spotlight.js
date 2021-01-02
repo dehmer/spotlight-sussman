@@ -161,6 +161,7 @@ const Spotlight = () => {
       if (type === 'search-result.changed') dispatch({ type: 'snapshot', snapshot: result })
       if (type === 'search-provider.changed') {
         setSelection([])
+        selectionService.deselect()
         setFocus(null)
       }
     })

@@ -12,11 +12,10 @@ export const TitleEditor = props => {
   const handleBlur = () => commit(value)
 
   const handleKeyDown = event => {
-    const noop = () => { event.stopPropagation();  event.preventDefault() }
+    const noop = () => { event.stopPropagation(); event.preventDefault() }
     if (event.code === 'KeyA' && event.metaKey) event.stopPropagation()
     else if (event.code === 'ArrowDown') noop()
     else if (event.code === 'ArrowUp') noop()
-    else if (event.code === 'Enter') commit(value)
     else if (event.code === 'Escape') commit(props.value)
   }
 
