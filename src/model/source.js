@@ -35,6 +35,9 @@ Source.addFeatures(defaultSource)(visibleFeatures())
 
 evented.on(({ type, changes }) => {
   if (type !== 'storage.changed') return
+
+  // FIXME: differentiate selected/deselected
+
   const featuresById = Source.featuresById(defaultSource)
   const addFeatures = Source.addFeatures(defaultSource)
   const removeFeatures = Source.removeFeatures(defaultSource)
@@ -61,16 +64,18 @@ evented.on(({ type, changes }) => {
 evented.on(event => {
   if (event.type === 'selected') {
     const selected = selectedFeatures.getArray().map(featureId)
-    event.list.forEach(id => {
+    event.list.filter(isFeature).forEach(id => {
       const feature = defaultSource.getFeatureById(id)
+      if (!feature) return /* selection not on map */
       defaultSource.removeFeature(feature)
       if (!selected.includes(id)) selectedFeatures.push(feature)
     })
   } else if (event.type === 'deselected') {
-    event.list.forEach(id => {
+    event.list.filter(isFeature).forEach(id => {
       const feature = selectedFeatures.getArray().find(feature => feature.getId() === id)
       if (feature) selectedFeatures.remove(feature)
-      defaultSource.addFeature(readFeature(storage.getItem(id)))
+      const item = storage.getItem(id)
+      if (item) defaultSource.addFeature(readFeature(item))
     })
   }
 })

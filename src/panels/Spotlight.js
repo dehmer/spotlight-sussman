@@ -170,7 +170,12 @@ const Spotlight = () => {
       Home: ({ shiftKey }) => home(shiftKey),
       End: ({ shiftKey }) => end(shiftKey),
       KeyA: ({ metaKey }) => {
-        if (metaKey) updateSelection(entries.map(entry => entry.id))
+        if (!metaKey) return
+        const xs = selection.length !== entries.length
+          ? entries.map(entry => entry.id)
+          : []
+
+        updateSelection(xs)
       },
       Enter: () => {
         if (!focus) return
@@ -180,6 +185,10 @@ const Spotlight = () => {
       Backspace: ({ metaKey }) => {
         if (!metaKey) return
         evented.emit({ type: 'command.storage.remove', ids: [focus, ...selection] })
+      },
+      Space: () => {
+        if (!focus) return
+        updateSelection([...toggleSelection(focus)])
       }
     }
 
