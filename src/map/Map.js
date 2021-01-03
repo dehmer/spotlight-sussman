@@ -35,7 +35,7 @@ export const Map = props => {
     ]
 
     const map = new ol.Map({ target, controls, layers, view })
-    map.addInteraction(select())
+    map.addInteraction(select(selectSource.getFeaturesCollection()))
 
     view.on('change', ({ target: view }) => {
       // TODO: throttle
@@ -47,7 +47,6 @@ export const Map = props => {
       })
     })
 
-    map.on('click', () => selection.deselect())
     evented.on(event => {
       if (event.type !== 'selected' && event.type !== 'deselected')  return
       const selected = selection.selected(isFeature)

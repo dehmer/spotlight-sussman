@@ -6,11 +6,14 @@ export const Search = () => {
   const ref = React.useRef()
 
   React.useEffect(() => {
-    evented.on(event => {
+    const handler = event => {
       if (event.type !== 'search-provider.changed') return
       setValue('')
       ref.current.focus()
-    })
+    }
+
+    evented.on(handler)
+    return () => evented.off(handler)
   })
 
   const handleChange = ({ target }) => {

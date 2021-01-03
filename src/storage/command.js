@@ -6,6 +6,7 @@ import { isLayer, isFeature, isGroup, isSymbol, isPlace } from './ids'
 import evented from '../evented'
 import { searchIndex } from '../search/lunr'
 import { getContainedFeatures } from './helpers'
+import selection from '../model/selection'
 
 // -> command handlers
 
@@ -68,7 +69,10 @@ handlers.visible = (storage, { ids }) => storage.getItems(ids.filter(onmap))
   }
 
   ;[item, ...getContainedFeatures(item.id)]
-    .forEach(storage.updateItem(item => item.hidden = true))
+    .forEach(item => {
+      storage.updateItem(item => item.hidden = true)(item)
+      selection.deselect([item.id])
+    })
 })
 
 /**

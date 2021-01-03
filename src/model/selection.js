@@ -16,7 +16,6 @@ const select = uris => {
   if (uris.some(x => typeof x !== 'string')) throw new Error('invalid argument; string element expected')
 
   const additions = uris.filter(x => !state.includes(x))
-
   state = [...state, ...additions]
   if (additions.length) evented.emit({ type: 'selected', list: additions })
 }

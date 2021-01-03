@@ -1,8 +1,10 @@
 import * as R from 'ramda'
 import VectorSource from 'ol/source/Vector'
 import GeoJSON from 'ol/format/GeoJSON'
+import Collection from 'ol/Collection'
 import { getFeatures } from '../storage/helpers'
 import { storage } from '../storage'
+import { featureId } from '../storage/ids'
 import evented from '../evented'
 import { isFeature } from '../storage/ids'
 import selection from './selection'
@@ -25,7 +27,8 @@ Source.features = source => p => source.getFeatures().filter(p)
 // -> OpenLayers interface (ol/source/Vector)
 
 export const defaultSource = new VectorSource()
-export const selectSource = new VectorSource()
+const selectedFeatures = new Collection([], { unique: true })
+export const selectSource = new VectorSource({ features: selectedFeatures })
 
 const visibleFeatures = () => getFeatures(storage.keys())(feature => !feature.hidden)
 Source.addFeatures(defaultSource)(visibleFeatures())
@@ -56,23 +59,28 @@ evented.on(({ type, changes }) => {
 // -> selection synchronization
 
 evented.on(event => {
-  if (event.type !== 'selected' && event.type !== 'deselected')  return
-  const selected = selection.selected()
-
-  // Move new selections:
-  Source.featuresById(defaultSource)(selected)
-    .forEach(feature => {
-      selectSource.addFeature(feature)
+  if (event.type === 'selected') {
+    const selected = selectedFeatures.getArray().map(featureId)
+    event.list.forEach(id => {
+      const feature = defaultSource.getFeatureById(id)
       defaultSource.removeFeature(feature)
+      if (!selected.includes(id)) selectedFeatures.push(feature)
     })
+  } else if (event.type === 'deselected') {
+    event.list.forEach(id => {
+      const feature = selectedFeatures.getArray().find(feature => feature.getId() === id)
+      if (feature) selectedFeatures.remove(feature)
+      defaultSource.addFeature(readFeature(storage.getItem(id)))
+    })
+  }
+})
 
-  // Move old selections:
-  selectSource.getFeatures()
-    .filter(feature => !selected.includes(feature.getId()))
-    .forEach(feature => {
-      defaultSource.addFeature(feature)
-      selectSource.removeFeature(feature)
-    })
+selectedFeatures.on('add', ({ element }) => {
+  selection.select([element.getId()])
+})
+
+selectedFeatures.on('remove', ({ element }) => {
+  selection.deselect([element.getId()])
 })
 
 // -> selection synchronization

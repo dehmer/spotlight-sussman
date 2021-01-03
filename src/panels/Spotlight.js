@@ -13,7 +13,7 @@ const previous = R.prop('previousSibling')
 
 const reducer = (state, event) => {
   switch (event.type) {
-    case 'snapshot': return event.snapshot
+    case 'search-result.changed': return event.result
     case 'toggle-edit': {
       const index = state.findIndex(entry => entry.id === event.id)
       const entry = state[index]
@@ -36,13 +36,13 @@ const Spotlight = () => {
   const [focus, setFocus] = React.useState()
   const [selection, setSelection] = React.useState([])
 
-  const updateSelection = items => {
-    const uniqueItems = R.uniq(items.filter(R.identity)) // filter nulls; make unique
-    const additions = uniqueItems.filter(x => !selection.includes(x))
-    const removals = selection.filter(x => !uniqueItems.includes(x))
+  const updateSelection = ids => {
+    const uniqueIds = R.uniq(ids.filter(R.identity)) // filter nulls; make unique
+    const additions = uniqueIds.filter(x => !selection.includes(x))
+    const removals = selection.filter(x => !uniqueIds.includes(x))
     selectionService.select(additions)
     selectionService.deselect(removals)
-    setSelection(uniqueItems)
+    setSelection(uniqueIds)
   }
 
   const ref = React.createRef()
@@ -66,16 +66,24 @@ const Spotlight = () => {
   }
 
   React.useEffect(() => {
-    evented.on((event) => {
-      const { type, result } = event
-      if (type === 'search-result.changed') dispatch({ type: 'snapshot', snapshot: result })
-      if (type === 'search-provider.changed') {
-        setSelection([])
-        selectionService.deselect()
+    const handler = (event) => {
+      const { type } = event
+      if (type === 'search-result.changed') dispatch(event)
+      else if (type === 'search-provider.changed') {
+        updateSelection([])
         setFocus(null)
+      } else if (event.type === 'selected' || event.type === 'deselected') {
+        const visible = entries.map(entry => entry.id)
+        const selected = selectionService.selected(id => visible.includes(id))
+        const additions = selected.filter(id => !selection.includes(id))
+        const removals = selection.filter(id => !selected.includes(id))
+        updateSelection([...selection.filter(id => !removals.includes(id)), ...additions])
       }
-    })
-  }, [])
+    }
+
+    evented.on(handler)
+    return () => evented.off(handler)
+  }, [selection, entries])
 
   const selected = key => selection.includes(key)
   const toggleSelection = key => key
@@ -135,14 +143,14 @@ const Spotlight = () => {
 
   const home = shiftKey => {
     const key = first()
-    if (shiftKey) setSelection(rangeSelection(key))
+    if (shiftKey) updateSelection(rangeSelection(key))
     scrollIntoView(key)
     setFocus(key)
   }
 
   const end = shiftKey => {
     const key = last()
-    if (shiftKey) setSelection(rangeSelection(key))
+    if (shiftKey) updateSelection(rangeSelection(key))
     scrollIntoView(key)
     setFocus(key)
   }
