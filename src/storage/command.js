@@ -69,10 +69,7 @@ handlers.visible = (storage, { ids }) => storage.getItems(ids.filter(onmap))
   }
 
   ;[item, ...getContainedFeatures(item.id)]
-    .forEach(item => {
-      storage.updateItem(item => item.hidden = true)(item)
-      selection.deselect([item.id])
-    })
+    .forEach(storage.updateItem(item => item.hidden = true))
 })
 
 /**

@@ -3,15 +3,14 @@ import 'ol/ol.css'
 import * as ol from 'ol'
 import { OSM } from 'ol/source'
 import { Tile as TileLayer, Vector as VectorLayer } from 'ol/layer'
+import VectorSource from 'ol/source/Vector'
 import { Rotate } from 'ol/control'
-import { defaultSource, selectSource } from '../model/source'
-import selection from '../model/selection'
+import { features, selectedFeatures } from '../model/source'
 import './epsg'
 import style from './style'
 import { storage } from '../storage'
 import select from './interaction/select'
 import evented from '../evented'
-import { isFeature } from '../storage/ids'
 
 export const Map = props => {
   React.useEffect(() => {
@@ -24,8 +23,8 @@ export const Map = props => {
       rotation: 0
     }
 
-    const defaultLayer = new VectorLayer({ source: defaultSource, style: style('default') })
-    const selectLayer = new VectorLayer({ source: selectSource, style: style('selected') })
+    const defaultLayer = new VectorLayer({ source: new VectorSource({ features }), style: style('default') })
+    const selectLayer = new VectorLayer({ source: new VectorSource({ features: selectedFeatures }), style: style('selected') })
 
     const view = new ol.View(viewOptions)
     const layers = [
@@ -35,7 +34,7 @@ export const Map = props => {
     ]
 
     const map = new ol.Map({ target, controls, layers, view })
-    map.addInteraction(select(selectSource.getFeaturesCollection()))
+    map.addInteraction(select(selectedFeatures))
 
     view.on('change', ({ target: view }) => {
       // TODO: throttle
@@ -49,8 +48,7 @@ export const Map = props => {
 
     evented.on(event => {
       if (event.type !== 'selected' && event.type !== 'deselected')  return
-      const selected = selection.selected(isFeature)
-      defaultLayer.setOpacity(selected.length ? 0.35 : 1)
+      defaultLayer.setOpacity(selectedFeatures.getLength() ? 0.35 : 1)
     })
   }, [])
 

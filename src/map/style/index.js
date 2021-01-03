@@ -22,7 +22,6 @@ export const normalizeSIDC = sidc => sidc
 /**
  * FEATURE STYLE FUNCTION.
  */
-
 export default mode => (feature, resolution) => {
   const provider = R.cond([
     [R.equals('Point'), R.always(symbolStyle(mode))],
@@ -34,6 +33,7 @@ export default mode => (feature, resolution) => {
   ])
 
   try {
+    // FIXME: desperately in need of style cache
     const type = feature.getGeometry().getType()
     return provider(type)(feature, resolution)
   } catch (err) {

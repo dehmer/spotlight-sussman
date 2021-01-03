@@ -6,7 +6,6 @@ TODO:
 - 'id' function (highlight in map)
 - default layer
 - group:0 (+save)
-- sync focus/selection between list and map
 
 DONE:
 - toolbar / scopebar
@@ -38,3 +37,4 @@ DONE:
 - CMD-1 should focus search input
 - tag: open action
 - tag: back action
+- sync focus/selection between list and map

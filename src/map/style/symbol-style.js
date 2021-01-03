@@ -34,7 +34,7 @@ const icon = (symbol, resolution) => {
   const imgSize = size => [Math.floor(size.width), Math.floor(size.height)]
   return new Icon({
     anchor,
-    scale: 0.2,
+    scale: 0.3,
     anchorXUnits: 'pixels',
     anchorYUnits: 'pixels',
     imgSize: imgSize(symbol.getSize()),

@@ -1,8 +1,6 @@
-import * as R from 'ramda'
-import VectorSource from 'ol/source/Vector'
 import GeoJSON from 'ol/format/GeoJSON'
 import Collection from 'ol/Collection'
-import { getFeatures } from '../storage/helpers'
+import Feature from 'ol/Feature'
 import { storage } from '../storage'
 import { featureId } from '../storage/ids'
 import evented from '../evented'
@@ -15,46 +13,58 @@ const format = new GeoJSON({
 })
 
 const readFeature = feature => format.readFeature(feature)
-const readFeatures = features => features.map(readFeature)
-
-const Source = {}
-Source.featureById = source => id => source.getFeatureById(id)
-Source.featuresById = source => ids => ids.map(Source.featureById(source)).filter(R.identity)
-Source.addFeatures = source => features => source.addFeatures(readFeatures(features))
-Source.removeFeatures = source => features => features.forEach(feature => source.removeFeature(feature))
-Source.features = source => p => source.getFeatures().filter(p)
 
 // -> OpenLayers interface (ol/source/Vector)
 
-export const defaultSource = new VectorSource()
-const selectedFeatures = new Collection([], { unique: true })
-export const selectSource = new VectorSource({ features: selectedFeatures })
+export const features = new Collection([], { unique: true })
+export const selectedFeatures = new Collection([], { unique: true })
 
-const visibleFeatures = () => getFeatures(storage.keys())(feature => !feature.hidden)
-Source.addFeatures(defaultSource)(visibleFeatures())
+const hasId = id => feature => feature.getId() === id
+const featureById = id =>
+  features.getArray().find(hasId(id)) ||
+  selectedFeatures.getArray().find(hasId(id))
+
+/**
+ * removeFeature :: ol/Feature | string -> unit
+ */
+const removeFeature = x => {
+  if (!x) return
+
+  if (x instanceof Feature) {
+    features.remove(x)
+    selectedFeatures.remove(x)
+  }
+  else if (typeof x === 'string') removeFeature(featureById(x))
+  else removeFeature(x.id)
+}
+
+const addFeature = x => {
+  if (!x || x.hidden || !isFeature(x.id)) return
+
+  const push = selection.selected().includes(featureId(x))
+    ? selectedFeatures.push.bind(selectedFeatures)
+    : features.push.bind(features)
+
+  push(readFeature(x))
+}
+
+const isVisible = feature => feature && !feature.hidden
+
+storage.keys()
+  .filter(isFeature)
+  .map(storage.getItem)
+  .filter(isVisible)
+  .map(readFeature)
+  .forEach(feature => features.push(feature))
+
 
 evented.on(({ type, changes }) => {
   if (type !== 'storage.changed') return
-
-  // FIXME: differentiate selected/deselected
-
-  const featuresById = Source.featuresById(defaultSource)
-  const addFeatures = Source.addFeatures(defaultSource)
-  const removeFeatures = Source.removeFeatures(defaultSource)
-
-  const updatedIds = changes.update.map(item => item.id).filter(isFeature)
-  removeFeatures(featuresById(changes.removal))
-  removeFeatures(featuresById(updatedIds))
-
-  addFeatures(changes.addition
-    .filter(item => isFeature(item.id))
-    .filter(item => !item.hidden)
-  )
-
-  addFeatures(changes.update
-    .filter(item => isFeature(item.id))
-    .filter(item => !item.hidden)
-  )
+  selection.deselect(changes.removal)
+  changes.removal.forEach(removeFeature)
+  changes.update.forEach(removeFeature)
+  changes.update.forEach(addFeature)
+  changes.addition.forEach(addFeature)
 })
 
 // <- OpenLayers interface (ol/source/Vector)
@@ -65,17 +75,16 @@ evented.on(event => {
   if (event.type === 'selected') {
     const selected = selectedFeatures.getArray().map(featureId)
     event.list.filter(isFeature).forEach(id => {
-      const feature = defaultSource.getFeatureById(id)
-      if (!feature) return /* selection not on map */
-      defaultSource.removeFeature(feature)
-      if (!selected.includes(id)) selectedFeatures.push(feature)
+      const feature = featureById(id)
+      features.remove(feature)
+      if (feature && !selected.includes(id)) selectedFeatures.push(feature)
     })
   } else if (event.type === 'deselected') {
     event.list.filter(isFeature).forEach(id => {
-      const feature = selectedFeatures.getArray().find(feature => feature.getId() === id)
-      if (feature) selectedFeatures.remove(feature)
+      const feature = featureById(id)
+      selectedFeatures.remove(feature)
       const item = storage.getItem(id)
-      if (item) defaultSource.addFeature(readFeature(item))
+      if (isVisible(item)) features.push(readFeature(item))
     })
   }
 })
