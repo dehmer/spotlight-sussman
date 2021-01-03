@@ -2,73 +2,10 @@ import React from 'react'
 import * as R from 'ramda'
 import { CardList } from '../components/CardList'
 import Card from '../components/Card'
-import TagList from '../components/TagList'
 import evented from '../evented'
 import selectionService from '../model/selection'
-
-const Search = () => {
-  const [value, setValue] = React.useState('')
-  const ref = React.useRef()
-
-  React.useEffect(() => {
-    evented.on(event => {
-      if (event.type !== 'search-provider.changed') return
-      setValue('')
-      ref.current.focus()
-    })
-  })
-
-  const handleChange = ({ target }) => {
-    setValue(target.value)
-    evented.emit({
-      type: 'search-filter.changed',
-      value: target.value,
-      mode: 'continuous'
-    })
-  }
-
-  const handleKeyDown = event => {
-    if (event.code === 'KeyA' && event.metaKey) return event.stopPropagation()
-    else if (event.code === 'ArrowDown') return event.preventDefault()
-    else if (event.code === 'ArrowUp') return event.preventDefault()
-    else if (event.code === 'Escape') {
-      setValue('')
-      evented.emit({
-        type: 'search-filter.changed',
-        value: '',
-        mode: 'continuous'
-      })
-    }
-    else if (event.code === 'Enter') {
-      event.stopPropagation()
-      if (event.metaKey) evented.emit({ type: 'command.storage.newgroup' })
-      else evented.emit({
-        type: 'search-filter.changed',
-        value,
-        mode: 'enter'
-      })
-    }
-    else if (event.code === 'Digit1' && event.metaKey) evented.emit({ type: 'command.search.scope.all' })
-    else if (event.code === 'Digit2' && event.metaKey) evented.emit({ type: 'command.search.scope.layer' })
-    else if (event.code === 'Digit3' && event.metaKey) evented.emit({ type: 'command.search.scope.feature' })
-    else if (event.code === 'Digit4' && event.metaKey) evented.emit({ type: 'command.search.scope.symbol' })
-    else if (event.code === 'Digit5' && event.metaKey) evented.emit({ type: 'command.search.scope.group' })
-    else if (event.code === 'Digit6' && event.metaKey) evented.emit({ type: 'command.search.scope.place' })
-  }
-
-  return (
-    <div className='search-container'>
-      <input
-        ref={ref}
-        className='search-input'
-        placeholder='Spotlight Search'
-        value={value}
-        onChange={handleChange}
-        onKeyDown={handleKeyDown}
-      />
-    </div>
-  )
-}
+import { Search } from './Search'
+import { Scopebar } from './Scopebar'
 
 const current = ref => ref && ref.current
 const next = R.prop('nextSibling')
@@ -98,32 +35,6 @@ const Spotlight = () => {
   const [entries, dispatch] = React.useReducer(reducer, [])
   const [focus, setFocus] = React.useState()
   const [selection, setSelection] = React.useState([])
-
-  const [scopes, updateScopes] = React.useReducer((state, event) => {
-    const { type } = event
-    const activate = (state, label) => {
-      const clone = state.map(tag => {
-        const [_, text, action] = tag.split(':')
-        return [
-          text === (label || '').toUpperCase() ? 'SCOPE' : 'SYSTEM',
-          text,
-          action
-        ].join(':')
-      })
-      return clone
-    }
-
-    if (type === 'search-provider.changed') {
-      return activate(state, event.scope)
-    } else return state
-  }, [
-    'SCOPE:ALL:command.search.scope',
-    'SYSTEM:LAYER:command.search.scope',
-    'SYSTEM:FEATURE:command.search.scope',
-    'SYSTEM:SYMBOL:command.search.scope',
-    'SYSTEM:GROUP:command.search.scope',
-    'SYSTEM:PLACE:command.search.scope'
-  ])
 
   const updateSelection = items => {
     const uniqueItems = R.uniq(items.filter(R.identity)) // filter nulls; make unique
@@ -156,7 +67,6 @@ const Spotlight = () => {
 
   React.useEffect(() => {
     evented.on((event) => {
-      updateScopes(event)
       const { type, result } = event
       if (type === 'search-result.changed') dispatch({ type: 'snapshot', snapshot: result })
       if (type === 'search-provider.changed') {
@@ -166,7 +76,6 @@ const Spotlight = () => {
       }
     })
   }, [])
-
 
   const selected = key => selection.includes(key)
   const toggleSelection = key => key
@@ -290,33 +199,18 @@ const Spotlight = () => {
     {...props}
   />
 
-  const tagListContainerStyle = {
-    padding: '12px',
-    paddingBottom: '4px',
-    borderBottomStyle: 'solid',
-    borderWidth: '1px',
-    borderColor: 'grey',
-    fontSize: '90%'
-  }
-
-  const component = (
+  return (
     <div
       ref={ref}
       className="spotlight panel"
       tabIndex='0'
       onKeyDown={handleKeyDown}
     >
-      <div style={tagListContainerStyle}>
-        <TagList
-          tags={scopes.join(' ')}
-        />
-      </div>
+      <Scopebar/>
       <Search/>
       <CardList>{entries.map(card)}</CardList>
     </div>
   )
-
-  return component
 }
 
 export default React.memo(Spotlight)

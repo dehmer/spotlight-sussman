@@ -11,6 +11,7 @@ import style from './style'
 import { storage } from '../storage'
 import select from './interaction/select'
 import evented from '../evented'
+import { isFeature } from '../storage/ids'
 
 export const Map = props => {
   React.useEffect(() => {
@@ -46,9 +47,10 @@ export const Map = props => {
       })
     })
 
+    map.on('click', () => selection.deselect())
     evented.on(event => {
       if (event.type !== 'selected' && event.type !== 'deselected')  return
-      const selected = selection.selected()
+      const selected = selection.selected(isFeature)
       defaultLayer.setOpacity(selected.length ? 0.35 : 1)
     })
   }, [])
