@@ -68,7 +68,7 @@ export const Map = props => {
       if (event.type === 'selected' || event.type === 'deselected') {
         defaultLayer.setOpacity(selectedFeatures.getLength() ? 0.35 : 1)
       } else if (event.type === 'map.panto') {
-        view.animate({ center: event.center, duration: 500 })
+        view.animate({ center: event.center, resolution: event.resolution })
       }
     })
   }, [])

@@ -61,7 +61,7 @@ handlers.panto = ({ id }) => {
     const geometry = readGeometry(item.geojson)
     const extent = geometry.getExtent()
     const center = getCenter(extent)
-    evented.emit({ type: 'map.panto', center })
+    evented.emit({ type: 'map.panto', center, resolution: item.resolution })
   } else if (isFeature(id)) {
     const item = storage.getItem(id)
     const geometry = readFeature(item).getGeometry()

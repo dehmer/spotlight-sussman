@@ -38,8 +38,13 @@ Mousetrap.bind('command+6', () => {
   return false
 })
 
-Mousetrap.bind('ctrl+n b', () => {
-  console.log('[Mousetrap] new bookmark')
+Mousetrap.bind('f1', () => {
+  evented.emit({ type: 'command.storage.bookmark' })
+  return false
+})
+
+Mousetrap.bind('f2', () => {
+  console.log('[Mousetrap] group')
   return false
 })
 

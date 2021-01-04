@@ -1,14 +1,13 @@
 import * as R from 'ramda'
 import uuid from 'uuid-random'
+import * as geom from 'ol/geom'
 import { storage, tx } from '.'
 import { layerId, featureId } from './ids'
 import { isLayer, isFeature, isGroup, isSymbol, isPlace } from './ids'
 import evented from '../evented'
 import { searchIndex } from '../search/lunr'
 import { getContainedFeatures } from './helpers'
-
-
-
+import { writeGeometry } from './format'
 
 // -> command handlers
 
@@ -128,6 +127,14 @@ handlers.rename = (storage, { id, name }) => {
   storage.updateKey(rename)(id)
 }
 
+handlers.remove = (storage, { ids }) => {
+  storage.getItems(ids).forEach(item => {
+    if (!item) return
+    storage.removeItem(item.id)
+    const features = getContainedFeatures(item.id)
+    features.forEach(item => storage.removeItem(item.id))
+  })
+}
 
 /**
  *
@@ -151,21 +158,31 @@ handlers.newgroup = storage => {
   storage.setItem({ id, name, terms, ...fields })
 }
 
-handlers.remove = (storage, { ids }) => {
-  storage.getItems(ids).forEach(item => {
-    if (!item) return
-    storage.removeItem(item.id)
-    const features = getContainedFeatures(item.id)
-    features.forEach(item => storage.removeItem(item.id))
+handlers.bookmark = (storage) => {
+  const view = storage.getItem('session:map.view')
+  if (!view) return
+  const point = new geom.Point(view.center)
+  const geometry = writeGeometry(point)
+
+  storage.setItem({
+    id: `place:${uuid()}`,
+    display_name: 'Bookmark',
+    name: 'Bookmark',
+    class: 'bookmark',
+    type: 'boundary',
+    sticky: true,
+    geojson: JSON.parse(geometry),
+    resolution: view.resolution
   })
 }
+
 
 // <- command handlers
 
 evented.on(event => {
   if (!event.type) return
   if (!event.type.startsWith('command.storage')) return
-  if (event.trigger !== 'click') return
+  if (event.trigger && event.trigger !== 'click') return
 
   const handler = handlers[event.type.split('.')[2]]
   if (!handler) return

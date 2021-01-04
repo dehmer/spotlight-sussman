@@ -8,3 +8,4 @@ const format = new GeoJSON({
 export const readFeature = feature => format.readFeature(feature)
 export const readFeatures = source => format.readFeatures(source)
 export const readGeometry = source => format.readGeometry(source)
+export const writeGeometry = geometry => format.writeGeometry(geometry)
