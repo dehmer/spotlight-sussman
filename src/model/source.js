@@ -1,4 +1,3 @@
-import GeoJSON from 'ol/format/GeoJSON'
 import Collection from 'ol/Collection'
 import Feature from 'ol/Feature'
 import { storage } from '../storage'
@@ -6,13 +5,8 @@ import { featureId } from '../storage/ids'
 import evented from '../evented'
 import { isFeature } from '../storage/ids'
 import selection from './selection'
+import { readFeature } from '../storage/format'
 
-const format = new GeoJSON({
-  dataProjection: 'EPSG:4326', // WGS84
-  featureProjection: 'EPSG:3857' // Web-Mercator
-})
-
-const readFeature = feature => format.readFeature(feature)
 
 // -> OpenLayers interface (ol/source/Vector)
 

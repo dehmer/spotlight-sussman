@@ -6,7 +6,9 @@ import { isLayer, isFeature, isGroup, isSymbol, isPlace } from './ids'
 import evented from '../evented'
 import { searchIndex } from '../search/lunr'
 import { getContainedFeatures } from './helpers'
-import selection from '../model/selection'
+
+
+
 
 // -> command handlers
 
@@ -163,6 +165,8 @@ handlers.remove = (storage, { ids }) => {
 evented.on(event => {
   if (!event.type) return
   if (!event.type.startsWith('command.storage')) return
+  if (event.trigger !== 'click') return
+
   const handler = handlers[event.type.split('.')[2]]
   if (!handler) return
 

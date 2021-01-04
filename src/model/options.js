@@ -15,7 +15,7 @@ export const options = {}
 options.feature = (() => {
 
   const tags = ({ hidden, tags }, sidc) => [
-    'SCOPE:FEATURE:NONE',
+    'SCOPE:FEATURE:action.identify',
     `IMAGE:BACK:action:mdiArrowUp`,
     `SYSTEM:${hidden ? 'HIDDEN' : 'VISIBLE'}:command.storage`,
     ...dimensions(sidc).map(label => `SYSTEM:${label}:NONE`),
@@ -36,7 +36,8 @@ options.feature = (() => {
       description,
       url: url(sidc),
       tags: tags(feature, sidc),
-      capabilities: 'RENAME|TAG'
+      capabilities: 'RENAME|TAG',
+      actions: 'PRIMARY:action.panto'
     }
   }
 
@@ -50,7 +51,6 @@ options.feature = (() => {
 options.group = (() => {
   const option = group => {
 
-    // TODO: Dynamically determine terms
     const items = searchIndex(group.terms)
       .filter(({ ref }) => !ref.startsWith('group:'))
       .map(({ ref }) => options[ref.split(':')[0]](ref))
@@ -62,7 +62,7 @@ options.group = (() => {
       id: group.id,
       title: group.name,
       tags: [
-        'GROUP:GROUP:NONE',
+        'GROUP:GROUP:action.identify',
         ...(group.scope || []).map(label => `SCOPE:${label}:NONE`),
         `IMAGE:OPEN:action:mdiArrowDown`,
         ...tags,
@@ -82,7 +82,7 @@ options.group = (() => {
 options.layer = (() => {
 
   const tags = ({ hidden, tags }) => [
-    'SCOPE:LAYER:NONE',
+    'SCOPE:LAYER:action.identify',
     `IMAGE:OPEN:action:mdiArrowDown`,
     `SYSTEM:${hidden ? 'HIDDEN' : 'VISIBLE'}:command.storage`,
     ...(tags || []).map(label => `USER:${label}:NONE`)
@@ -138,11 +138,12 @@ options.place = (() => {
       title: entry.name,
       description: entry.description,
       tags: [
-        'SCOPE:PLACE:NONE',
+        'SCOPE:PLACE:action.identify',
         ...tags(entry),
         ...(entry.tags || []).map(label => `USER:${label}:NONE`)
       ].join(' '),
-      capabilities: 'TAG|RENAME'
+      capabilities: 'TAG|RENAME',
+      actions: 'PRIMARY:action.panto'
     }
   }
 

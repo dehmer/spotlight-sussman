@@ -25,14 +25,30 @@ const Tag = props => {
     else if (props.action !== 'NONE') {
       const ids = R.uniq([props.id, ...selection.selected()])
       const type = `${props.action}.${props.label.toLowerCase()}`
-      evented.emit({ type, ids })
+      evented.emit({ type, ids, trigger: 'click' })
     }
+  }
+
+  const handleMouseDown = event => {
+    if (props.action === 'NONE') return
+    const label = props.label ? `.${props.label.toLowerCase()}` : ''
+    const type = `${props.action}${label}`
+    evented.emit({ type, id: props.id, trigger: 'down' })
+  }
+
+  const handleMouseUp = event => {
+    if (props.action === 'NONE') return
+    const label = props.label ? `.${props.label.toLowerCase()}` : ''
+    const type = `${props.action}${label}`
+    evented.emit({ type, id: props.id, trigger: 'up' })
   }
 
   return (
     <span
       className={className}
       onClick={handleClick}
+      onMouseDown={handleMouseDown}
+      onMouseUp={handleMouseUp}
       style={style}
     >
       { children }
