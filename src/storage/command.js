@@ -158,7 +158,7 @@ handlers.newgroup = storage => {
   storage.setItem({ id, name, terms, ...fields })
 }
 
-handlers.bookmark = (storage) => {
+handlers.bookmark = storage => {
   const view = storage.getItem('session:map.view')
   if (!view) return
   const point = new geom.Point(view.center)
@@ -175,7 +175,6 @@ handlers.bookmark = (storage) => {
     resolution: view.resolution
   })
 }
-
 
 // <- command handlers
 

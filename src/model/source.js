@@ -1,12 +1,13 @@
 import Collection from 'ol/Collection'
 import Feature from 'ol/Feature'
-import { storage } from '../storage'
+import uuid from 'uuid-random'
+import { storage, tx } from '../storage'
 import { featureId } from '../storage/ids'
 import evented from '../evented'
 import { isFeature } from '../storage/ids'
 import selection from './selection'
-import { readFeature } from '../storage/format'
-
+import { readFeature, writeFeaturesObject } from '../storage/format'
+import { currentDateTime } from './datetime'
 
 // -> OpenLayers interface (ol/source/Vector)
 
@@ -52,13 +53,35 @@ storage.keys()
   .forEach(feature => features.push(feature))
 
 
-evented.on(({ type, changes }) => {
-  if (type !== 'storage.changed') return
-  selection.deselect(changes.removal)
-  changes.removal.forEach(removeFeature)
-  changes.update.forEach(removeFeature)
-  changes.update.forEach(addFeature)
-  changes.addition.forEach(addFeature)
+evented.on(event => {
+  if (event.type === 'command.storage.snapshot') {
+    const changes = tx(storage => {
+      const layer = writeFeaturesObject(features.getArray())
+      layer.id = `layer:${uuid()}`
+      layer.name = `Snapshot - ${currentDateTime()}`
+      layer.tags = ['snapshot']
+
+      const featureCollection = layer.features
+      delete layer.features
+
+      featureCollection.forEach(feature => {
+        feature.id = featureId(layer.id)
+        feature.hidden = true
+        storage.setItem(feature)
+      })
+      storage.setItem(layer)
+    })
+
+    evented.emit({ type: 'model.changed' })
+    evented.emit({ type: 'storage.changed', changes })
+  } else if (event.type === 'storage.changed') {
+    const { changes } = event
+    selection.deselect(changes.removal)
+    changes.removal.forEach(removeFeature)
+    changes.update.forEach(removeFeature)
+    changes.update.forEach(addFeature)
+    changes.addition.forEach(addFeature)
+  }
 })
 
 // <- OpenLayers interface (ol/source/Vector)

@@ -48,6 +48,11 @@ Mousetrap.bind('f2', () => {
   return false
 })
 
+Mousetrap.bind('f3', () => {
+  evented.emit({ type: 'command.storage.snapshot' })
+  return false
+})
+
 const app = document.getElementById('app')
 ReactDOM.render(<App></App>, app)
 

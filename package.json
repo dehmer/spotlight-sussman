@@ -12,6 +12,7 @@
     "lodash.debounce": "^4.0.8",
     "lodash.throttle": "^4.1.1",
     "lunr": "^2.3.9",
+    "luxon": "^1.25.0",
     "map": "^1.0.1",
     "mathjs": "^8.1.0",
     "mdi-react": "^7.4.0",
