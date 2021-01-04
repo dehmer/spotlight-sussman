@@ -1,7 +1,6 @@
 TODO:
 - avatar cache: use js-cache (https://www.npmjs.com/package/js-cache)
 - issue: user-select: none ignored by WebKit
-- add bookmark
 - default layer
 - group:0 (+save)
 - layer from selection/group
@@ -40,3 +39,4 @@ DONE:
 - sync focus/selection between list and map
 - 'id' function (highlight in map)
 - primary action (panto)
+- add bookmark
