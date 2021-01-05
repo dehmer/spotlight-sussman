@@ -1,4 +1,4 @@
-// import { storage } from './object'
+// import { storage } from './memory'
 import { storage } from './local'
 
 const tx = fn => {

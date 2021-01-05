@@ -5,6 +5,11 @@ TODO:
 - group:0 (+save)
 - layer from selection/group
 - list: reveal/focus entry
+- upgrade OpenLayers dependency
+- search/spotlight: use immutable/persistent data structures
+- event emitter should support regex/express-like paths
+- replace layer with tag as feature container (if feasible)
+- try out moving (initial) selection state to search result
 
 DONE:
 - toolbar / scopebar
@@ -40,3 +45,4 @@ DONE:
 - 'id' function (highlight in map)
 - primary action (panto)
 - add bookmark
+- create snapshot layer
