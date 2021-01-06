@@ -1,5 +1,5 @@
 import React from 'react'
-import evented from '../evented'
+import emitter from '../emitter'
 
 export const TitleEditor = props => {
   const [value, setValue] = React.useState(props.value)
@@ -8,7 +8,7 @@ export const TitleEditor = props => {
     setValue(target.value)
   }
 
-  const commit = name => evented.emit({ type: 'command.storage.rename', id: props.id, name})
+  const commit = name => emitter.emit(`${props.id}/rename`, { name })
   const handleBlur = () => commit(value)
 
   const handleKeyDown = event => {

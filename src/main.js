@@ -6,50 +6,50 @@ import { loadLayerFiles } from './model/io'
 import './model/selection'
 import './storage/command'
 import './storage/action'
-import evented from './evented'
+import emitter from './emitter'
 
 Mousetrap.bind('command+1', () => {
-  evented.emit({ type: 'command.search.scope.all' })
+  emitter.emit('search/scope/all')
   return false
 })
 
 Mousetrap.bind('command+2', () => {
-  evented.emit({ type: 'command.search.scope.layer' })
+  emitter.emit('search/scope/layer')
   return false
 })
 
 Mousetrap.bind('command+3', () => {
-  evented.emit({ type: 'command.search.scope.feature' })
+  emitter.emit('search/scope/feature')
   return false
 })
 
 Mousetrap.bind('command+4', () => {
-  evented.emit({ type: 'command.search.scope.symbol' })
+  emitter.emit('search/scope/symbol')
   return false
 })
 
 Mousetrap.bind('command+5', () => {
-  evented.emit({ type: 'command.search.scope.group' })
+  emitter.emit('search/scope/group')
   return false
 })
 
 Mousetrap.bind('command+6', () => {
-  evented.emit({ type: 'command.search.scope.place' })
+  emitter.emit('search/scope/place')
   return false
 })
 
 Mousetrap.bind('f1', () => {
-  evented.emit({ type: 'command.storage.bookmark' })
+  emitter.emit('storage/bookmark')
   return false
 })
 
 Mousetrap.bind('f2', () => {
-  console.log('[Mousetrap] group')
+  emitter.emit('storage/group')
   return false
 })
 
 Mousetrap.bind('f3', () => {
-  evented.emit({ type: 'command.storage.snapshot' })
+  emitter.emit('storage/snapshot')
   return false
 })
 
@@ -66,5 +66,5 @@ app.addEventListener('drop', async event => {
   event.preventDefault()
   event.stopPropagation()
   const layers = await loadLayerFiles([...event.dataTransfer.files])
-  evented.emit({ type: 'command.storage.addlayers', layers })
+  emitter.emit('layers/import', ({ layers }))
 }, false)

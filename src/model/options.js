@@ -15,9 +15,8 @@ export const options = {}
 options.feature = (() => {
 
   const tags = ({ hidden, tags }, sidc) => [
-    'SCOPE:FEATURE:action.identify',
-    `IMAGE:BACK:action:mdiArrowUp`,
-    `SYSTEM:${hidden ? 'HIDDEN' : 'VISIBLE'}:command.storage`,
+    'SCOPE:FEATURE:identify',
+    hidden ? 'SYSTEM:HIDDEN:show' : `SYSTEM:VISIBLE:hide`,
     ...dimensions(sidc).map(label => `SYSTEM:${label}:NONE`),
     ...scopes(sidc).map(label => `SYSTEM:${label}:NONE`),
     ...(identity(sidc)).map(label => `SYSTEM:${label}:NONE`),
@@ -37,7 +36,7 @@ options.feature = (() => {
       url: url(sidc),
       tags: tags(feature, sidc),
       capabilities: 'RENAME|TAG',
-      actions: 'PRIMARY:action.panto'
+      actions: 'PRIMARY:panto'
     }
   }
 
@@ -56,15 +55,15 @@ options.group = (() => {
       .map(({ ref }) => options[ref.split(':')[0]](ref))
 
     const tags = R.uniq(items.flatMap(item => item.tags.split(' ')))
-      .filter(tag => tag.match(/SYSTEM:.*:command\.storage/))
+      .filter(tag => tag.match(/SYSTEM:.*/))
 
     return {
       id: group.id,
       title: group.name,
       tags: [
-        'GROUP:GROUP:action.identify',
+        'GROUP:GROUP:identify',
         ...(group.scope || []).map(label => `SCOPE:${label}:NONE`),
-        `IMAGE:OPEN:action:mdiArrowDown`,
+        `IMAGE:OPEN:open:mdiArrowDown`,
         ...tags,
         ...(group.tags || []).map(label => `USER:${label}:NONE`)
       ].join(' '),
@@ -82,9 +81,9 @@ options.group = (() => {
 options.layer = (() => {
 
   const tags = ({ hidden, tags }) => [
-    'SCOPE:LAYER:action.identify',
-    `IMAGE:OPEN:action:mdiArrowDown`,
-    `SYSTEM:${hidden ? 'HIDDEN' : 'VISIBLE'}:command.storage`,
+    'SCOPE:LAYER:identify',
+    `IMAGE:OPEN:open:mdiArrowDown`,
+    hidden ? 'SYSTEM:HIDDEN:show' : `SYSTEM:VISIBLE:hide`,
     ...(tags || []).map(label => `USER:${label}:NONE`)
   ].join(' ')
 
@@ -138,12 +137,12 @@ options.place = (() => {
       title: entry.name,
       description: entry.description,
       tags: [
-        'SCOPE:PLACE:action.identify',
+        'SCOPE:PLACE:identify',
         ...tags(entry),
         ...(entry.tags || []).map(label => `USER:${label}:NONE`)
       ].join(' '),
       capabilities: 'TAG|RENAME',
-      actions: 'PRIMARY:action.panto'
+      actions: 'PRIMARY:panto'
     }
   }
 

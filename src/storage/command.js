@@ -1,26 +1,20 @@
 import * as R from 'ramda'
 import uuid from 'uuid-random'
 import * as geom from 'ol/geom'
-import { storage, tx } from '.'
+import { storage, txn } from '.'
 import { layerId, featureId } from './ids'
-import { isLayer, isFeature, isGroup, isSymbol, isPlace } from './ids'
-import evented from '../evented'
+import { isLayer, isFeature, isGroup, isSymbol } from './ids'
+import { FEATURE_ID, LAYER_ID, PLACE_ID, GROUP_ID, SYMBOL_ID } from './ids'
+import emitter from '../emitter'
 import { searchIndex } from '../search/lunr'
 import { getContainedFeatures } from './helpers'
 import { writeGeometry } from './format'
 
 // -> command handlers
 
-const handlers = {}
+const ids = () => R.uniq(selection.selected())
 
-const cantag = id => !isGroup(id)
-const onmap = id => id && (isFeature(id) || isLayer(id)) || isGroup(id)
-
-
-/**
- *
- */
-handlers.addlayers = (storage, { layers }) => {
+emitter.on('layers/import', txn((storage, { layers }) => {
 
   // Overwrite existing layers, i.e. delete before re-adding.
   const names = layers.map(R.prop('name'))
@@ -51,95 +45,97 @@ handlers.addlayers = (storage, { layers }) => {
       storage.setItem(feature)
     })
   })
-}
+}))
 
+emitter.on(`:id(${FEATURE_ID})/hide`, txn((storage, { id }) => {
+  storage.getItem(id)
+  storage.updateItem(item => item.hidden = true)(item)
+}))
 
-/**
- *
- */
-handlers.visible = (storage, { ids }) => storage.getItems(ids.filter(onmap))
-  .forEach(item => {
+emitter.on(`:id(${FEATURE_ID})/show`, txn((storage, { id }) => {
+  const item = storage.getItem(id)
+  storage.updateItem(item => delete item.hidden)(item)
+}))
 
-  if (isGroup(item.id)) {
-    const ids = searchIndex(item.terms)
-      .filter(({ ref }) => !isGroup(ref))
-      .filter(({ ref }) => !isSymbol(ref))
-      .map(({ ref }) => ref)
-    handlers.visible(storage, { ids })
-    return
-  }
+emitter.on(`:id(${LAYER_ID})/hide`, txn((storage, { id }) => {
+  const item = storage.getItem(id)
+  ;[item, ...getContainedFeatures(id)].forEach(storage.updateItem(item => item.hidden = true))
+}))
 
-  ;[item, ...getContainedFeatures(item.id)]
+emitter.on(`:id(${LAYER_ID})/show`, txn((storage, { id }) => {
+  const item = storage.getItem(id)
+  ;[item, ...getContainedFeatures(id)].forEach(storage.updateItem(item => delete item.hidden))
+}))
+
+emitter.on(`:id(${GROUP_ID})/hide`, txn((storage, { id }) => {
+  const item = storage.getItem(id)
+  searchIndex(item.terms)
+    .filter(({ ref }) => !isGroup(ref) && !isSymbol(ref))
+    .map(({ ref }) => ref)
+    .flatMap(id => [storage.getItem(id), ...getContainedFeatures(id)])
     .forEach(storage.updateItem(item => item.hidden = true))
-})
+}))
 
-/**
- *
- */
-handlers.hidden = (storage, { ids }) => storage.getItems(ids.filter(onmap))
-  .forEach(item => {
-
-  if (isGroup(item.id)) {
-    const ids = searchIndex(item.terms)
-      .filter(({ ref }) => !isGroup(ref))
-      .filter(({ ref }) => !isSymbol(ref))
-      .map(({ ref }) => ref)
-    handlers.hidden(storage, { ids })
-    return
-  }
-
-  ;[item, ...getContainedFeatures(item.id)]
+emitter.on(`:id(${GROUP_ID})/show`, txn((storage, { id }) => {
+  const item = storage.getItem(id)
+  searchIndex(item.terms)
+    .filter(({ ref }) => !isGroup(ref) && !isSymbol(ref))
+    .map(({ ref }) => ref)
+    .flatMap(id => [storage.getItem(id), ...getContainedFeatures(id)])
     .forEach(storage.updateItem(item => delete item.hidden))
+}))
+
+const addtag = txn((storage, { id, tag }) => {
+  storage.updateKey(item => item.tags = R.uniq([...(item.tags || []), tag]))(id)
 })
 
-/**
- *
- */
-handlers.addtag = (storage, { ids, tag }) => storage.getItems(ids.filter(cantag))
-  .filter(R.identity)
-  .forEach(item => storage.updateItem(item => {
+emitter.on(`:id(${LAYER_ID})/tag/add`, addtag)
+emitter.on(`:id(${FEATURE_ID})/tag/add`, addtag)
+emitter.on(`:id(${SYMBOL_ID})/tag/add`, addtag)
+emitter.on(`:id(${PLACE_ID})/tag/add`, txn((storage, { id, tag }) => {
+  storage.updateKey(item => {
     item.tags = R.uniq([...(item.tags || []), tag])
-    if (isPlace(item.id)) item.sticky = true
-  })(item))
+    item.sticky = true
+  })(id)
+}))
 
+const removetag = txn((storage, { id, tag }) => {
+  storage.updateKey(item => item.tags = (item.tags || []).filter(x => x !== tag))(id)
+})
 
-/**
- *
- */
-handlers.removetag = (storage, { ids, tag }) => storage.getItems(ids.filter(cantag))
-  .filter(R.identity)
-  .forEach(storage.updateItem(item => item.tags = (item.tags || []).filter(x => x !== tag)))
+emitter.on(`:id(${LAYER_ID})/tag/remove`, removetag)
+emitter.on(`:id(${FEATURE_ID})/tag/remove`, removetag)
+emitter.on(`:id(${SYMBOL_ID})/tag/remove`, removetag)
+emitter.on(`:id(${PLACE_ID})/tag/remove`, removetag)
 
+const rename = txn((storage, { id, name }) => {
+  storage.updateKey(item => item.name = name.trim())(id)
+})
 
-/**
- *
- */
-handlers.rename = (storage, { id, name }) => {
-  const rename = R.cond([
-    [R.compose(isFeature, R.prop('id')), feature => feature.properties.t = name.trim()],
-    [R.compose(isPlace, R.prop('id')), place => {
-      place.name = name.trim()
-      place.sticky = true
-    }],
-    [R.T, item => item.name = name.trim()]
-  ])
+emitter.on(`:id(${LAYER_ID})/rename`, rename)
+emitter.on(`:id(${GROUP_ID})/rename`, rename)
 
-  storage.updateKey(rename)(id)
-}
+emitter.on(`:id(${FEATURE_ID})/rename`, txn((storage, { id, name }) => {
+  storage.updateKey(feature => feature.properties.t = name.trim())(id)
+}))
 
-handlers.remove = (storage, { ids }) => {
+emitter.on(`:id(${PLACE_ID})/rename`, txn((storage, { id, name }) => {
+  storage.updateKey(place => {
+    place.name = name.trim()
+    place.sticky = true
+  })(id)
+}))
+
+emitter.on('items/remove', txn((storage, { ids }) => {
   storage.getItems(ids).forEach(item => {
     if (!item) return
     storage.removeItem(item.id)
     const features = getContainedFeatures(item.id)
     features.forEach(item => storage.removeItem(item.id))
   })
-}
+}))
 
-/**
- *
- */
-handlers.newgroup = storage => {
+emitter.on('storage/group', txn(storage => {
   const search = storage.getItem('search:')
   if (!search) return
   const { terms } = search
@@ -156,9 +152,9 @@ handlers.newgroup = storage => {
   const id = `group:${uuid()}`
   const name = (fields.text || []).join(' ') || 'N/A'
   storage.setItem({ id, name, terms, ...fields })
-}
+}))
 
-handlers.bookmark = storage => {
+emitter.on('storage/bookmark', txn(storage => {
   const view = storage.getItem('session:map.view')
   if (!view) return
   const point = new geom.Point(view.center)
@@ -174,24 +170,10 @@ handlers.bookmark = storage => {
     geojson: JSON.parse(geometry),
     resolution: view.resolution
   })
-}
+}))
+
+emitter.on('search/current', ({ terms }) => {
+  storage.setItem({ id: 'search:', terms })
+})
 
 // <- command handlers
-
-evented.on(event => {
-  if (!event.type) return
-  if (!event.type.startsWith('command.storage')) return
-  if (event.trigger && event.trigger !== 'click') return
-
-  const handler = handlers[event.type.split('.')[2]]
-  if (!handler) return
-
-  const changes = tx(storage => handler(storage, event))
-  evented.emit({ type: 'model.changed' })
-  evented.emit({ type: 'storage.changed', changes })
-})
-
-evented.on(event => {
-  if (event.type !== 'search.current') return
-  storage.setItem({ id: 'search:', terms: event.terms })
-})

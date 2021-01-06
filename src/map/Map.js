@@ -12,7 +12,7 @@ import './epsg'
 import style from './style'
 import { storage } from '../storage'
 import select from './interaction/select'
-import evented from '../evented'
+import emitter from '../emitter'
 
 export const Map = props => {
   React.useEffect(() => {
@@ -24,7 +24,6 @@ export const Map = props => {
       resolution: 612,
       rotation: 0
     }
-
 
     const fill = new Fill({ color: 'rgba(255,50,50,0.4)' })
     const stroke = new Stroke({ color: 'black', width: 1.25 })
@@ -64,13 +63,10 @@ export const Map = props => {
       })
     })
 
-    evented.on(event => {
-      if (event.type === 'selected' || event.type === 'deselected') {
-        defaultLayer.setOpacity(selectedFeatures.getLength() ? 0.35 : 1)
-      } else if (event.type === 'map.panto') {
-        view.animate({ center: event.center, resolution: event.resolution })
-      }
-    })
+    const dim = () => defaultLayer.setOpacity(selectedFeatures.getLength() ? 0.35 : 1)
+    emitter.on('map/panto', ({ center, resolution }) => view.animate({ center, resolution }))
+    emitter.on('selected', dim)
+    emitter.on('deselected', dim)
   }, [])
 
   return <div id='map' className='map fullscreen'></div>

@@ -1,6 +1,6 @@
 // Track selections throughout the application.
 // Selections are URIs.
-import evented from '../evented'
+import emitter from '../emitter'
 
 // Current selections.
 let state = []
@@ -17,7 +17,7 @@ const select = uris => {
 
   const additions = uris.filter(x => !state.includes(x))
   state = [...state, ...additions]
-  if (additions.length) evented.emit({ type: 'selected', list: additions })
+  if (additions.length) emitter.emit('selected', { ids: additions })
 }
 
 /**
@@ -34,7 +34,7 @@ const deselect = uris => {
     : state
 
   state = state.filter(x => !removals.includes(x))
-  if (removals.length) evented.emit({ type: 'deselected', list: removals })
+  if (removals.length) emitter.emit('deselected', { ids: removals })
 }
 
 const isEmpty = () => state.length === 0

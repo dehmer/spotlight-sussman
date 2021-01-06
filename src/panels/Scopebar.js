@@ -1,40 +1,33 @@
 import React from 'react'
 import TagList from '../components/TagList'
-import evented from '../evented'
+import emitter from '../emitter'
 
 const initialScopes = [
-  'SCOPE:ALL:command.search.scope',
-  'SYSTEM:LAYER:command.search.scope',
-  'SYSTEM:FEATURE:command.search.scope',
-  'SYSTEM:SYMBOL:command.search.scope',
-  'SYSTEM:GROUP:command.search.scope',
-  'SYSTEM:PLACE:command.search.scope'
+  'SCOPE:ALL:search/scope',
+  'SYSTEM:LAYER:search/scope',
+  'SYSTEM:FEATURE:search/scope',
+  'SYSTEM:SYMBOL:search/scope',
+  'SYSTEM:GROUP:search/scope',
+  'SYSTEM:PLACE:search/scope'
 ]
 
-const reducer = (state, event) => {
-  const { type } = event
-  const activate = (state, label) => {
-    const clone = state.map(tag => {
-      const [_, text, action] = tag.split(':')
-      return [
-        text === (label || '').toUpperCase() ? 'SCOPE' : 'SYSTEM',
-        text,
-        action
-      ].join(':')
-    })
-    return clone
-  }
-
-  if (type !== 'search-provider.changed') return state
-  return activate(state, event.scope)
+const reducer = (state, { scope }) => {
+  return state.map(tag => {
+    const [_, text, action] = tag.split(':')
+    return [
+      text === (scope || '').toUpperCase() ? 'SCOPE' : 'SYSTEM',
+      text,
+      action
+    ].join(':')
+  })
 }
 
 export const Scopebar = props => {
-
   const [scopes, dispatch] = React.useReducer(reducer, initialScopes)
 
   React.useEffect(() => {
-    evented.on(dispatch)
+    emitter.on('search/provider/updated', dispatch)
+    return () => console.log('<Scopebar/> unmounted.')
   }, [])
 
   // TODO: move to CSS (scopebar)

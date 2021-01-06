@@ -1,5 +1,6 @@
 // import { storage } from './memory'
 import { storage } from './local'
+import emitter from '../emitter'
 
 const tx = fn => {
   const addition = []
@@ -24,4 +25,9 @@ const tx = fn => {
   return { addition, removal, update }
 }
 
-export { storage, tx }
+const txn = fn => event => {
+  const changes = tx(storage => fn(storage, event))
+  emitter.emit('storage/updated', changes)
+}
+
+export { storage, tx, txn }

@@ -1,6 +1,6 @@
 import * as R from 'ramda'
 import { storage } from '../storage'
-import evented from '../evented'
+import emitter from '../emitter'
 import uuid from 'uuid-random'
 
 /* eslint-disable */
@@ -46,18 +46,19 @@ export const searchOSM = query => {
     switch (request.readyState) {
       case DONE: {
         try {
-          storage.keys()
+          const removal = storage.keys()
             .filter(id => id.startsWith('place'))
             .map(storage.getItem)
             .filter(place => !place.sticky)
-            .forEach(place => storage.removeItem(place.id))
+            .map(R.prop('id'))
 
-          JSON.parse(request.responseText)
+          const addition = JSON.parse(request.responseText)
             .map(place)
-            .forEach(storage.setItem)
 
-          evented.emit({ type: 'model.changed' })
+          removal.forEach(storage.removeItem)
+          addition.forEach(storage.setItem)
 
+          emitter.emit('storage/updated', { addition, removal, update: [] })
         } catch (err) {
           console.error('[nominatim]', err)
         }

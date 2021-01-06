@@ -1,6 +1,6 @@
 import * as R from 'ramda'
 import lunr from 'lunr'
-import evented from '../evented'
+import emitter from '../emitter'
 import { storage } from '../storage'
 import { documents } from '../model/documents'
 
@@ -19,7 +19,7 @@ var index
     console.time('[lunr] re-index')
     index = lunr(function () {
       this.pipeline.remove(lunr.stemmer)
-      this.pipeline.remove(lunr.stopWordFilter) // allow word like 'so', 'own', etc.
+      this.pipeline.remove(lunr.stopWordFilter) // allow words like 'so', 'own', etc.
       this.searchPipeline.remove(lunr.stemmer)
       this.field('text')
       this.field('scope')
@@ -32,14 +32,11 @@ var index
     })
 
     console.timeEnd('[lunr] re-index')
-    evented.emit({ type: 'search-index.refreshed' })
+    emitter.emit('index/updated')
   }
 
   reindex()
-
-  evented.on(event => {
-    if (event.type === 'model.changed') reindex()
-  })
+  emitter.on('storage/updated', reindex)
 })()
 
 export const searchIndex = R.tryCatch(

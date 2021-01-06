@@ -1,9 +1,7 @@
-import * as R from 'ramda'
 import React from 'react'
 import { TagIcon } from './TagIcon'
 import * as mdi from '@mdi/js'
-import evented from '../evented'
-import selection from '../model/selection'
+import emitter from '../emitter'
 
 const Tag = props => {
   const { variant, children } = props
@@ -21,26 +19,26 @@ const Tag = props => {
 
   const handleClick = event => {
     event.stopPropagation()
-    if (props.onClick) props.onClick()
-    else if (props.action !== 'NONE') {
-      const ids = R.uniq([props.id, ...selection.selected()])
-      const type = `${props.action}.${props.label.toLowerCase()}`
-      evented.emit({ type, ids, trigger: 'click' })
-    }
+    if (props.onClick) return props.onClick()
+    else if (props.action === 'NONE') return
+
+    const path = props.id
+      ? `${props.id}/${props.action}`
+      : `${props.action}/${props.label.toLowerCase()}`
+
+    emitter.emit(path)
   }
 
-  const handleMouseDown = event => {
+  const handleMouseDown = () => {
     if (props.action === 'NONE') return
-    const label = props.label ? `.${props.label.toLowerCase()}` : ''
-    const type = `${props.action}${label}`
-    evented.emit({ type, id: props.id, trigger: 'down' })
+    if (!props.id) return
+    emitter.emit(`${props.id}/${props.action}/down`)
   }
 
-  const handleMouseUp = event => {
+  const handleMouseUp = () => {
     if (props.action === 'NONE') return
-    const label = props.label ? `.${props.label.toLowerCase()}` : ''
-    const type = `${props.action}${label}`
-    evented.emit({ type, id: props.id, trigger: 'up' })
+    if (!props.id) return
+    emitter.emit(`${props.id}/${props.action}/up`)
   }
 
   return (

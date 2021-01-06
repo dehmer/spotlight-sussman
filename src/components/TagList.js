@@ -1,20 +1,17 @@
-import * as R from 'ramda'
 import React from 'react'
 import Tag from './Tag'
 import * as mdi from '@mdi/js'
-import evented from '../evented'
+import emitter from '../emitter'
 import { TagIcon } from './TagIcon'
-import selection from '../model/selection'
 
 const TagList = props => {
   const { id, tags } = props
   const [inputVisible, setInputVisible] = React.useState(false)
   const [inputValue, setInputValue] = React.useState('')
   const inputRef = React.createRef()
-  const ids = () => R.uniq([id, ...selection.selected()])
 
   const handleClose = tag => () => {
-    evented.emit({ type: 'command.storage.removetag', ids: ids(), tag })
+    emitter.emit(`${id}/tag/remove`, { tag })
   }
 
   const onClick = () => {
@@ -46,7 +43,8 @@ const TagList = props => {
   const confirmInput = () => {
     setInputVisible(false)
     if (!inputValue) return
-    evented.emit({ type: 'command.storage.addtag', ids: ids(), tag: inputValue })
+    console.log('emitting', `${id}/tag/add`)
+    emitter.emit(`${id}/tag/add`, { tag: inputValue })
   }
 
   const handleKeyDown = event => {

@@ -1,7 +1,7 @@
 import * as R from 'ramda'
 import { searchIndex } from './lunr'
 import { searchOSM } from './nominatim'
-import evented from '../evented'
+import emitter from '../emitter'
 import { options } from '../model/options'
 import { compare } from './compare'
 
@@ -42,7 +42,7 @@ const lunrProvider = scope => {
   }
 
   const search = terms => {
-    evented.emit({ type: 'search.current', terms })
+    emitter.emit('search/current', { terms })
     return R.compose(limit, sort, refs, searchIndex)(terms)
   }
 
@@ -57,29 +57,30 @@ const lunrProvider = scope => {
 var currentQuery = { value: '' }
 var provider = lunrProvider('')
 
-evented.on(event => {
-  const search = query => {
-    currentQuery = query
-    provider(query, result => evented.emit({ type: 'search-result.changed', result }))
+const search = query => {
+  currentQuery = query
+  provider(query, result => emitter.emit('search/result/updated', { result }))
+}
+
+emitter.on('search/provider', event => {
+  provider = event.provider
+  emitter.emit('search/provider/updated', { scope: event.scope })
+  search({ value: '' })
+})
+
+emitter.on('index/updated', () => search(currentQuery))
+
+emitter.on('search/scope/:scope', ({ scope }) => {
+  switch (scope) {
+    case 'all': provider = lunrProvider(''); break;
+    default: provider = lunrProvider(scope); break;
   }
 
-  if (event.type.startsWith('command.search.scope')) {
-    const scope = event.type.split('.')[3]
-    switch (scope) {
-      case 'all': provider = lunrProvider(''); break;
-      default: provider = lunrProvider(scope); break;
-    }
+  emitter.emit('search/provider/updated', { scope })
+  search({ value: '' })
+})
 
-    evented.emit({ type: 'search-provider.changed', scope })
-    search({ value: '' })
-  } else if(event.type === 'command.search.provider') {
-    provider = event.provider
-    evented.emit({ type: 'search-provider.changed', scope: event.scope })
-    search({ value: '' })
-  }
-  else if (event.type === 'search-index.refreshed') search(currentQuery)
-  else if (event.type === 'search-filter.changed') {
-    if (event.mode === 'enter') searchOSM(event)
-    search(event)
-  }
+emitter.on('search/filter/updated', event => {
+  if (event.mode === 'enter') searchOSM(event)
+  search(event)
 })

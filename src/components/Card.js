@@ -1,7 +1,7 @@
 import React from 'react'
 import Body from './Body'
 import { Avatar } from './Avatar'
-import evented from '../evented'
+import emitter from '../emitter'
 
 // Selection has precedence over focus:
 const className = props => (props.focus && !props.selected)
@@ -14,7 +14,7 @@ const Card = React.forwardRef((props, ref) => {
     const actions = props.actions.split('|')
     const action = actions.find(action => action.includes('PRIMARY'))
     if (!action) return
-    evented.emit({ type: `${action.split(':')[1]}`, id: props.id })
+    emitter.emit(`${props.id}/${action.split(':')[1]}`)
   }
 
   return (

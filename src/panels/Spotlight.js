@@ -2,7 +2,7 @@ import React from 'react'
 import * as R from 'ramda'
 import { CardList } from '../components/CardList'
 import Card from '../components/Card'
-import evented from '../evented'
+import emitter from '../emitter'
 import selectionService from '../model/selection'
 import { Search } from './Search'
 import { Scopebar } from './Scopebar'
@@ -12,20 +12,18 @@ const next = R.prop('nextSibling')
 const previous = R.prop('previousSibling')
 
 const reducer = (state, event) => {
-  switch (event.type) {
-    case 'search-result.changed': return event.result
-    case 'toggle-edit': {
-      const index = state.findIndex(entry => entry.id === event.id)
-      const entry = state[index]
-      if (!entry) return state
-      if (!(entry.capabilities || '').includes('RENAME')) return state
+  if (event.id) {
+    // toggle/start edit:
+    const index = state.findIndex(entry => entry.id === event.id)
+    const entry = state[index]
+    if (!entry) return state
+    if (!(entry.capabilities || '').includes('RENAME')) return state
 
-      const clone = [...state]
-      clone[index].edit = true
-      return clone
-    }
-    default: return state
-  }
+    const clone = [...state]
+    clone[index].edit = true
+    return clone
+  } else if (event.result) return event.result
+  else return state
 }
 
 /**
@@ -66,23 +64,30 @@ const Spotlight = () => {
   }
 
   React.useEffect(() => {
-    const handler = (event) => {
-      const { type } = event
-      if (type === 'search-result.changed') dispatch(event)
-      else if (type === 'search-provider.changed') {
-        updateSelection([])
-        setFocus(null)
-      } else if (event.type === 'selected' || event.type === 'deselected') {
-        const visible = entries.map(entry => entry.id)
-        const selected = selectionService.selected(id => visible.includes(id))
-        const additions = selected.filter(id => !selection.includes(id))
-        const removals = selection.filter(id => !selected.includes(id))
-        updateSelection([...selection.filter(id => !removals.includes(id)), ...additions])
-      }
+    const providerUpdated = () => {
+      updateSelection([])
+      setFocus(null)
     }
 
-    evented.on(handler)
-    return () => evented.off(handler)
+    const selectionUpdated = () => {
+      const visible = entries.map(entry => entry.id)
+      const selected = selectionService.selected(id => visible.includes(id))
+      const additions = selected.filter(id => !selection.includes(id))
+      const removals = selection.filter(id => !selected.includes(id))
+      updateSelection([...selection.filter(id => !removals.includes(id)), ...additions])
+    }
+
+    emitter.on('search/provider/updated', providerUpdated)
+    emitter.on('search/result/updated', dispatch)
+    emitter.on('selected', selectionUpdated)
+    emitter.on('deselected', selectionUpdated)
+
+    return () => {
+      emitter.off('search/provider/updated', providerUpdated)
+      emitter.off('search/result/updated', dispatch)
+      emitter.off('selected', selectionUpdated)
+      emitter.off('deselected', selectionUpdated)
+    }
   }, [selection, entries])
 
   const selected = key => selection.includes(key)
@@ -184,7 +189,7 @@ const Spotlight = () => {
       },
       Backspace: ({ metaKey }) => {
         if (!metaKey) return
-        evented.emit({ type: 'command.storage.remove', ids: [focus, ...selection] })
+        emitter.emit('items/remove', { ids: [focus, ...selection] })
       },
       Space: () => {
         if (!focus) return
