@@ -17,14 +17,14 @@ const option = id => options[id.split(':')[0]](id)
 export const highlightedFeatures = new Collection()
 
 emitter.on(`:id(${LAYER_ID})/open`, ({ id }) => {
-  const layer = option(id)
+  const layer = getItem(id)
   const features = () => storage.keys()
     .filter(isContained(id))
     .filter(isFeature)
     .map(option)
 
   emitter.emit('search/provider', {
-    scope: layer.title,
+    scope: layer.name,
     provider: (query, callback) => callback(features())
   })
 })
@@ -38,7 +38,7 @@ emitter.on(`:id(${GROUP_ID})/open`, ({ id }) => {
     .map(option)
 
   emitter.emit('search/provider', {
-    scope: group.title,
+    scope: group.name,
     provider: (query, callback) => callback(options())
   })
 })

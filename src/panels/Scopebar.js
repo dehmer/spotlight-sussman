@@ -2,46 +2,28 @@ import React from 'react'
 import TagList from '../components/TagList'
 import emitter from '../emitter'
 
-const initialScopes = [
-  'SCOPE:ALL:search/scope',
-  'SYSTEM:LAYER:search/scope',
-  'SYSTEM:FEATURE:search/scope',
-  'SYSTEM:SYMBOL:search/scope',
-  'SYSTEM:GROUP:search/scope',
-  'SYSTEM:PLACE:search/scope'
-]
+const scopes = ['ALL', 'LAYER', 'FEATURE', 'SYMBOL', 'GROUP', 'PLACE']
+const action = 'search/scope'
 
-const reducer = (state, { scope }) => {
-  return state.map(tag => {
-    const [_, text, action] = tag.split(':')
-    return [
-      text === (scope || '').toUpperCase() ? 'SCOPE' : 'SYSTEM',
-      text,
-      action
-    ].join(':')
-  })
+const formatTags = scope => {
+  const upper = (scope || '').toUpperCase()
+  const xs = scopes.map(s => `${s === upper ? 'SCOPE' : 'SYSTEM'}:${s}:${action}` )
+  if (scopes.includes(upper)) return xs
+  else return [...xs, `SCOPE:${upper.replace(/ /g, '\u00A0')}:${action}`]
 }
 
+const reducer = (_, { scope }) => formatTags(scope)
+
 export const Scopebar = props => {
-  const [scopes, dispatch] = React.useReducer(reducer, initialScopes)
+  const [scopes, dispatch] = React.useReducer(reducer, formatTags('ALL'))
 
   React.useEffect(() => {
     emitter.on('search/provider/updated', dispatch)
     return () => emitter.off('search/provider/updated', dispatch)
   }, [])
 
-  // TODO: move to CSS (scopebar)
-  const style = {
-    padding: '12px',
-    paddingBottom: '4px',
-    borderBottomStyle: 'solid',
-    borderWidth: '1px',
-    borderColor: 'grey',
-    fontSize: '90%'
-  }
-
   return (
-    <div style={style}>
+    <div className='scopebar'>
       <TagList
         tags={scopes.join(' ')}
       />

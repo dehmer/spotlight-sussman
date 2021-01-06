@@ -60,6 +60,15 @@ div {
   flex-direction: column;
 }
 
+.scopebar {
+  padding: 12px;
+  padding-bottom: 4px;
+  border-bottom-style: solid;
+  border-width: 1px;
+  border-color: 'grey';
+  font-size: '90%';
+}
+
 /* TODO: Do we need this container and why? */
 .search-container {
   padding: 8px;
