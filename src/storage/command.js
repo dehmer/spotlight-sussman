@@ -82,6 +82,7 @@ const addtag = txn((storage, { id, tag }) => {
 emitter.on(`:id(${LAYER_ID})/tag/add`, addtag)
 emitter.on(`:id(${FEATURE_ID})/tag/add`, addtag)
 emitter.on(`:id(${SYMBOL_ID})/tag/add`, addtag)
+emitter.on(`:id(${GROUP_ID})/tag/add`, addtag)
 emitter.on(`:id(${PLACE_ID})/tag/add`, txn((storage, { id, tag }) => {
   storage.updateKey(item => {
     item.tags = R.uniq([...(item.tags || []), tag])
@@ -98,6 +99,7 @@ const removetag = txn((storage, { id, tag }) => {
 emitter.on(`:id(${LAYER_ID})/tag/remove`, removetag)
 emitter.on(`:id(${FEATURE_ID})/tag/remove`, removetag)
 emitter.on(`:id(${SYMBOL_ID})/tag/remove`, removetag)
+emitter.on(`:id(${GROUP_ID})/tag/remove`, removetag)
 emitter.on(`:id(${PLACE_ID})/tag/remove`, removetag)
 
 const rename = txn((storage, { id, name }) => {

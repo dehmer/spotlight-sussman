@@ -43,7 +43,7 @@ const lunrProvider = scope => {
 
   const search = terms => {
     emitter.emit('search/current', { terms })
-    return R.compose(limit, sort, refs, searchIndex)(terms)
+    return R.compose(limit, sort, refs, searchIndex)(terms || '+tags:pin')
   }
 
   return (query, callback) => {
@@ -84,3 +84,6 @@ emitter.on('search/filter/updated', event => {
   if (event.mode === 'enter') searchOSM(event)
   search(event)
 })
+
+// Get this thing going:
+setTimeout(() => search({ value: '' }), 0)

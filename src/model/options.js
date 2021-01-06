@@ -55,7 +55,7 @@ options.group = (() => {
       .map(({ ref }) => options[ref.split(':')[0]](ref))
 
     const tags = R.uniq(items.flatMap(item => item.tags.split(' ')))
-      .filter(tag => tag.match(/SYSTEM:.*/))
+      .filter(tag => tag.match(/SYSTEM:(HIDDEN|VISIBLE).*/))
 
     return {
       id: group.id,
@@ -67,7 +67,7 @@ options.group = (() => {
         ...tags,
         ...(group.tags || []).map(label => `USER:${label}:NONE`)
       ].join(' '),
-      capabilities: 'RENAME'
+      capabilities: 'RENAME|TAG'
     }
   }
 
