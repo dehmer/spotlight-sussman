@@ -53,6 +53,11 @@ Mousetrap.bind('f3', () => {
   return false
 })
 
+Mousetrap.bind('f4', () => {
+  emitter.emit('storage/layer')
+  return false
+})
+
 const app = document.getElementById('app')
 ReactDOM.render(<App></App>, app)
 

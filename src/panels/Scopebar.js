@@ -27,7 +27,7 @@ export const Scopebar = props => {
 
   React.useEffect(() => {
     emitter.on('search/provider/updated', dispatch)
-    return () => console.log('<Scopebar/> unmounted.')
+    return () => emitter.off('search/provider/updated', dispatch)
   }, [])
 
   // TODO: move to CSS (scopebar)

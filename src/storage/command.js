@@ -3,13 +3,14 @@ import uuid from 'uuid-random'
 import * as geom from 'ol/geom'
 import { storage, txn } from '.'
 import { layerId, featureId } from './ids'
-import { isLayer, isFeature, isGroup, isSymbol } from './ids'
+import { isLayer, isFeature, isGroup, isSymbol, isPlace } from './ids'
 import { FEATURE_ID, LAYER_ID, PLACE_ID, GROUP_ID, SYMBOL_ID } from './ids'
 import emitter from '../emitter'
 import { searchIndex } from '../search/lunr'
 import { getContainedFeatures } from './helpers'
 import { writeGeometry } from './format'
 import selection from '../model/selection'
+import { currentDateTime } from '../model/datetime'
 
 // -> command handlers
 
@@ -161,6 +162,32 @@ emitter.on('storage/bookmark', txn(storage => {
     geojson: JSON.parse(geometry),
     resolution: view.resolution
   })
+}))
+
+emitter.on('storage/layer', txn(storage => {
+  const features = pid => id => {
+    if (isPlace(id)) {
+      const place = storage.getItem(id)
+      return {
+        id: featureId(pid),
+        type: 'Feature',
+        geometry: place.geojson,
+        properties: { t: place.name },
+        tags: place.tags
+      }
+    } else return []
+  }
+
+  const item = storage.getItem('search:')
+  const ids = searchIndex(item.terms)
+    .filter(({ ref }) => !isGroup(ref) && !isSymbol(ref))
+    .map(({ ref }) => ref)
+
+  const pid = layerId()
+  const items = R.uniq(contained(ids)).flatMap(features(pid))
+  const tags = R.uniq(items.flatMap(R.prop('tags')))
+  storage.setItem({ id: pid, name: `Layer - ${currentDateTime()}`, tags })
+  items.forEach(storage.setItem)
 }))
 
 emitter.on('search/current', ({ terms }) => {

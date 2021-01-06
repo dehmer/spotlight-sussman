@@ -9,4 +9,4 @@ export const identity = sidc => R.cond([
   [R.equals('H'), R.always(['ENY'])],
   [R.equals('U'), R.always(['UKN'])],
   [R.T, R.always([])]
-])(sidc[1])
+])(sidc ? sidc[1] : '')

@@ -3,13 +3,12 @@ TODO:
 - issue: user-select: none ignored by WebKit
 - default layer
 - group:0 (+save)
-- layer from selection/group
 - list: reveal/focus entry
 - upgrade OpenLayers dependency
 - search/spotlight: use immutable/persistent data structures
-- event emitter should support regex/express-like paths
 - replace layer with tag as feature container (if feasible)
 - try out moving (initial) selection state to search result
+- show exclusive
 
 DONE:
 - toolbar / scopebar
@@ -46,3 +45,5 @@ DONE:
 - primary action (panto)
 - add bookmark
 - create snapshot layer
+- event emitter should support regex/express-like paths
+- layer from query (incl. places)
