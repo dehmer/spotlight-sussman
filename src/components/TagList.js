@@ -43,7 +43,6 @@ const TagList = props => {
   const confirmInput = () => {
     setInputVisible(false)
     if (!inputValue) return
-    console.log('emitting', `${id}/tag/add`)
     emitter.emit(`${id}/tag/add`, { tag: inputValue })
   }
 

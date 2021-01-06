@@ -9,10 +9,9 @@ import emitter from '../emitter'
 import { searchIndex } from '../search/lunr'
 import { getContainedFeatures } from './helpers'
 import { writeGeometry } from './format'
+import selection from '../model/selection'
 
 // -> command handlers
-
-const ids = () => R.uniq(selection.selected())
 
 emitter.on('layers/import', txn((storage, { layers }) => {
 
@@ -47,46 +46,36 @@ emitter.on('layers/import', txn((storage, { layers }) => {
   })
 }))
 
-emitter.on(`:id(${FEATURE_ID})/hide`, txn((storage, { id }) => {
-  storage.getItem(id)
-  storage.updateItem(item => item.hidden = true)(item)
+const contained = R.cond([
+  [R.is(Array), ids => ids.reduce((acc, id) => acc.concat([id, ...contained(id)]), [])],
+  [isLayer, pid => storage.keys().filter(cid => layerId(cid) === pid)],
+  [isGroup, gid => {
+    const ids = searchIndex(storage.getItem(gid).terms)
+      .filter(({ ref }) => !isGroup(ref) && !isSymbol(ref))
+      .map(({ ref }) => ref)
+    return contained(ids)
+  }],
+  [R.T, id => [id]]
+])
+
+const showItem = item => delete item.hidden
+const hideItem = item => item.hidden = true
+
+emitter.on(`:id(.*)/show`, txn((storage, { id }) => {
+  const ids = R.uniq([id, ...selection.selected()])
+  ids.flatMap(id => contained(id)).forEach(storage.updateKey(showItem))
 }))
 
-emitter.on(`:id(${FEATURE_ID})/show`, txn((storage, { id }) => {
-  const item = storage.getItem(id)
-  storage.updateItem(item => delete item.hidden)(item)
+emitter.on(`:id(.*)/hide`, txn((storage, { id }) => {
+  const ids = R.uniq([id, ...selection.selected()])
+  ids.flatMap(id => contained(id)).forEach(storage.updateKey(hideItem))
 }))
 
-emitter.on(`:id(${LAYER_ID})/hide`, txn((storage, { id }) => {
-  const item = storage.getItem(id)
-  ;[item, ...getContainedFeatures(id)].forEach(storage.updateItem(item => item.hidden = true))
-}))
-
-emitter.on(`:id(${LAYER_ID})/show`, txn((storage, { id }) => {
-  const item = storage.getItem(id)
-  ;[item, ...getContainedFeatures(id)].forEach(storage.updateItem(item => delete item.hidden))
-}))
-
-emitter.on(`:id(${GROUP_ID})/hide`, txn((storage, { id }) => {
-  const item = storage.getItem(id)
-  searchIndex(item.terms)
-    .filter(({ ref }) => !isGroup(ref) && !isSymbol(ref))
-    .map(({ ref }) => ref)
-    .flatMap(id => [storage.getItem(id), ...getContainedFeatures(id)])
-    .forEach(storage.updateItem(item => item.hidden = true))
-}))
-
-emitter.on(`:id(${GROUP_ID})/show`, txn((storage, { id }) => {
-  const item = storage.getItem(id)
-  searchIndex(item.terms)
-    .filter(({ ref }) => !isGroup(ref) && !isSymbol(ref))
-    .map(({ ref }) => ref)
-    .flatMap(id => [storage.getItem(id), ...getContainedFeatures(id)])
-    .forEach(storage.updateItem(item => delete item.hidden))
-}))
-
+const taggable = id => !isGroup(id)
 const addtag = txn((storage, { id, tag }) => {
-  storage.updateKey(item => item.tags = R.uniq([...(item.tags || []), tag]))(id)
+  const ids = R.uniq([id, ...selection.selected(taggable)])
+  const op = item => item.tags = R.uniq([...(item.tags || []), tag])
+  ids.forEach(storage.updateKey(op))
 })
 
 emitter.on(`:id(${LAYER_ID})/tag/add`, addtag)
@@ -100,7 +89,9 @@ emitter.on(`:id(${PLACE_ID})/tag/add`, txn((storage, { id, tag }) => {
 }))
 
 const removetag = txn((storage, { id, tag }) => {
-  storage.updateKey(item => item.tags = (item.tags || []).filter(x => x !== tag))(id)
+  const ids = R.uniq([id, ...selection.selected(taggable)])
+  const op = item => item.tags = (item.tags || []).filter(x => x !== tag)
+  ids.forEach(storage.updateKey(op))
 })
 
 emitter.on(`:id(${LAYER_ID})/tag/remove`, removetag)
