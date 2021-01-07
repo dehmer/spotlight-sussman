@@ -4,7 +4,6 @@ TODO:
 - default layer
 - group:0 (+save)
 - list: reveal/focus entry
-- upgrade OpenLayers dependency
 - search/spotlight: use immutable/persistent data structures
 - replace layer with tag as feature container (if feasible)
 - try out moving (initial) selection state to search result
@@ -47,3 +46,4 @@ DONE:
 - create snapshot layer
 - event emitter should support regex/express-like paths
 - layer from query (incl. places)
+- upgrade OpenLayers dependency

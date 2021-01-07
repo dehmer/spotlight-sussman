@@ -105,7 +105,6 @@ emitter.on(`:id(.*)/identify/down`, ({ id }) => {
     .forEach(geometry => highlightedFeatures.push(new Feature({ geometry })))
 })
 
-
 emitter.on(`:dontcare(.*)/identify/up`, () => {
   highlightedFeatures.clear()
 })
