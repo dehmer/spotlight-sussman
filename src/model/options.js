@@ -13,9 +13,9 @@ export const options = {}
  * feature:/
  */
 options.feature = (() => {
-
-  const tags = ({ hidden, tags }, sidc) => [
+  const tags = ({ hidden, tags, links }, sidc) => [
     'SCOPE:FEATURE:identify',
+    ...((links || []).length ? [`IMAGE:LINKS:links:mdiLink`] : []),
     hidden ? 'SYSTEM:HIDDEN:show' : `SYSTEM:VISIBLE:hide`,
     ...dimensions(sidc).map(label => `SYSTEM:${label}:NONE`),
     ...scopes(sidc).map(label => `SYSTEM:${label}:NONE`),
@@ -35,7 +35,7 @@ options.feature = (() => {
       description,
       url: url(sidc),
       tags: tags(feature, sidc),
-      capabilities: 'RENAME|TAG',
+      capabilities: 'RENAME|TAG|DROP',
       actions: 'PRIMARY:panto'
     }
   }
@@ -80,8 +80,9 @@ options.group = (() => {
  */
 options.layer = (() => {
 
-  const tags = ({ hidden, tags }) => [
+  const tags = ({ hidden, tags, links }) => [
     'SCOPE:LAYER:identify',
+    ...((links || []).length ? [`IMAGE:LINKS:links:mdiLink`] : []),
     `IMAGE:OPEN:open:mdiArrowDown`,
     hidden ? 'SYSTEM:HIDDEN:show' : `SYSTEM:VISIBLE:hide`,
     ...(tags || []).map(label => `USER:${label}:NONE`)
@@ -91,7 +92,7 @@ options.layer = (() => {
     id: layer.id,
     title: layer.name,
     tags: tags(layer),
-    capabilities: 'RENAME|TAG'
+    capabilities: 'RENAME|TAG|DROP'
   })
 
   return id => option(storage.getItem(id))
@@ -143,6 +144,35 @@ options.place = (() => {
       ].join(' '),
       capabilities: 'TAG|RENAME',
       actions: 'PRIMARY:panto'
+    }
+  }
+
+  return id => option(storage.getItem(id))
+})()
+
+options.link = (() => {
+
+  const path = type => {
+    switch (type) {
+      case 'application/pdf': return 'mdiAdobeAcrobat'
+      case 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet': return 'mdiMicrosoftExcel'
+      case 'application/vnd.openxmlformats-officedocument.wordprocessingml.document': return 'mdiMicrosoftWord'
+      case 'application/msword': return 'mdiMicrosoftWord'
+      default: return 'mdiFileDocumentOutline'
+    }
+  }
+
+  const option = link => {
+    return {
+      id: link.id,
+      title: link.name + ' ⏤ ' + link.container,
+      description: link.lastModifiedDate,
+      path: path(link.type),
+      tags: [
+        'SCOPE:LINK:NONE',
+        ...(link.tags || []).map(label => `USER:${label}:NONE`)
+      ].join(' '),
+      capabilities: 'TAG'
     }
   }
 

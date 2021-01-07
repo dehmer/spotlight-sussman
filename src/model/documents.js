@@ -15,9 +15,11 @@ documents.feature = id => {
   const feature = storage.getItem(id)
   const layer = storage.getItem(layerId(id))
   const { t, sidc } = feature.properties
+  const links = feature.links || []
 
   const tags = ({ hidden, tags }) => [
     hidden ? 'hidden' : 'visible',
+    ...(links.length ? ['link'] : []),
     ...(tags || []),
     ...dimensions(sidc),
     ...scopes(sidc),
@@ -50,12 +52,19 @@ documents.group = id => {
  *
  */
 documents.layer = id => {
-  const { name: text, hidden, tags } = storage.getItem(id)
+  const layer = storage.getItem(id)
+  const { name: text, hidden, tags } = layer
+  const links = layer.links || []
+
   return {
     id,
     scope: 'layer',
     text,
-    tags: [hidden ? 'hidden' : 'visible', ...(tags || [])]
+    tags: [
+      hidden ? 'hidden' : 'visible',
+      ...(links.length ? ['link'] : []),
+      ...(tags || [])
+    ]
   }
 }
 
@@ -86,5 +95,16 @@ documents.place = id => {
     scope: 'place',
     text: entry.display_name,
     tags: [entry.class, entry.type, ...(entry.tags || [])].filter(R.identity)
+  }
+}
+
+documents.link = id => {
+  const entry = storage.getItem(id)
+
+  return {
+    id,
+    scope: 'link',
+    text: entry.name,
+    tags: entry.tags
   }
 }

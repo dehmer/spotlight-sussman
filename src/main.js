@@ -61,13 +61,20 @@ Mousetrap.bind('f4', () => {
 const app = document.getElementById('app')
 ReactDOM.render(<App></App>, app)
 
+const map = document.getElementById('map')
+
 // Prevent browser from intercepting file:
-app.addEventListener('dragover', event => {
+app.addEventListener('drop', async event => {
   event.preventDefault()
   event.stopPropagation()
 }, false)
 
-app.addEventListener('drop', async event => {
+map.addEventListener('dragover', event => {
+  event.preventDefault()
+  event.stopPropagation()
+}, false)
+
+map.addEventListener('drop', async event => {
   event.preventDefault()
   event.stopPropagation()
   const layers = await loadLayerFiles([...event.dataTransfer.files])

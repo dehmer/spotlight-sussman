@@ -34,7 +34,7 @@ const FORMAT = 'ddHHmm--LLLyy'
  *
  * @param {*} date a Luxon DateTime object
  */
-const toMilitaryTime = date => {
+export const toMilitaryTime = date => {
   const offset = Math.floor(date.offset / 60)
   const offsetAsString = (offset >= 0) ? `+${offset}` : `-${offset}`
   return date.toFormat(FORMAT).toLowerCase().replace('--', zones[offsetAsString])

@@ -108,3 +108,21 @@ emitter.on(`:id(.*)/identify/down`, ({ id }) => {
 emitter.on(`:dontcare(.*)/identify/up`, () => {
   highlightedFeatures.clear()
 })
+
+emitter.on(`:id(${FEATURE_ID})/links`, ({ id }) => {
+  const feature = storage.getItem(id)
+  const links = () => (storage.getItem(id).links || []).map(option)
+  emitter.emit('search/provider', {
+    scope: feature.properties.t,
+    provider: (query, callback) => callback(links())
+  })
+})
+
+emitter.on(`:id(${LAYER_ID})/links`, ({ id }) => {
+  const layer = storage.getItem(id)
+  const links = () => (storage.getItem(id).links || []).map(option)
+  emitter.emit('search/provider', {
+    scope: layer.name,
+    provider: (query, callback) => callback(links())
+  })
+})

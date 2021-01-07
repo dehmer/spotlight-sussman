@@ -1,16 +1,16 @@
 import * as R from 'ramda'
 import uuid from 'uuid-random'
 import * as geom from 'ol/geom'
+import DateTime from 'luxon/src/datetime'
 import { storage, txn } from '.'
 import { layerId, featureId } from './ids'
-import { isLayer, isFeature, isGroup, isSymbol, isPlace } from './ids'
-import { FEATURE_ID, LAYER_ID, PLACE_ID, GROUP_ID, SYMBOL_ID } from './ids'
+import { isLayer, isFeature, isGroup, isSymbol, isPlace, isLink } from './ids'
+import { FEATURE_ID, LAYER_ID, PLACE_ID, GROUP_ID, SYMBOL_ID, LINK_ID } from './ids'
 import emitter from '../emitter'
 import { searchIndex } from '../search/lunr'
-import { getContainedFeatures } from './helpers'
 import { writeGeometry } from './format'
 import selection from '../model/selection'
-import { currentDateTime } from '../model/datetime'
+import { currentDateTime, toMilitaryTime } from '../model/datetime'
 
 // -> command handlers
 
@@ -83,6 +83,7 @@ emitter.on(`:id(${LAYER_ID})/tag/add`, addtag)
 emitter.on(`:id(${FEATURE_ID})/tag/add`, addtag)
 emitter.on(`:id(${SYMBOL_ID})/tag/add`, addtag)
 emitter.on(`:id(${GROUP_ID})/tag/add`, addtag)
+emitter.on(`:id(${LINK_ID})/tag/add`, addtag)
 emitter.on(`:id(${PLACE_ID})/tag/add`, txn((storage, { id, tag }) => {
   storage.updateKey(item => {
     item.tags = R.uniq([...(item.tags || []), tag])
@@ -100,6 +101,7 @@ emitter.on(`:id(${LAYER_ID})/tag/remove`, removetag)
 emitter.on(`:id(${FEATURE_ID})/tag/remove`, removetag)
 emitter.on(`:id(${SYMBOL_ID})/tag/remove`, removetag)
 emitter.on(`:id(${GROUP_ID})/tag/remove`, removetag)
+emitter.on(`:id(${LINK_ID})/tag/remove`, removetag)
 emitter.on(`:id(${PLACE_ID})/tag/remove`, removetag)
 
 const rename = txn((storage, { id, name }) => {
@@ -121,12 +123,43 @@ emitter.on(`:id(${PLACE_ID})/rename`, txn((storage, { id, name }) => {
 }))
 
 emitter.on('items/remove', txn((storage, { ids }) => {
-  storage.getItems(ids).forEach(item => {
-    if (!item) return
-    storage.removeItem(item.id)
-    const features = getContainedFeatures(item.id)
-    features.forEach(item => storage.removeItem(item.id))
-  })
+
+  const link = id => {
+    const item = storage.getItem(id)
+    if (!item) return /* already gone */
+    const ref = storage.getItem(item.ref)
+    if (!ref) return /* already gone */
+
+    storage.updateItem(ref => {
+      ref.links = ref.links.filter(link => link !== item.id)
+      if (ref.links.length === 0 && isFeature(ref.id)) {
+        ref.properties.g = ref.properties.g.replace(/ ►/g, '')
+      }
+    })(ref)
+  }
+
+  const layer = pid => {
+    storage.keys().filter(cid => isFeature(cid) && layerId(cid) === pid).forEach(remove)
+    R.forEach(remove, storage.getItem(pid).links || [])
+  }
+
+  const feature = id => {
+    R.forEach(remove, storage.getItem(id).links || [])
+  }
+
+  const remove = id => {
+
+    // Remove/clean-up dependencies first:
+    R.cond([
+      [isLink, link],
+      [isLayer, layer],
+      [isFeature, feature]
+    ])(id)
+
+    storage.removeItem(id)
+  }
+
+  R.uniq(ids).forEach(remove)
 }))
 
 emitter.on('storage/group', txn(storage => {
@@ -195,5 +228,48 @@ emitter.on('storage/layer', txn(storage => {
 emitter.on('search/current', ({ terms }) => {
   storage.setItem({ id: 'search:', terms })
 })
+
+emitter.on(`:id(${FEATURE_ID})/links/add`, txn((storage, { id, files }) => {
+  const item = storage.getItem(id)
+
+  const links = files.map(file => ({
+    id: `link:${uuid()}`,
+    ref: id,
+    container: item.properties.t,
+    name: file.name,
+    lastModifiedDate: toMilitaryTime(DateTime.fromJSDate(file.lastModifiedDate)),
+    type: file.type
+  }))
+
+  links.forEach(storage.setItem)
+
+  storage.updateItem(item => {
+    if (!item.links || item.links.length === 0) {
+      item.properties.g = item.properties.g
+          ? `${item.properties.g} ►`
+          : '►'
+    }
+    item.links = [...(item.links || []), ...links.map(link => link.id)]
+  })(item)
+}))
+
+emitter.on(`:id(${LAYER_ID})/links/add`, txn((storage, { id, files }) => {
+  const item = storage.getItem(id)
+
+  const links = files.map(file => ({
+    id: `link:${uuid()}`,
+    ref: id,
+    container: item.name,
+    name: file.name,
+    lastModifiedDate: toMilitaryTime(DateTime.fromJSDate(file.lastModifiedDate)),
+    type: file.type
+  }))
+
+  links.forEach(storage.setItem)
+
+  storage.updateItem(item => {
+    item.links = [...(item.links || []), ...links.map(link => link.id)]
+  })(item)
+}))
 
 // <- command handlers
