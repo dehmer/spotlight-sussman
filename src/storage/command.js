@@ -8,7 +8,7 @@ import { isLayer, isFeature, isGroup, isSymbol, isPlace, isLink } from './ids'
 import { FEATURE_ID, LAYER_ID, PLACE_ID, GROUP_ID, SYMBOL_ID, LINK_ID } from './ids'
 import emitter from '../emitter'
 import { searchIndex } from '../search/lunr'
-import { writeGeometry } from './format'
+import { writeGeometryObject } from './format'
 import selection from '../model/selection'
 import { currentDateTime, toMilitaryTime } from '../model/datetime'
 
@@ -184,7 +184,6 @@ emitter.on('storage/bookmark', txn(storage => {
   const view = storage.getItem('session:map.view')
   if (!view) return
   const point = new geom.Point(view.center)
-  const geometry = writeGeometry(point)
 
   storage.setItem({
     id: `place:${uuid()}`,
@@ -193,7 +192,7 @@ emitter.on('storage/bookmark', txn(storage => {
     class: 'bookmark',
     type: 'boundary',
     sticky: true,
-    geojson: JSON.parse(geometry),
+    geojson: writeGeometryObject(point),
     resolution: view.resolution
   })
 }))
@@ -276,6 +275,12 @@ emitter.on(`:id(${LAYER_ID})/links/add`, txn((storage, { id, files }) => {
   storage.updateItem(item => {
     item.links = [...(item.links || []), ...links.map(link => link.id)]
   })(item)
+}))
+
+emitter.on('features/geometry/update', txn((storage, { geometries }) => {
+  Object.entries(geometries).forEach(([id, geometry]) => {
+    storage.updateKey(feature => feature.geometry = writeGeometryObject(geometry))(id)
+  })
 }))
 
 // <- command handlers

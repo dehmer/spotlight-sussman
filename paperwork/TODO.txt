@@ -8,6 +8,7 @@ TODO:
 - replace layer with tag as feature container (if feasible)
 - try out moving (initial) selection state to search result
 - show exclusive
+- fix issue with unselect after translate
 
 DONE:
 - toolbar / scopebar
