@@ -13,6 +13,7 @@ import style from './style'
 import { storage } from '../storage'
 import select from './interaction/select'
 import translate from './interaction/translate'
+import boxselect from './interaction/boxselect'
 import emitter from '../emitter'
 
 export const Map = props => {
@@ -36,13 +37,15 @@ export const Map = props => {
       })
     ]
 
+    const defaultSource = new VectorSource({ features })
     const defaultLayer = new VectorLayer({
-      source: new VectorSource({ features }),
+      source: defaultSource,
       style: style('default', features)
     })
 
+    const selectSource = new VectorSource({ features: selectedFeatures })
     const selectLayer = new VectorLayer({
-      source: new VectorSource({ features: selectedFeatures }),
+      source: selectSource,
       style: style('selected')
     })
 
@@ -62,6 +65,7 @@ export const Map = props => {
     const map = new ol.Map({ target, controls, layers, view })
     map.addInteraction(select(selectedFeatures))
     map.addInteraction(translate(selectedFeatures))
+    map.addInteraction(boxselect([defaultSource, selectSource]))
 
     view.on('change', ({ target: view }) => {
       // TODO: throttle
