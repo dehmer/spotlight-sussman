@@ -133,7 +133,7 @@ emitter.on('items/remove', txn((storage, { ids }) => {
     storage.updateItem(ref => {
       ref.links = ref.links.filter(link => link !== item.id)
       if (ref.links.length === 0 && isFeature(ref.id)) {
-        ref.properties.g = ref.properties.g.replace(/ ►/g, '')
+        ref.properties.g = ref.properties.g.replace(/►/g, '').trim()
       }
     })(ref)
   }
@@ -148,7 +148,6 @@ emitter.on('items/remove', txn((storage, { ids }) => {
   }
 
   const remove = id => {
-
     // Remove/clean-up dependencies first:
     R.cond([
       [isLink, link],
@@ -159,7 +158,7 @@ emitter.on('items/remove', txn((storage, { ids }) => {
     storage.removeItem(id)
   }
 
-  R.uniq(ids).forEach(remove)
+  R.uniq(ids.filter(R.identity)).forEach(remove)
 }))
 
 emitter.on('storage/group', txn(storage => {
@@ -229,6 +228,10 @@ emitter.on('search/current', ({ terms }) => {
   storage.setItem({ id: 'search:', terms })
 })
 
+
+/**
+ *
+ */
 emitter.on(`:id(${FEATURE_ID})/links/add`, txn((storage, { id, files }) => {
   const item = storage.getItem(id)
 
@@ -243,16 +246,19 @@ emitter.on(`:id(${FEATURE_ID})/links/add`, txn((storage, { id, files }) => {
 
   links.forEach(storage.setItem)
 
+  const appendMarker = s => s ? `${s} ►` : '►'
+
   storage.updateItem(item => {
-    if (!item.links || item.links.length === 0) {
-      item.properties.g = item.properties.g
-          ? `${item.properties.g} ►`
-          : '►'
-    }
+    const properties = item.properties
+    if (!item.links || item.links.length === 0) properties.g = appendMarker(properties.g)
     item.links = [...(item.links || []), ...links.map(link => link.id)]
   })(item)
 }))
 
+
+/**
+ *
+ */
 emitter.on(`:id(${LAYER_ID})/links/add`, txn((storage, { id, files }) => {
   const item = storage.getItem(id)
 

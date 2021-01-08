@@ -48,9 +48,9 @@ export const symbolStyle = mode => (feature, resolution) => {
   const { sidc, ...properties } = feature.getProperties()
   const infoFields = mode === 'selected' ||
     mode === 'multi' ||
-    factory.showLabels()
+    factory.showLabels() || true
 
-  const outlineWidth = mode === 'selected' ? 6 : 4
+  const outlineWidth = mode === 'selected' ? 8 : 4
   const symbol = new ms.Symbol(sidc, {
     ...modifiers(properties),
     outlineWidth,

@@ -14,13 +14,29 @@ export const normalizeSIDC = sidc => sidc
   ? `${sidc[0]}-${sidc[2]}-${sidc.substring(4, 10)}`
   : 'MUZP------*****'
 
-const styleCache = new cache()
+
+const cachingProvider = (provider, features) => {
+  const cachekey = feature => `${feature.getId()}:${feature.getRevision()}`
+  const styleCache = new cache()
+
+  features.on('remove', ({ element }) => {
+    styleCache.del(cachekey(element))
+  })
+
+  return (feature, resolution) => {
+    const key = cachekey(feature)
+    const style = styleCache.get(key) || provider(feature, resolution)
+    styleCache.set(key, style, 60000)
+    return style
+  }
+}
 
 /**
  * FEATURE STYLE FUNCTION.
  */
-export default mode => (feature, resolution) => {
-  const provider = R.cond([
+export default (mode, features) => {
+
+  const geometries = R.cond([
     [R.equals('Point'), R.always(symbolStyle(mode))],
     [R.equals('Polygon'), R.always(polygonStyle(mode))],
     [R.equals('LineString'), R.always(lineStyle(mode))],
@@ -29,15 +45,17 @@ export default mode => (feature, resolution) => {
     [R.T, R.always(defaultStyle)]
   ])
 
-  try {
-    const key = `${feature.getId()}:${feature.getRevision()}`
-    const geometryType = feature.getGeometry().getType()
-    const miss = () => provider(geometryType)(feature, resolution)
-    const style = styleCache.get(key) || miss()
-    styleCache.set(key, style, 60000)
-    return style
-  } catch (err) {
-    console.error('[style]', feature, err)
-    return []
+  const provider = (feature, resolution) => {
+    try {
+      const geometryType = feature.getGeometry().getType()
+      return geometries(geometryType)(feature, resolution)
+    } catch (err) {
+      console.error('[style]', feature, err)
+      return []
+    }
   }
+
+  return features
+    ? cachingProvider(provider, features)
+    : provider
 }

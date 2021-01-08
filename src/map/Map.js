@@ -12,6 +12,7 @@ import './epsg'
 import style from './style'
 import { storage } from '../storage'
 import select from './interaction/select'
+import translate from './interaction/translate'
 import emitter from '../emitter'
 
 export const Map = props => {
@@ -27,7 +28,7 @@ export const Map = props => {
 
     const fill = new Fill({ color: 'rgba(255,50,50,0.4)' })
     const stroke = new Stroke({ color: 'black', width: 1, lineDash: [10, 5] })
-    const highlightStyles = [
+    const highlightStyle = [
       new Style({
         image: new Circle({ fill: fill, stroke: stroke, radius: 50 }),
         fill: fill,
@@ -35,11 +36,19 @@ export const Map = props => {
       })
     ]
 
-    const defaultLayer = new VectorLayer({ source: new VectorSource({ features }), style: style('default') })
-    const selectLayer = new VectorLayer({ source: new VectorSource({ features: selectedFeatures }), style: style('selected') })
+    const defaultLayer = new VectorLayer({
+      source: new VectorSource({ features }),
+      style: style('default', features)
+    })
+
+    const selectLayer = new VectorLayer({
+      source: new VectorSource({ features: selectedFeatures }),
+      style: style('selected')
+    })
+
     const highlightLayer = new VectorLayer({
       source: new VectorSource({ features: highlightedFeatures }) ,
-      style: highlightStyles
+      style: highlightStyle
     })
 
     const view = new ol.View(viewOptions)
@@ -52,6 +61,7 @@ export const Map = props => {
 
     const map = new ol.Map({ target, controls, layers, view })
     map.addInteraction(select(selectedFeatures))
+    map.addInteraction(translate(selectedFeatures))
 
     view.on('change', ({ target: view }) => {
       // TODO: throttle
