@@ -23,6 +23,7 @@ Expected: UNIT/5BDE is selected on map and in list.
   No other elements are selected either in list or on map.
   UNIT/4BDE and UNIT/2DIV are slightly transparent.
   UNIT/5BDE is only once on the map (verify my moving).
+Status: PASSED.
 
 ### Procedure 34af21a7-a8c2-4462-8cc0-76b332ade257
 Description: Deselect single-selected feature on map.
@@ -87,7 +88,7 @@ Steps: Select UNIT/5DBE. Move feature on map.
 Expected: UNIT/5DBE is still selected on map and in list.
   UNIT/5DBE has correct position on map.
   Verify selection is still active by moving a second time.
-Status: FAILING (features is displayed as selected, but selection is no longer active).
+Status: PASSED.
 
 ### Procedure d900e623-5674-4841-971a-1dfb23948cce
 Description: Box-select on map should reset list selection.
@@ -95,5 +96,4 @@ Steps: Select GROUP/Layers - All in list. Box-select UNIT/4BDE.
 Expected: GROUP/Layers - All is not selected in list.
   UNIT/4BDE is selected on map.
   No other elements are selected either in list or on map.
-Status: FAILING (GROUP/Layers - All is still selected)
-
+Status: PASSED.

@@ -3,7 +3,14 @@ import { DragBox } from 'ol/interaction'
 import { platformModifierKeyOnly } from 'ol/events/condition'
 import selection from '../../selection'
 
+/**
+ *
+ */
 export default sources => {
+
+  const featureById = id => sources.reduce((acc, source) => {
+    return acc ? acc : source.getFeatureById(id)
+  }, null)
 
   // Note: DragBox is not a selection interaction per se.
   // I.e. it does not manage selected features automatically.
@@ -18,21 +25,14 @@ export default sources => {
     // https://openlayers.org/en/latest/examples/box-selection.html
 
     // Collect features intersecting extent.
-    // Note: VectorSource.getFeaturesInExtent(extent) yields unexpected results.
-
-    // TODO: getFeaturesInExtent
-    const features = []
     const extent = interaction.getGeometry().getExtent()
-    sources.forEach(source => {
-      source.forEachFeatureIntersectingExtent(extent, feature => {
-        features.push(feature)
-      })
-    })
+    const features = sources.reduce((acc, source) => acc.concat(source.getFeaturesInExtent(extent)), [])
 
     // Toggle selections:
     const isSelected = feature => selection.isSelected(feature.getId())
     const [removals, additions] = R.partition(isSelected)(features)
     selection.deselect(removals.map(feature => feature.getId()))
+    selection.deselect(selection.selected(id => !featureById(id))) // not on map
     selection.select(additions.map(feature => feature.getId()))
   })
 

@@ -65,7 +65,7 @@ export const Map = () => {
     ]
 
     const map = new ol.Map({ target, controls, layers, view })
-    const selectInteraction = select([deselectedLayer, selectedLayer])
+    const selectInteraction = select(deselectedLayer, selectedLayer)
     map.addInteraction(selectInteraction)
     map.addInteraction(boxselect([deselectedSource, selectedSource]))
     map.addInteraction(translate(selectInteraction.getFeatures()))

@@ -233,8 +233,8 @@ div {
 }
 
 .tag-active:hover {
-  background-color: #fdd7d5;
-  background-color: #e2e2e2;
+  background-color: #8d8d8d;
+  color: white;
 }
 
 .tag-group {

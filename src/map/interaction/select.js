@@ -1,9 +1,7 @@
-import * as R from 'ramda'
 import { Select } from 'ol/interaction'
 import { click, platformModifierKeyOnly } from 'ol/events/condition'
 import style from '../style'
 import selection from '../../selection'
-import emitter from '../../emitter'
 
 const hitTolerance = 3
 const noAltKey = ({ originalEvent }) => originalEvent.altKey !== true // macOS: option key
@@ -13,15 +11,12 @@ const conjunction = (...ps) => v => ps.reduce((acc, p) => acc && p(v), true)
 /**
  *
  */
-export default layers => {
-  const sources = layers.map(layer => layer.getSource())
-  const featureById = id => sources.reduce((acc, source) => {
-    return acc ? acc : source.getFeatureById(id)
-  }, null)
+export default (deselectedLayer, selectedLayer) => {
+  const selectedSource = selectedLayer.getSource()
 
   const interaction = new Select({
     hitTolerance,
-    layers,
+    layers: [deselectedLayer, selectedLayer],
     style: (feature, resolution) => {
       const fn = interaction.getFeatures().getLength() < 2
         ? style('selected')
@@ -40,19 +35,14 @@ export default layers => {
     selection.set(ids(interaction.getFeatures().getArray()))
   })
 
-  // Sync selected features with external selection changes.
-  emitter.on('selection', ({ selected, deselected }) => {
-    const features = interaction.getFeatures()
-    const missing = feature => !features.getArray().includes(feature)
+  selectedSource.on('addfeature', ({ feature }) => {
+    const features = interaction.getFeatures().getArray()
+    if (!features.includes(feature)) interaction.getFeatures().push(feature)
+  })
 
-    deselected.map(featureById)
-      .filter(R.identity)
-      .forEach(feature => features.remove(feature))
-
-    selected.map(featureById)
-      .filter(R.identity)
-      .filter(missing)
-      .forEach(feature => features.push(feature))
+  selectedSource.on('removefeature', ({ feature }) => {
+    const features = interaction.getFeatures().getArray()
+    if (features.includes(feature)) interaction.getFeatures().remove(feature)
   })
 
   return interaction
