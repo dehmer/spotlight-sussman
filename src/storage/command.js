@@ -9,7 +9,7 @@ import { FEATURE_ID, LAYER_ID, PLACE_ID, GROUP_ID, SYMBOL_ID, LINK_ID } from './
 import emitter from '../emitter'
 import { searchIndex } from '../search/lunr'
 import { writeGeometryObject } from './format'
-import selection from '../model/selection'
+import selection from '../selection'
 import { currentDateTime, toMilitaryTime } from '../model/datetime'
 
 // -> command handlers

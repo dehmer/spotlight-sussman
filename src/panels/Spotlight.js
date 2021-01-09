@@ -3,7 +3,7 @@ import * as R from 'ramda'
 import { CardList } from '../components/CardList'
 import Card from '../components/Card'
 import emitter from '../emitter'
-import selectionService from '../model/selection'
+import selectionService from '../selection'
 import { Search } from './Search'
 import { Scopebar } from './Scopebar'
 
@@ -35,12 +35,9 @@ const Spotlight = () => {
   const [selection, setSelection] = React.useState([])
 
   const updateSelection = ids => {
-    const uniqueIds = R.uniq(ids.filter(R.identity)) // filter nulls; make unique
-    const additions = uniqueIds.filter(x => !selection.includes(x))
-    const removals = selection.filter(x => !uniqueIds.includes(x))
-    selectionService.select(additions)
-    selectionService.deselect(removals)
-    setSelection(uniqueIds)
+    const selected = ids.filter(R.identity)
+    setSelection(selected)
+    selectionService.set(selected)
   }
 
   const ref = React.createRef()
@@ -69,24 +66,26 @@ const Spotlight = () => {
       setFocus(null)
     }
 
-    const selectionUpdated = () => {
-      const visible = entries.map(entry => entry.id)
-      const selected = selectionService.selected(id => visible.includes(id))
-      const additions = selected.filter(id => !selection.includes(id))
-      const removals = selection.filter(id => !selected.includes(id))
-      updateSelection([...selection.filter(id => !removals.includes(id)), ...additions])
+    const selectionHandler = ({ selected, deselected }) => {
+      const inscope = entries.map(entry => entry.id)
+      const removals = selection.filter(id => !selectionService.isSelected(id))
+
+      const additions = selected
+        .filter(id => inscope.includes(id))
+        .filter(id => !selection.includes(id))
+
+      const xs = [...selection.filter(id => !removals.includes(id)), ...additions]
+      setSelection(xs)
     }
 
     emitter.on('search/provider/updated', providerUpdated)
     emitter.on('search/result/updated', dispatch)
-    emitter.on('selected', selectionUpdated)
-    emitter.on('deselected', selectionUpdated)
+    emitter.on('selection', selectionHandler)
 
     return () => {
       emitter.off('search/provider/updated', providerUpdated)
       emitter.off('search/result/updated', dispatch)
-      emitter.off('selected', selectionUpdated)
-      emitter.off('deselected', selectionUpdated)
+      emitter.off('selection', selectionHandler)
     }
   }, [selection, entries])
 

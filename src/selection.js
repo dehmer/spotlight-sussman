@@ -1,6 +1,6 @@
 // Track selections throughout the application.
 // Selections are URIs.
-import emitter from '../emitter'
+import emitter from './emitter'
 
 // Current selections.
 let state = []
@@ -15,26 +15,35 @@ const select = uris => {
   if (uris.length === 0) return
   if (uris.some(x => typeof x !== 'string')) throw new Error('invalid argument; string element expected')
 
-  const additions = uris.filter(x => !state.includes(x))
-  state = [...state, ...additions]
-  if (additions.length) emitter.emit('selected', { ids: additions })
+  const selected = uris.filter(x => !state.includes(x))
+  state = [...state, ...selected]
+  if (selected.length) emitter.emit('selection', { selected, deselected: [] })
 }
 
 /**
- * deselect :: () => unit
  * deselect :: [uri] => unit
  * Remove all or given selections.
  */
 const deselect = uris => {
   if (uris && !Array.isArray(uris)) throw new Error('invalid argument; array expected')
+  if (uris.length === 0) return
   if (uris && uris.some(x => typeof x !== 'string')) throw new Error('invalid argument; string element expected')
 
-  const removals = uris
-    ? uris.filter(x => state.includes(x))
-    : state
+  const deselected = uris.filter(x => state.includes(x))
+  state = state.filter(x => !deselected.includes(x))
+  if (deselected.length) emitter.emit('selection', { deselected, selected: [] })
+}
 
-  state = state.filter(x => !removals.includes(x))
-  if (removals.length) emitter.emit('deselected', { ids: removals })
+const set = uris => {
+  if (uris && !Array.isArray(uris)) throw new Error('invalid argument; array expected')
+  if (uris && uris.some(x => typeof x !== 'string')) throw new Error('invalid argument; string element expected')
+
+  const selected = uris.filter(x => !state.includes(x))
+  const deselected = state.filter(x => !uris.includes(x))
+
+  if (!selected.length && !deselected.length) return
+  state = [...uris]
+  emitter.emit('selection', { deselected, selected })
 }
 
 const isEmpty = () => state.length === 0
@@ -42,6 +51,7 @@ const isSelected = uri => state.includes(uri)
 const selected = (p = () => true) => state.filter(p)
 
 export default {
+  set,
   select,
   deselect,
   isEmpty,

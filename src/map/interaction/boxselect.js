@@ -1,7 +1,7 @@
 import * as R from 'ramda'
 import { DragBox } from 'ol/interaction'
 import { platformModifierKeyOnly } from 'ol/events/condition'
-import selection from '../../model/selection'
+import selection from '../../selection'
 
 export default sources => {
 
@@ -20,6 +20,7 @@ export default sources => {
     // Collect features intersecting extent.
     // Note: VectorSource.getFeaturesInExtent(extent) yields unexpected results.
 
+    // TODO: getFeaturesInExtent
     const features = []
     const extent = interaction.getGeometry().getExtent()
     sources.forEach(source => {

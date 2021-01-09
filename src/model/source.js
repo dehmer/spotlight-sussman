@@ -1,114 +1,88 @@
 import Collection from 'ol/Collection'
 import Feature from 'ol/Feature'
+import VectorSource from 'ol/source/Vector'
 import uuid from 'uuid-random'
-import { storage, tx } from '../storage'
+import { storage, txn } from '../storage'
 import { featureId } from '../storage/ids'
 import emitter from '../emitter'
 import { isFeature } from '../storage/ids'
-import selection from './selection'
+import selection from '../selection'
 import { readFeature, writeFeaturesObject } from '../storage/format'
 import { currentDateTime } from './datetime'
 
 // -> OpenLayers interface (ol/source/Vector)
 
-export const features = new Collection([], { unique: true })
-export const selectedFeatures = new Collection([], { unique: true })
+export const features = new Collection()
+export const source = new VectorSource()
 
-const hasId = id => feature => feature.getId() === id
-const featureById = id =>
-  features.getArray().find(hasId(id)) ||
-  selectedFeatures.getArray().find(hasId(id))
+const featureById = id => source.getFeatureById(id)
 
 /**
  * removeFeature :: ol/Feature | string -> unit
  */
 const removeFeature = x => {
   if (!x) return
-
-  if (x instanceof Feature) {
-    features.remove(x)
-    selectedFeatures.remove(x)
-  }
+  if (x instanceof Feature) source.removeFeature(x)
   else if (typeof x === 'string') removeFeature(featureById(x))
   else removeFeature(x.id)
 }
 
 const addFeature = x => {
   if (!x || x.hidden || !isFeature(x.id)) return
-
-  const push = selection.selected().includes(featureId(x))
-    ? selectedFeatures.push.bind(selectedFeatures)
-    : features.push.bind(features)
-
-  push(readFeature(x))
+  source.addFeature(readFeature(x))
 }
 
+const addFeatures = xs => source.addFeatures(xs)
 const isVisible = feature => feature && !feature.hidden
 
-storage.keys()
-  .filter(isFeature)
-  .map(storage.getItem)
-  .filter(isVisible)
-  .map(readFeature)
-  .forEach(feature => features.push(feature))
 
+/**
+ * Initial population.
+ */
+;(() => {
+  const features = storage.keys()
+    .filter(isFeature)
+    .map(storage.getItem)
+    .filter(isVisible)
+    .map(readFeature)
+
+  addFeatures(features)
+})()
+
+
+/**
+ *
+ */
 emitter.on('storage/updated', changes => {
   selection.deselect(changes.removal)
   changes.removal.forEach(removeFeature)
   changes.update.forEach(removeFeature)
+
+  // TODO: bulk - addFeatures()
   changes.update.forEach(addFeature)
   changes.addition.forEach(addFeature)
 })
 
-emitter.on('storage/snapshot', () => {
-  const changes = tx(storage => {
-    const layer = writeFeaturesObject(features.getArray())
-    layer.id = `layer:${uuid()}`
-    layer.name = `Snapshot - ${currentDateTime()}`
-    layer.tags = ['snapshot']
 
-    const featureCollection = layer.features
-    delete layer.features
+/**
+ *
+ */
+emitter.on('storage/snapshot', txn(storage => {
+  const layer = writeFeaturesObject(source.getFeatures())
+  layer.id = `layer:${uuid()}`
+  layer.name = `Snapshot - ${currentDateTime()}`
+  layer.tags = ['snapshot']
 
-    featureCollection.forEach(feature => {
-      feature.id = featureId(layer.id)
-      feature.hidden = true
-      storage.setItem(feature)
-    })
-    storage.setItem(layer)
+  const featureCollection = layer.features
+  delete layer.features
+
+  featureCollection.forEach(feature => {
+    feature.id = featureId(layer.id)
+    feature.hidden = true
+    storage.setItem(feature)
   })
 
-  emitter.emit('storage/updated', changes)
-})
+  storage.setItem(layer)
+}))
 
 // <- OpenLayers interface (ol/source/Vector)
-
-// -> selection synchronization
-
-emitter.on('selected', ({ ids }) => {
-  const selected = selectedFeatures.getArray().map(featureId)
-  ids.filter(isFeature).forEach(id => {
-    const feature = featureById(id)
-    features.remove(feature)
-    if (feature && !selected.includes(id)) selectedFeatures.push(feature)
-  })
-})
-
-emitter.on('deselected', ({ ids }) => {
-  ids.filter(isFeature).forEach(id => {
-    const feature = featureById(id)
-    selectedFeatures.remove(feature)
-    const item = storage.getItem(id)
-    if (isVisible(item)) features.push(readFeature(item))
-  })
-})
-
-selectedFeatures.on('add', ({ element }) => {
-  selection.select([element.getId()])
-})
-
-selectedFeatures.on('remove', ({ element }) => {
-  selection.deselect([element.getId()])
-})
-
-// -> selection synchronization

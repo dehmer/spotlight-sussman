@@ -10,6 +10,7 @@ Evented.prototype.on = function (pattern, handler) {
 }
 
 Evented.prototype.emit = function (path, arg = {}) {
+  this.handlers = this.handlers || {}
   const paths = Object.entries(this.handlers)
     .reduce((acc, [pattern, handlers]) => {
     const match = exec(pattern)(path)

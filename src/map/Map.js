@@ -6,17 +6,21 @@ import { Tile as TileLayer, Vector as VectorLayer } from 'ol/layer'
 import VectorSource from 'ol/source/Vector'
 import { Rotate } from 'ol/control'
 import { Fill, Stroke, Circle, Style } from 'ol/style';
-import { features, selectedFeatures } from '../model/source'
 import { highlightedFeatures } from '../storage/action'
 import './epsg'
 import style from './style'
 import { storage } from '../storage'
 import select from './interaction/select'
-import translate from './interaction/translate'
 import boxselect from './interaction/boxselect'
+import translate from './interaction/translate'
+import { deselectedSource, selectedSource } from './partition'
 import emitter from '../emitter'
 
-export const Map = props => {
+
+/**
+ *
+ */
+export const Map = () => {
   React.useEffect(() => {
     const target = 'map'
     const controls = [new Rotate()]
@@ -37,16 +41,14 @@ export const Map = props => {
       })
     ]
 
-    const defaultSource = new VectorSource({ features })
-    const defaultLayer = new VectorLayer({
-      source: defaultSource,
-      style: style('default', features)
+    const deselectedLayer = new VectorLayer({
+      source: deselectedSource,
+      style: style('default', deselectedSource)
     })
 
-    const selectSource = new VectorSource({ features: selectedFeatures })
-    const selectLayer = new VectorLayer({
-      source: selectSource,
-      style: style('selected')
+    const selectedLayer = new VectorLayer({
+      source: selectedSource,
+      style: style('selected', selectedSource)
     })
 
     const highlightLayer = new VectorLayer({
@@ -57,15 +59,16 @@ export const Map = props => {
     const view = new ol.View(viewOptions)
     const layers = [
       new TileLayer({ source: new OSM() }),
-      defaultLayer,
-      selectLayer,
+      deselectedLayer,
+      selectedLayer,
       highlightLayer
     ]
 
     const map = new ol.Map({ target, controls, layers, view })
-    map.addInteraction(select(selectedFeatures))
-    map.addInteraction(translate(selectedFeatures))
-    map.addInteraction(boxselect([defaultSource, selectSource]))
+    const selectInteraction = select([deselectedLayer, selectedLayer])
+    map.addInteraction(selectInteraction)
+    map.addInteraction(boxselect([deselectedSource, selectedSource]))
+    map.addInteraction(translate(selectInteraction.getFeatures()))
 
     view.on('change', ({ target: view }) => {
       // TODO: throttle
@@ -77,10 +80,12 @@ export const Map = props => {
       })
     })
 
-    const dim = () => defaultLayer.setOpacity(selectedFeatures.getLength() ? 0.35 : 1)
     emitter.on('map/panto', ({ center, resolution }) => view.animate({ center, resolution }))
-    emitter.on('selected', dim)
-    emitter.on('deselected', dim)
+
+    emitter.on('selection', () => {
+      const selectionCount = selectedSource.getFeatures().length
+      deselectedLayer.setOpacity(selectionCount ? 0.35 : 1)
+    })
   }, [])
 
   return <div id='map' className='map fullscreen'></div>

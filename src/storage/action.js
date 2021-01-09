@@ -11,7 +11,7 @@ import { options } from '../model/options'
 import { searchIndex } from '../search/lunr'
 import { readGeometry, readFeature } from './format'
 import * as TS from '../map/ts'
-import selection from '../model/selection'
+import selection from '../selection'
 
 const option = id => options[id.split(':')[0]](id)
 export const highlightedFeatures = new Collection()
@@ -58,16 +58,17 @@ emitter.on(`:id(${FEATURE_ID})/panto`, txn((storage, { id }) => {
   emitter.emit('map/panto', { center })
 }))
 
-const geometry = R.cond([
-  [isLayer, id => {
+emitter.on(`:id(.*)/identify/down`, ({ id }) => {
+  const layer = id => {
     const geometries = getContainedFeatures(id)
       .map(readFeature)
       .map(feature => feature.getGeometry())
       .map(TS.read)
     const collection = TS.collect(geometries)
     return TS.write(TS.minimumRectangle(collection))
-  }],
-  [isFeature, id => {
+  }
+
+  const feature = id => {
     const item = storage.getItem(id)
     const feature = readFeature(item)
     const geometry = TS.read(feature.getGeometry())
@@ -75,12 +76,14 @@ const geometry = R.cond([
       ? geometry
       : TS.minimumRectangle(geometry)
     return TS.write(bounds)
-  }],
-  [isPlace, id => {
+  }
+
+  const place = id => {
     const item = storage.getItem(id)
     return readGeometry(item.geojson)
-  }],
-  [isGroup, id => {
+  }
+
+  const group = id => {
     const item = storage.getItem(id)
     const geometries = searchIndex(item.terms)
       .filter(({ ref }) => !isGroup(ref) && !isSymbol(ref))
@@ -94,11 +97,16 @@ const geometry = R.cond([
     return collection.getNumGeometries()
       ? TS.write(TS.minimumRectangle(collection))
       : null
-  }],
-  [R.T, R.always(null)]
-])
+  }
 
-emitter.on(`:id(.*)/identify/down`, ({ id }) => {
+  const geometry = R.cond([
+    [isLayer, layer],
+    [isFeature, feature],
+    [isPlace, place],
+    [isGroup, group],
+    [R.T, R.always(null)]
+  ])
+
   R.uniq([id, ...selection.selected()])
     .map(geometry)
     .filter(R.identity)

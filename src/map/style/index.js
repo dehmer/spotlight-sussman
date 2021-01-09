@@ -15,12 +15,12 @@ export const normalizeSIDC = sidc => sidc
   : 'MUZP------*****'
 
 
-const cachingProvider = (provider, features) => {
+const cachingProvider = (provider, source) => {
   const cachekey = feature => `${feature.getId()}:${feature.getRevision()}`
   const styleCache = new cache()
 
-  features.on('remove', ({ element }) => {
-    styleCache.del(cachekey(element))
+  source.on('removefeature', ({ feature }) => {
+    styleCache.del(cachekey(feature))
   })
 
   return (feature, resolution) => {
@@ -34,7 +34,7 @@ const cachingProvider = (provider, features) => {
 /**
  * FEATURE STYLE FUNCTION.
  */
-export default (mode, features) => {
+export default (mode, source) => {
 
   const geometries = R.cond([
     [R.equals('Point'), R.always(symbolStyle(mode))],
@@ -55,7 +55,7 @@ export default (mode, features) => {
     }
   }
 
-  return features
-    ? cachingProvider(provider, features)
+  return source
+    ? cachingProvider(provider, source)
     : provider
 }
