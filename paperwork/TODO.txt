@@ -8,7 +8,6 @@ TODO:
 - replace layer with tag as feature container (if feasible)
 - try out moving (initial) selection state to search result
 - show exclusive
-- fix issue with unselect after translate
 
 DONE:
 - toolbar / scopebar
@@ -48,3 +47,4 @@ DONE:
 - event emitter should support regex/express-like paths
 - layer from query (incl. places)
 - upgrade OpenLayers dependency
+- fix issue with unselect after translate
