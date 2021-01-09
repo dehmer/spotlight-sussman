@@ -92,7 +92,8 @@ options.layer = (() => {
     id: layer.id,
     title: layer.name,
     tags: tags(layer),
-    capabilities: 'RENAME|TAG|DROP'
+    capabilities: 'RENAME|TAG|DROP',
+    actions: 'PRIMARY:panto'
   })
 
   return id => option(storage.getItem(id))
