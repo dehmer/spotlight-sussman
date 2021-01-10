@@ -184,8 +184,7 @@ emitter.on('storage/bookmark', txn(storage => {
   const view = storage.getItem('session:map.view')
   if (!view) return
   const point = new geom.Point(view.center)
-
-  storage.setItem({
+  const item = {
     id: `place:${uuid()}`,
     display_name: 'Bookmark',
     name: 'Bookmark',
@@ -194,7 +193,11 @@ emitter.on('storage/bookmark', txn(storage => {
     sticky: true,
     geojson: writeGeometryObject(point),
     resolution: view.resolution
-  })
+  }
+
+  storage.setItem(item)
+  emitter.emit('search/scope/place')
+  selection.set([item.id])
 }))
 
 emitter.on('storage/layer', txn(storage => {

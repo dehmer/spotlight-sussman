@@ -29,6 +29,7 @@ const reducer = (state, event) => {
 /**
  *
  */
+
 const Spotlight = () => {
   const [entries, dispatch] = React.useReducer(reducer, [])
   const [focus, setFocus] = React.useState()
@@ -50,7 +51,7 @@ const Spotlight = () => {
     cardrefs[id] &&
     cardrefs[id].current &&
     cardrefs[id].current.scrollIntoView({
-      behavior: "auto",
+      behavior: "instant",
       block: "nearest"
     })
 
@@ -216,6 +217,7 @@ const Spotlight = () => {
     ref={cardrefs[props.id]}
     focus={focus === props.id}
     selected={selection.includes(props.id)}
+    // selected={selectionService.isSelected(props.id)}
     onClick={event => handleClick(props.id, event)}
     {...props}
   />

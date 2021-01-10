@@ -82,7 +82,9 @@ emitter.on('storage/snapshot', txn(storage => {
     storage.setItem(feature)
   })
 
+  emitter.emit('search/scope/layer')
   storage.setItem(layer)
+  selection.set([layer.id])
 }))
 
 // <- OpenLayers interface (ol/source/Vector)
