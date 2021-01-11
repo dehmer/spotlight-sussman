@@ -13,6 +13,12 @@ const toggleSelection = entry => entry
     : [...selection.selected(), entry.id]
   : selection.selected()
 
+// FIXME: currently not quite right
+const rangeSelection = (state, index) => {
+  const [from, to] = state.focus < index ? [state.focus, index] : [index, state.focus]
+  return R.range(from, to + 1).map(index => state.list[index].id)
+}
+
 const handlers = {}
 
 handlers['search/result/updated'] = (state, { result }) => {
@@ -21,7 +27,12 @@ handlers['search/result/updated'] = (state, { result }) => {
     if (selection.isSelected(entry.id)) xs[i] = { ...entry, selected: true }
   })
 
-  const focus = state.focus <= list.length - 1 ? state.focus : -1
+  const firstSelected = list.findIndex(entry => entry.selected)
+  const focus = firstSelected
+    ? firstSelected
+    : state.focus <= list.length - 1
+      ? state.focus
+      : -1
   return { list, focus }
 }
 
@@ -111,15 +122,17 @@ handlers['keydown/Space'] = state => R.tap(state => {
   selection.set(toggleSelection(state.list[state.focus]))
 }, state)
 
-// TODO: range select
 handlers['click'] = (state, { index, shiftKey, metaKey }) => {
   const selected = metaKey
     ? toggleSelection(state.list[index])
-    : []
+    : shiftKey
+      ? rangeSelection(state, index)
+      : []
 
   // Allow new focus to be applied before selection update:
   setTimeout(() => selection.set(selected), 0)
-  return { ...state, focus: index }
+  const focus = shiftKey ? state.focus : index
+  return { ...state, focus }
 }
 
 const reducer = (state, event) => {

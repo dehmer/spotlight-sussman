@@ -23,7 +23,7 @@ Mousetrap.bind('command+3', () => {
 })
 
 Mousetrap.bind('command+4', () => {
-  emitter.emit('search/scope/symbol')
+  emitter.emit('search/scope/link')
   return false
 })
 
@@ -33,6 +33,11 @@ Mousetrap.bind('command+5', () => {
 })
 
 Mousetrap.bind('command+6', () => {
+  emitter.emit('search/scope/symbol')
+  return false
+})
+
+Mousetrap.bind('command+7', () => {
   emitter.emit('search/scope/place')
   return false
 })
