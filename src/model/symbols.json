@@ -3429,8 +3429,6 @@
     "geometry": "Polygon",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "AVIATION",
       "AREAS",
       "SHORT-RANGE AIR DEFENSE ENGAGEMENT ZONE (SHORADEZ)"
@@ -3443,8 +3441,6 @@
     "geometry": "Polygon",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "AVIATION",
       "AREAS",
       "HIGH DENSITY AIRSPACE CONTROL ZONE (HIDACZ)"
@@ -3457,8 +3453,6 @@
     "geometry": "Polygon",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "AVIATION",
       "AREAS",
       "MISSILE ENGAGEMENT ZONE (MEZ)"
@@ -3471,8 +3465,6 @@
     "geometry": "Polygon",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "AVIATION",
       "AREAS",
       "MISSILE ENGAGEMENT ZONE (MEZ)",
@@ -3486,8 +3478,6 @@
     "geometry": "Polygon",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "AVIATION",
       "AREAS",
       "MISSILE ENGAGEMENT ZONE (MEZ)",
@@ -3501,8 +3491,6 @@
     "geometry": "Polygon",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "AVIATION",
       "AREAS",
       "RESTRICTED OPERATIONS ZONE (ROZ)"
@@ -3515,8 +3503,6 @@
     "geometry": "Polygon",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "AVIATION",
       "AREAS",
       "WEAPONS FREE ZONE"
@@ -3529,8 +3515,6 @@
     "geometry": "GeometryCollection",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "AVIATION",
       "LINES",
       "AIR CORRIDOR"
@@ -3546,8 +3530,6 @@
     "geometry": "GeometryCollection",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "AVIATION",
       "LINES",
       "LOW LEVEL TRANSIT ROUTE (LLTR)"
@@ -3563,8 +3545,6 @@
     "geometry": "GeometryCollection",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "AVIATION",
       "LINES",
       "MINIMUM RISK ROUTE (MRR)"
@@ -3580,8 +3560,6 @@
     "geometry": "GeometryCollection",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "AVIATION",
       "LINES",
       "STANDARD-USE ARMY AIRCRAFT FLIGHT ROUTE (SAAFR)"
@@ -3597,8 +3575,6 @@
     "geometry": "GeometryCollection",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "AVIATION",
       "LINES",
       "UNMANNED AIRCRAFT (UA) ROUTE"
@@ -3614,8 +3590,6 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "AVIATION",
       "POINTS",
       "COMMUNICATIONS CHECKPOINT (CCP)"
@@ -3628,8 +3602,6 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "AVIATION",
       "POINTS",
       "DOWNED AIRCREW PICKUP POINT"
@@ -3642,8 +3614,6 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "AVIATION",
       "POINTS",
       "AIR CONTROL POINT (ACP)"
@@ -3656,8 +3626,6 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "AVIATION",
       "POINTS",
       "PULL-UP POINT (PUP)"
@@ -3670,8 +3638,6 @@
     "geometry": "Polygon",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "DEFENSE",
       "AREAS",
       "BATTLE POSITION"
@@ -3684,8 +3650,6 @@
     "geometry": "Polygon",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "DEFENSE",
       "AREAS",
       "BATTLE POSITION",
@@ -3699,8 +3663,6 @@
     "geometry": "Polygon",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "DEFENSE",
       "AREAS",
       "ENGAGEMENT AREA"
@@ -3713,8 +3675,6 @@
     "geometry": "LineString",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "DEFENSE",
       "LINES",
       "FORWARD EDGE OF BATTLE AREA (FEBA)"
@@ -3727,8 +3687,6 @@
     "geometry": "MultiPoint",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "DEFENSE",
       "LINES",
       "PRINCIPAL DIRECTION OF FIRE (PDF)"
@@ -3746,8 +3704,6 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "DEFENSE",
       "POINTS",
       "OBSERVATION POST / OUTPOST"
@@ -3760,8 +3716,6 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "DEFENSE",
       "POINTS",
       "OBSERVATION POST / OUTPOST",
@@ -3775,8 +3729,6 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "DEFENSE",
       "POINTS",
       "OBSERVATION POST / OUTPOST",
@@ -3790,8 +3742,6 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "DEFENSE",
       "POINTS",
       "OBSERVATION POST / OUTPOST",
@@ -3805,8 +3755,6 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "DEFENSE",
       "POINTS",
       "OBSERVATION POST / OUTPOST",
@@ -3820,8 +3768,6 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "DEFENSE",
       "POINTS",
       "OBSERVATION POST / OUTPOST",
@@ -3835,8 +3781,6 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "DEFENSE",
       "POINTS",
       "TARGET REFERENCE POINT (TRP)"
@@ -3849,8 +3793,6 @@
     "geometry": "Polygon",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "AREAS",
       "ASSEMBLY AREA"
@@ -3863,8 +3805,6 @@
     "geometry": "Polygon",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "AREAS",
       "DROP ZONE"
@@ -3877,8 +3817,6 @@
     "geometry": "Polygon",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "AREAS",
       "ENGAGEMENT AREA"
@@ -3891,8 +3829,6 @@
     "geometry": "Polygon",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "AREAS",
       "FORTIFIED AREA"
@@ -3905,8 +3841,6 @@
     "geometry": "Polygon",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "AREAS",
       "GENERAL AREA"
@@ -3919,8 +3853,6 @@
     "geometry": "Polygon",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "AREAS",
       "LANDING ZONE (LZ)"
@@ -3933,8 +3865,6 @@
     "geometry": "Polygon",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "AREAS",
       "PICKUP ZONE (PZ)"
@@ -3947,8 +3877,6 @@
     "geometry": "MultiPoint",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "AREAS",
       "SEARCH AREA / RECONNAISSANCE AREA"
@@ -3966,8 +3894,6 @@
     "geometry": "Polygon",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "AREAS",
       "EXTRACTION ZONE (EZ)"
@@ -3980,8 +3906,6 @@
     "geometry": "Polygon",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "AREAS",
       "LIMITED ACCESS AREA"
@@ -3994,8 +3918,6 @@
     "geometry": "Polygon",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "AREAS",
       "AIRFIELD ZONE"
@@ -4008,8 +3930,6 @@
     "geometry": "LineString",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "LINES",
       "BOUNDARIES"
@@ -4022,8 +3942,6 @@
     "geometry": "LineString",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "LINES",
       "LINE OF CONTACT"
@@ -4036,8 +3954,6 @@
     "geometry": "LineString",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "LINES",
       "FORWARD LINE OF OWN TROOPS (FLOT)"
@@ -4050,8 +3966,6 @@
     "geometry": "LineString",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "LINES",
       "LIGHT LINE"
@@ -4064,8 +3978,6 @@
     "geometry": "LineString",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "LINES",
       "PHASE LINE"
@@ -4078,8 +3990,6 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "AIR CONTROL",
@@ -4093,8 +4003,6 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "AIR CONTROL",
@@ -4108,8 +4016,6 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "AIR CONTROL",
@@ -4123,8 +4029,6 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "AIR CONTROL",
@@ -4138,8 +4042,6 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "AIR CONTROL",
@@ -4153,8 +4055,6 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "AIR CONTROL",
@@ -4168,8 +4068,6 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "AIR CONTROL",
@@ -4183,8 +4081,6 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "AIR CONTROL",
@@ -4198,8 +4094,6 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "AIR CONTROL",
@@ -4213,8 +4107,6 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "AIR CONTROL",
@@ -4228,8 +4120,6 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "AIR CONTROL",
@@ -4243,8 +4133,6 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "AIR CONTROL",
@@ -4258,8 +4146,6 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "AIR CONTROL",
@@ -4273,8 +4159,6 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "AIR CONTROL",
@@ -4288,8 +4172,6 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "AIR CONTROL",
@@ -4303,8 +4185,6 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "AIR CONTROL",
@@ -4318,8 +4198,6 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "AIR CONTROL",
@@ -4333,8 +4211,6 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "AIR CONTROL",
@@ -4348,8 +4224,6 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "AIR CONTROL",
@@ -4363,8 +4237,6 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "AIR CONTROL",
@@ -4378,8 +4250,6 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "SUBSURFACE CONTROL STATION"
@@ -4392,8 +4262,6 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "SUBSURFACE CONTROL STATION",
@@ -4407,8 +4275,6 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "SUBSURFACE CONTROL STATION",
@@ -4422,8 +4288,6 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "SUBSURFACE CONTROL STATION",
@@ -4437,8 +4301,6 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "SUBSURFACE CONTROL STATION",
@@ -4453,8 +4315,6 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "SUBSURFACE CONTROL STATION",
@@ -4469,8 +4329,6 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "SUBSURFACE CONTROL STATION",
@@ -4485,8 +4343,6 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "SEA SURFACE CONTROL STATION"
@@ -4499,8 +4355,6 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "SEA SURFACE CONTROL STATION",
@@ -4514,8 +4368,6 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "SEA SURFACE CONTROL STATION",
@@ -4529,8 +4381,6 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "SEA SURFACE CONTROL STATION",
@@ -4544,8 +4394,6 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "SEA SURFACE CONTROL STATION",
@@ -4559,8 +4407,6 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "SEA SURFACE CONTROL STATION",
@@ -4574,8 +4420,6 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "SEA SURFACE CONTROL STATION",
@@ -4589,8 +4433,6 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "SEA SURFACE CONTROL STATION",
@@ -4604,8 +4446,6 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "SEA SURFACE CONTROL STATION",
@@ -4619,8 +4459,6 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "SEA SURFACE CONTROL STATION",
@@ -4634,8 +4472,6 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "SEA SURFACE CONTROL STATION",
@@ -4650,8 +4486,6 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "SEA SURFACE CONTROL STATION",
@@ -4666,8 +4500,6 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "SEA SURFACE CONTROL STATION",
@@ -4682,8 +4514,6 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "SEA SURFACE CONTROL STATION",
@@ -4698,8 +4528,6 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "FORMATION"
@@ -4712,8 +4540,6 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "HARBOR (GENERAL)"
@@ -4726,8 +4552,6 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "HARBOR (GENERAL)",
@@ -4741,8 +4565,6 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "HARBOR (GENERAL)",
@@ -4756,8 +4578,6 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "HARBOR (GENERAL)",
@@ -4771,8 +4591,6 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "HARBOR (GENERAL)",
@@ -4786,8 +4604,6 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "ROUTE"
@@ -4800,8 +4616,6 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "ROUTE",
@@ -4815,8 +4629,6 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "ROUTE",
@@ -4830,8 +4642,6 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "ROUTE",
@@ -4845,8 +4655,6 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "ROUTE",
@@ -4860,8 +4668,6 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "ROUTE",
@@ -4875,8 +4681,6 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "ACTION POINTS (GENERAL)"
     ]
@@ -4888,8 +4692,6 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "ACTION POINTS (GENERAL)",
       "AMNESTY POINT"
@@ -4902,8 +4704,6 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "ACTION POINTS (GENERAL)",
       "CONTACT POINT"
@@ -4916,8 +4716,6 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "ACTION POINTS (GENERAL)",
       "DECISION POINT"
@@ -4930,8 +4728,6 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "ACTION POINTS (GENERAL)",
       "RELEASE POINT"
@@ -4944,8 +4740,6 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "ACTION POINTS (GENERAL)",
       "CHECK POINT"
@@ -4958,8 +4752,6 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "ACTION POINTS (GENERAL)",
       "LINKUP POINT"
@@ -4972,8 +4764,6 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "ACTION POINTS (GENERAL)",
       "COORDINATION POINT"
@@ -4986,8 +4776,6 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "ACTION POINTS (GENERAL)",
       "PASSAGE POINT"
@@ -5000,8 +4788,6 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "ACTION POINTS (GENERAL)",
       "RALLY POINT"
@@ -5014,8 +4800,6 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "ACTION POINTS (GENERAL)",
       "START POINT"
@@ -5028,8 +4812,6 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "ACTION POINTS (GENERAL)",
       "WAYPOINT"
@@ -5042,8 +4824,6 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "REFERENCE POINT"
@@ -5056,8 +4836,6 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "REFERENCE POINT",
@@ -5071,8 +4849,6 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "REFERENCE POINT",
@@ -5086,8 +4862,6 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "REFERENCE POINT",
@@ -5101,8 +4875,6 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "REFERENCE POINT",
@@ -5116,8 +4888,6 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "NAVIGATIONAL REFERENCE POINT"
@@ -5130,8 +4900,6 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "REFERENCE POINT",
@@ -5145,8 +4913,6 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "REFERENCE POINT",
@@ -5160,8 +4926,6 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "REFERENCE POINT",
@@ -5175,8 +4939,6 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "UNDER SEA WARFARE",
@@ -5190,8 +4952,6 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "UNDER SEA WARFARE",
@@ -5205,8 +4965,6 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "UNDER SEA WARFARE",
@@ -5220,8 +4978,6 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "UNDER SEA WARFARE",
@@ -5236,8 +4992,6 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "UNDER SEA WARFARE",
@@ -5252,8 +5006,6 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "UNDER SEA WARFARE",
@@ -5268,8 +5020,6 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "UNDER SEA WARFARE",
@@ -5284,8 +5034,6 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "UNDER SEA WARFARE",
@@ -5300,8 +5048,6 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "UNDER SEA WARFARE",
@@ -5315,8 +5061,6 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "UNDER SEA WARFARE",
@@ -5331,8 +5075,6 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "UNDER SEA WARFARE",
@@ -5347,8 +5089,6 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "UNDER SEA WARFARE",
@@ -5362,8 +5102,6 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "UNDER SEA WARFARE",
@@ -5378,8 +5116,6 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "UNDER SEA WARFARE",
@@ -5394,8 +5130,6 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "UNDER SEA WARFARE",
@@ -5410,8 +5144,6 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "UNDER SEA WARFARE",
@@ -5426,8 +5158,6 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "UNDER SEA WARFARE",
@@ -5442,8 +5172,6 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "UNDER SEA WARFARE",
@@ -5457,8 +5185,6 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "UNDER SEA WARFARE",
@@ -5473,8 +5199,6 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "UNDER SEA WARFARE",
@@ -5489,8 +5213,6 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "UNDER SEA WARFARE",
@@ -5504,8 +5226,6 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "WEAPON",
@@ -5519,8 +5239,6 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "WEAPON",
@@ -5534,8 +5252,6 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "WEAPON",
@@ -5549,8 +5265,6 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "WEAPON",
@@ -5564,8 +5278,6 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "WEAPON",
@@ -5579,8 +5291,6 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "WEAPON",
@@ -5594,8 +5304,6 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "WEAPON",
@@ -5609,8 +5317,6 @@
     "geometry": "Polygon",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "OFFENSE",
       "AREAS",
       "ASSAULT POSITION"
@@ -5623,8 +5329,6 @@
     "geometry": "GeometryCollection",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "OFFENSE",
       "AREAS",
       "ATTACK BY FIRE POSITION"
@@ -5641,8 +5345,6 @@
     "geometry": "Polygon",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "OFFENSE",
       "AREAS",
       "ATTACK POSITION"
@@ -5655,8 +5357,6 @@
     "geometry": "Polygon",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "OFFENSE",
       "AREAS",
       "OBJECTIVE"
@@ -5669,8 +5369,6 @@
     "geometry": "Polygon",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "OFFENSE",
       "AREAS",
       "PENETRATION BOX"
@@ -5683,8 +5381,6 @@
     "geometry": "MultiPoint",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "OFFENSE",
       "AREAS",
       "SUPPORT BY FIRE POSITION"
@@ -5702,8 +5398,6 @@
     "geometry": "GeometryCollection",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "OFFENSE",
       "LINES",
       "AXIS OF ADVANCE",
@@ -5720,8 +5414,6 @@
     "geometry": "GeometryCollection",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "OFFENSE",
       "LINES",
       "AXIS OF ADVANCE",
@@ -5739,8 +5431,6 @@
     "geometry": "GeometryCollection",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "OFFENSE",
       "LINES",
       "AXIS OF ADVANCE",
@@ -5758,8 +5448,6 @@
     "geometry": "GeometryCollection",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "OFFENSE",
       "LINES",
       "AXIS OF ADVANCE",
@@ -5776,8 +5464,6 @@
     "geometry": "GeometryCollection",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "OFFENSE",
       "LINES",
       "AXIS OF ADVANCE",
@@ -5794,8 +5480,6 @@
     "geometry": "LineString",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "OFFENSE",
       "LINES",
       "LINE OF DEPARTURE / LINE OF CONTACT (LD / LC)"
@@ -5808,8 +5492,6 @@
     "geometry": "LineString",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "OFFENSE",
       "LINES",
       "FINAL COORDINATION LINE"
@@ -5822,8 +5504,6 @@
     "geometry": "GeometryCollection",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "OFFENSE",
       "LINES",
       "INFILTRATION LANE"
@@ -5840,8 +5520,6 @@
     "geometry": "LineString",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "OFFENSE",
       "LINES",
       "DIRECTION OF ATTACK AVIATION"
@@ -5857,8 +5535,6 @@
     "geometry": "LineString",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "OFFENSE",
       "LINES",
       "DIRECTION OF ATTACK GROUND",
@@ -5875,8 +5551,6 @@
     "geometry": "LineString",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "OFFENSE",
       "LINES",
       "DIRECTION OF ATTACK GROUND",
@@ -5893,8 +5567,6 @@
     "geometry": "LineString",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "OFFENSE",
       "LINES",
       "LIMIT OF ADVANCE"
@@ -5907,8 +5579,6 @@
     "geometry": "LineString",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "OFFENSE",
       "LINES",
       "PROBABLE LINE OF DEPLOYMENT (PLD)"
@@ -5921,8 +5591,6 @@
     "geometry": "LineString",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "OFFENSE",
       "LINES",
       "LINE OF DEPARTURE"
@@ -5935,8 +5603,6 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "OFFENSE",
       "POINTS",
       "POINT OF DEPARTURE"
@@ -5948,8 +5614,6 @@
     "geometry": "GeometryCollection",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "DECEPTION",
       "AXIS OF ADVANCE FOR FEINT"
     ],
@@ -5964,8 +5628,6 @@
     "geometry": "Polygon",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "DECEPTION",
       "DUMMY MINEFIELD (DYNAMIC)"
     ]
@@ -5976,8 +5638,6 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "DUMMY (DECEPTION / DECOY)"
     ]
   },
@@ -5988,8 +5648,6 @@
     "geometry": "LineString",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "DECEPTION",
       "DIRECTION OF ATTACK FOR FEINT"
     ],
@@ -6004,8 +5662,6 @@
     "geometry": "Polygon",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "DECEPTION",
       "DECOY MINED AREA"
     ]
@@ -6016,8 +5672,6 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "DECEPTION",
       "DUMMY MINEFIELD (STATIC)"
     ]
@@ -6029,8 +5683,6 @@
     "geometry": "Polygon",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "DECEPTION",
       "DECOY MINED AREA, FENCED"
     ]
@@ -6042,8 +5694,6 @@
     "geometry": "Polygon",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "SPECIAL",
       "AREA",
       "AIRHEAD"
@@ -6056,8 +5706,6 @@
     "geometry": "Polygon",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "SPECIAL",
       "AREA",
       "ENCIRCLEMENT"
@@ -6070,8 +5718,6 @@
     "geometry": "Polygon",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "SPECIAL",
       "NAMED AREA OF INTEREST (NAI)"
     ]
@@ -6083,8 +5729,6 @@
     "geometry": "Polygon",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "SPECIAL",
       "AREA OF OPERATIONS (AO)"
     ]
@@ -6096,8 +5740,6 @@
     "geometry": "Polygon",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "SPECIAL",
       "TARGETED AREA OF INTEREST (TAI)"
     ]
@@ -6109,8 +5751,6 @@
     "geometry": "GeometryCollection",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "SPECIAL",
       "LINE",
       "AMBUSH"
@@ -6127,8 +5767,6 @@
     "geometry": "Undefined",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "SPECIAL",
       "LINE",
       "BRIDGEHEAD"
@@ -6141,8 +5779,6 @@
     "geometry": "LineString",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "SPECIAL",
       "HOLDING LINE"
     ]
@@ -6154,8 +5790,6 @@
     "geometry": "LineString",
     "dimension": "C2",
     "hierarchy": [
-      "TACTICAL GRAPHICS",
-      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "SPECIAL",
       "RELEASE LINE"
     ]
