@@ -1,226 +1,175 @@
-import React from 'react'
 import * as R from 'ramda'
+import React from 'react'
 import { CardList } from '../components/CardList'
 import Card from '../components/Card'
-import emitter from '../emitter'
-import selectionService from '../selection'
 import { Search } from './Search'
 import { Scopebar } from './Scopebar'
+import emitter from '../emitter'
+import selection from '../selection'
 
-const current = ref => ref && ref.current
-const next = R.prop('nextSibling')
-const previous = R.prop('previousSibling')
+const toggleSelection = entry => entry
+  ? entry.selected
+    ? selection.selected().filter(x => x !== entry.id)
+    : [...selection.selected(), entry.id]
+  : selection.selected()
+
+const handlers = {}
+
+handlers['search/result/updated'] = (state, { result }) => {
+  const list = [...result]
+  list.forEach((entry, i, xs) => {
+    if (selection.isSelected(entry.id)) xs[i] = { ...entry, selected: true }
+  })
+
+  const focus = state.focus <= list.length - 1 ? state.focus : -1
+  return { list, focus }
+}
+
+handlers['selection'] = (state, { selected, deselected }) => {
+  return R.tap(state => state.list.forEach((entry, i, xs) => {
+    if (selected.includes(entry.id)) xs[i] = { ...entry, selected: true }
+    else if (deselected.includes(entry.id)) xs[i] = { ...entry, selected: false }
+  }))({ ...state })
+}
+
+// TODO: respect continuous selection block
+handlers['keydown/ArrowDown'] = (state, { shiftKey, metaKey }) => {
+  const list = state.list
+  const focus = metaKey
+    ? list.length - 1
+    : Math.min(list.length - 1, state.focus + 1)
+
+  const currentEntry = list[state.focus]
+  const nextEntry = list[focus]
+  const selected = shiftKey
+    ? nextEntry.selected
+      ? R.uniq([...toggleSelection(currentEntry), nextEntry.id])
+      : R.uniq([...selection.selected(), nextEntry.id, currentEntry.id])
+    : []
+
+  setTimeout(() => selection.set(selected), 0)
+  return { ...state, focus }
+}
+
+// TODO: respect continuous selection block
+handlers['keydown/ArrowUp'] = (state, { shiftKey, metaKey }) => {
+  if (state.focus === -1) return state
+  const list = state.list
+  const focus = metaKey
+    ? 0
+    : Math.max(0, state.focus - 1)
+
+  const currentEntry = list[state.focus]
+  const nextEntry = list[focus]
+
+  const selected = shiftKey
+    ? nextEntry.selected
+      ? R.uniq([...toggleSelection(currentEntry), nextEntry.id])
+      : R.uniq([...selection.selected(), nextEntry.id, currentEntry.id])
+    : []
+
+  setTimeout(() => selection.set(selected), 0)
+  return { ...state, focus }
+}
+
+handlers['keydown/Home'] = (state, { shiftKey }) => {
+  if (state.focus === -1) return state
+  const focus = state.list.length ? 0 : -1
+  return { ...state, focus}
+}
+
+handlers['keydown/End'] = (state, { shiftKey }) => {
+  if (state.focus === -1) return state
+  const focus = state.list.length ? state.list.length - 1 : -1
+  return { ...state, focus}
+}
+
+handlers['keydown/Enter'] = state => {
+  const focus = state.focus
+  if (focus === -1) return state
+  if (!(state.list[focus].capabilities || '').includes('RENAME')) return state
+  const list = [...state.list]
+  list[focus] = { ...list[focus], edit: true}
+  return { list, focus }
+}
+
+handlers['keydown/KeyA'] = (state, { shiftKey, metaKey }) => R.tap(({ list }) => {
+  if (!metaKey) return
+  const selected = list.every(R.prop('selected')) ? [] : list.map(R.prop('id'))
+  selection.set(selected)
+}, state)
+
+handlers['keydown/Backspace'] = (state, { shiftKey, metaKey }) => R.tap(state => {
+  if (!metaKey || state.focus === -1) return
+  const include = (entry, index) => entry.selected || index === state.focus
+  const ids = state.list.filter(include).map(R.prop('id'))
+  emitter.emit('items/remove', { ids })
+}, state)
+
+handlers['keydown/Space'] = state => R.tap(state => {
+  if (state.focus === -1) return
+  selection.set(toggleSelection(state.list[state.focus]))
+}, state)
+
+// TODO: range select
+handlers['click'] = (state, { index, shiftKey, metaKey }) => {
+  const selected = metaKey
+    ? toggleSelection(state.list[index])
+    : []
+
+  // Allow new focus to be applied before selection update:
+  setTimeout(() => selection.set(selected), 0)
+  return { ...state, focus: index }
+}
 
 const reducer = (state, event) => {
-  if (event.id) {
-    // toggle/start edit:
-    const index = state.findIndex(entry => entry.id === event.id)
-    const entry = state[index]
-    if (!entry) return state
-    if (!(entry.capabilities || '').includes('RENAME')) return state
-
-    const clone = [...state]
-    clone[index].edit = true
-    return clone
-  } else if (event.result) return event.result
-  else return state
+  const handler = handlers[event.path]
+  return handler ? handler(state, event) : state
 }
 
 /**
  *
  */
-
 const Spotlight = () => {
-  const [entries, dispatch] = React.useReducer(reducer, [])
-  const [focus, setFocus] = React.useState()
-  const [selection, setSelection] = React.useState([])
-
-  const updateSelection = ids => {
-    const selected = ids.filter(R.identity)
-    setSelection(selected)
-    selectionService.set(selected)
-  }
-
+  const [state, dispatch] = React.useReducer(reducer, { list: [], focus: -1 })
   const ref = React.createRef()
-  const cardrefs = entries.reduce((acc, value) => {
-    acc[value.id] = React.createRef()
-    return acc
-  }, {})
+  const cardrefs = state.list.map(_ => React.createRef())
 
-  const scrollIntoView = id =>
-    cardrefs[id] &&
-    cardrefs[id].current &&
-    cardrefs[id].current.scrollIntoView({
+  const scrollIntoView = index => {
+    cardrefs[index] &&
+    cardrefs[index].current &&
+    cardrefs[index].current.scrollIntoView({
       behavior: "instant",
       block: "nearest"
     })
-
-  const key = fn => key => {
-    const sameRef = ([_, ref]) => current(ref) === fn(current(cardrefs[key]))
-    const entry = Object.entries(cardrefs).find(sameRef)
-    return entry ? entry[0] : null
   }
 
   React.useEffect(() => {
-    const providerUpdated = () => {
-      updateSelection([])
-      setFocus(null)
-    }
+    const paths = ['search/result/updated', 'selection']
+    paths.forEach(path => emitter.on(path, dispatch))
+    return () => paths.forEach(path => emitter.off(path, dispatch))
+  }, [])
 
-    const selectionHandler = ({ selected, deselected }) => {
-      const inscope = entries.map(entry => entry.id)
-      const removals = selection.filter(id => !selectionService.isSelected(id))
+  React.useEffect(() => {
+    scrollIntoView(state.focus)
+  }, [state])
 
-      const additions = selected
-        .filter(id => inscope.includes(id))
-        .filter(id => !selection.includes(id))
+  const handleClick = React.useCallback((index, { metaKey, shiftKey }) => {
+    dispatch({ path: `click`, index, shiftKey, metaKey })
+  }, [state])
 
-      const xs = [...selection.filter(id => !removals.includes(id)), ...additions]
-      setSelection(xs)
-    }
-
-    emitter.on('search/provider/updated', providerUpdated)
-    emitter.on('search/result/updated', dispatch)
-    emitter.on('selection', selectionHandler)
-
-    return () => {
-      emitter.off('search/provider/updated', providerUpdated)
-      emitter.off('search/result/updated', dispatch)
-      emitter.off('selection', selectionHandler)
-    }
-  }, [selection, entries])
-
-  const selected = key => selection.includes(key)
-  const toggleSelection = key => key
-    ? selected(key)
-      ? selection.filter(x => x !== key)
-      : [...selection, key]
-    : selection
-
-  const updateFocus = (succ, shiftKey) => {
-    const key = succ(focus)
-    if (!key) return /* don't 'cycle' */
-
-    scrollIntoView(key)
-    updateSelection(shiftKey
-      ? selected(key)
-        ? [...toggleSelection(focus), key]
-        : [...selection, focus, key]
-      : []
-    )
-
-    setFocus(key)
-  }
-
-  const findIndex = id => entries.findIndex(entry => entry.id === id)
-  const rangeSelection = id => {
-
-    const keyRange = (from, to) => {
-      const reverse = from > to ? R.reverse : R.identity
-      const id = i => entries[i].id
-      return reverse(R.map(id, R.range(from, to + 1)))
-    }
-
-    if (!selection.length) {
-      // No prior selection to take into account.
-      const [from, to] = [focus || entries[0], id].map(findIndex)
-      return from < to
-        ? keyRange(from, to) // ascending
-        : keyRange(to, from).reverse() // descending
-    } else {
-      // Superimpose with current selection.
-      // NOTE: Indexes of current selection define an order (asc/desc).
-      const indexes = selection.map(findIndex)
-      const index = findIndex(id)
-      return R.head(indexes) < R.last(indexes) // ascending
-        ? index > R.head(indexes)
-          ? keyRange(R.head(indexes), index) // ascending
-          : keyRange(index, R.head(indexes)).reverse() // descending
-        : index < R.head(indexes)
-          ? keyRange(index, R.head(indexes)).reverse() // descending
-          : keyRange(R.head(indexes), index) // ascending
-    }
-  }
-
-  const focused = focus && cardrefs[focus]
-  const first = R.always(entries.length ? R.head(entries).id : null)
-  const last = R.always(entries.length ? R.last(entries).id : null)
-
-  const home = shiftKey => {
-    const key = first()
-    if (shiftKey) updateSelection(rangeSelection(key))
-    scrollIntoView(key)
-    setFocus(key)
-  }
-
-  const end = shiftKey => {
-    const key = last()
-    if (shiftKey) updateSelection(rangeSelection(key))
-    scrollIntoView(key)
-    setFocus(key)
-  }
-
-  const handleKeyDown = event => {
-    const keyHandlers = {
-      ArrowDown: ({ shiftKey, metaKey }) => {
-        if (metaKey) return end(shiftKey)
-        const succ = focused ? key(next) : first
-        updateFocus(succ, shiftKey)
-      },
-      ArrowUp: ({ shiftKey, metaKey }) => {
-        if (metaKey) return home(shiftKey)
-        const succ = focused ? key(previous) : last
-        updateFocus(succ, shiftKey)
-      },
-      Home: ({ shiftKey }) => home(shiftKey),
-      End: ({ shiftKey }) => end(shiftKey),
-      KeyA: ({ metaKey }) => {
-        if (!metaKey) return
-        const xs = selection.length !== entries.length
-          ? entries.map(entry => entry.id)
-          : []
-
-        updateSelection(xs)
-      },
-      Enter: () => {
-        if (!focus) return
-        dispatch({ type: 'toggle-edit', property: 'title', id: focus })
-        ref.current.focus()
-      },
-      Backspace: ({ metaKey }) => {
-        if (!metaKey) return
-        emitter.emit('items/remove', { ids: [focus, ...selection] })
-      },
-      Space: () => {
-        if (!focus) return
-        updateSelection([...toggleSelection(focus)])
-      }
-    }
-
-    ;(keyHandlers[event.code] || R.always({}))(event)
-  }
-
-  const handleClick = React.useCallback((id, { metaKey, shiftKey }) => {
-    setFocus(id)
-
-    const selection = metaKey
-      ? [...toggleSelection(id)]
-      : shiftKey
-        ? rangeSelection(id)
-        : []
-
-    updateSelection(selection)
-  }, [focus, selection])
-
-  const card = props => <Card
+  const card = (props, index) => <Card
     key={props.id}
-    ref={cardrefs[props.id]}
-    focus={focus === props.id}
-    selected={selection.includes(props.id)}
-    // selected={selectionService.isSelected(props.id)}
-    onClick={event => handleClick(props.id, event)}
+    ref={cardrefs[index]}
+    focus={state.focus === index}
+    onClick={event => handleClick(index, event)}
     {...props}
   />
+
+  const handleKeyDown = ({ code, shiftKey, metaKey }) => {
+    dispatch({ path: `keydown/${code}`, shiftKey, metaKey })
+    if (code === 'Enter' && state.focus !== -1) ref.current.focus()
+  }
 
   return (
     <div
@@ -231,7 +180,7 @@ const Spotlight = () => {
     >
       <Scopebar/>
       <Search/>
-      <CardList>{entries.map(card)}</CardList>
+      <CardList>{state.list.map(card)}</CardList>
     </div>
   )
 }
