@@ -1,8 +1,8 @@
+import * as geom from 'ol/geom'
 import { normalize } from '../../model/sidc'
 import { labels as lineLabels } from './line-labels'
 import { geometries } from './line-geometries'
 import { styleFactory, defaultStyle } from './default-style'
-import * as TS from '../ts'
 import { format } from '../format'
 
 export const lineStyle = mode => (feature, resolution) => {
@@ -13,6 +13,7 @@ export const lineStyle = mode => (feature, resolution) => {
   const line = read(geometry)
   const factory = styleFactory({ mode, feature, resolution })(write)
   const options = { feature, resolution, line, styles: factory, write }
+  const firstPoint = () => new geom.Point(geometry.getFirstCoordinate())
 
   const labels = () => {
     if (!factory.showLabels()) return []
@@ -21,7 +22,7 @@ export const lineStyle = mode => (feature, resolution) => {
 
   return [
     geometries[sidc] ? geometries[sidc](options).flat() : defaultStyle(feature),
-    factory.handles(TS.multiPoint(TS.linePoints(line))),
+    mode === 'multi' ? factory.handles(read(firstPoint())) : [],
     factory.wireFrame(line),
     labels()
   ].flat()
