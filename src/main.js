@@ -57,6 +57,9 @@ Mousetrap.bind('f3', () => {
   return false
 })
 
+/**
+ * Create layer from last search.
+ */
 Mousetrap.bind('f4', () => {
   emitter.emit('storage/layer')
   return false

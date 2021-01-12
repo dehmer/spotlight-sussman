@@ -121,7 +121,8 @@ options.symbol = (() => {
       url: url(replace(replace(symbol.sidc, 1, 'F'), 3, 'P')),
       scope: 'SYMBOL',
       tags: tags(symbol),
-      capabilities: 'TAG'
+      capabilities: 'TAG',
+      actions: 'PRIMARY:draw'
     }
   }
 

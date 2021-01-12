@@ -8,7 +8,7 @@ import { isLayer, isFeature, isGroup, isSymbol, isPlace, isLink } from './ids'
 import { FEATURE_ID, LAYER_ID, PLACE_ID, GROUP_ID, SYMBOL_ID, LINK_ID } from './ids'
 import emitter from '../emitter'
 import { searchIndex } from '../search/lunr'
-import { writeGeometryObject } from './format'
+import { writeGeometryObject, writeFeatureObject } from './format'
 import selection from '../selection'
 import { currentDateTime, toMilitaryTime } from '../model/datetime'
 
@@ -73,17 +73,34 @@ emitter.on(`:id(.*)/hide`, txn((storage, { id }) => {
 }))
 
 const taggable = id => !isGroup(id)
+
 const addtag = txn((storage, { id, tag }) => {
   const ids = R.uniq([id, ...selection.selected(taggable)])
-  const op = item => item.tags = R.uniq([...(item.tags || []), tag])
+  const op = item => item.tags = R.uniq([...(item.tags || []), tag.toLowerCase()])
   ids.forEach(storage.updateKey(op))
 })
 
-emitter.on(`:id(${LAYER_ID})/tag/add`, addtag)
 emitter.on(`:id(${FEATURE_ID})/tag/add`, addtag)
 emitter.on(`:id(${SYMBOL_ID})/tag/add`, addtag)
 emitter.on(`:id(${GROUP_ID})/tag/add`, addtag)
 emitter.on(`:id(${LINK_ID})/tag/add`, addtag)
+
+emitter.on(`:id(${LAYER_ID})/tag/add`, ({ id, tag }) => {
+  if (tag.toLowerCase() !== 'default') return addtag({ id, tag })
+  else txn(storage => {
+    const add = tag => item => item.tags = R.uniq([...(item.tags || []), tag])
+    const remove = tag => item => item.tags = (item.tags || []).filter(x => x !== tag)
+
+    const previous = storage.keys()
+      .filter(isLayer)
+      .map(storage.getItem)
+      .filter(layer => (layer.tags || []).includes('default'))
+
+    previous.forEach(storage.updateItem(remove('default')))
+    storage.updateKey(add('default'))(id)
+  })(({ id, tag }))
+})
+
 emitter.on(`:id(${PLACE_ID})/tag/add`, txn((storage, { id, tag }) => {
   storage.updateKey(item => {
     item.tags = R.uniq([...(item.tags || []), tag])
@@ -93,7 +110,7 @@ emitter.on(`:id(${PLACE_ID})/tag/add`, txn((storage, { id, tag }) => {
 
 const removetag = txn((storage, { id, tag }) => {
   const ids = R.uniq([id, ...selection.selected(taggable)])
-  const op = item => item.tags = (item.tags || []).filter(x => x !== tag)
+  const op = item => item.tags = (item.tags || []).filter(x => x !== tag.toLowerCase())
   ids.forEach(storage.updateKey(op))
 })
 
@@ -111,10 +128,18 @@ const rename = txn((storage, { id, name }) => {
 emitter.on(`:id(${LAYER_ID})/rename`, rename)
 emitter.on(`:id(${GROUP_ID})/rename`, rename)
 
+
+/**
+ *
+ */
 emitter.on(`:id(${FEATURE_ID})/rename`, txn((storage, { id, name }) => {
   storage.updateKey(feature => feature.properties.t = name.trim())(id)
 }))
 
+
+/**
+ *
+ */
 emitter.on(`:id(${PLACE_ID})/rename`, txn((storage, { id, name }) => {
   storage.updateKey(place => {
     place.name = name.trim()
@@ -122,6 +147,10 @@ emitter.on(`:id(${PLACE_ID})/rename`, txn((storage, { id, name }) => {
   })(id)
 }))
 
+
+/**
+ *
+ */
 emitter.on('items/remove', txn((storage, { ids }) => {
 
   const link = id => {
@@ -161,6 +190,10 @@ emitter.on('items/remove', txn((storage, { ids }) => {
   R.uniq(ids.filter(R.identity)).forEach(remove)
 }))
 
+
+/**
+ *
+ */
 emitter.on('storage/group', txn(storage => {
   const search = storage.getItem('search:')
   if (!search) return
@@ -180,6 +213,10 @@ emitter.on('storage/group', txn(storage => {
   storage.setItem({ id, name, terms, ...fields })
 }))
 
+
+/**
+ *
+ */
 emitter.on('storage/bookmark', txn(storage => {
   const view = storage.getItem('session:map.view')
   if (!view) return
@@ -200,6 +237,10 @@ emitter.on('storage/bookmark', txn(storage => {
   selection.set([item.id])
 }))
 
+
+/**
+ *
+ */
 emitter.on('storage/layer', txn(storage => {
   const features = pid => id => {
     if (isPlace(id)) {
@@ -224,8 +265,15 @@ emitter.on('storage/layer', txn(storage => {
   const tags = R.uniq(items.flatMap(R.prop('tags')))
   storage.setItem({ id: pid, name: `Layer - ${currentDateTime()}`, tags })
   items.forEach(storage.setItem)
+
+  emitter.emit('search/scope/layer')
+  selection.set([pid])
 }))
 
+
+/**
+ *
+ */
 emitter.on('search/current', ({ terms }) => {
   storage.setItem({ id: 'search:', terms })
 })
@@ -280,6 +328,40 @@ emitter.on(`:id(${LAYER_ID})/links/add`, txn((storage, { id, files }) => {
   })(item)
 }))
 
+
+/**
+ *
+ */
+emitter.on('storage/features/add', txn((storage, { feature }) => {
+
+  const findLayer = () => storage.keys()
+    .filter(isLayer)
+    .map(storage.getItem)
+    .find(layer => (layer.tags || []).includes('DEFAULT'))
+
+  const createLayer = () => {
+    const item = {
+      id: `layer:${uuid()}`,
+      name: `Layer - ${currentDateTime()}`,
+      tags: ['default']
+    }
+
+    storage.setItem(item)
+    return item
+  }
+
+  const layer = findLayer() || createLayer()
+
+  if (!layer) return
+  const item = writeFeatureObject(feature)
+  item.id = featureId(layer.id)
+  storage.setItem(item)
+}))
+
+
+/**
+ *
+ */
 emitter.on('features/geometry/update', txn((storage, { geometries }) => {
   Object.entries(geometries).forEach(([id, geometry]) => {
     storage.updateKey(feature => feature.geometry = writeGeometryObject(geometry))(id)

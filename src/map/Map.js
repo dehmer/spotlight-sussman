@@ -13,6 +13,7 @@ import { storage } from '../storage'
 import select from './interaction/select'
 import boxselect from './interaction/boxselect'
 import translate from './interaction/translate'
+import draw from './interaction/draw'
 import { deselectedSource, selectedSource } from './partition'
 import emitter from '../emitter'
 
@@ -69,6 +70,7 @@ export const Map = () => {
     map.addInteraction(selectInteraction)
     map.addInteraction(boxselect([deselectedSource, selectedSource]))
     map.addInteraction(translate(selectInteraction.getFeatures()))
+    draw(map)
 
     view.on('change', ({ target: view }) => {
       // TODO: throttle

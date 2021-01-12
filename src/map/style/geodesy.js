@@ -2,7 +2,11 @@ import * as R from 'ramda'
 import { getTransform } from 'ol/proj'
 import Feature from 'ol/Feature'
 import LatLon from 'geodesy/latlon-spherical.js'
-import { T } from '../../../shared/combinators'
+
+/**
+ * Thrush aka applyTo.
+ */
+const T = value => fn => fn(value)
 
 export const toEPSG4326 = getTransform('EPSG:3857', 'EPSG:4326')
 export const toEPSG3857 = getTransform('EPSG:4326', 'EPSG:3857')

@@ -5,7 +5,7 @@ import { getCenter } from 'ol/extent'
 import { storage } from '.'
 import emitter from '../emitter'
 import { isFeature, isGroup, isSymbol } from './ids'
-import { FEATURE_ID, LAYER_ID, PLACE_ID, GROUP_ID } from './ids'
+import { FEATURE_ID, LAYER_ID, PLACE_ID, GROUP_ID, SYMBOL_ID } from './ids'
 import { isContained, getItem } from './helpers'
 import { options } from '../model/options'
 import { searchIndex } from '../search/lunr'
@@ -91,4 +91,11 @@ emitter.on(`:id(${LAYER_ID})/links`, ({ id }) => {
     scope: layer.name,
     provider: (query, callback) => callback(links())
   })
+})
+
+emitter.on(`:id(${SYMBOL_ID})/draw`, ({ id }) => {
+  const descriptor = storage.getItem(id)
+  const sidc = descriptor.sidc
+  descriptor.sidc = `${sidc[0]}F${sidc[2]}P${sidc.substring(4)}`
+  if (descriptor) emitter.emit('map/draw', { descriptor })
 })
