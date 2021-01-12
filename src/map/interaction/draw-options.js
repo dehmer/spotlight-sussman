@@ -29,12 +29,12 @@ export const drawOptions = [
   /* LineString. */
   {
     match: descriptor => descriptor.geometry === GeometryType.LINE_STRING,
-    options: descriptor => ({ type: GeometryType.LINE_STRING, maxPoints: descriptor.maxPoints })
+    options: descriptor => ({ type: GeometryType.LINE_STRING, maxPoints: descriptor.parameters.maxPoints })
   },
 
   /* GeometryCollection/orbit. */
   {
-    match: descriptor => descriptor.layout === 'orbit',
+    match: descriptor => descriptor.parameters.layout === 'orbit',
     options: () => ({ type: GeometryType.LINE_STRING, maxPoints: 2 }),
     complete: (_, feature) => {
       const line = feature.getGeometry()
@@ -48,7 +48,7 @@ export const drawOptions = [
 
   /* MultiPoint/fan (3-point) */
   {
-    match: descriptor => descriptor.layout === 'fan' && Number.parseInt(descriptor.maxPoints) === 3,
+    match: descriptor => descriptor.parameters.layout === 'fan' && Number.parseInt(descriptor.parameters.maxPoints) === 3,
     options: () => ({ type: GeometryType.POINT }),
     complete: (map, feature) => {
       const resolution = map.getView().getResolution()
@@ -62,7 +62,7 @@ export const drawOptions = [
 
   /* MultiPoint/seize (3-point) */
   {
-    match: descriptor => descriptor.layout === 'seize',
+    match: descriptor => descriptor.parameters.layout === 'seize',
     options: () => ({ type: GeometryType.POINT }),
     complete: (map, feature) => {
       const resolution = map.getView().getResolution()
@@ -76,7 +76,7 @@ export const drawOptions = [
 
   /* MultiPoint/turn (2-point) */
   {
-    match: descriptor => descriptor.layout === 'turn',
+    match: descriptor => descriptor.parameters.layout === 'turn',
     options: () => ({ type: GeometryType.POINT }),
     complete: (map, feature) => {
       const resolution = map.getView().getResolution()
@@ -89,7 +89,7 @@ export const drawOptions = [
 
   /* MultiPoint/fan (2-point) */
   {
-    match: descriptor => descriptor.layout === 'fan' && Number.parseInt(descriptor.maxPoints) === 2,
+    match: descriptor => descriptor.parameters.layout === 'fan' && Number.parseInt(descriptor.parameters.maxPoints) === 2,
     options: () => ({ type: GeometryType.POINT }),
     complete: (map, feature) => {
       const resolution = map.getView().getResolution()
@@ -102,8 +102,8 @@ export const drawOptions = [
 
   /* GeometryCollection/corridor (2-/n-point) */
   {
-    match: descriptor => descriptor.layout === 'corridor',
-    options: descriptor => ({ type: GeometryType.LINE_STRING, maxPoints: descriptor.maxPoints }),
+    match: descriptor => descriptor.parameters.layout === 'corridor',
+    options: descriptor => ({ type: GeometryType.LINE_STRING, maxPoints: descriptor.parameters.maxPoints }),
     complete: (map, feature) => {
       const geometry = feature.getGeometry()
       const reference = geometry.getFirstCoordinate()
