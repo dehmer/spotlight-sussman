@@ -7,20 +7,22 @@ import { Scopebar } from './Scopebar'
 import emitter from '../emitter'
 import selection from '../selection'
 
+
+/**
+ *
+ */
 const toggleSelection = entry => entry
   ? entry.selected
     ? selection.selected().filter(x => x !== entry.id)
     : [...selection.selected(), entry.id]
   : selection.selected()
 
-// FIXME: currently not quite right
-const rangeSelection = (state, index) => {
-  const [from, to] = state.focus < index ? [state.focus, index] : [index, state.focus]
-  return R.range(from, to + 1).map(index => state.list[index].id)
-}
-
 const handlers = {}
 
+
+/**
+ *
+ */
 handlers['search/result/updated'] = (state, { result }) => {
   const list = [...result]
   list.forEach((entry, i, xs) => {
@@ -28,14 +30,19 @@ handlers['search/result/updated'] = (state, { result }) => {
   })
 
   const firstSelected = list.findIndex(entry => entry.selected)
-  const focus = firstSelected
+  const focus = firstSelected !== -1
     ? firstSelected
     : state.focus <= list.length - 1
       ? state.focus
       : -1
+
   return { list, focus }
 }
 
+
+/**
+ *
+ */
 handlers['selection'] = (state, { selected, deselected }) => {
   return R.tap(state => state.list.forEach((entry, i, xs) => {
     if (selected.includes(entry.id)) xs[i] = { ...entry, selected: true }
@@ -43,7 +50,10 @@ handlers['selection'] = (state, { selected, deselected }) => {
   }))({ ...state })
 }
 
-// TODO: respect continuous selection block
+
+/**
+ * TODO: respect continuous selection block
+ */
 handlers['keydown/ArrowDown'] = (state, { shiftKey, metaKey }) => {
   const list = state.list
   const focus = metaKey
@@ -62,7 +72,10 @@ handlers['keydown/ArrowDown'] = (state, { shiftKey, metaKey }) => {
   return { ...state, focus }
 }
 
-// TODO: respect continuous selection block
+
+/**
+ * TODO: respect continuous selection block
+ */
 handlers['keydown/ArrowUp'] = (state, { shiftKey, metaKey }) => {
   if (state.focus === -1) return state
   const list = state.list
@@ -83,18 +96,30 @@ handlers['keydown/ArrowUp'] = (state, { shiftKey, metaKey }) => {
   return { ...state, focus }
 }
 
+
+/**
+ *
+ */
 handlers['keydown/Home'] = (state, { shiftKey }) => {
   if (state.focus === -1) return state
   const focus = state.list.length ? 0 : -1
   return { ...state, focus}
 }
 
+
+/**
+ *
+ */
 handlers['keydown/End'] = (state, { shiftKey }) => {
   if (state.focus === -1) return state
   const focus = state.list.length ? state.list.length - 1 : -1
   return { ...state, focus}
 }
 
+
+/**
+ *
+ */
 handlers['keydown/Enter'] = state => {
   const focus = state.focus
   if (focus === -1) return state
@@ -104,6 +129,10 @@ handlers['keydown/Enter'] = state => {
   return { list, focus }
 }
 
+
+/**
+ *
+ */
 handlers['keydown/KeyA'] = (state, { shiftKey, metaKey }) => R.tap(({ list }) => {
   if (!metaKey) return
   const selected = list.every(R.prop('selected')) ? [] : list.map(R.prop('id'))
@@ -117,11 +146,43 @@ handlers['keydown/Backspace'] = (state, { shiftKey, metaKey }) => R.tap(state =>
   emitter.emit('items/remove', { ids })
 }, state)
 
+
+/**
+ *
+ */
 handlers['keydown/Space'] = state => R.tap(state => {
   if (state.focus === -1) return
   selection.set(toggleSelection(state.list[state.focus]))
 }, state)
 
+
+/**
+ *
+ */
+const continuousSelection = (list, indexes) => {
+  const [head, last] = [R.head(indexes), R.last(indexes)]
+  const prepend = list[head - 1] && list[head - 1].selected ? [head - 1] : []
+  const append = list[last + 1] && list[last + 1].selected ? [last + 1] : []
+  if (!prepend.length && !append.length) return indexes
+  else return continuousSelection(list, [...prepend, ...indexes, ...append])
+}
+
+
+/**
+ * FIXME: currently not quite right
+ */
+const rangeSelection = (state, index) => {
+  const { list, focus } = state
+  const block = continuousSelection(list, [focus])
+  const [from, to] = focus < index ? [focus, index] : [index, focus]
+  const range = R.range(from, to + 1)
+  return R.uniq([...range, ...block]).map(index => list[index].id)
+}
+
+
+/**
+ *
+ */
 handlers['click'] = (state, { index, shiftKey, metaKey }) => {
   const selected = metaKey
     ? toggleSelection(state.list[index])
@@ -131,14 +192,18 @@ handlers['click'] = (state, { index, shiftKey, metaKey }) => {
 
   // Allow new focus to be applied before selection update:
   setTimeout(() => selection.set(selected), 0)
-  const focus = shiftKey ? state.focus : index
-  return { ...state, focus }
+  return { ...state, focus: index }
 }
 
+
+/**
+ *
+ */
 const reducer = (state, event) => {
   const handler = handlers[event.path]
   return handler ? handler(state, event) : state
 }
+
 
 /**
  *
