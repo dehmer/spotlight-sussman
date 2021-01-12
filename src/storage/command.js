@@ -333,11 +333,10 @@ emitter.on(`:id(${LAYER_ID})/links/add`, txn((storage, { id, files }) => {
  *
  */
 emitter.on('storage/features/add', txn((storage, { feature }) => {
-
   const findLayer = () => storage.keys()
     .filter(isLayer)
     .map(storage.getItem)
-    .find(layer => (layer.tags || []).includes('DEFAULT'))
+    .find(layer => (layer.tags || []).includes('default'))
 
   const createLayer = () => {
     const item = {
