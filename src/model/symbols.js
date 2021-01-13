@@ -50,4 +50,21 @@ export const url = sidc => {
   return cache[sidc]
 }
 
+export const layout = feature => {
+  if (!feature) return
+  if (!feature.get('sidc')) return
+  const sidc = feature.get('sidc')
+  const descriptor = storage.getItem(`symbol:${normalize(sidc)}`)
+  return descriptor
+    ? descriptor.parameters && descriptor.parameters.layout
+      ? `${descriptor.geometry}-${descriptor.parameters.layout}`
+      : `${descriptor.geometry}`
+    : undefined
+}
+
+export const maxPoints = sidc => {
+  const descriptor = storage.getItem(`symbol:${normalize(sidc)}`)
+  return descriptor.parameters && descriptor.parameters.maxPoints
+}
+
 // <- Symbol URL and cache

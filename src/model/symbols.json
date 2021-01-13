@@ -3429,6 +3429,8 @@
     "geometry": "Polygon",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "AVIATION",
       "AREAS",
       "SHORT-RANGE AIR DEFENSE ENGAGEMENT ZONE (SHORADEZ)"
@@ -3441,6 +3443,8 @@
     "geometry": "Polygon",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "AVIATION",
       "AREAS",
       "HIGH DENSITY AIRSPACE CONTROL ZONE (HIDACZ)"
@@ -3453,6 +3457,8 @@
     "geometry": "Polygon",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "AVIATION",
       "AREAS",
       "MISSILE ENGAGEMENT ZONE (MEZ)"
@@ -3465,6 +3471,8 @@
     "geometry": "Polygon",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "AVIATION",
       "AREAS",
       "MISSILE ENGAGEMENT ZONE (MEZ)",
@@ -3478,6 +3486,8 @@
     "geometry": "Polygon",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "AVIATION",
       "AREAS",
       "MISSILE ENGAGEMENT ZONE (MEZ)",
@@ -3491,6 +3501,8 @@
     "geometry": "Polygon",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "AVIATION",
       "AREAS",
       "RESTRICTED OPERATIONS ZONE (ROZ)"
@@ -3503,6 +3515,8 @@
     "geometry": "Polygon",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "AVIATION",
       "AREAS",
       "WEAPONS FREE ZONE"
@@ -3515,6 +3529,8 @@
     "geometry": "GeometryCollection",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "AVIATION",
       "LINES",
       "AIR CORRIDOR"
@@ -3530,6 +3546,8 @@
     "geometry": "GeometryCollection",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "AVIATION",
       "LINES",
       "LOW LEVEL TRANSIT ROUTE (LLTR)"
@@ -3545,6 +3563,8 @@
     "geometry": "GeometryCollection",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "AVIATION",
       "LINES",
       "MINIMUM RISK ROUTE (MRR)"
@@ -3560,6 +3580,8 @@
     "geometry": "GeometryCollection",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "AVIATION",
       "LINES",
       "STANDARD-USE ARMY AIRCRAFT FLIGHT ROUTE (SAAFR)"
@@ -3575,6 +3597,8 @@
     "geometry": "GeometryCollection",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "AVIATION",
       "LINES",
       "UNMANNED AIRCRAFT (UA) ROUTE"
@@ -3590,6 +3614,8 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "AVIATION",
       "POINTS",
       "COMMUNICATIONS CHECKPOINT (CCP)"
@@ -3602,6 +3628,8 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "AVIATION",
       "POINTS",
       "DOWNED AIRCREW PICKUP POINT"
@@ -3614,6 +3642,8 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "AVIATION",
       "POINTS",
       "AIR CONTROL POINT (ACP)"
@@ -3626,6 +3656,8 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "AVIATION",
       "POINTS",
       "PULL-UP POINT (PUP)"
@@ -3638,6 +3670,8 @@
     "geometry": "Polygon",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "DEFENSE",
       "AREAS",
       "BATTLE POSITION"
@@ -3650,6 +3684,8 @@
     "geometry": "Polygon",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "DEFENSE",
       "AREAS",
       "BATTLE POSITION",
@@ -3663,6 +3699,8 @@
     "geometry": "Polygon",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "DEFENSE",
       "AREAS",
       "ENGAGEMENT AREA"
@@ -3675,6 +3713,8 @@
     "geometry": "LineString",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "DEFENSE",
       "LINES",
       "FORWARD EDGE OF BATTLE AREA (FEBA)"
@@ -3687,6 +3727,8 @@
     "geometry": "MultiPoint",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "DEFENSE",
       "LINES",
       "PRINCIPAL DIRECTION OF FIRE (PDF)"
@@ -3704,6 +3746,8 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "DEFENSE",
       "POINTS",
       "OBSERVATION POST / OUTPOST"
@@ -3716,6 +3760,8 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "DEFENSE",
       "POINTS",
       "OBSERVATION POST / OUTPOST",
@@ -3729,6 +3775,8 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "DEFENSE",
       "POINTS",
       "OBSERVATION POST / OUTPOST",
@@ -3742,6 +3790,8 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "DEFENSE",
       "POINTS",
       "OBSERVATION POST / OUTPOST",
@@ -3755,6 +3805,8 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "DEFENSE",
       "POINTS",
       "OBSERVATION POST / OUTPOST",
@@ -3768,6 +3820,8 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "DEFENSE",
       "POINTS",
       "OBSERVATION POST / OUTPOST",
@@ -3781,6 +3835,8 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "DEFENSE",
       "POINTS",
       "TARGET REFERENCE POINT (TRP)"
@@ -3793,6 +3849,8 @@
     "geometry": "Polygon",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "AREAS",
       "ASSEMBLY AREA"
@@ -3805,6 +3863,8 @@
     "geometry": "Polygon",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "AREAS",
       "DROP ZONE"
@@ -3817,6 +3877,8 @@
     "geometry": "Polygon",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "AREAS",
       "ENGAGEMENT AREA"
@@ -3829,6 +3891,8 @@
     "geometry": "Polygon",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "AREAS",
       "FORTIFIED AREA"
@@ -3841,6 +3905,8 @@
     "geometry": "Polygon",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "AREAS",
       "GENERAL AREA"
@@ -3853,6 +3919,8 @@
     "geometry": "Polygon",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "AREAS",
       "LANDING ZONE (LZ)"
@@ -3865,6 +3933,8 @@
     "geometry": "Polygon",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "AREAS",
       "PICKUP ZONE (PZ)"
@@ -3877,6 +3947,8 @@
     "geometry": "MultiPoint",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "AREAS",
       "SEARCH AREA / RECONNAISSANCE AREA"
@@ -3894,6 +3966,8 @@
     "geometry": "Polygon",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "AREAS",
       "EXTRACTION ZONE (EZ)"
@@ -3906,6 +3980,8 @@
     "geometry": "Polygon",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "AREAS",
       "LIMITED ACCESS AREA"
@@ -3918,6 +3994,8 @@
     "geometry": "Polygon",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "AREAS",
       "AIRFIELD ZONE"
@@ -3930,6 +4008,8 @@
     "geometry": "LineString",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "LINES",
       "BOUNDARIES"
@@ -3942,6 +4022,8 @@
     "geometry": "LineString",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "LINES",
       "LINE OF CONTACT"
@@ -3954,6 +4036,8 @@
     "geometry": "LineString",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "LINES",
       "FORWARD LINE OF OWN TROOPS (FLOT)"
@@ -3966,6 +4050,8 @@
     "geometry": "LineString",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "LINES",
       "LIGHT LINE"
@@ -3978,6 +4064,8 @@
     "geometry": "LineString",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "LINES",
       "PHASE LINE"
@@ -3990,6 +4078,8 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "AIR CONTROL",
@@ -4003,6 +4093,8 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "AIR CONTROL",
@@ -4016,6 +4108,8 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "AIR CONTROL",
@@ -4029,6 +4123,8 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "AIR CONTROL",
@@ -4042,6 +4138,8 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "AIR CONTROL",
@@ -4055,6 +4153,8 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "AIR CONTROL",
@@ -4068,6 +4168,8 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "AIR CONTROL",
@@ -4081,6 +4183,8 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "AIR CONTROL",
@@ -4094,6 +4198,8 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "AIR CONTROL",
@@ -4107,6 +4213,8 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "AIR CONTROL",
@@ -4120,6 +4228,8 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "AIR CONTROL",
@@ -4133,6 +4243,8 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "AIR CONTROL",
@@ -4146,6 +4258,8 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "AIR CONTROL",
@@ -4159,6 +4273,8 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "AIR CONTROL",
@@ -4172,6 +4288,8 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "AIR CONTROL",
@@ -4185,6 +4303,8 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "AIR CONTROL",
@@ -4198,6 +4318,8 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "AIR CONTROL",
@@ -4211,6 +4333,8 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "AIR CONTROL",
@@ -4224,6 +4348,8 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "AIR CONTROL",
@@ -4237,6 +4363,8 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "AIR CONTROL",
@@ -4250,6 +4378,8 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "SUBSURFACE CONTROL STATION"
@@ -4262,6 +4392,8 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "SUBSURFACE CONTROL STATION",
@@ -4275,6 +4407,8 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "SUBSURFACE CONTROL STATION",
@@ -4288,6 +4422,8 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "SUBSURFACE CONTROL STATION",
@@ -4301,6 +4437,8 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "SUBSURFACE CONTROL STATION",
@@ -4315,6 +4453,8 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "SUBSURFACE CONTROL STATION",
@@ -4329,6 +4469,8 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "SUBSURFACE CONTROL STATION",
@@ -4343,6 +4485,8 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "SEA SURFACE CONTROL STATION"
@@ -4355,6 +4499,8 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "SEA SURFACE CONTROL STATION",
@@ -4368,6 +4514,8 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "SEA SURFACE CONTROL STATION",
@@ -4381,6 +4529,8 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "SEA SURFACE CONTROL STATION",
@@ -4394,6 +4544,8 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "SEA SURFACE CONTROL STATION",
@@ -4407,6 +4559,8 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "SEA SURFACE CONTROL STATION",
@@ -4420,6 +4574,8 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "SEA SURFACE CONTROL STATION",
@@ -4433,6 +4589,8 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "SEA SURFACE CONTROL STATION",
@@ -4446,6 +4604,8 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "SEA SURFACE CONTROL STATION",
@@ -4459,6 +4619,8 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "SEA SURFACE CONTROL STATION",
@@ -4472,6 +4634,8 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "SEA SURFACE CONTROL STATION",
@@ -4486,6 +4650,8 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "SEA SURFACE CONTROL STATION",
@@ -4500,6 +4666,8 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "SEA SURFACE CONTROL STATION",
@@ -4514,6 +4682,8 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "SEA SURFACE CONTROL STATION",
@@ -4528,6 +4698,8 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "FORMATION"
@@ -4540,6 +4712,8 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "HARBOR (GENERAL)"
@@ -4552,6 +4726,8 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "HARBOR (GENERAL)",
@@ -4565,6 +4741,8 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "HARBOR (GENERAL)",
@@ -4578,6 +4756,8 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "HARBOR (GENERAL)",
@@ -4591,6 +4771,8 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "HARBOR (GENERAL)",
@@ -4604,6 +4786,8 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "ROUTE"
@@ -4616,6 +4800,8 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "ROUTE",
@@ -4629,6 +4815,8 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "ROUTE",
@@ -4642,6 +4830,8 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "ROUTE",
@@ -4655,6 +4845,8 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "ROUTE",
@@ -4668,6 +4860,8 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "ROUTE",
@@ -4681,6 +4875,8 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "ACTION POINTS (GENERAL)"
     ]
@@ -4692,6 +4888,8 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "ACTION POINTS (GENERAL)",
       "AMNESTY POINT"
@@ -4704,6 +4902,8 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "ACTION POINTS (GENERAL)",
       "CONTACT POINT"
@@ -4716,6 +4916,8 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "ACTION POINTS (GENERAL)",
       "DECISION POINT"
@@ -4728,6 +4930,8 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "ACTION POINTS (GENERAL)",
       "RELEASE POINT"
@@ -4740,6 +4944,8 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "ACTION POINTS (GENERAL)",
       "CHECK POINT"
@@ -4752,6 +4958,8 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "ACTION POINTS (GENERAL)",
       "LINKUP POINT"
@@ -4764,6 +4972,8 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "ACTION POINTS (GENERAL)",
       "COORDINATION POINT"
@@ -4776,6 +4986,8 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "ACTION POINTS (GENERAL)",
       "PASSAGE POINT"
@@ -4788,6 +5000,8 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "ACTION POINTS (GENERAL)",
       "RALLY POINT"
@@ -4800,6 +5014,8 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "ACTION POINTS (GENERAL)",
       "START POINT"
@@ -4812,6 +5028,8 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "ACTION POINTS (GENERAL)",
       "WAYPOINT"
@@ -4824,6 +5042,8 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "REFERENCE POINT"
@@ -4836,6 +5056,8 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "REFERENCE POINT",
@@ -4849,6 +5071,8 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "REFERENCE POINT",
@@ -4862,6 +5086,8 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "REFERENCE POINT",
@@ -4875,6 +5101,8 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "REFERENCE POINT",
@@ -4888,6 +5116,8 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "NAVIGATIONAL REFERENCE POINT"
@@ -4900,6 +5130,8 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "REFERENCE POINT",
@@ -4913,6 +5145,8 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "REFERENCE POINT",
@@ -4926,6 +5160,8 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "REFERENCE POINT",
@@ -4939,6 +5175,8 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "UNDER SEA WARFARE",
@@ -4952,6 +5190,8 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "UNDER SEA WARFARE",
@@ -4965,6 +5205,8 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "UNDER SEA WARFARE",
@@ -4978,6 +5220,8 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "UNDER SEA WARFARE",
@@ -4992,6 +5236,8 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "UNDER SEA WARFARE",
@@ -5006,6 +5252,8 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "UNDER SEA WARFARE",
@@ -5020,6 +5268,8 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "UNDER SEA WARFARE",
@@ -5034,6 +5284,8 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "UNDER SEA WARFARE",
@@ -5048,6 +5300,8 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "UNDER SEA WARFARE",
@@ -5061,6 +5315,8 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "UNDER SEA WARFARE",
@@ -5075,6 +5331,8 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "UNDER SEA WARFARE",
@@ -5089,6 +5347,8 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "UNDER SEA WARFARE",
@@ -5102,6 +5362,8 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "UNDER SEA WARFARE",
@@ -5116,6 +5378,8 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "UNDER SEA WARFARE",
@@ -5130,6 +5394,8 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "UNDER SEA WARFARE",
@@ -5144,6 +5410,8 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "UNDER SEA WARFARE",
@@ -5158,6 +5426,8 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "UNDER SEA WARFARE",
@@ -5172,6 +5442,8 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "UNDER SEA WARFARE",
@@ -5185,6 +5457,8 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "UNDER SEA WARFARE",
@@ -5199,6 +5473,8 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "UNDER SEA WARFARE",
@@ -5213,6 +5489,8 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "UNDER SEA WARFARE",
@@ -5226,6 +5504,8 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "WEAPON",
@@ -5239,6 +5519,8 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "WEAPON",
@@ -5252,6 +5534,8 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "WEAPON",
@@ -5265,6 +5549,8 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "WEAPON",
@@ -5278,6 +5564,8 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "WEAPON",
@@ -5291,6 +5579,8 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "WEAPON",
@@ -5304,6 +5594,8 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "GENERAL",
       "POINTS",
       "WEAPON",
@@ -5317,6 +5609,8 @@
     "geometry": "Polygon",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "OFFENSE",
       "AREAS",
       "ASSAULT POSITION"
@@ -5329,6 +5623,8 @@
     "geometry": "GeometryCollection",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "OFFENSE",
       "AREAS",
       "ATTACK BY FIRE POSITION"
@@ -5345,6 +5641,8 @@
     "geometry": "Polygon",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "OFFENSE",
       "AREAS",
       "ATTACK POSITION"
@@ -5357,6 +5655,8 @@
     "geometry": "Polygon",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "OFFENSE",
       "AREAS",
       "OBJECTIVE"
@@ -5369,6 +5669,8 @@
     "geometry": "Polygon",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "OFFENSE",
       "AREAS",
       "PENETRATION BOX"
@@ -5381,6 +5683,8 @@
     "geometry": "MultiPoint",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "OFFENSE",
       "AREAS",
       "SUPPORT BY FIRE POSITION"
@@ -5398,6 +5702,8 @@
     "geometry": "GeometryCollection",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "OFFENSE",
       "LINES",
       "AXIS OF ADVANCE",
@@ -5414,6 +5720,8 @@
     "geometry": "GeometryCollection",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "OFFENSE",
       "LINES",
       "AXIS OF ADVANCE",
@@ -5431,6 +5739,8 @@
     "geometry": "GeometryCollection",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "OFFENSE",
       "LINES",
       "AXIS OF ADVANCE",
@@ -5448,6 +5758,8 @@
     "geometry": "GeometryCollection",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "OFFENSE",
       "LINES",
       "AXIS OF ADVANCE",
@@ -5464,6 +5776,8 @@
     "geometry": "GeometryCollection",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "OFFENSE",
       "LINES",
       "AXIS OF ADVANCE",
@@ -5480,6 +5794,8 @@
     "geometry": "LineString",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "OFFENSE",
       "LINES",
       "LINE OF DEPARTURE / LINE OF CONTACT (LD / LC)"
@@ -5492,6 +5808,8 @@
     "geometry": "LineString",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "OFFENSE",
       "LINES",
       "FINAL COORDINATION LINE"
@@ -5504,6 +5822,8 @@
     "geometry": "GeometryCollection",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "OFFENSE",
       "LINES",
       "INFILTRATION LANE"
@@ -5520,6 +5840,8 @@
     "geometry": "LineString",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "OFFENSE",
       "LINES",
       "DIRECTION OF ATTACK AVIATION"
@@ -5535,6 +5857,8 @@
     "geometry": "LineString",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "OFFENSE",
       "LINES",
       "DIRECTION OF ATTACK GROUND",
@@ -5551,6 +5875,8 @@
     "geometry": "LineString",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "OFFENSE",
       "LINES",
       "DIRECTION OF ATTACK GROUND",
@@ -5567,6 +5893,8 @@
     "geometry": "LineString",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "OFFENSE",
       "LINES",
       "LIMIT OF ADVANCE"
@@ -5579,6 +5907,8 @@
     "geometry": "LineString",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "OFFENSE",
       "LINES",
       "PROBABLE LINE OF DEPLOYMENT (PLD)"
@@ -5591,6 +5921,8 @@
     "geometry": "LineString",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "OFFENSE",
       "LINES",
       "LINE OF DEPARTURE"
@@ -5603,6 +5935,8 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "OFFENSE",
       "POINTS",
       "POINT OF DEPARTURE"
@@ -5614,6 +5948,8 @@
     "geometry": "GeometryCollection",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "DECEPTION",
       "AXIS OF ADVANCE FOR FEINT"
     ],
@@ -5628,6 +5964,8 @@
     "geometry": "Polygon",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "DECEPTION",
       "DUMMY MINEFIELD (DYNAMIC)"
     ]
@@ -5638,6 +5976,8 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "DUMMY (DECEPTION / DECOY)"
     ]
   },
@@ -5648,6 +5988,8 @@
     "geometry": "LineString",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "DECEPTION",
       "DIRECTION OF ATTACK FOR FEINT"
     ],
@@ -5662,6 +6004,8 @@
     "geometry": "Polygon",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "DECEPTION",
       "DECOY MINED AREA"
     ]
@@ -5672,6 +6016,8 @@
     "geometry": "Point",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "DECEPTION",
       "DUMMY MINEFIELD (STATIC)"
     ]
@@ -5683,6 +6029,8 @@
     "geometry": "Polygon",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "DECEPTION",
       "DECOY MINED AREA, FENCED"
     ]
@@ -5694,6 +6042,8 @@
     "geometry": "Polygon",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "SPECIAL",
       "AREA",
       "AIRHEAD"
@@ -5706,6 +6056,8 @@
     "geometry": "Polygon",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "SPECIAL",
       "AREA",
       "ENCIRCLEMENT"
@@ -5718,6 +6070,8 @@
     "geometry": "Polygon",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "SPECIAL",
       "NAMED AREA OF INTEREST (NAI)"
     ]
@@ -5729,6 +6083,8 @@
     "geometry": "Polygon",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "SPECIAL",
       "AREA OF OPERATIONS (AO)"
     ]
@@ -5740,6 +6096,8 @@
     "geometry": "Polygon",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "SPECIAL",
       "TARGETED AREA OF INTEREST (TAI)"
     ]
@@ -5751,6 +6109,8 @@
     "geometry": "GeometryCollection",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "SPECIAL",
       "LINE",
       "AMBUSH"
@@ -5767,6 +6127,8 @@
     "geometry": "Undefined",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "SPECIAL",
       "LINE",
       "BRIDGEHEAD"
@@ -5779,6 +6141,8 @@
     "geometry": "LineString",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "SPECIAL",
       "HOLDING LINE"
     ]
@@ -5790,6 +6154,8 @@
     "geometry": "LineString",
     "dimension": "C2",
     "hierarchy": [
+      "TACTICAL GRAPHICS",
+      "COMMAND AND CONTROL AND GENERAL MANEUVER",
       "SPECIAL",
       "RELEASE LINE"
     ]
@@ -9964,6 +10330,8 @@
     "geometry": "Point",
     "dimension": "AIR",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "AIR TRACK",
       "CIVIL AIRCRAFT"
     ]
   },
@@ -9974,6 +10342,8 @@
     "geometry": "Point",
     "dimension": "AIR",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "AIR TRACK",
       "CIVIL AIRCRAFT",
       "FIXED WING"
     ]
@@ -9985,6 +10355,8 @@
     "geometry": "Point",
     "dimension": "AIR",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "AIR TRACK",
       "CIVIL AIRCRAFT",
       "ROTARY WING"
     ]
@@ -9996,6 +10368,8 @@
     "geometry": "Point",
     "dimension": "AIR",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "AIR TRACK",
       "CIVIL AIRCRAFT",
       "LIGHTER THAN AIR"
     ]
@@ -10007,6 +10381,8 @@
     "geometry": "Point",
     "dimension": "AIR",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "AIR TRACK",
       "MILITARY"
     ]
   },
@@ -10017,6 +10393,8 @@
     "geometry": "Point",
     "dimension": "AIR",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "AIR TRACK",
       "MILITARY",
       "ESCORT"
     ]
@@ -10028,6 +10406,8 @@
     "geometry": "Point",
     "dimension": "AIR",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "AIR TRACK",
       "MILITARY",
       "FIXED WING"
     ]
@@ -10039,6 +10419,8 @@
     "geometry": "Point",
     "dimension": "AIR",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "AIR TRACK",
       "MILITARY",
       "FIXED WING",
       "ATTACK / STRIKE"
@@ -10051,6 +10433,8 @@
     "geometry": "Point",
     "dimension": "AIR",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "AIR TRACK",
       "MILITARY",
       "FIXED WING",
       "BOMBER"
@@ -10063,6 +10447,8 @@
     "geometry": "Point",
     "dimension": "AIR",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "AIR TRACK",
       "MILITARY",
       "FIXED WING",
       "CARGO AIRLIFT (TRANSPORT)"
@@ -10075,6 +10461,8 @@
     "geometry": "Point",
     "dimension": "AIR",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "AIR TRACK",
       "MILITARY",
       "FIXED WING",
       "CARGO AIRLIFT (TRANSPORT)",
@@ -10088,6 +10476,8 @@
     "geometry": "Point",
     "dimension": "AIR",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "AIR TRACK",
       "MILITARY",
       "FIXED WING",
       "CARGO AIRLIFT (TRANSPORT)",
@@ -10101,6 +10491,8 @@
     "geometry": "Point",
     "dimension": "AIR",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "AIR TRACK",
       "MILITARY",
       "FIXED WING",
       "CARGO AIRLIFT (TRANSPORT)",
@@ -10114,6 +10506,8 @@
     "geometry": "Point",
     "dimension": "AIR",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "AIR TRACK",
       "MILITARY",
       "FIXED WING",
       "AIRBORNE COMMAND POST (C2)"
@@ -10126,6 +10520,8 @@
     "geometry": "Point",
     "dimension": "AIR",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "AIR TRACK",
       "MILITARY",
       "FIXED WING",
       "FIGHTER"
@@ -10138,6 +10534,8 @@
     "geometry": "Point",
     "dimension": "AIR",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "AIR TRACK",
       "MILITARY",
       "FIXED WING",
       "FIGHTER",
@@ -10151,6 +10549,8 @@
     "geometry": "Point",
     "dimension": "AIR",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "AIR TRACK",
       "MILITARY",
       "FIXED WING",
       "COMBAT SEARCH AND RESCUE (CSAR)"
@@ -10163,6 +10563,8 @@
     "geometry": "Point",
     "dimension": "AIR",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "AIR TRACK",
       "MILITARY",
       "FIXED WING",
       "ELECTRONIC COUNTERMEASURES (ECM / JAMMER)"
@@ -10175,6 +10577,8 @@
     "geometry": "Point",
     "dimension": "AIR",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "AIR TRACK",
       "MILITARY",
       "FIXED WING",
       "TANKER"
@@ -10187,6 +10591,8 @@
     "geometry": "Point",
     "dimension": "AIR",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "AIR TRACK",
       "MILITARY",
       "FIXED WING",
       "TANKER BOOM-ONLY"
@@ -10199,6 +10605,8 @@
     "geometry": "Point",
     "dimension": "AIR",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "AIR TRACK",
       "MILITARY",
       "FIXED WING",
       "TANKER DROGUE-ONLY"
@@ -10211,6 +10619,8 @@
     "geometry": "Point",
     "dimension": "AIR",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "AIR TRACK",
       "MILITARY",
       "FIXED WING",
       "V / STOL"
@@ -10223,6 +10633,8 @@
     "geometry": "Point",
     "dimension": "AIR",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "AIR TRACK",
       "MILITARY",
       "FIXED WING",
       "SPECIAL OPERATIONS FORCES (SOF)"
@@ -10235,6 +10647,8 @@
     "geometry": "Point",
     "dimension": "AIR",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "AIR TRACK",
       "MILITARY",
       "FIXED WING",
       "MEDICAL EVACUATION (MEDEVAC)"
@@ -10247,6 +10661,8 @@
     "geometry": "Point",
     "dimension": "AIR",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "AIR TRACK",
       "MILITARY",
       "FIXED WING",
       "PATROL"
@@ -10259,6 +10675,8 @@
     "geometry": "Point",
     "dimension": "AIR",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "AIR TRACK",
       "MILITARY",
       "FIXED WING",
       "PATROL",
@@ -10272,6 +10690,8 @@
     "geometry": "Point",
     "dimension": "AIR",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "AIR TRACK",
       "MILITARY",
       "FIXED WING",
       "PATROL",
@@ -10285,6 +10705,8 @@
     "geometry": "Point",
     "dimension": "AIR",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "AIR TRACK",
       "MILITARY",
       "FIXED WING",
       "DRONE (RPV / UA)"
@@ -10297,6 +10719,8 @@
     "geometry": "Point",
     "dimension": "AIR",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "AIR TRACK",
       "MILITARY",
       "FIXED WING",
       "DRONE (RPV / UA)",
@@ -10310,6 +10734,8 @@
     "geometry": "Point",
     "dimension": "AIR",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "AIR TRACK",
       "MILITARY",
       "FIXED WING",
       "DRONE (RPV / UA)",
@@ -10323,6 +10749,8 @@
     "geometry": "Point",
     "dimension": "AIR",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "AIR TRACK",
       "MILITARY",
       "FIXED WING",
       "DRONE (RPV / UA)",
@@ -10336,6 +10764,8 @@
     "geometry": "Point",
     "dimension": "AIR",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "AIR TRACK",
       "MILITARY",
       "FIXED WING",
       "DRONE (RPV / UA)",
@@ -10349,6 +10779,8 @@
     "geometry": "Point",
     "dimension": "AIR",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "AIR TRACK",
       "MILITARY",
       "FIXED WING",
       "DRONE (RPV / UA)",
@@ -10362,6 +10794,8 @@
     "geometry": "Point",
     "dimension": "AIR",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "AIR TRACK",
       "MILITARY",
       "FIXED WING",
       "DRONE (RPV / UA)",
@@ -10375,6 +10809,8 @@
     "geometry": "Point",
     "dimension": "AIR",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "AIR TRACK",
       "MILITARY",
       "FIXED WING",
       "DRONE (RPV / UA)",
@@ -10388,6 +10824,8 @@
     "geometry": "Point",
     "dimension": "AIR",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "AIR TRACK",
       "MILITARY",
       "FIXED WING",
       "DRONE (RPV / UA)",
@@ -10401,6 +10839,8 @@
     "geometry": "Point",
     "dimension": "AIR",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "AIR TRACK",
       "MILITARY",
       "FIXED WING",
       "DRONE (RPV / UA)",
@@ -10414,6 +10854,8 @@
     "geometry": "Point",
     "dimension": "AIR",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "AIR TRACK",
       "MILITARY",
       "FIXED WING",
       "DRONE (RPV / UA)",
@@ -10427,6 +10869,8 @@
     "geometry": "Point",
     "dimension": "AIR",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "AIR TRACK",
       "MILITARY",
       "FIXED WING",
       "DRONE (RPV / UA)",
@@ -10440,6 +10884,8 @@
     "geometry": "Point",
     "dimension": "AIR",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "AIR TRACK",
       "MILITARY",
       "FIXED WING",
       "DRONE (RPV / UA)",
@@ -10453,6 +10899,8 @@
     "geometry": "Point",
     "dimension": "AIR",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "AIR TRACK",
       "MILITARY",
       "FIXED WING",
       "DRONE (RPV / UA)",
@@ -10466,6 +10914,8 @@
     "geometry": "Point",
     "dimension": "AIR",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "AIR TRACK",
       "MILITARY",
       "FIXED WING",
       "DRONE (RPV / UA)",
@@ -10479,6 +10929,8 @@
     "geometry": "Point",
     "dimension": "AIR",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "AIR TRACK",
       "MILITARY",
       "FIXED WING",
       "DRONE (RPV / UA)",
@@ -10492,6 +10944,8 @@
     "geometry": "Point",
     "dimension": "AIR",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "AIR TRACK",
       "MILITARY",
       "FIXED WING",
       "DRONE (RPV / UA)",
@@ -10506,6 +10960,8 @@
     "geometry": "Point",
     "dimension": "AIR",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "AIR TRACK",
       "MILITARY",
       "FIXED WING",
       "DRONE (RPV / UA)",
@@ -10520,6 +10976,8 @@
     "geometry": "Point",
     "dimension": "AIR",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "AIR TRACK",
       "MILITARY",
       "FIXED WING",
       "DRONE (RPV / UA)",
@@ -10534,6 +10992,8 @@
     "geometry": "Point",
     "dimension": "AIR",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "AIR TRACK",
       "MILITARY",
       "FIXED WING",
       "DRONE (RPV / UA)",
@@ -10547,6 +11007,8 @@
     "geometry": "Point",
     "dimension": "AIR",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "AIR TRACK",
       "MILITARY",
       "FIXED WING",
       "DRONE (RPV / UA)",
@@ -10560,6 +11022,8 @@
     "geometry": "Point",
     "dimension": "AIR",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "AIR TRACK",
       "MILITARY",
       "FIXED WING",
       "DRONE (RPV / UA)",
@@ -10573,6 +11037,8 @@
     "geometry": "Point",
     "dimension": "AIR",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "AIR TRACK",
       "MILITARY",
       "FIXED WING",
       "DRONE (RPV / UA)",
@@ -10586,6 +11052,8 @@
     "geometry": "Point",
     "dimension": "AIR",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "AIR TRACK",
       "MILITARY",
       "FIXED WING",
       "RECONNAISSANCE"
@@ -10598,6 +11066,8 @@
     "geometry": "Point",
     "dimension": "AIR",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "AIR TRACK",
       "MILITARY",
       "FIXED WING",
       "RECONNAISSANCE",
@@ -10611,6 +11081,8 @@
     "geometry": "Point",
     "dimension": "AIR",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "AIR TRACK",
       "MILITARY",
       "FIXED WING",
       "RECONNAISSANCE",
@@ -10624,6 +11096,8 @@
     "geometry": "Point",
     "dimension": "AIR",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "AIR TRACK",
       "MILITARY",
       "FIXED WING",
       "RECONNAISSANCE",
@@ -10637,6 +11111,8 @@
     "geometry": "Point",
     "dimension": "AIR",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "AIR TRACK",
       "MILITARY",
       "FIXED WING",
       "ANTISUBMARINE WARFARE (ASW) CARRIER BASED"
@@ -10649,6 +11125,8 @@
     "geometry": "Point",
     "dimension": "AIR",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "AIR TRACK",
       "MILITARY",
       "FIXED WING",
       "TRAINER"
@@ -10661,6 +11139,8 @@
     "geometry": "Point",
     "dimension": "AIR",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "AIR TRACK",
       "MILITARY",
       "FIXED WING",
       "UTILITY"
@@ -10673,6 +11153,8 @@
     "geometry": "Point",
     "dimension": "AIR",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "AIR TRACK",
       "MILITARY",
       "FIXED WING",
       "UTILITY (HEAVY)"
@@ -10685,6 +11167,8 @@
     "geometry": "Point",
     "dimension": "AIR",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "AIR TRACK",
       "MILITARY",
       "FIXED WING",
       "UTILITY (LIGHT)"
@@ -10697,6 +11181,8 @@
     "geometry": "Point",
     "dimension": "AIR",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "AIR TRACK",
       "MILITARY",
       "FIXED WING",
       "UTILITY (MEDIUM)"
@@ -10709,6 +11195,8 @@
     "geometry": "Point",
     "dimension": "AIR",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "AIR TRACK",
       "MILITARY",
       "FIXED WING",
       "COMMUNICATIONS"
@@ -10721,6 +11209,8 @@
     "geometry": "Point",
     "dimension": "AIR",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "AIR TRACK",
       "MILITARY",
       "ROTARY WING"
     ]
@@ -10732,6 +11222,8 @@
     "geometry": "Point",
     "dimension": "AIR",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "AIR TRACK",
       "MILITARY",
       "ROTARY WING",
       "ATTACK"
@@ -10744,6 +11236,8 @@
     "geometry": "Point",
     "dimension": "AIR",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "AIR TRACK",
       "MILITARY",
       "ROTARY WING",
       "CARGO AIRLIFT (TRANSPORT)"
@@ -10756,6 +11250,8 @@
     "geometry": "Point",
     "dimension": "AIR",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "AIR TRACK",
       "MILITARY",
       "ROTARY WING",
       "CARGO AIRLIFT (TRANSPORT)",
@@ -10769,6 +11265,8 @@
     "geometry": "Point",
     "dimension": "AIR",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "AIR TRACK",
       "MILITARY",
       "ROTARY WING",
       "CARGO AIRLIFT (TRANSPORT)",
@@ -10782,6 +11280,8 @@
     "geometry": "Point",
     "dimension": "AIR",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "AIR TRACK",
       "MILITARY",
       "ROTARY WING",
       "CARGO AIRLIFT (TRANSPORT)",
@@ -10795,6 +11295,8 @@
     "geometry": "Point",
     "dimension": "AIR",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "AIR TRACK",
       "MILITARY",
       "ROTARY WING",
       "AIRBORNE COMMAND POST (C2)"
@@ -10807,6 +11309,8 @@
     "geometry": "Point",
     "dimension": "AIR",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "AIR TRACK",
       "MILITARY",
       "ROTARY WING",
       "COMBAT SEARCH AND RESCUE (CSAR)"
@@ -10819,6 +11323,8 @@
     "geometry": "Point",
     "dimension": "AIR",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "AIR TRACK",
       "MILITARY",
       "ROTARY WING",
       "MINE COUNTERMEASURES"
@@ -10831,6 +11337,8 @@
     "geometry": "Point",
     "dimension": "AIR",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "AIR TRACK",
       "MILITARY",
       "ROTARY WING",
       "ELECTRONIC COUNTERMEASURES (ECM / JAMMER)"
@@ -10843,6 +11351,8 @@
     "geometry": "Point",
     "dimension": "AIR",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "AIR TRACK",
       "MILITARY",
       "ROTARY WING",
       "TANKER"
@@ -10855,6 +11365,8 @@
     "geometry": "Point",
     "dimension": "AIR",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "AIR TRACK",
       "MILITARY",
       "ROTARY WING",
       "SPECIAL OPERATIONS FORCES (SOF)"
@@ -10867,6 +11379,8 @@
     "geometry": "Point",
     "dimension": "AIR",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "AIR TRACK",
       "MILITARY",
       "ROTARY WING",
       "MEDEVAC"
@@ -10879,6 +11393,8 @@
     "geometry": "Point",
     "dimension": "AIR",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "AIR TRACK",
       "MILITARY",
       "ROTARY WING",
       "DRONE (RPV / UA)"
@@ -10891,6 +11407,8 @@
     "geometry": "Point",
     "dimension": "AIR",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "AIR TRACK",
       "MILITARY",
       "ROTARY WING",
       "RECONNAISSANCE"
@@ -10903,6 +11421,8 @@
     "geometry": "Point",
     "dimension": "AIR",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "AIR TRACK",
       "MILITARY",
       "ROTARY WING",
       "ANTISUBMARINE WARFARE / MPA"
@@ -10915,6 +11435,8 @@
     "geometry": "Point",
     "dimension": "AIR",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "AIR TRACK",
       "MILITARY",
       "ROTARY WING",
       "TRAINER"
@@ -10927,6 +11449,8 @@
     "geometry": "Point",
     "dimension": "AIR",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "AIR TRACK",
       "MILITARY",
       "ROTARY WING",
       "UTILITY"
@@ -10939,6 +11463,8 @@
     "geometry": "Point",
     "dimension": "AIR",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "AIR TRACK",
       "MILITARY",
       "ROTARY WING",
       "UTILITY (HEAVY)"
@@ -10951,6 +11477,8 @@
     "geometry": "Point",
     "dimension": "AIR",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "AIR TRACK",
       "MILITARY",
       "ROTARY WING",
       "UTILITY (LIGHT)"
@@ -10963,6 +11491,8 @@
     "geometry": "Point",
     "dimension": "AIR",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "AIR TRACK",
       "MILITARY",
       "ROTARY WING",
       "UTILITY (MEDIUM)"
@@ -10975,6 +11505,8 @@
     "geometry": "Point",
     "dimension": "AIR",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "AIR TRACK",
       "MILITARY",
       "LIGHTER THAN AIR"
     ]
@@ -10986,6 +11518,8 @@
     "geometry": "Point",
     "dimension": "AIR",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "AIR TRACK",
       "MILITARY",
       "VERY IMPORTANT PERSON (VIP)"
     ]
@@ -10997,6 +11531,8 @@
     "geometry": "Point",
     "dimension": "AIR",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "AIR TRACK",
       "WEAPON"
     ]
   },
@@ -11007,6 +11543,8 @@
     "geometry": "Point",
     "dimension": "AIR",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "AIR TRACK",
       "WEAPON",
       "BOMB"
     ]
@@ -11018,6 +11556,8 @@
     "geometry": "Point",
     "dimension": "AIR",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "AIR TRACK",
       "WEAPON",
       "DECOY"
     ]
@@ -11029,6 +11569,8 @@
     "geometry": "Point",
     "dimension": "AIR",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "AIR TRACK",
       "WEAPON",
       "MISSILE IN FLIGHT"
     ]
@@ -11040,6 +11582,8 @@
     "geometry": "Point",
     "dimension": "AIR",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "AIR TRACK",
       "WEAPON",
       "MISSILE IN FLIGHT",
       "AIR LAUNCHED MISSILE"
@@ -11052,6 +11596,8 @@
     "geometry": "Point",
     "dimension": "AIR",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "AIR TRACK",
       "WEAPON",
       "MISSILE IN FLIGHT",
       "AIR LAUNCHED MISSILE",
@@ -11065,6 +11611,8 @@
     "geometry": "Point",
     "dimension": "AIR",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "AIR TRACK",
       "WEAPON",
       "MISSILE IN FLIGHT",
       "AIR LAUNCHED MISSILE",
@@ -11078,6 +11626,8 @@
     "geometry": "Point",
     "dimension": "AIR",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "AIR TRACK",
       "WEAPON",
       "MISSILE IN FLIGHT",
       "AIR LAUNCHED MISSILE",
@@ -11091,6 +11641,8 @@
     "geometry": "Point",
     "dimension": "AIR",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "AIR TRACK",
       "WEAPON",
       "MISSILE IN FLIGHT",
       "BALLISTIC MISSILE"
@@ -11103,6 +11655,8 @@
     "geometry": "Point",
     "dimension": "AIR",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "AIR TRACK",
       "WEAPON",
       "MISSILE IN FLIGHT",
       "CRUISE MISSILE"
@@ -11115,6 +11669,8 @@
     "geometry": "Point",
     "dimension": "AIR",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "AIR TRACK",
       "WEAPON",
       "MISSILE IN FLIGHT",
       "SURFACE LAUNCHED MISSILE"
@@ -11127,6 +11683,8 @@
     "geometry": "Point",
     "dimension": "AIR",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "AIR TRACK",
       "WEAPON",
       "MISSILE IN FLIGHT",
       "SURFACE LAUNCHED MISSILE",
@@ -11140,6 +11698,8 @@
     "geometry": "Point",
     "dimension": "AIR",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "AIR TRACK",
       "WEAPON",
       "MISSILE IN FLIGHT",
       "SURFACE LAUNCHED MISSILE",
@@ -11153,6 +11713,8 @@
     "geometry": "Point",
     "dimension": "AIR",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "AIR TRACK",
       "WEAPON",
       "MISSILE IN FLIGHT",
       "SURFACE LAUNCHED MISSILE",
@@ -11166,6 +11728,8 @@
     "geometry": "Point",
     "dimension": "AIR",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "AIR TRACK",
       "WEAPON",
       "MISSILE IN FLIGHT",
       "SURFACE LAUNCHED MISSILE",
@@ -11179,6 +11743,8 @@
     "geometry": "Point",
     "dimension": "AIR",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "AIR TRACK",
       "WEAPON",
       "MISSILE IN FLIGHT",
       "SUBSURFACE TO SURFACE MISSILE (S / SSM)"
@@ -11695,7 +12261,7 @@
     "class": "E",
     "scope": "EQUIPMENT",
     "geometry": "Point",
-    "dimension": "CSS",
+    "dimension": "LAND",
     "hierarchy": [
       "WARFIGHTING SYMBOLS",
       "GROUND TRACK EQUIPMENT",
@@ -14332,6 +14898,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT"
     ]
   },
@@ -14341,6 +14910,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "ARMOR"
     ]
@@ -14351,6 +14923,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "ANTIARMOR"
     ]
@@ -14361,6 +14936,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "ANTIARMOR ARMORED"
     ]
@@ -14371,6 +14949,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "ANTIARMOR ARMORED AIR ASSAULT"
     ]
@@ -14381,6 +14962,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "ANTIARMOR ARMORED TRACKED"
     ]
@@ -14391,6 +14975,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "ANTIARMOR ARMORED WHEELED"
     ]
@@ -14401,6 +14988,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "ANTIARMOR ARCTIC"
     ]
@@ -14411,6 +15001,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "ANTIARMOR DISMOUNTED"
     ]
@@ -14421,6 +15014,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "ANTIARMOR LIGHT"
     ]
@@ -14431,6 +15027,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "ANTIARMOR AIRBORNE"
     ]
@@ -14441,6 +15040,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "ANTIARMOR MOTORIZED"
     ]
@@ -14451,6 +15053,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "ANTIARMOR MOTORIZED AIR ASSAULT"
     ]
@@ -14461,6 +15066,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "ANTIARMOR AIR ASSAULT"
     ]
@@ -14471,6 +15079,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "ANTIARMOR MOUNTAIN"
     ]
@@ -14481,6 +15092,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "ARMOR TRACK"
     ]
@@ -14491,6 +15105,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "ARMOR TRACK AIRBORNE"
     ]
@@ -14501,6 +15118,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "ARMOR TRACK, HEAVY"
     ]
@@ -14511,6 +15131,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "ARMOR TRACK, LIGHT"
     ]
@@ -14521,6 +15144,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "ARMOR TRACK, MEDIUM"
     ]
@@ -14531,6 +15157,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "ARMOR TRACK, RECOVERY"
     ]
@@ -14541,6 +15170,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "ARMOR TRACK AMPHIBIOUS"
     ]
@@ -14551,6 +15183,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "ARMOR TRACK AMPHIBIOUS RECOVERY"
     ]
@@ -14561,6 +15196,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "ARMOR, WHEELED"
     ]
@@ -14571,6 +15209,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "ARMOR, WHEELED AIRBORNE"
     ]
@@ -14581,6 +15222,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "ARMOR, WHEELED HEAVY"
     ]
@@ -14591,6 +15235,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "ARMOR, WHEELED LIGHT"
     ]
@@ -14601,6 +15248,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "ARMOR, WHEELED MEDIUM"
     ]
@@ -14611,6 +15261,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "ARMOR, WHEELED RECOVERY"
     ]
@@ -14621,6 +15274,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "ARMOR, WHEELED AIR ASSAULT"
     ]
@@ -14631,6 +15287,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "ARMOR, WHEELED AMPHIBIOUS"
     ]
@@ -14641,6 +15300,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "ARMOR, WHEELED AMPHIBIOUS RECOVERY"
     ]
@@ -14651,6 +15313,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "AIR DEFENSE"
     ]
@@ -14661,6 +15326,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "AIR DEFENSE",
       "COMPOSITE"
@@ -14672,6 +15340,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "AIR DEFENSE",
       "GUN UNIT"
@@ -14683,6 +15354,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "AIR DEFENSE MISSILE",
       "H / MAD"
@@ -14694,6 +15368,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "AIR DEFENSE MISSILE",
       "H / MAD",
@@ -14706,6 +15383,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "AIR DEFENSE MISSILE",
       "H / MAD",
@@ -14718,6 +15398,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "AIR DEFENSE MISSILE"
     ]
@@ -14728,6 +15411,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "AIR DEFENSE MISSILE HEAVY"
     ]
@@ -14738,6 +15424,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "AIR DEFENSE MISSILE LIGHT"
     ]
@@ -14748,6 +15437,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "AIR DEFENSE MISSILE LIGHT",
       "AIR DEFENSE MISSILE MOTORIZED (AVENGER)"
@@ -14759,6 +15451,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "AIR DEFENSE MISSILE MEDIUM"
     ]
@@ -14769,6 +15464,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "AIR DEFENSE",
       "THEATER MISSILE DEFENSE UNIT"
@@ -14780,6 +15478,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "AIR DEFENSE",
       "SHORT RANGE"
@@ -14791,6 +15492,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "AIR DEFENSE",
       "SHORT RANGE",
@@ -14803,6 +15507,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "AIR DEFENSE",
       "SHORT RANGE",
@@ -14815,6 +15522,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "AIR DEFENSE",
       "SHORT RANGE",
@@ -14827,6 +15537,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "AIR DEFENSE",
       "TARGETING UNIT"
@@ -14838,6 +15551,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "ENGINEER"
     ]
@@ -14848,6 +15564,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "ENGINEER COMBAT"
     ]
@@ -14858,6 +15577,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "ENGINEER COMBAT AIRBORNE"
     ]
@@ -14868,6 +15590,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "ENGINEER COMBAT ARCTIC"
     ]
@@ -14878,6 +15603,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "ENGINEER COMBAT HEAVY"
     ]
@@ -14888,6 +15616,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "ENGINEER COMBAT LIGHT (SAPPER)"
     ]
@@ -14898,6 +15629,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "ENGINEER COMBAT MEDIUM"
     ]
@@ -14908,6 +15642,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "ENGINEER COMBAT MOUNTAIN"
     ]
@@ -14918,6 +15655,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "ENGINEER COMBAT RECON"
     ]
@@ -14928,6 +15668,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "ENGINEER COMBAT AIR ASSAULT"
     ]
@@ -14938,6 +15681,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "ENGINEER COMBAT MECHANIZED (TRACK)"
     ]
@@ -14948,6 +15694,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "ENGINEER COMBAT MOTORIZED"
     ]
@@ -14958,6 +15707,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "ENGINEER CONSTRUCTION"
     ]
@@ -14968,6 +15720,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "ENGINEER CONSTRUCTION",
       "ENGINEER NAVAL CONSTRUCTION"
@@ -14979,6 +15734,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "FIELD ARTILLERY"
     ]
@@ -14989,6 +15747,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "FIELD ARTILLERY",
       "HOWITZER / GUN"
@@ -15000,6 +15761,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "FIELD ARTILLERY",
       "HOWITZER / GUN",
@@ -15012,6 +15776,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "FIELD ARTILLERY",
       "HOWITZER / GUN",
@@ -15024,6 +15791,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "FIELD ARTILLERY",
       "HOWITZER / GUN",
@@ -15036,6 +15806,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "FIELD ARTILLERY",
       "HOWITZER / GUN",
@@ -15048,6 +15821,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "FIELD ARTILLERY",
       "HOWITZER / GUN",
@@ -15060,6 +15836,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "FIELD ARTILLERY",
       "HOWITZER / GUN",
@@ -15072,6 +15851,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "FIELD ARTILLERY",
       "HOWITZER / GUN",
@@ -15084,6 +15866,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "FIELD ARTILLERY",
       "HOWITZER / GUN",
@@ -15096,6 +15881,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "FIELD ARTILLERY",
       "HOWITZER / GUN",
@@ -15108,6 +15896,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "FIELD ARTILLERY",
       "MORTAR"
@@ -15119,6 +15910,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "FIELD ARTILLERY",
       "AMPHIBIOUS MORTAR"
@@ -15130,6 +15924,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "FIELD ARTILLERY",
       "SELF-PROPELLED (SP) TRACKED MORTAR"
@@ -15141,6 +15938,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "FIELD ARTILLERY",
       "TOWED MORTAR"
@@ -15152,6 +15952,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "FIELD ARTILLERY",
       "TOWED MORTAR",
@@ -15164,6 +15967,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "FIELD ARTILLERY",
       "TOWED MORTAR",
@@ -15176,6 +15982,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "FIELD ARTILLERY",
       "TOWED MORTAR",
@@ -15188,6 +15997,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "FIELD ARTILLERY",
       "TOWED MORTAR",
@@ -15200,6 +16012,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "FIELD ARTILLERY",
       "MORTAR",
@@ -15212,6 +16027,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "FIELD ARTILLERY",
       "METEOROLOGICAL"
@@ -15223,6 +16041,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "FIELD ARTILLERY",
       "AIRBORNE METEOROLOGICAL"
@@ -15234,6 +16055,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "FIELD ARTILLERY",
       "LIGHT METEOROLOGICAL"
@@ -15245,6 +16069,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "FIELD ARTILLERY",
       "MOUNTAIN METEOROLOGICAL"
@@ -15256,6 +16083,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "FIELD ARTILLERY",
       "AIR ASSAULT METEOROLOGICAL"
@@ -15267,6 +16097,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "FIELD ARTILLERY",
       "ROCKET"
@@ -15278,6 +16111,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "FIELD ARTILLERY",
       "MULTIPLE ROCKET LAUNCHER"
@@ -15289,6 +16125,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "FIELD ARTILLERY",
       "MULTIPLE ROCKET LAUNCHER",
@@ -15301,6 +16140,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "FIELD ARTILLERY",
       "MULTIPLE ROCKET LAUNCHER",
@@ -15313,6 +16155,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "FIELD ARTILLERY",
       "MULTIPLE ROCKET LAUNCHER",
@@ -15325,6 +16170,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "FIELD ARTILLERY",
       "SINGLE ROCKET LAUNCHER"
@@ -15336,6 +16184,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "FIELD ARTILLERY",
       "SINGLE ROCKET LAUNCHER",
@@ -15348,6 +16199,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "FIELD ARTILLERY",
       "SINGLE ROCKET LAUNCHER",
@@ -15360,6 +16214,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "FIELD ARTILLERY",
       "SINGLE ROCKET LAUNCHER",
@@ -15372,6 +16229,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "FIELD ARTILLERY",
       "ARTILLERY SURVEY"
@@ -15383,6 +16243,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "FIELD ARTILLERY",
       "ARTILLERY SURVEY",
@@ -15395,6 +16258,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "FIELD ARTILLERY",
       "ARTILLERY SURVEY",
@@ -15407,6 +16273,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "FIELD ARTILLERY",
       "ARTILLERY SURVEY",
@@ -15419,6 +16288,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "FIELD ARTILLERY",
       "ARTILLERY SURVEY",
@@ -15431,6 +16303,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "FIELD ARTILLERY",
       "TARGET ACQUISITION"
@@ -15442,6 +16317,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "FIELD ARTILLERY",
       "TARGET ACQUISITION",
@@ -15454,6 +16332,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "FIELD ARTILLERY",
       "TARGET ACQUISITION",
@@ -15466,6 +16347,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "FIELD ARTILLERY",
       "TARGET ACQUISITION",
@@ -15478,6 +16362,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "FIELD ARTILLERY",
       "TARGET ACQUISITION",
@@ -15490,6 +16377,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "FIELD ARTILLERY",
       "TARGET ACQUISITION",
@@ -15502,6 +16392,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "FIELD ARTILLERY",
       "TARGET ACQUISITION",
@@ -15514,6 +16407,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "FIELD ARTILLERY",
       "TARGET ACQUISITION",
@@ -15526,6 +16422,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "INFANTRY"
     ]
@@ -15536,6 +16435,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "INFANTRY AIRBORNE"
     ]
@@ -15546,6 +16448,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "INFANTRY ARCTIC"
     ]
@@ -15556,6 +16461,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "INFANTRY FIGHTING VEHICLE"
     ]
@@ -15566,6 +16474,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "INFANTRY LIGHT"
     ]
@@ -15576,6 +16487,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "INFANTRY MOTORIZED"
     ]
@@ -15586,6 +16500,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "INFANTRY NAVAL"
     ]
@@ -15596,6 +16513,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "INFANTRY MOUNTAIN"
     ]
@@ -15606,6 +16526,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "INFANTRY AIR ASSAULT"
     ]
@@ -15616,6 +16539,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "INFANTRY MECHANIZED"
     ]
@@ -15626,6 +16552,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "MISSILE (SURF-SURF)"
     ]
@@ -15636,6 +16565,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "MISSILE (SURF-SURF) STRATEGIC"
     ]
@@ -15646,6 +16578,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "MISSILE (SURF-SURF) TACTICAL"
     ]
@@ -15656,6 +16591,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "RECONNAISSANCE"
     ]
@@ -15666,6 +16604,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "RECONNAISSANCE AIRBORNE"
     ]
@@ -15676,6 +16617,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "RECONNAISSANCE ARCTIC"
     ]
@@ -15686,6 +16630,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "RECONNAISSANCE HORSE"
     ]
@@ -15696,6 +16643,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "RECONNAISSANCE LIGHT"
     ]
@@ -15706,6 +16656,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "RECONNAISSANCE MOUNTAIN"
     ]
@@ -15716,6 +16669,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "RECONNAISSANCE MARINE"
     ]
@@ -15726,6 +16682,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "RECONNAISSANCE MARINE DIVISION"
     ]
@@ -15736,6 +16695,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "RECONNAISSANCE MARINE FORCE"
     ]
@@ -15746,6 +16708,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "RECONNAISSANCE MARINE LIGHT ARMORED RECONNAISSANCE (LAR)"
     ]
@@ -15756,6 +16721,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "RECONNAISSANCE AIR ASSAULT"
     ]
@@ -15766,6 +16734,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "RECONNAISSANCE CAVALRY"
     ]
@@ -15776,6 +16747,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "RECONNAISSANCE CAVALRY ARMORED"
     ]
@@ -15786,6 +16760,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "RECONNAISSANCE CAVALRY GROUND"
     ]
@@ -15796,6 +16773,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "RECONNAISSANCE CAVALRY MOTORIZED"
     ]
@@ -15806,6 +16786,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "RECONNAISSANCE CAVALRY AIR"
     ]
@@ -15816,6 +16799,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "RECONNAISSANCE LONG RANGE SURVEILLANCE (LRS)"
     ]
@@ -15826,6 +16812,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "INTERNAL SECURITY FORCES"
     ]
@@ -15836,6 +16825,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "INTERNAL SECURITY FORCES",
       "AVIATION"
@@ -15847,6 +16839,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "INTERNAL SECURITY FORCES",
       "GROUND"
@@ -15858,6 +16853,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "INTERNAL SECURITY FORCES",
       "MECHANIZED GROUND"
@@ -15869,6 +16867,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "INTERNAL SECURITY FORCES",
       "DISMOUNTED GROUND"
@@ -15880,6 +16881,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "INTERNAL SECURITY FORCES",
       "MOTORIZED GROUND"
@@ -15891,6 +16895,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "INTERNAL SECURITY FORCES",
       "WHEELED MECHANIZED"
@@ -15902,6 +16909,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "INTERNAL SECURITY FORCES",
       "RAILROAD"
@@ -15913,6 +16923,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "INTERNAL SECURITY FORCES",
       "RIVERINE"
@@ -15924,6 +16937,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "AVIATION"
     ]
@@ -15934,6 +16950,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "AVIATION",
       "COMPOSITE"
@@ -15945,6 +16964,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "AVIATION",
       "FIXED WING"
@@ -15956,6 +16978,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "AVIATION",
       "ATTACK FIXED WING"
@@ -15967,6 +16992,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "AVIATION",
       "RECON FIXED WING"
@@ -15978,6 +17006,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "AVIATION",
       "UTILITY FIXED WING"
@@ -15989,6 +17020,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "AVIATION",
       "ROTARY WING"
@@ -16000,6 +17034,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "AVIATION",
       "ATTACK ROTARY WING"
@@ -16011,6 +17048,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "AVIATION",
       "MINE COUNTERMEASURE ROTARY WING"
@@ -16022,6 +17062,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "AVIATION",
       "SCOUT ROTARY WING"
@@ -16033,6 +17076,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "AVIATION",
       "UTILITY ROTARY WING"
@@ -16044,6 +17090,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "AVIATION",
       "C2 ROTARY WING"
@@ -16055,6 +17104,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "AVIATION",
       "MEDEVAC ROTARY WING"
@@ -16066,6 +17118,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "AVIATION",
       "HEAVY UTILITY ROTARY WING"
@@ -16077,6 +17132,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "AVIATION",
       "LIGHT UTILITY ROTARY WING"
@@ -16088,6 +17146,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "AVIATION",
       "MEDIUM UTILITY ROTARY WING"
@@ -16099,6 +17160,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "AVIATION",
       "ANTISUBMARINE WARFARE ROTARY WING"
@@ -16110,6 +17174,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "AVIATION",
       "SEARCH AND RESCUE"
@@ -16121,6 +17188,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "AVIATION",
       "UNMANNED AIRCRAFT"
@@ -16132,6 +17202,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "AVIATION",
       "UNMANNED AIRCRAFT FIXED WING"
@@ -16143,6 +17216,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "AVIATION",
       "UNMANNED AIRCRAFT ROTARY WING"
@@ -16154,6 +17230,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT",
       "AVIATION",
       "VERTICAL AND / OR SHORT TAKEOFF AND LANDING AIRCRAFT (V / STOL)"
@@ -16165,6 +17244,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "SPECIAL C2 HEADQUARTERS COMPONENT"
     ]
   },
@@ -16172,9 +17254,11 @@
     "sidc": "S*G*US----*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT"
     ]
   },
@@ -16182,9 +17266,11 @@
     "sidc": "S*G*USA---*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "ADMINISTRATIVE (ADMIN)"
     ]
@@ -16193,9 +17279,11 @@
     "sidc": "S*G*USAC--*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "ADMINISTRATIVE (ADMIN) CORPS"
     ]
@@ -16204,9 +17292,11 @@
     "sidc": "S*G*USAF--*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "ADMINISTRATIVE (ADMIN)",
       "FINANCE"
@@ -16216,9 +17306,11 @@
     "sidc": "S*G*USAFC-*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "ADMINISTRATIVE (ADMIN)",
       "FINANCE CORPS"
@@ -16228,9 +17320,11 @@
     "sidc": "S*G*USAFT-*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "ADMINISTRATIVE (ADMIN)",
       "FINANCE THEATER"
@@ -16240,9 +17334,11 @@
     "sidc": "S*G*USAJ--*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "ADMINISTRATIVE (ADMIN)",
       "JUDGE ADVOCATE GENERAL (JAG)"
@@ -16252,9 +17348,11 @@
     "sidc": "S*G*USAJC-*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "ADMINISTRATIVE (ADMIN)",
       "JUDGE ADVOCATE GENERAL (JAG) CORPS"
@@ -16264,9 +17362,11 @@
     "sidc": "S*G*USAJT-*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "ADMINISTRATIVE (ADMIN)",
       "JUDGE ADVOCATE GENERAL (JAG) THEATER"
@@ -16276,9 +17376,11 @@
     "sidc": "S*G*USAL--*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "ADMINISTRATIVE (ADMIN)",
       "LABOR"
@@ -16288,9 +17390,11 @@
     "sidc": "S*G*USALC-*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "ADMINISTRATIVE (ADMIN)",
       "LABOR CORPS"
@@ -16300,9 +17404,11 @@
     "sidc": "S*G*USALT-*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "ADMINISTRATIVE (ADMIN)",
       "LABOR THEATER"
@@ -16312,9 +17418,11 @@
     "sidc": "S*G*USAM--*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "ADMINISTRATIVE (ADMIN)",
       "MORTUARY / GRAVES REGISTRY"
@@ -16324,9 +17432,11 @@
     "sidc": "S*G*USAMC-*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "ADMINISTRATIVE (ADMIN)",
       "MORTUARY / GRAVES REGISTRY CORPS"
@@ -16336,9 +17446,11 @@
     "sidc": "S*G*USAMT-*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "ADMINISTRATIVE (ADMIN)",
       "MORTUARY / GRAVES REGISTRY THEATER"
@@ -16348,9 +17460,11 @@
     "sidc": "S*G*USAO--*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "ADMINISTRATIVE (ADMIN)",
       "POSTAL"
@@ -16360,9 +17474,11 @@
     "sidc": "S*G*USAOC-*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "ADMINISTRATIVE (ADMIN)",
       "POSTAL CORPS"
@@ -16372,9 +17488,11 @@
     "sidc": "S*G*USAOT-*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "ADMINISTRATIVE (ADMIN)",
       "POSTAL THEATER"
@@ -16384,9 +17502,11 @@
     "sidc": "S*G*USAP--*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "ADMINISTRATIVE (ADMIN)",
       "PUBLIC AFFAIRS"
@@ -16396,9 +17516,11 @@
     "sidc": "S*G*USAPB-*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "ADMINISTRATIVE (ADMIN)",
       "PUBLIC AFFAIRS BROADCAST"
@@ -16408,9 +17530,11 @@
     "sidc": "S*G*USAPBC*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "ADMINISTRATIVE (ADMIN)",
       "PUBLIC AFFAIRS BROADCAST CORPS"
@@ -16420,9 +17544,11 @@
     "sidc": "S*G*USAPBT*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "ADMINISTRATIVE (ADMIN)",
       "PUBLIC AFFAIRS BROADCAST THEATER"
@@ -16432,9 +17558,11 @@
     "sidc": "S*G*USAPC-*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "ADMINISTRATIVE (ADMIN)",
       "PUBLIC AFFAIRS CORPS"
@@ -16444,9 +17572,11 @@
     "sidc": "S*G*USAPM-*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "ADMINISTRATIVE (ADMIN)",
       "PUBLIC AFFAIRS JOINT INFORMATION BUREAU (JIB)"
@@ -16456,9 +17586,11 @@
     "sidc": "S*G*USAPMC*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "ADMINISTRATIVE (ADMIN)",
       "PUBLIC AFFAIRS JOINT INFORMATION BUREAU (JIB) CORPS"
@@ -16468,9 +17600,11 @@
     "sidc": "S*G*USAPMT*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "ADMINISTRATIVE (ADMIN)",
       "PUBLIC AFFAIRS JOINT INFORMATION BUREAU (JIB) THEATER"
@@ -16480,9 +17614,11 @@
     "sidc": "S*G*USAPT-*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "ADMINISTRATIVE (ADMIN)",
       "PUBLIC AFFAIRS THEATER"
@@ -16492,9 +17628,11 @@
     "sidc": "S*G*USAQ--*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "ADMINISTRATIVE (ADMIN)",
       "QUARTERMASTER (SUPPLY)"
@@ -16504,9 +17642,11 @@
     "sidc": "S*G*USAQC-*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "ADMINISTRATIVE (ADMIN)",
       "QUARTERMASTER (SUPPLY) CORPS"
@@ -16516,9 +17656,11 @@
     "sidc": "S*G*USAQT-*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "ADMINISTRATIVE (ADMIN)",
       "QUARTERMASTER (SUPPLY) THEATER"
@@ -16528,9 +17670,11 @@
     "sidc": "S*G*USAR--*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "ADMINISTRATIVE (ADMIN)",
       "RELIGIOUS / CHAPLAIN"
@@ -16540,9 +17684,11 @@
     "sidc": "S*G*USARC-*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "ADMINISTRATIVE (ADMIN)",
       "RELIGIOUS / CHAPLAIN CORPS"
@@ -16552,9 +17698,11 @@
     "sidc": "S*G*USART-*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "ADMINISTRATIVE (ADMIN)",
       "RELIGIOUS / CHAPLAIN THEATER"
@@ -16564,9 +17712,11 @@
     "sidc": "S*G*USAS--*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "ADMINISTRATIVE (ADMIN)",
       "PERSONNEL SERVICES"
@@ -16576,9 +17726,11 @@
     "sidc": "S*G*USASC-*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "ADMINISTRATIVE (ADMIN)",
       "PERSONNEL SERVICES CORPS"
@@ -16588,9 +17740,11 @@
     "sidc": "S*G*USAST-*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "ADMINISTRATIVE (ADMIN)",
       "PERSONNEL SERVICES THEATER"
@@ -16600,9 +17754,11 @@
     "sidc": "S*G*USAT--*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "ADMINISTRATIVE (ADMIN) THEATER"
     ]
@@ -16611,9 +17767,11 @@
     "sidc": "S*G*USAW--*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "ADMINISTRATIVE (ADMIN)",
       "MORALE, WELFARE, RECREATION (MWR)"
@@ -16623,9 +17781,11 @@
     "sidc": "S*G*USAWC-*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "ADMINISTRATIVE (ADMIN)",
       "MORALE, WELFARE, RECREATION (MWR) CORPS"
@@ -16635,9 +17795,11 @@
     "sidc": "S*G*USAWT-*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "ADMINISTRATIVE (ADMIN)",
       "MORALE, WELFARE, RECREATION (MWR) THEATER"
@@ -16647,9 +17809,11 @@
     "sidc": "S*G*USAX--*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "ADMINISTRATIVE (ADMIN)",
       "REPLACEMENT HOLDING UNIT (RHU)"
@@ -16659,9 +17823,11 @@
     "sidc": "S*G*USAXC-*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "ADMINISTRATIVE (ADMIN)",
       "REPLACEMENT HOLDING UNIT (RHU) CORPS"
@@ -16671,9 +17837,11 @@
     "sidc": "S*G*USAXT-*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "ADMINISTRATIVE (ADMIN)",
       "REPLACEMENT HOLDING UNIT (RHU) THEATER"
@@ -16683,9 +17851,11 @@
     "sidc": "S*G*USM---*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "MEDICAL"
     ]
@@ -16694,9 +17864,11 @@
     "sidc": "S*G*USMC--*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "MEDICAL CORPS"
     ]
@@ -16705,9 +17877,11 @@
     "sidc": "S*G*USMD--*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "MEDICAL DENTAL"
     ]
@@ -16716,9 +17890,11 @@
     "sidc": "S*G*USMDC-*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "MEDICAL DENTAL CORPS"
     ]
@@ -16727,9 +17903,11 @@
     "sidc": "S*G*USMDT-*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "MEDICAL DENTAL THEATER"
     ]
@@ -16738,9 +17916,11 @@
     "sidc": "S*G*USMM--*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "MEDICAL TREATMENT FACILITY"
     ]
@@ -16749,9 +17929,11 @@
     "sidc": "S*G*USMMC-*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "MEDICAL TREATMENT FACILITY CORPS"
     ]
@@ -16760,9 +17942,11 @@
     "sidc": "S*G*USMMT-*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "MEDICAL TREATMENT FACILITY THEATER"
     ]
@@ -16771,9 +17955,11 @@
     "sidc": "S*G*USMP--*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "MEDICAL PSYCHOLOGICAL"
     ]
@@ -16782,9 +17968,11 @@
     "sidc": "S*G*USMPC-*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "MEDICAL PSYCHOLOGICAL CORPS"
     ]
@@ -16793,9 +17981,11 @@
     "sidc": "S*G*USMPT-*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "MEDICAL PSYCHOLOGICAL THEATER"
     ]
@@ -16804,9 +17994,11 @@
     "sidc": "S*G*USMT--*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "MEDICAL THEATER"
     ]
@@ -16815,9 +18007,11 @@
     "sidc": "S*G*USMV--*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "MEDICAL VETERINARY"
     ]
@@ -16826,9 +18020,11 @@
     "sidc": "S*G*USMVC-*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "MEDICAL VETERINARY CORPS"
     ]
@@ -16837,9 +18033,11 @@
     "sidc": "S*G*USMVT-*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "MEDICAL VETERINARY THEATER"
     ]
@@ -16848,9 +18046,11 @@
     "sidc": "S*G*USS---*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "SUPPLY"
     ]
@@ -16859,9 +18059,11 @@
     "sidc": "S*G*USS1--*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "SUPPLY CLASS I"
     ]
@@ -16870,9 +18072,11 @@
     "sidc": "S*G*USS1C-*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "SUPPLY CLASS I CORPS"
     ]
@@ -16881,9 +18085,11 @@
     "sidc": "S*G*USS1T-*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "SUPPLY CLASS I THEATER"
     ]
@@ -16892,9 +18098,11 @@
     "sidc": "S*G*USS2--*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "SUPPLY CLASS II"
     ]
@@ -16903,9 +18111,11 @@
     "sidc": "S*G*USS2C-*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "SUPPLY CLASS II CORPS"
     ]
@@ -16914,9 +18124,11 @@
     "sidc": "S*G*USS2T-*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "SUPPLY CLASS II THEATER"
     ]
@@ -16925,9 +18137,11 @@
     "sidc": "S*G*USS3--*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "SUPPLY CLASS III"
     ]
@@ -16936,9 +18150,11 @@
     "sidc": "S*G*USS3A-*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "SUPPLY CLASS III AVIATION"
     ]
@@ -16947,9 +18163,11 @@
     "sidc": "S*G*USS3AC*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "SUPPLY CLASS III AVIATION CORPS"
     ]
@@ -16958,9 +18176,11 @@
     "sidc": "S*G*USS3AT*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "SUPPLY CLASS III AVIATION THEATER"
     ]
@@ -16969,9 +18189,11 @@
     "sidc": "S*G*USS3C-*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "SUPPLY CLASS III CORPS"
     ]
@@ -16980,9 +18202,11 @@
     "sidc": "S*G*USS3T-*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "SUPPLY CLASS III THEATER"
     ]
@@ -16991,9 +18215,11 @@
     "sidc": "S*G*USS4--*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "SUPPLY CLASS IV"
     ]
@@ -17002,9 +18228,11 @@
     "sidc": "S*G*USS4C-*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "SUPPLY CLASS IV CORPS"
     ]
@@ -17013,9 +18241,11 @@
     "sidc": "S*G*USS4T-*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "SUPPLY CLASS IV THEATER"
     ]
@@ -17024,9 +18254,11 @@
     "sidc": "S*G*USS5--*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "SUPPLY CLASS V"
     ]
@@ -17035,9 +18267,11 @@
     "sidc": "S*G*USS5C-*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "SUPPLY CLASS V CORPS"
     ]
@@ -17046,9 +18280,11 @@
     "sidc": "S*G*USS5T-*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "SUPPLY CLASS V THEATER"
     ]
@@ -17057,9 +18293,11 @@
     "sidc": "S*G*USS6--*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "SUPPLY CLASS VI"
     ]
@@ -17068,9 +18306,11 @@
     "sidc": "S*G*USS6C-*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "SUPPLY CLASS VI CORPS"
     ]
@@ -17079,9 +18319,11 @@
     "sidc": "S*G*USS6T-*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "SUPPLY CLASS VI THEATER"
     ]
@@ -17090,9 +18332,11 @@
     "sidc": "S*G*USS7--*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "SUPPLY CLASS VII"
     ]
@@ -17101,9 +18345,11 @@
     "sidc": "S*G*USS7C-*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "SUPPLY CLASS VII CORPS"
     ]
@@ -17112,9 +18358,11 @@
     "sidc": "S*G*USS7T-*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "SUPPLY CLASS VII THEATER"
     ]
@@ -17123,9 +18371,11 @@
     "sidc": "S*G*USS8--*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "SUPPLY CLASS VIII"
     ]
@@ -17134,9 +18384,11 @@
     "sidc": "S*G*USS8C-*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "SUPPLY CLASS VIII CORPS"
     ]
@@ -17145,9 +18397,11 @@
     "sidc": "S*G*USS8T-*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "SUPPLY CLASS VIII THEATER"
     ]
@@ -17156,9 +18410,11 @@
     "sidc": "S*G*USS9--*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "SUPPLY CLASS IX"
     ]
@@ -17167,9 +18423,11 @@
     "sidc": "S*G*USS9C-*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "SUPPLY CLASS IX CORPS"
     ]
@@ -17178,9 +18436,11 @@
     "sidc": "S*G*USS9T-*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "SUPPLY CLASS IX THEATER"
     ]
@@ -17189,9 +18449,11 @@
     "sidc": "S*G*USSC--*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "SUPPLY CORPS"
     ]
@@ -17200,9 +18462,11 @@
     "sidc": "S*G*USSL--*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "SUPPLY LAUNDRY / BATH"
     ]
@@ -17211,9 +18475,11 @@
     "sidc": "S*G*USSLC-*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "SUPPLY LAUNDRY / BATH CORPS"
     ]
@@ -17222,9 +18488,11 @@
     "sidc": "S*G*USSLT-*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "SUPPLY LAUNDRY / BATH THEATER"
     ]
@@ -17233,9 +18501,11 @@
     "sidc": "S*G*USST--*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "SUPPLY THEATER"
     ]
@@ -17244,9 +18514,11 @@
     "sidc": "S*G*USSW--*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "SUPPLY WATER"
     ]
@@ -17255,9 +18527,11 @@
     "sidc": "S*G*USSWC-*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "SUPPLY WATER CORPS"
     ]
@@ -17266,9 +18540,11 @@
     "sidc": "S*G*USSWP-*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "SUPPLY WATER PURIFICATION"
     ]
@@ -17277,9 +18553,11 @@
     "sidc": "S*G*USSWPC*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "SUPPLY WATER PURIFICATION CORPS"
     ]
@@ -17288,9 +18566,11 @@
     "sidc": "S*G*USSWPT*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "SUPPLY WATER PURIFICATION THEATER"
     ]
@@ -17299,9 +18579,11 @@
     "sidc": "S*G*USSWT-*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "SUPPLY WATER THEATER"
     ]
@@ -17310,9 +18592,11 @@
     "sidc": "S*G*USSX--*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "SUPPLY CLASS X"
     ]
@@ -17321,9 +18605,11 @@
     "sidc": "S*G*USSXC-*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "SUPPLY CLASS X CORPS"
     ]
@@ -17332,9 +18618,11 @@
     "sidc": "S*G*USSXT-*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "SUPPLY CLASS X THEATER"
     ]
@@ -17343,9 +18631,11 @@
     "sidc": "S*G*UST---*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "TRANSPORTATION"
     ]
@@ -17354,9 +18644,11 @@
     "sidc": "S*G*USTA--*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "TRANSPORTATION",
       "APOD / APOE"
@@ -17366,9 +18658,11 @@
     "sidc": "S*G*USTAC-*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "TRANSPORTATION",
       "APOD / APOE CORPS"
@@ -17378,9 +18672,11 @@
     "sidc": "S*G*USTAT-*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "TRANSPORTATION",
       "APOD / APOE THEATER"
@@ -17390,9 +18686,11 @@
     "sidc": "S*G*USTC--*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "TRANSPORTATION CORPS"
     ]
@@ -17401,9 +18699,11 @@
     "sidc": "S*G*USTI--*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "TRANSPORTATION",
       "MISSILE"
@@ -17413,9 +18713,11 @@
     "sidc": "S*G*USTIC-*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "TRANSPORTATION",
       "MISSILE CORPS"
@@ -17425,9 +18727,11 @@
     "sidc": "S*G*USTIT-*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "TRANSPORTATION",
       "MISSILE THEATER"
@@ -17437,9 +18741,11 @@
     "sidc": "S*G*USTM--*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "TRANSPORTATION",
       "MOVEMENT CONTROL CENTER (MCC)"
@@ -17449,9 +18755,11 @@
     "sidc": "S*G*USTMC-*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "TRANSPORTATION",
       "MOVEMENT CONTROL CENTER (MCC)",
@@ -17462,9 +18770,11 @@
     "sidc": "S*G*USTMT-*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "TRANSPORTATION",
       "MOVEMENT CONTROL CENTER (MCC)",
@@ -17475,9 +18785,11 @@
     "sidc": "S*G*USTR--*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "TRANSPORTATION",
       "RAILHEAD"
@@ -17487,9 +18799,11 @@
     "sidc": "S*G*USTRC-*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "TRANSPORTATION",
       "RAILHEAD CORPS"
@@ -17499,9 +18813,11 @@
     "sidc": "S*G*USTRT-*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "TRANSPORTATION",
       "RAILHEAD THEATER"
@@ -17511,9 +18827,11 @@
     "sidc": "S*G*USTS--*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "TRANSPORTATION",
       "SPOD / SPOE"
@@ -17523,9 +18841,11 @@
     "sidc": "S*G*USTSC-*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "TRANSPORTATION",
       "SPOD / SPOE CORPS"
@@ -17535,9 +18855,11 @@
     "sidc": "S*G*USTST-*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "TRANSPORTATION",
       "SPOD / SPOE THEATER"
@@ -17547,9 +18869,11 @@
     "sidc": "S*G*USTT--*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "TRANSPORTATION THEATER"
     ]
@@ -17558,9 +18882,11 @@
     "sidc": "S*G*USX---*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "MAINTENANCE"
     ]
@@ -17569,9 +18895,11 @@
     "sidc": "S*G*USXC--*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "MAINTENANCE CORPS"
     ]
@@ -17580,9 +18908,11 @@
     "sidc": "S*G*USXE--*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "MAINTENANCE",
       "ELECTRO-OPTICAL"
@@ -17592,9 +18922,11 @@
     "sidc": "S*G*USXEC-*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "MAINTENANCE",
       "ELECTRO-OPTICAL CORPS"
@@ -17604,9 +18936,11 @@
     "sidc": "S*G*USXET-*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "MAINTENANCE",
       "ELECTRO-OPTICAL THEATER"
@@ -17616,9 +18950,11 @@
     "sidc": "S*G*USXH--*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "MAINTENANCE HEAVY"
     ]
@@ -17627,9 +18963,11 @@
     "sidc": "S*G*USXHC-*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "MAINTENANCE HEAVY CORPS"
     ]
@@ -17638,9 +18976,11 @@
     "sidc": "S*G*USXHT-*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "MAINTENANCE HEAVY THEATER"
     ]
@@ -17649,9 +18989,11 @@
     "sidc": "S*G*USXO--*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "MAINTENANCE",
       "ORDNANCE"
@@ -17661,9 +19003,11 @@
     "sidc": "S*G*USXOC-*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "MAINTENANCE",
       "ORDNANCE CORPS"
@@ -17673,9 +19017,11 @@
     "sidc": "S*G*USXOM-*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "MAINTENANCE",
       "ORDNANCE MISSILE"
@@ -17685,9 +19031,11 @@
     "sidc": "S*G*USXOMC*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "MAINTENANCE",
       "ORDNANCE MISSILE CORPS"
@@ -17697,9 +19045,11 @@
     "sidc": "S*G*USXOMT*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "MAINTENANCE",
       "ORDNANCE MISSILE THEATER"
@@ -17709,9 +19059,11 @@
     "sidc": "S*G*USXOT-*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "MAINTENANCE",
       "ORDNANCE THEATER"
@@ -17721,9 +19073,11 @@
     "sidc": "S*G*USXR--*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "MAINTENANCE RECOVERY"
     ]
@@ -17732,9 +19086,11 @@
     "sidc": "S*G*USXRC-*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "MAINTENANCE RECOVERY CORPS"
     ]
@@ -17743,9 +19099,11 @@
     "sidc": "S*G*USXRT-*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "MAINTENANCE RECOVERY THEATER"
     ]
@@ -17754,9 +19112,11 @@
     "sidc": "S*G*USXT--*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CSS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SERVICE SUPPORT",
       "MAINTENANCE THEATER"
     ]
@@ -17767,6 +19127,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SUPPORT"
     ]
   },
@@ -17776,6 +19139,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SUPPORT CBRN"
     ]
   },
@@ -17785,6 +19151,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SUPPORT CBRN",
       "BIOLOGICAL"
     ]
@@ -17795,6 +19164,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SUPPORT CBRN",
       "BIOLOGICAL",
       "RECON EQUIPPED"
@@ -17806,6 +19178,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SUPPORT CBRN",
       "CHEMICAL"
     ]
@@ -17816,6 +19191,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SUPPORT CBRN",
       "CHEMICAL",
       "SMOKE / DECON"
@@ -17827,6 +19205,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SUPPORT CBRN",
       "CHEMICAL",
       "MECHANIZED SMOKE / DECON"
@@ -17838,6 +19219,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SUPPORT CBRN",
       "CHEMICAL",
       "MOTORIZED SMOKE / DECON"
@@ -17849,6 +19233,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SUPPORT CBRN",
       "CHEMICAL RECON"
     ]
@@ -17859,6 +19246,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SUPPORT CBRN",
       "CHEMICAL RECON",
       "CHEMICAL WHEELED ARMORED VEHICLE RECONNAISSANCE SURVEILLANCE"
@@ -17870,6 +19260,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SUPPORT CBRN",
       "CHEMICAL RECON",
       "CHEMICAL WHEELED ARMORED VEHICLE"
@@ -17881,6 +19274,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SUPPORT CBRN",
       "CHEMICAL",
       "SMOKE"
@@ -17892,6 +19288,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SUPPORT CBRN",
       "CHEMICAL",
       "ARMOR SMOKE"
@@ -17903,6 +19302,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SUPPORT CBRN",
       "CHEMICAL",
       "MOTORIZED SMOKE"
@@ -17914,6 +19316,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SUPPORT CBRN",
       "DECONTAMINATION"
     ]
@@ -17924,6 +19329,9 @@
     "scope": "UNIT",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SUPPORT CBRN",
       "NUCLEAR"
     ]
@@ -17932,9 +19340,11 @@
     "sidc": "S*G*UUE---*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SUPPORT",
       "EXPLOSIVE ORDNANCE DISPOSAL"
     ]
@@ -17943,9 +19353,11 @@
     "sidc": "S*G*UUI---*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SUPPORT",
       "INFORMATION WARFARE UNIT"
     ]
@@ -17954,9 +19366,11 @@
     "sidc": "S*G*UUL---*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SUPPORT",
       "LAW ENFORCEMENT UNIT"
     ]
@@ -17965,9 +19379,11 @@
     "sidc": "S*G*UULC--*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SUPPORT",
       "LAW ENFORCEMENT UNIT",
       "CIVILIAN LAW ENFORCEMENT"
@@ -17977,9 +19393,11 @@
     "sidc": "S*G*UULD--*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SUPPORT",
       "LAW ENFORCEMENT UNIT",
       "CENTRAL INTELLIGENCE DIVISION (CID)"
@@ -17989,9 +19407,11 @@
     "sidc": "S*G*UULF--*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SUPPORT",
       "LAW ENFORCEMENT UNIT",
       "SECURITY POLICE (AIR)"
@@ -18001,9 +19421,11 @@
     "sidc": "S*G*UULM--*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SUPPORT",
       "LAW ENFORCEMENT UNIT",
       "MILITARY POLICE"
@@ -18013,9 +19435,11 @@
     "sidc": "S*G*UULS--*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SUPPORT",
       "LAW ENFORCEMENT UNIT",
       "SHORE PATROL"
@@ -18025,9 +19449,11 @@
     "sidc": "S*G*UUM---*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SUPPORT",
       "MILITARY INTELLIGENCE"
     ]
@@ -18036,9 +19462,11 @@
     "sidc": "S*G*UUMA--*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SUPPORT",
       "MILITARY INTELLIGENCE",
       "AERIAL EXPLOITATION"
@@ -18048,9 +19476,11 @@
     "sidc": "S*G*UUMC--*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SUPPORT",
       "MILITARY INTELLIGENCE",
       "COUNTERINTELLIGENCE"
@@ -18060,9 +19490,11 @@
     "sidc": "S*G*UUMJ--*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SUPPORT",
       "MILITARY INTELLIGENCE",
       "JOINT INTELLIGENCE CENTER"
@@ -18072,9 +19504,11 @@
     "sidc": "S*G*UUMMO-*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SUPPORT",
       "MILITARY INTELLIGENCE",
       "SURVEILLANCE",
@@ -18085,9 +19519,11 @@
     "sidc": "S*G*UUMO--*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SUPPORT",
       "MILITARY INTELLIGENCE",
       "OPERATIONS"
@@ -18097,9 +19533,11 @@
     "sidc": "S*G*UUMQ--*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SUPPORT",
       "MILITARY INTELLIGENCE",
       "INTERROGATION"
@@ -18109,9 +19547,11 @@
     "sidc": "S*G*UUMR--*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SUPPORT",
       "MILITARY INTELLIGENCE",
       "SURVEILLANCE"
@@ -18121,9 +19561,11 @@
     "sidc": "S*G*UUMRG-*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SUPPORT",
       "MILITARY INTELLIGENCE",
       "GROUND SURVEILLANCE RADAR"
@@ -18133,9 +19575,11 @@
     "sidc": "S*G*UUMRS-*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SUPPORT",
       "MILITARY INTELLIGENCE",
       "SURVEILLANCE",
@@ -18146,9 +19590,11 @@
     "sidc": "S*G*UUMRSS*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SUPPORT",
       "MILITARY INTELLIGENCE",
       "SURVEILLANCE",
@@ -18159,9 +19605,11 @@
     "sidc": "S*G*UUMRX-*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SUPPORT",
       "MILITARY INTELLIGENCE",
       "SURVEILLANCE",
@@ -18172,9 +19620,11 @@
     "sidc": "S*G*UUMS--*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SUPPORT",
       "MILITARY INTELLIGENCE",
       "SIGNAL INTELLIGENCE (SIGINT)"
@@ -18184,9 +19634,11 @@
     "sidc": "S*G*UUMSE-*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SUPPORT",
       "MILITARY INTELLIGENCE",
       "SIGNAL INTELLIGENCE (SIGINT)",
@@ -18197,9 +19649,11 @@
     "sidc": "S*G*UUMSEA*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SUPPORT",
       "MILITARY INTELLIGENCE",
       "SIGNAL INTELLIGENCE (SIGINT)",
@@ -18211,9 +19665,11 @@
     "sidc": "S*G*UUMSEC*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SUPPORT",
       "MILITARY INTELLIGENCE",
       "SIGNAL INTELLIGENCE (SIGINT)",
@@ -18225,9 +19681,11 @@
     "sidc": "S*G*UUMSED*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SUPPORT",
       "MILITARY INTELLIGENCE",
       "SIGNAL INTELLIGENCE (SIGINT)",
@@ -18239,9 +19697,11 @@
     "sidc": "S*G*UUMSEI*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SUPPORT",
       "MILITARY INTELLIGENCE",
       "SIGNAL INTELLIGENCE (SIGINT)",
@@ -18253,9 +19713,11 @@
     "sidc": "S*G*UUMSEJ*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SUPPORT",
       "MILITARY INTELLIGENCE",
       "SIGNAL INTELLIGENCE (SIGINT)",
@@ -18267,9 +19729,11 @@
     "sidc": "S*G*UUMSET*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SUPPORT",
       "MILITARY INTELLIGENCE",
       "SIGNAL INTELLIGENCE (SIGINT)",
@@ -18281,9 +19745,11 @@
     "sidc": "S*G*UUMT--*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SUPPORT",
       "MILITARY INTELLIGENCE",
       "TACTICAL EXPLOIT"
@@ -18293,9 +19759,11 @@
     "sidc": "S*G*UUP---*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SUPPORT",
       "LANDING SUPPORT"
     ]
@@ -18304,9 +19772,11 @@
     "sidc": "S*G*UUS---*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SUPPORT",
       "SIGNAL UNIT"
     ]
@@ -18315,9 +19785,11 @@
     "sidc": "S*G*UUSA--*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SUPPORT",
       "SIGNAL UNIT",
       "AREA"
@@ -18327,9 +19799,11 @@
     "sidc": "S*G*UUSC--*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SUPPORT",
       "SIGNAL UNIT",
       "COMMUNICATION CONFIGURED PACKAGE"
@@ -18339,9 +19813,11 @@
     "sidc": "S*G*UUSCL-*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SUPPORT",
       "SIGNAL UNIT",
       "LARGE COMMUNICATION CONFIGURED PACKAGE (LCCP)"
@@ -18351,9 +19827,11 @@
     "sidc": "S*G*UUSF--*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SUPPORT",
       "SIGNAL UNIT",
       "FORWARD COMMUNICATIONS"
@@ -18363,9 +19841,11 @@
     "sidc": "S*G*UUSM--*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SUPPORT",
       "SIGNAL UNIT",
       "MULTIPLE SUBSCRIBER ELEMENT"
@@ -18375,9 +19855,11 @@
     "sidc": "S*G*UUSML-*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SUPPORT",
       "SIGNAL UNIT",
       "MULTIPLE SUBSCRIBER ELEMENT",
@@ -18388,9 +19870,11 @@
     "sidc": "S*G*UUSMN-*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SUPPORT",
       "SIGNAL UNIT",
       "MULTIPLE SUBSCRIBER ELEMENT",
@@ -18401,9 +19885,11 @@
     "sidc": "S*G*UUSMS-*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SUPPORT",
       "SIGNAL UNIT",
       "MULTIPLE SUBSCRIBER ELEMENT",
@@ -18414,9 +19900,11 @@
     "sidc": "S*G*UUSO--*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SUPPORT",
       "SIGNAL UNIT",
       "COMMAND OPERATIONS"
@@ -18426,9 +19914,11 @@
     "sidc": "S*G*UUSR--*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SUPPORT",
       "SIGNAL UNIT",
       "RADIO UNIT"
@@ -18438,9 +19928,11 @@
     "sidc": "S*G*UUSRS-*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SUPPORT",
       "SIGNAL UNIT",
       "RADIO UNIT",
@@ -18451,9 +19943,11 @@
     "sidc": "S*G*UUSRT-*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SUPPORT",
       "SIGNAL UNIT",
       "RADIO UNIT",
@@ -18464,9 +19958,11 @@
     "sidc": "S*G*UUSRW-*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SUPPORT",
       "SIGNAL UNIT",
       "RADIO UNIT",
@@ -18477,9 +19973,11 @@
     "sidc": "S*G*UUSS--*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SUPPORT",
       "SIGNAL UNIT",
       "SIGNAL SUPPORT"
@@ -18489,9 +19987,11 @@
     "sidc": "S*G*UUSW--*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SUPPORT",
       "SIGNAL UNIT",
       "TELEPHONE SWITCH"
@@ -18501,9 +20001,11 @@
     "sidc": "S*G*UUSX--*****",
     "class": "U",
     "scope": "UNIT",
-    "dimension": "CS",
     "geometry": "Point",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "GROUND TRACK",
+      "UNIT",
       "COMBAT SUPPORT",
       "SIGNAL UNIT",
       "ELECTRONIC RANGING"
@@ -19539,6 +21041,8 @@
     "geometry": "Point",
     "dimension": "SUBSURFACE",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "SUBSURFACE TRACK",
       "ENVIRONMENTAL REPORT LOCATION"
     ]
   },
@@ -19549,6 +21053,8 @@
     "geometry": "Point",
     "dimension": "SUBSURFACE",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "SUBSURFACE TRACK",
       "NON-SUBMARINE"
     ]
   },
@@ -19559,6 +21065,8 @@
     "geometry": "Point",
     "dimension": "SUBSURFACE",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "SUBSURFACE TRACK",
       "NON-SUBMARINE",
       "DIVER"
     ]
@@ -19570,6 +21078,8 @@
     "geometry": "Point",
     "dimension": "SUBSURFACE",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "SUBSURFACE TRACK",
       "SUBMARINE"
     ]
   },
@@ -19580,6 +21090,8 @@
     "geometry": "Point",
     "dimension": "SUBSURFACE",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "SUBSURFACE TRACK",
       "POSSIBLE SUBMARINE-1"
     ]
   },
@@ -19590,6 +21102,8 @@
     "geometry": "Point",
     "dimension": "SUBSURFACE",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "SUBSURFACE TRACK",
       "POSSIBLE SUBMARINE-2"
     ]
   },
@@ -19600,6 +21114,8 @@
     "geometry": "Point",
     "dimension": "SUBSURFACE",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "SUBSURFACE TRACK",
       "POSSIBLE SUBMARINE-3"
     ]
   },
@@ -19610,6 +21126,8 @@
     "geometry": "Point",
     "dimension": "SUBSURFACE",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "SUBSURFACE TRACK",
       "POSSIBLE SUBMARINE-4"
     ]
   },
@@ -19620,6 +21138,8 @@
     "geometry": "Point",
     "dimension": "SUBSURFACE",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "SUBSURFACE TRACK",
       "SUBMARINE",
       "BOTTOMED"
     ]
@@ -19631,6 +21151,8 @@
     "geometry": "Point",
     "dimension": "SUBSURFACE",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "SUBSURFACE TRACK",
       "SUBMARINE",
       "CONVENTIONAL PROPULSION"
     ]
@@ -19642,6 +21164,8 @@
     "geometry": "Point",
     "dimension": "SUBSURFACE",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "SUBSURFACE TRACK",
       "SUBMARINE",
       "CONVENTIONAL PROPULSION",
       "ATTACK SUBMARINE (SS)"
@@ -19654,6 +21178,8 @@
     "geometry": "Point",
     "dimension": "SUBSURFACE",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "SUBSURFACE TRACK",
       "SUBMARINE",
       "CONVENTIONAL PROPULSION",
       "BALLISTIC MISSILE SUBMARINE (SSB)"
@@ -19666,6 +21192,8 @@
     "geometry": "Point",
     "dimension": "SUBSURFACE",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "SUBSURFACE TRACK",
       "SUBMARINE",
       "SURFACED CONVENTIONAL PROPULSION SUBMARINE"
     ]
@@ -19677,6 +21205,8 @@
     "geometry": "Point",
     "dimension": "SUBSURFACE",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "SUBSURFACE TRACK",
       "SUBMARINE",
       "CONVENTIONAL PROPULSION",
       "GUIDED MISSILE SUBMARINE (SSG)"
@@ -19689,6 +21219,8 @@
     "geometry": "Point",
     "dimension": "SUBSURFACE",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "SUBSURFACE TRACK",
       "SUBMARINE",
       "CONVENTIONAL PROPULSION",
       "MISSILE SUBMARINE (TYPE UNKNOWN)"
@@ -19701,6 +21233,8 @@
     "geometry": "Point",
     "dimension": "SUBSURFACE",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "SUBSURFACE TRACK",
       "SURFACED SUBMARINE"
     ]
   },
@@ -19711,6 +21245,8 @@
     "geometry": "Point",
     "dimension": "SUBSURFACE",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "SUBSURFACE TRACK",
       "SNORKELING SUBMARINE"
     ]
   },
@@ -19721,6 +21257,8 @@
     "geometry": "Point",
     "dimension": "SUBSURFACE",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "SUBSURFACE TRACK",
       "PROBABLE SUBMARINE"
     ]
   },
@@ -19731,6 +21269,8 @@
     "geometry": "Point",
     "dimension": "SUBSURFACE",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "SUBSURFACE TRACK",
       "SUBMARINE",
       "NUCLEAR PROPULSION"
     ]
@@ -19742,6 +21282,8 @@
     "geometry": "Point",
     "dimension": "SUBSURFACE",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "SUBSURFACE TRACK",
       "SUBMARINE",
       "NUCLEAR PROPULSION",
       "ATTACK SUBMARINE (SSN)"
@@ -19754,6 +21296,8 @@
     "geometry": "Point",
     "dimension": "SUBSURFACE",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "SUBSURFACE TRACK",
       "SUBMARINE",
       "NUCLEAR PROPULSION",
       "BALLISTIC MISSILE SUBMARINE (SSBN)"
@@ -19766,6 +21310,8 @@
     "geometry": "Point",
     "dimension": "SUBSURFACE",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "SUBSURFACE TRACK",
       "SUBMARINE",
       "SURFACED NUCLEAR PROPULSION SUBMARINE"
     ]
@@ -19777,6 +21323,8 @@
     "geometry": "Point",
     "dimension": "SUBSURFACE",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "SUBSURFACE TRACK",
       "SUBMARINE",
       "NUCLEAR PROPULSION",
       "GUIDED MISSILE SUBMARINE (SSGN)"
@@ -19789,6 +21337,8 @@
     "geometry": "Point",
     "dimension": "SUBSURFACE",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "SUBSURFACE TRACK",
       "SUBMARINE",
       "NUCLEAR PROPULSION",
       "MISSILE SUBMARINE (TYPE UNKNOWN)"
@@ -19801,6 +21351,8 @@
     "geometry": "Point",
     "dimension": "SUBSURFACE",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "SUBSURFACE TRACK",
       "SUBMARINE",
       "OTHER SUBMERSIBLE"
     ]
@@ -19812,6 +21364,8 @@
     "geometry": "Point",
     "dimension": "SUBSURFACE",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "SUBSURFACE TRACK",
       "SUBMARINE",
       "SURFACED OTHER SUBMERSIBLE"
     ]
@@ -19823,6 +21377,8 @@
     "geometry": "Point",
     "dimension": "SUBSURFACE",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "SUBSURFACE TRACK",
       "CERTAIN SUBMARINE"
     ]
   },
@@ -19833,6 +21389,8 @@
     "geometry": "Point",
     "dimension": "SUBSURFACE",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "SUBSURFACE TRACK",
       "SUBMARINE",
       "UNMANNED UNDERWATER VEHICLE (UUV)"
     ]
@@ -19844,6 +21402,8 @@
     "geometry": "Point",
     "dimension": "SUBSURFACE",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "SUBSURFACE TRACK",
       "SUBMARINE",
       "UNMANNED UNDERWATER VEHICLE (UUV)",
       "MINE WARFARE SUBSURFACE DRONE"
@@ -19856,6 +21416,8 @@
     "geometry": "Point",
     "dimension": "SUBSURFACE",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "SUBSURFACE TRACK",
       "SUBMARINE",
       "UNMANNED UNDERWATER VEHICLE (UUV)",
       "ANTISURFACE WARFARE SUBSURFACE DRONE"
@@ -19868,6 +21430,8 @@
     "geometry": "Point",
     "dimension": "SUBSURFACE",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "SUBSURFACE TRACK",
       "SUBMARINE",
       "UNMANNED UNDERWATER VEHICLE (UUV)",
       "ANTISUBMARINE WARFARE SUBSURFACE DRONE"
@@ -19880,6 +21444,8 @@
     "geometry": "Point",
     "dimension": "SUBSURFACE",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "SUBSURFACE TRACK",
       "NONSUBMARINE"
     ]
   },
@@ -19890,6 +21456,8 @@
     "geometry": "Point",
     "dimension": "SUBSURFACE",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "SUBSURFACE TRACK",
       "DIVE REPORT LOCATION"
     ]
   },
@@ -19900,6 +21468,8 @@
     "geometry": "Point",
     "dimension": "SUBSURFACE",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "SUBSURFACE TRACK",
       "UNDERWATER WEAPON"
     ]
   },
@@ -19910,6 +21480,8 @@
     "geometry": "Point",
     "dimension": "SUBSURFACE",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "SUBSURFACE TRACK",
       "UNDERWATER DECOY"
     ]
   },
@@ -19920,6 +21492,8 @@
     "geometry": "Point",
     "dimension": "SUBSURFACE",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "SUBSURFACE TRACK",
       "UNDERWATER DECOY",
       "SEA MINE DECOY"
     ]
@@ -19931,6 +21505,8 @@
     "geometry": "Point",
     "dimension": "SUBSURFACE",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "SUBSURFACE TRACK",
       "UNDERWATER DECOY",
       "SEA MINE DECOY",
       "GROUND (BOTTOM) DECOY"
@@ -19943,6 +21519,8 @@
     "geometry": "Point",
     "dimension": "SUBSURFACE",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "SUBSURFACE TRACK",
       "UNDERWATER DECOY",
       "SEA MINE DECOY",
       "MOORED DECOY"
@@ -19955,6 +21533,8 @@
     "geometry": "Point",
     "dimension": "SUBSURFACE",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "SUBSURFACE TRACK",
       "UNDERWATER WEAPON",
       "SEA MINE"
     ]
@@ -19966,6 +21546,8 @@
     "geometry": "Point",
     "dimension": "SUBSURFACE",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "SUBSURFACE TRACK",
       "UNDERWATER WEAPON",
       "SEA MINE",
       "GENERAL MINE ANCHOR"
@@ -19978,6 +21560,8 @@
     "geometry": "Point",
     "dimension": "SUBSURFACE",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "SUBSURFACE TRACK",
       "UNDERWATER WEAPON",
       "SEA MINE",
       "GENERAL OBSTRUCTOR"
@@ -19990,6 +21574,8 @@
     "geometry": "Point",
     "dimension": "SUBSURFACE",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "SUBSURFACE TRACK",
       "UNDERWATER WEAPON",
       "SEA MINE",
       "GENERAL OBSTRUCTOR",
@@ -20003,6 +21589,8 @@
     "geometry": "Point",
     "dimension": "SUBSURFACE",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "SUBSURFACE TRACK",
       "UNDERWATER WEAPON",
       "SEA MINE",
       "GENERAL MINE-LIKE CONTACT (MILCO)"
@@ -20015,6 +21603,8 @@
     "geometry": "Point",
     "dimension": "SUBSURFACE",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "SUBSURFACE TRACK",
       "UNDERWATER WEAPON",
       "SEA MINE NEUTRALIZED"
     ]
@@ -20026,6 +21616,8 @@
     "geometry": "Point",
     "dimension": "SUBSURFACE",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "SUBSURFACE TRACK",
       "UNDERWATER WEAPON",
       "SEA MINE",
       "GENERAL MINE-LIKE ECHO (MILEC)"
@@ -20038,6 +21630,8 @@
     "geometry": "Point",
     "dimension": "SUBSURFACE",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "SUBSURFACE TRACK",
       "UNDERWATER WEAPON",
       "SEA MINE (FLOATING)"
     ]
@@ -20049,6 +21643,8 @@
     "geometry": "Point",
     "dimension": "SUBSURFACE",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "SUBSURFACE TRACK",
       "UNDERWATER WEAPON",
       "SEA MINE (FLOATING)",
       "FLOATING MINE-LIKE CONTACT (MILCO)"
@@ -20061,6 +21657,8 @@
     "geometry": "Point",
     "dimension": "SUBSURFACE",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "SUBSURFACE TRACK",
       "UNDERWATER WEAPON",
       "SEA MINE (FLOATING) NEUTRALIZED"
     ]
@@ -20072,6 +21670,8 @@
     "geometry": "Point",
     "dimension": "SUBSURFACE",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "SUBSURFACE TRACK",
       "UNDERWATER WEAPON",
       "SEA MINE (FLOATING)",
       "FLOATING MINE-LIKE ECHO (MILEC)"
@@ -20084,6 +21684,8 @@
     "geometry": "Point",
     "dimension": "SUBSURFACE",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "SUBSURFACE TRACK",
       "UNDERWATER WEAPON",
       "SEA MINE (FLOATING)",
       "FLOATING NON-MINE MINE-LIKE CONTACT"
@@ -20096,6 +21698,8 @@
     "geometry": "Point",
     "dimension": "SUBSURFACE",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "SUBSURFACE TRACK",
       "UNDERWATER WEAPON",
       "SEA MINE (FLOATING)",
       "FLOATING NEGATIVE REACQUISITION"
@@ -20108,6 +21712,8 @@
     "geometry": "Point",
     "dimension": "SUBSURFACE",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "SUBSURFACE TRACK",
       "UNDERWATER WEAPON",
       "SEA MINE (FLOATING)",
       "FLOATING EXERCISE MINE"
@@ -20120,6 +21726,8 @@
     "geometry": "Point",
     "dimension": "SUBSURFACE",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "SUBSURFACE TRACK",
       "UNDERWATER WEAPON",
       "SEA MINE (GROUND)"
     ]
@@ -20131,6 +21739,8 @@
     "geometry": "Point",
     "dimension": "SUBSURFACE",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "SUBSURFACE TRACK",
       "UNDERWATER WEAPON",
       "SEA MINE (GROUND)",
       "GROUND (BOTTOM) MINE-LIKE CONTACT (MILCO)"
@@ -20143,6 +21753,8 @@
     "geometry": "Point",
     "dimension": "SUBSURFACE",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "SUBSURFACE TRACK",
       "UNDERWATER WEAPON",
       "SEA MINE (GROUND) NEUTRALIZED"
     ]
@@ -20154,6 +21766,8 @@
     "geometry": "Point",
     "dimension": "SUBSURFACE",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "SUBSURFACE TRACK",
       "UNDERWATER WEAPON",
       "SEA MINE (GROUND)",
       "GROUND (BOTTOM) MINE-LIKE ECHO (MILEC)"
@@ -20166,6 +21780,8 @@
     "geometry": "Point",
     "dimension": "SUBSURFACE",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "SUBSURFACE TRACK",
       "UNDERWATER WEAPON",
       "SEA MINE (GROUND)",
       "GROUND (BOTTOM) NON-MINE MINE-LIKE CONTACT"
@@ -20178,6 +21794,8 @@
     "geometry": "Point",
     "dimension": "SUBSURFACE",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "SUBSURFACE TRACK",
       "UNDERWATER WEAPON",
       "SEA MINE (GROUND)",
       "GROUND (BOTTOM) NEGATIVE REACQUISITION"
@@ -20190,6 +21808,8 @@
     "geometry": "Point",
     "dimension": "SUBSURFACE",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "SUBSURFACE TRACK",
       "UNDERWATER WEAPON",
       "SEA MINE (GROUND)",
       "GROUND (BOTTOM) EXERCISE MINE"
@@ -20202,6 +21822,8 @@
     "geometry": "Point",
     "dimension": "SUBSURFACE",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "SUBSURFACE TRACK",
       "UNDERWATER WEAPON",
       "SEA MINE (MOORED)"
     ]
@@ -20213,6 +21835,8 @@
     "geometry": "Point",
     "dimension": "SUBSURFACE",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "SUBSURFACE TRACK",
       "UNDERWATER WEAPON",
       "SEA MINE (MOORED)",
       "MOORED MINE-LIKE CONTACT"
@@ -20225,6 +21849,8 @@
     "geometry": "Point",
     "dimension": "SUBSURFACE",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "SUBSURFACE TRACK",
       "UNDERWATER WEAPON",
       "SEA MINE (MOORED) NEUTRALIZED"
     ]
@@ -20236,6 +21862,8 @@
     "geometry": "Point",
     "dimension": "SUBSURFACE",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "SUBSURFACE TRACK",
       "UNDERWATER WEAPON",
       "SEA MINE (MOORED)",
       "MOORED MINE-LIKE ECHO"
@@ -20248,6 +21876,8 @@
     "geometry": "Point",
     "dimension": "SUBSURFACE",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "SUBSURFACE TRACK",
       "UNDERWATER WEAPON",
       "SEA MINE (MOORED)",
       "MOORED NON-MINE MINE-LIKE OBJECT"
@@ -20260,6 +21890,8 @@
     "geometry": "Point",
     "dimension": "SUBSURFACE",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "SUBSURFACE TRACK",
       "UNDERWATER WEAPON",
       "SEA MINE (MOORED)",
       "MOORED NEGATIVE REACQUISITION"
@@ -20272,6 +21904,8 @@
     "geometry": "Point",
     "dimension": "SUBSURFACE",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "SUBSURFACE TRACK",
       "UNDERWATER WEAPON",
       "SEA MINE (MOORED)",
       "MOORED EXERCISE MINE"
@@ -20284,6 +21918,8 @@
     "geometry": "Point",
     "dimension": "SUBSURFACE",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "SUBSURFACE TRACK",
       "UNDERWATER WEAPON",
       "SEA MINE GENERAL NON-MINE MINE-LIKE OBJECT"
     ]
@@ -20295,6 +21931,8 @@
     "geometry": "Point",
     "dimension": "SUBSURFACE",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "SUBSURFACE TRACK",
       "UNDERWATER WEAPON",
       "SEA MINE (OTHER POSITION)"
     ]
@@ -20306,6 +21944,8 @@
     "geometry": "Point",
     "dimension": "SUBSURFACE",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "SUBSURFACE TRACK",
       "UNDERWATER WEAPON",
       "SEA MINE (OTHER POSITION) NEUTRALIZED"
     ]
@@ -20317,6 +21957,8 @@
     "geometry": "Point",
     "dimension": "SUBSURFACE",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "SUBSURFACE TRACK",
       "UNDERWATER WEAPON",
       "SEA MINE",
       "GENERAL NEGATIVE REACQUISITION"
@@ -20329,6 +21971,8 @@
     "geometry": "Point",
     "dimension": "SUBSURFACE",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "SUBSURFACE TRACK",
       "UNDERWATER WEAPON",
       "SEA MINE",
       "RISING MINE"
@@ -20341,6 +21985,8 @@
     "geometry": "Point",
     "dimension": "SUBSURFACE",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "SUBSURFACE TRACK",
       "UNDERWATER WEAPON",
       "SEA MINE",
       "RISING MINE",
@@ -20355,6 +22001,8 @@
     "geometry": "Point",
     "dimension": "SUBSURFACE",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "SUBSURFACE TRACK",
       "UNDERWATER WEAPON",
       "SEA MINE",
       "RISING MINE",
@@ -20368,6 +22016,8 @@
     "geometry": "Point",
     "dimension": "SUBSURFACE",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "SUBSURFACE TRACK",
       "UNDERWATER WEAPON",
       "SEA MINE GENRAL EXERCISE MINE"
     ]
@@ -20379,6 +22029,8 @@
     "geometry": "Point",
     "dimension": "SUBSURFACE",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "SUBSURFACE TRACK",
       "UNDERWATER WEAPON",
       "TORPEDO"
     ]
@@ -20390,6 +22042,8 @@
     "geometry": "Point",
     "dimension": "SUBSURFACE",
     "hierarchy": [
+      "WARFIGHTING SYMBOLS",
+      "SUBSURFACE TRACK",
       "UNEXPLODED ORDNANCE AREA"
     ]
   }

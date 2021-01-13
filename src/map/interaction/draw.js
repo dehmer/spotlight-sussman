@@ -4,10 +4,6 @@ import { GeoJSON } from 'ol/format'
 import emitter from '../../emitter'
 import { drawOptions } from './draw-options'
 
-const geoJSON = new GeoJSON({
-  dataProjection: 'EPSG:4326', // WGS84
-  featureProjection: 'EPSG:3857' // Web-Mercator
-})
 
 // TODO: check if singleton could be of use (layers.js:460)
 let interaction = null

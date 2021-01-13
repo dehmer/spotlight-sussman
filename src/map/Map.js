@@ -6,6 +6,7 @@ import { Tile as TileLayer, Vector as VectorLayer } from 'ol/layer'
 import VectorSource from 'ol/source/Vector'
 import { Rotate } from 'ol/control'
 import { Fill, Stroke, Circle, Style } from 'ol/style';
+import { defaults as defaultInteractions } from 'ol/interaction'
 import { highlightedFeatures } from '../storage/action'
 import './epsg'
 import style from './style'
@@ -14,9 +15,9 @@ import select from './interaction/select'
 import boxselect from './interaction/boxselect'
 import translate from './interaction/translate'
 import draw from './interaction/draw'
+import modify from './interaction/modify'
 import { deselectedSource, selectedSource } from './partition'
 import emitter from '../emitter'
-
 
 /**
  *
@@ -65,12 +66,22 @@ export const Map = () => {
       highlightLayer
     ]
 
-    const map = new ol.Map({ target, controls, layers, view })
+    const map = new ol.Map({
+      target,
+      controls,
+      layers,
+      view,
+      interactions: defaultInteractions({
+        doubleClickZoom: false
+      })
+    })
+
     const selectInteraction = select(deselectedLayer, selectedLayer)
     map.addInteraction(selectInteraction)
     map.addInteraction(boxselect([deselectedSource, selectedSource]))
     map.addInteraction(translate(selectInteraction.getFeatures()))
     draw(map)
+    map.addInteraction(modify(selectInteraction.getFeatures()))
 
     view.on('change', ({ target: view }) => {
       // TODO: throttle

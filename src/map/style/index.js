@@ -16,7 +16,7 @@ export const normalizeSIDC = sidc => sidc
 
 
 const cachingProvider = (provider, source) => {
-  const cachekey = feature => `${feature.getId()}:${feature.getRevision()}`
+  const cachekey = feature => `${feature.getId()}`
   const styleCache = new cache()
 
   source.on('removefeature', ({ feature }) => {
@@ -35,7 +35,6 @@ const cachingProvider = (provider, source) => {
  * FEATURE STYLE FUNCTION.
  */
 export default (mode, source) => {
-
   const geometries = R.cond([
     [R.equals('Point'), R.always(symbolStyle(mode))],
     [R.equals('Polygon'), R.always(polygonStyle(mode))],
