@@ -226,7 +226,6 @@ emitter.on('storage/bookmark', txn(storage => {
     display_name: 'Bookmark',
     name: 'Bookmark',
     class: 'bookmark',
-    type: 'boundary',
     sticky: true,
     geojson: writeGeometryObject(point),
     resolution: view.resolution

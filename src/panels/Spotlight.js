@@ -30,13 +30,17 @@ handlers['search/result/updated'] = (state, { result }) => {
   })
 
   const firstSelected = list.findIndex(entry => entry.selected)
-  const focus = firstSelected !== -1
+  var focus = firstSelected !== -1
     ? firstSelected
     : state.focus <= list.length - 1
       ? state.focus
       : -1
 
-  return { list, focus }
+  if (state.focusId) {
+    focus = list.findIndex(entry => entry.id === state.focusId)
+  }
+
+  return { list, focus, focusId: focusId(focus, list) }
 }
 
 
@@ -50,6 +54,9 @@ handlers['selection'] = (state, { selected, deselected }) => {
   }))({ ...state })
 }
 
+const focusId = (focus, list) => focus !== -1
+  ? list[focus].id
+  : null
 
 /**
  * TODO: respect continuous selection block
@@ -69,7 +76,7 @@ handlers['keydown/ArrowDown'] = (state, { shiftKey, metaKey }) => {
     : []
 
   setTimeout(() => selection.set(selected), 0)
-  return { ...state, focus }
+  return { ...state, focus, focusId: focusId(focus, list) }
 }
 
 
@@ -93,7 +100,7 @@ handlers['keydown/ArrowUp'] = (state, { shiftKey, metaKey }) => {
     : []
 
   setTimeout(() => selection.set(selected), 0)
-  return { ...state, focus }
+  return { ...state, focus, focusId: focusId(focus, list) }
 }
 
 
@@ -103,7 +110,7 @@ handlers['keydown/ArrowUp'] = (state, { shiftKey, metaKey }) => {
 handlers['keydown/Home'] = (state, { shiftKey }) => {
   if (state.focus === -1) return state
   const focus = state.list.length ? 0 : -1
-  return { ...state, focus}
+  return { ...state, focus, focusId: focusId(focus, state.list)}
 }
 
 
@@ -113,7 +120,7 @@ handlers['keydown/Home'] = (state, { shiftKey }) => {
 handlers['keydown/End'] = (state, { shiftKey }) => {
   if (state.focus === -1) return state
   const focus = state.list.length ? state.list.length - 1 : -1
-  return { ...state, focus}
+  return { ...state, focus, focusId: focusId(focus, state.list)}
 }
 
 
@@ -126,7 +133,7 @@ handlers['keydown/Enter'] = state => {
   if (!(state.list[focus].capabilities || '').includes('RENAME')) return state
   const list = [...state.list]
   list[focus] = { ...list[focus], edit: true}
-  return { list, focus }
+  return { list, focus, focusId: focusId(focus, list) }
 }
 
 
@@ -192,7 +199,7 @@ handlers['click'] = (state, { index, shiftKey, metaKey }) => {
 
   // Allow new focus to be applied before selection update:
   setTimeout(() => selection.set(selected), 0)
-  return { ...state, focus: index }
+  return { ...state, focus: index, focusId: focusId(index, state.list) }
 }
 
 
